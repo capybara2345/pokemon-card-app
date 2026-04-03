@@ -8,6 +8,11 @@ export type PokemonCard = {
   필요에너지: number;
   피해량: number;
   최대피해량: number;
+  기술명2?: string;
+  기술추가효과2?: string;
+  필요에너지2?: number;
+  피해량2?: number;
+  최대피해량2?: number;
   후퇴에너지: number;
   특성효과: string;
   약점: string;
