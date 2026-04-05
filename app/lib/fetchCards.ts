@@ -6,12 +6,6 @@ const CSV_URLS = [
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=2122449850`,
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=374451566`,
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=483785799`,
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=670644763`,
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=2056634255`,
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1810879939`,
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=681214415`,
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=608429894`,
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=2079896182`,
 ];
 
 /** Minimal RFC-4180 CSV parser (handles quoted fields with embedded commas/newlines) */
@@ -74,35 +68,6 @@ function toNumber(v: string): number {
   return isNaN(n) ? 0 : n;
 }
 
-function rowToCard(headers: string[], values: string[]): PokemonCard | null {
-  if (values.every((v) => v.trim() === "")) return null;
-
-  const get = (key: string) => {
-    const idx = headers.indexOf(key);
-    return idx >= 0 ? (values[idx] ?? "").trim() : "";
-  };
-
-  return {
-    타입: get("타입"),
-    이름: get("이름"),
-    진화: get("진화"),
-    HP: toNumber(get("HP")),
-    기술명: get("기술명"),
-    기술추가효과: get("기술추가효과") || "-",
-    필요에너지: toNumber(get("필요에너지")),
-    피해량: toNumber(get("피해량")),
-    최대피해량: toNumber(get("최대피해량")),
-    후퇴에너지: toNumber(get("후퇴에너지")),
-    특성효과: get("특성효과") || "-",
-    약점: get("약점"),
-    관련서포터: get("관련서포터"),
-    속성: get("속성"),
-    키워드: get("키워드"),
-    확장팩: get("확장팩"),
-    추천순위: get("추천순위") || "-",
-  };
-}
-
 function parseSheetCards(text: string): PokemonCard[] {
   const rows = parseCSV(text);
   if (rows.length < 2) return [];
@@ -112,28 +77,45 @@ function parseSheetCards(text: string): PokemonCard[] {
 
   for (let i = 1; i < rows.length; i++) {
     const values = rows[i];
+    if (values.every((v) => v.trim() === "")) continue;
+
     const get = (key: string) => {
       const idx = headers.indexOf(key);
       return idx >= 0 ? (values[idx] ?? "").trim() : "";
     };
 
     const 이름 = get("이름");
+    if (!이름) continue;
 
-    // 이름이 비어있으면 직전 카드의 2번째 기술
-    if (!이름) {
-      const prev = cards[cards.length - 1];
-      if (prev && get("기술명")) {
-        prev.기술명2 = get("기술명");
-        prev.기술추가효과2 = get("기술추가효과") || "-";
-        prev.필요에너지2 = toNumber(get("필요에너지"));
-        prev.피해량2 = toNumber(get("피해량"));
-        prev.최대피해량2 = toNumber(get("최대피해량"));
-      }
-      continue;
+    const card: PokemonCard = {
+      ID: toNumber(get("ID")),
+      타입: get("타입"),
+      카드타입: get("속성").trim(),
+      이름,
+      진화: get("진화"),
+      HP: toNumber(get("HP")),
+      기술명: get("기술명"),
+      기술추가효과: get("기술추가효과") || "-",
+      필요에너지: get("기술에너지") || get("필요에너지"),
+      피해량: get("피해량").trim() || "0",
+      후퇴에너지: toNumber(get("후퇴에너지")),
+      특성: get("특성"),
+      특성효과: get("특성효과") || "-",
+      약점: get("약점"),
+      관련서포터: "",
+      키워드: get("키워드"),
+      확장팩: get("확장팩"),
+    };
+
+    const 기술명2 = get("기술명2");
+    if (기술명2) {
+      card.기술명2 = 기술명2;
+      card.기술추가효과2 = get("기술추가효과2") || "-";
+      card.필요에너지2 = get("기술에너지2") || get("필요에너지2") || undefined;
+      card.피해량2 = get("피해량2").trim() || undefined;
     }
 
-    const card = rowToCard(headers, values);
-    if (card && card.이름) cards.push(card);
+    cards.push(card);
   }
 
   return cards;
@@ -141,18 +123,19 @@ function parseSheetCards(text: string): PokemonCard[] {
 
 export async function fetchCards(): Promise<PokemonCard[]> {
   try {
-    const responses = await Promise.all(
-      CSV_URLS.map((url) => fetch(url, { next: { revalidate: 300 } }))
+    const results = await Promise.all(
+      CSV_URLS.map((url) => fetch(url, { cache: "no-store" }))
     );
 
     const allCards: PokemonCard[] = [];
-    for (const res of responses) {
+    for (const res of results) {
       if (!res.ok) {
-        console.warn("Google Sheets fetch failed for one sheet, skipping");
+        console.warn("Google Sheets fetch failed for:", res.url);
         continue;
       }
       const text = await res.text();
-      allCards.push(...parseSheetCards(text));
+      const cards = parseSheetCards(text);
+      allCards.push(...cards);
     }
 
     return allCards.length > 0 ? allCards : pokemonCards;
