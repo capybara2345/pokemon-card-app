@@ -1120,6 +1120,24 @@ const ENERGY_PIP_COLORS: Record<string, string> = {
   드래곤: "bg-indigo-400 border-indigo-600",
 };
 
+const ENERGY_IMAGES: Partial<Record<string, string>> = {
+  풀: "/energy/grass.png",
+  불: "/energy/fire.png",
+  물: "/energy/water.png",
+  번개: "/energy/lightning.png",
+  초: "/energy/psychic.png",
+  악: "/energy/darkness.png",
+  격투: "/energy/fighting.png",
+  강철: "/energy/steel.png",
+  드래곤: "/energy/dragon.png",
+  무색: "/energy/colorless.png"
+};
+
+function getEnergyImageSrc(type: string): string | undefined {
+  const normalized = type.normalize("NFC").trim();
+  return ENERGY_IMAGES[normalized] ?? ENERGY_IMAGES[type.trim()];
+}
+
 function EnergyPips({ energy }: { energy: string }) {
   if (!energy) return <span className="text-slate-300 dark:text-slate-600">—</span>;
 
@@ -1132,7 +1150,7 @@ function EnergyPips({ energy }: { energy: string }) {
     if (!match) continue;
     const [, typeName, countStr] = match;
     const count = parseInt(countStr, 10);
-    const colorClass = ENERGY_PIP_COLORS[typeName] ?? "bg-gray-200 border-gray-400";
+    const colorClass = ENERGY_PIP_COLORS[typeName.normalize("NFC").trim()] ?? "bg-gray-200 border-gray-400";
     for (let i = 0; i < count; i++) {
       pips.push({ type: typeName, colorClass });
     }
@@ -1141,14 +1159,15 @@ function EnergyPips({ energy }: { energy: string }) {
   if (pips.length === 0) return <span className="text-slate-300 dark:text-slate-600">—</span>;
 
   return (
-    <span className="flex gap-0.5 flex-wrap justify-center">
-      {pips.map((pip, i) => (
-        <span
-          key={i}
-          title={pip.type}
-          className={`inline-block w-3.5 h-3.5 rounded-full border ${pip.colorClass}`}
-        />
-      ))}
+    <span className="flex gap-0.5 flex-wrap justify-center items-center">
+      {pips.map((pip, i) => {
+        const imgSrc = getEnergyImageSrc(pip.type);
+        return imgSrc ? (
+          <img key={i} src={imgSrc} alt={pip.type} title={pip.type} className="inline-block w-4 h-4 object-contain" />
+        ) : (
+          <span key={i} title={pip.type} className={`inline-block w-3.5 h-3.5 rounded-full border ${pip.colorClass}`} />
+        );
+      })}
     </span>
   );
 }

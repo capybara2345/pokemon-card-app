@@ -61,6 +61,29 @@ function countEnergy(energy: string | undefined): number {
   }, 0);
 }
 
+const ENERGY_IMAGES: Partial<Record<string, string>> = {
+  풀: "/energy/grass.png",
+  불: "/energy/fire.png",
+  물: "/energy/water.png",
+  번개: "/energy/lightning.png",
+  초: "/energy/psychic.png",
+  악: "/energy/darkness.png",
+  격투: "/energy/fighting.png",
+  강철: "/energy/steel.png",
+  드래곤: "/energy/dragon.png",
+  무색: "/energy/colorless.png"
+};
+
+function getEnergyImageSrc(type: string): string | undefined {
+  // NFC 정규화 후 조회 (Google Sheets 데이터가 NFD로 올 수 있음)
+  const normalized = type.normalize("NFC").trim();
+  const result = ENERGY_IMAGES[normalized] ?? ENERGY_IMAGES[type.trim()];
+  if (!result) {
+    console.log("[EnergyPips] no image for type:", JSON.stringify(type), "hex:", Array.from(type).map(c => c.codePointAt(0)?.toString(16)).join(","));
+  }
+  return result;
+}
+
 function EnergyPips({ energy }: { energy: string }) {
   if (!energy) return <span className="text-slate-300 dark:text-slate-600 text-xs">—</span>;
   const segments = energy.split("/");
@@ -70,15 +93,20 @@ function EnergyPips({ energy }: { energy: string }) {
     if (!match) continue;
     const [, typeName, countStr] = match;
     const count = parseInt(countStr, 10);
-    const colorClass = ENERGY_PIP_COLORS[typeName] ?? "bg-gray-200 border-gray-400";
+    const colorClass = ENERGY_PIP_COLORS[typeName.normalize("NFC").trim()] ?? "bg-gray-200 border-gray-400";
     for (let i = 0; i < count; i++) pips.push({ type: typeName, colorClass });
   }
   if (pips.length === 0) return <span className="text-slate-300 dark:text-slate-600 text-xs">—</span>;
   return (
-    <span className="flex gap-0.5 flex-wrap">
-      {pips.map((pip, i) => (
-        <span key={i} title={pip.type} className={`inline-block w-3 h-3 rounded-full border ${pip.colorClass}`} />
-      ))}
+    <span className="flex gap-0.5 flex-wrap items-center">
+      {pips.map((pip, i) => {
+        const imgSrc = getEnergyImageSrc(pip.type);
+        return imgSrc ? (
+          <img key={i} src={imgSrc} alt={pip.type} title={pip.type} className="inline-block w-4 h-4 object-contain" />
+        ) : (
+          <span key={i} title={pip.type} className={`inline-block w-3 h-3 rounded-full border ${pip.colorClass}`} />
+        );
+      })}
     </span>
   );
 }
