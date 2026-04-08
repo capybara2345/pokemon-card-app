@@ -16,6 +16,8 @@ const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> 
   무색: { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" },  강철: { bg: "bg-slate-200", text: "text-slate-700", border: "border-slate-400" },
   드래곤: { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-300" },};
 
+const POKEMON_TYPES = ["풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "무색"];
+
 const EVOLUTION_COLORS: Record<string, string> = {
   기본: "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200",
   "1진화": "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300",
@@ -76,6 +78,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
   const [filterColorless, setFilterColorless] = useState(false);
   const [dark, setDark] = useState(false);
   const [selectedCard, setSelectedCard] = useState<PokemonCard | null>(null);
+  const [mobileDetail, setMobileDetail] = useState<PokemonCard | null>(null);
   const [pageSize, setPageSize] = useState(50);
   const [filterSkillEnergy, setFilterSkillEnergy] = useState<number[]>([]);
 
@@ -86,13 +89,6 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
-
-  const toggleDark = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
 
   const resetPage = () => setPage(1);
 
@@ -122,19 +118,23 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     });
   };
 
-  const filterOptions = useMemo(() => ({
-    타입: [...new Set(cards.map((c) => c.타입))],
-    진화: EVOLUTION_ORDER.filter((e) => cards.some((c) => c.진화 === e)),
-    키워드: [...new Set(
-      cards.flatMap((c) =>
-        c.키워드 ? c.키워드.split(",").map((k) => k.trim()).filter(Boolean) : []
-      )
-    )].sort((a, b) => a.localeCompare(b, "ko")),
-    확장팩: [...new Set(cards.map((c) => c.확장팩).filter(Boolean))],
-    후퇴에너지: [...new Set(cards.map((c) => String(c.후퇴에너지)))].sort(
-      (a, b) => Number(a) - Number(b)
-    ),
-  }), [cards]);
+  const filterOptions = useMemo(() => {
+    const allTypes = [...new Set(cards.map((c) => c.타입))];
+    return {
+      포켓몬타입: allTypes.filter((t) => POKEMON_TYPES.includes(t)),
+      트레이너스타입: allTypes.filter((t) => !POKEMON_TYPES.includes(t)),
+      진화: EVOLUTION_ORDER.filter((e) => cards.some((c) => c.진화 === e)),
+      키워드: [...new Set(
+        cards.flatMap((c) =>
+          c.키워드 ? c.키워드.split(",").map((k) => k.trim()).filter(Boolean) : []
+        )
+      )].sort((a, b) => a.localeCompare(b, "ko")),
+      확장팩: [...new Set(cards.map((c) => c.확장팩).filter(Boolean))],
+      후퇴에너지: [...new Set(cards.map((c) => String(c.후퇴에너지)))].sort(
+        (a, b) => Number(a) - Number(b)
+      ),
+    };
+  }, [cards]);
 
   // 카드 ID별 기술에너지 수 사전 계산 (필터용)
   const energyCounts = useMemo(() => {
@@ -230,15 +230,9 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
-            포켓몬 포켓 카드 리스트 정보
+            포켓몬 포켓 카드 리스트
           </h1>
           <div className="flex items-center gap-2">
-            <button
-              onClick={toggleDark}
-              className="px-3 py-1.5 rounded-lg text-sm border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-            >
-              {dark ? "☀️ 라이트" : "🌙 다크"}
-            </button>
           </div>
         </div>
         <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -275,11 +269,9 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       <div className="flex flex-col gap-3">
         {/* 기본 필터 행 */}
         <div className="flex flex-wrap items-center gap-4">
-          {(
-            [
-              { group: "타입", label: "타입", options: filterOptions.타입 },
+          {([
+              { group: "타입", label: "포켓몬 타입", options: filterOptions.포켓몬타입 },
               { group: "진화", label: "진화단계", options: filterOptions.진화 },
-              { group: "후퇴에너지", label: "후퇴에너지", options: filterOptions.후퇴에너지 },
             ] as { group: "타입" | "진화" | "후퇴에너지"; label: string; options: string[] }[]
           ).map(({ group, label, options }) => (
             <div key={group} className="flex items-center gap-2 flex-wrap">
@@ -311,6 +303,28 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             </div>
           ))}
 
+          {filterOptions.트레이너스타입.length > 0 && (
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">트레이너스</span>
+              <div className="flex gap-1 flex-wrap">
+                {filterOptions.트레이너스타입.map((opt) => {
+                  const active = filters.타입.includes(opt);
+                  return (
+                    <button
+                      key={opt}
+                      onClick={() => toggleFilter("타입", opt)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${
+                        active
+                          ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-700"
+                          : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
+                      }`}
+                    >{opt}</button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* 기술에너지 개수 필터 */}
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
@@ -336,54 +350,93 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             </div>
           </div>
 
-          {/* 카드타입 / 특성 토글 */}
-          <div className="flex items-center gap-3">
-            {/* 속성 그룹 */}
-            <div className="flex gap-1 p-1 rounded-lg bg-slate-100 dark:bg-slate-700/50">
-              {(["ex", "메가ex", "베이비", "울트라비스트"] as const).map((ct) => (
-                <button
-                  key={ct}
-                  onClick={() => { setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct]); resetPage(); }}
-                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
-                    filterCardTypes.includes(ct)
-                      ? ct === "메가ex"
-                        ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-700"
-                        : ct === "베이비"
-                          ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-700"
-                          : ct === "울트라비스트"
-                            ? "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border border-teal-300 dark:border-teal-700"
-                            : "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-700"
-                      : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-white dark:hover:bg-slate-600"
-                  }`}
-                >
-                  {ct}
-                </button>
-              ))}
+          {/* 후퇴에너지 필터 */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+              후퇴에너지
+            </span>
+            <div className="flex gap-1 flex-wrap">
+              {filterOptions.후퇴에너지.map((opt) => {
+                const active = filters.후퇴에너지.includes(opt);
+                return (
+                  <button
+                    key={opt}
+                    onClick={() => toggleFilter("후퇴에너지", opt)}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                      active
+                        ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700"
+                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
+                    }`}
+                  >
+                    {opt}개
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* 특성/에너지 그룹 */}
-            <div className="flex gap-1">
-              <button
-                onClick={() => { setFilterSpecial((v) => !v); resetPage(); }}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
-                  filterSpecial
-                    ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700"
-                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
-                }`}
-              >
-                특성있음
-              </button>
-              <button
-                onClick={() => { setFilterColorless((v) => !v); resetPage(); }}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
-                  filterColorless
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500"
-                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
-                }`}
-              >
-                무색기술있음(무색 포켓몬 제외)
-              </button>
-            </div>
+          {/* 카드타입 / 특성 토글 */}
+          <div className="flex items-center gap-1 flex-wrap">
+            <button
+              onClick={() => { setFilterCardTypes((prev) => prev.includes("ex") ? prev.filter((v) => v !== "ex") : [...prev, "ex"]); resetPage(); }}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                filterCardTypes.includes("ex")
+                  ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
+                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+              }`}
+            >
+              ex
+            </button>
+            <button
+              onClick={() => { setFilterCardTypes((prev) => prev.includes("메가ex") ? prev.filter((v) => v !== "메가ex") : [...prev, "메가ex"]); resetPage(); }}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                filterCardTypes.includes("메가ex")
+                  ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
+                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+              }`}
+            >
+              메가ex
+            </button>
+            <button
+              onClick={() => { setFilterCardTypes((prev) => prev.includes("베이비") ? prev.filter((v) => v !== "베이비") : [...prev, "베이비"]); resetPage(); }}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                filterCardTypes.includes("베이비")
+                  ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border-sky-300 dark:border-sky-700"
+                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+              }`}
+            >
+              베이비
+            </button>
+            <button
+              onClick={() => { setFilterCardTypes((prev) => prev.includes("울트라비스트") ? prev.filter((v) => v !== "울트라비스트") : [...prev, "울트라비스트"]); resetPage(); }}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                filterCardTypes.includes("울트라비스트")
+                  ? "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border-teal-300 dark:border-teal-700"
+                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+              }`}
+            >
+              울트라비스트
+            </button>
+            <button
+              onClick={() => { setFilterSpecial((v) => !v); resetPage(); }}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                filterSpecial
+                  ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700"
+                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+              }`}
+            >
+              특성있음
+            </button>
+            <button
+              onClick={() => { setFilterColorless((v) => !v); resetPage(); }}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                filterColorless
+                  ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500"
+                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+              }`}
+            >
+              무색기술있음(무색 포켓몬 제외)
+            </button>
           </div>
 
           {/* 상세필터 토글 버튼 */}
@@ -510,8 +563,50 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
         ) : null}
       </div>
 
+      {/* Mobile List */}
+      <div className="block md:hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800 divide-y divide-slate-100 dark:divide-slate-700">
+        {paginated.length === 0 && (
+          <div className="text-center py-12 text-slate-400 dark:text-slate-500 text-sm">
+            검색 결과가 없습니다.
+          </div>
+        )}
+        {paginated.map((card) => {
+          const tc = typeColor(card.타입);
+          const nameText = card.이름.replace(/\s+ex$/i, "").trim();
+          const 카드타입Types = card.카드타입?.split(",").map((v) => v.trim().toLowerCase()) ?? [];
+          const isMegaEx = 카드타입Types.includes("메가ex");
+          const isEx = 카드타입Types.includes("ex");
+          const isUltraBeast = 카드타입Types.includes("울트라비스트");
+          const isBaby = 카드타입Types.includes("베이비");
+          return (
+            <div key={card.ID} className="flex items-center gap-2 px-3 py-2.5">
+              <span className={`shrink-0 inline-block px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>
+                {card.타입}
+              </span>
+              <span className="flex-1 text-sm font-semibold text-slate-800 dark:text-slate-100 min-w-0 truncate">
+                {nameText}
+                {isMegaEx && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-rose-500 text-white leading-none ring-1 ring-rose-600">메가ex</span>}
+                {!isMegaEx && isEx && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white leading-none ring-1 ring-amber-600">ex</span>}
+                {isUltraBeast && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white leading-none ring-1 ring-teal-600">UB</span>}
+                {isBaby && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-sky-400 text-white leading-none ring-1 ring-sky-500">baby</span>}
+              </span>
+              <span className={`shrink-0 inline-block px-2 py-0.5 rounded text-xs font-medium ${EVOLUTION_COLORS[card.진화] ?? "bg-gray-100 text-gray-600"}`}>
+                {card.진화}
+              </span>
+              <button
+                type="button"
+                onClick={() => setMobileDetail(card)}
+                className="shrink-0 px-2.5 py-1 rounded-lg text-xs font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-100 dark:hover:bg-indigo-800/40 transition-colors"
+              >
+                상세보기
+              </button>
+            </div>
+          );
+        })}
+      </div>
+
       {/* Table */}
-      <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800">
+      <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800">
         <table className="text-sm w-full border-collapse">
           <thead>
             <tr className="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs uppercase tracking-wide">
@@ -623,12 +718,16 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
 
                   {/* HP */}
                   <td rowSpan={rs} className={`px-3 ${py} text-center font-bold align-middle`}>
-                    <span className={valueColor(card.HP)}>{card.HP}</span>
+                    <span className={valueColor(card.HP)}>{card.HP === 0 ? "—" : card.HP}</span>
                   </td>
 
                   {/* 기술명1 */}
-                  <td className={`px-3 ${py} whitespace-nowrap text-slate-700 dark:text-slate-200 align-middle`}>
-                    {card.기술명}
+                  <td className={`px-3 ${py} whitespace-nowrap align-middle`}>
+                    {card.기술명 && card.기술명 !== "-" ? (
+                      <span className="text-slate-700 dark:text-slate-200">{card.기술명}</span>
+                    ) : (
+                      <span className="text-slate-300 dark:text-slate-600">—</span>
+                    )}
                   </td>
 
                   {/* 기술추가효과1 */}
@@ -684,8 +783,46 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                   <td rowSpan={rs} className={`px-3 ${py} text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap align-middle`}>
                     {(() => {
                       const supporters: string[] = [];
+                      if (card.진화 === "1진화") supporters.push("관광객");
                       if (card.진화 === "2진화") supporters.push("릴리에");
                       if (card.타입 === "풀") supporters.push("민화");
+                      if (card.타입 === "물") supporters.push("이슬");
+                      if (card.타입 === "물") supporters.push("낚시꾼");
+                      if (card.타입 === "초") supporters.push("유빈");
+                      if (card.타입 === "초") supporters.push("카르네");
+                      if (card.타입 === "격투") supporters.push("등산가");
+                      if (card.타입 === "강철") supporters.push("찬석");
+                      if (card.타입 === "무색") supporters.push("일리마");
+                      if (card.이름 === "딱구리" || card.이름 === "롱스톤") supporters.push("웅");
+                      if (card.이름 === "나인테일" || card.이름 === "날쌩마") supporters.push("강연");
+                      if (card.이름 === "질뻐기" || card.이름 === "또도가스") supporters.push("독수");
+                      if (card.이름 === "라이츄" || card.이름 === "붐볼" || card.이름 === "에레브") supporters.push("마티스");
+                      if (card.이름 === "뮤 ex") supporters.push("신출내기 조사원");
+                      if (card.이름 === "나옹마" || card.이름 === "스컹뿡" || card.이름 === "삐딱구리") supporters.push("갤럭시단의 조무래기");
+                      if (card.이름 === "한카리아스" || card.이름 === "토게키스") supporters.push("난천");
+                      if (card.이름 === "에레키블" || card.이름 === "렌트라") supporters.push("전진");
+                      if (card.이름 === "잠만보" || card.이름 === "헤라크로스" || card.이름 === "찌르호크") supporters.push("용식");
+                      if (card.이름 === "모래성이당" || card.이름 === "따라큐") supporters.push("아세로라");
+                      if (card.이름 === "알로라 텅구리" || card.이름 === "폭거북스") supporters.push("키아웨");
+                      if (card.이름 === "깨비물거미") supporters.push("수련");
+                      if (card.이름 === "알로라 딱구리" || card.이름 === "투구뿌논" || card.이름 === "토게데마루") supporters.push("마마네");
+                      if (card.이름 === "마셰이드" || card.이름 === "달코퀸") supporters.push("마오");
+                      if (card.이름 === "타입:널" || card.이름 === "실버디") supporters.push("글라디오");
+                      if (card.이름 === "모크나이퍼 ex" || card.이름 === "어흥염 ex" || card.이름 === "누리레느 ex") supporters.push("하우");
+                      if (card.이름 === "강철톤" || card.이름 === "무장조 ex") supporters.push("규리");
+                      if (card.이름 === "밀탱크") supporters.push("꼭두");
+                      if (card.이름 === "늑골라" || card.이름 === "탱탱겔") supporters.push("시즈");
+                      if (card.이름 === "하리뭉" || card.이름 === "모단단게") supporters.push("할라");
+                      if (card.이름 === "둥실라이드" || card.이름 === "무우마직") supporters.push("멜리사");
+                      if (card.이름 === "레어코일" || card.이름 === "일레도리자드") supporters.push("시트론");
+                      if (card.이름 === "가라르 가로막구리") supporters.push("두송");
+                      if (card.이름 === "빠르모트") supporters.push("네모");
+                      if (card.이름 === "엑스라이즈") supporters.push("아이리스");
+                      if (card.카드타입?.includes("울트라비스트")) supporters.push("루자미네");
+                      if (card.카드타입?.includes("메가ex")) supporters.push("세레나");
+                      if (card.카드타입?.includes("메가ex")) supporters.push("칼름");
+                      if (card.키워드?.includes("동전 기반")) supporters.push("일목");
+                      if ((typeof card.HP === "number" ? card.HP : parseInt(String(card.HP), 10)) <= 50 && card.진화 === "기본") supporters.push("루티아");
                       return supporters.length > 0
                         ? supporters.join(", ")
                         : <span className="text-slate-300 dark:text-slate-600">—</span>;
@@ -749,7 +886,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             onClick={() => setSelectedCard(null)}
           />
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-            <div className="relative pointer-events-auto bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col items-center gap-3 min-w-[200px]">
+            <div className="relative pointer-events-auto bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col items-center gap-3 w-[min(24rem,90vw)]">
               <button
                 type="button"
                 onClick={() => setSelectedCard(null)}
@@ -759,6 +896,117 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               </button>
               <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{selectedCard.이름}</p>
               <CardImage id={selectedCard.ID} name={selectedCard.이름} />
+            </div>
+          </div>
+        </>,
+        document.body
+      )}
+
+      {/* Mobile Detail Sheet */}
+      {mobileDetail && typeof window !== "undefined" && createPortal(
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileDetail(null)}
+          />
+          <div className="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] flex flex-col rounded-t-2xl bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 shadow-2xl">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-slate-700 shrink-0">
+              <span className="text-base font-bold text-slate-800 dark:text-slate-100">{mobileDetail.이름}</span>
+              <button
+                type="button"
+                onClick={() => setMobileDetail(null)}
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none px-1"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="overflow-y-auto p-4 flex flex-col gap-4">
+              <div className="flex justify-center">
+                <div className="w-48">
+                  <CardImage id={mobileDetail.ID} name={mobileDetail.이름} />
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
+                  <span className="text-xs text-slate-400">타입</span>
+                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${typeColor(mobileDetail.타입).bg} ${typeColor(mobileDetail.타입).text} ${typeColor(mobileDetail.타입).border}`}>{mobileDetail.타입}</span>
+                </div>
+                <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
+                  <span className="text-xs text-slate-400">진화</span>
+                  <span className={`px-2 py-0.5 rounded text-xs font-medium ${EVOLUTION_COLORS[mobileDetail.진화] ?? "bg-gray-100 text-gray-600"}`}>{mobileDetail.진화}</span>
+                </div>
+                <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
+                  <span className="text-xs text-slate-400">HP</span>
+                  <span className={`text-sm font-bold ${valueColor(mobileDetail.HP)}`}>{mobileDetail.HP === 0 ? "—" : mobileDetail.HP}</span>
+                </div>
+              </div>
+              {mobileDetail.특성 && (
+                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3 flex flex-col gap-1">
+                  <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">특성: {mobileDetail.특성}</span>
+                  {mobileDetail.특성효과 && mobileDetail.특성효과 !== "-" && (
+                    <p className="text-xs text-slate-600 dark:text-slate-300">{mobileDetail.특성효과}</p>
+                  )}
+                </div>
+              )}
+              <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-3 flex flex-col gap-1.5">
+                <div className="flex items-center gap-2">
+                  <EnergyPips energy={mobileDetail.필요에너지} />
+                  <span className="flex-1 text-sm font-semibold text-slate-700 dark:text-slate-200">{mobileDetail.기술명 && mobileDetail.기술명 !== "-" ? mobileDetail.기술명 : <span className="text-slate-300 dark:text-slate-600 font-normal">—</span>}</span>
+                  <span className={`text-sm font-bold shrink-0 ${valueColor(mobileDetail.피해량)}`}>
+                    {mobileDetail.피해량 && mobileDetail.피해량 !== "0" && mobileDetail.피해량 !== "-" ? mobileDetail.피해량 : "—"}
+                  </span>
+                </div>
+                {mobileDetail.기술추가효과 && mobileDetail.기술추가효과 !== "-" && (
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{mobileDetail.기술추가효과}</p>
+                )}
+              </div>
+              {mobileDetail.기술명2 && (
+                <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-3 flex flex-col gap-1.5">
+                  <div className="flex items-center gap-2">
+                    <EnergyPips energy={mobileDetail.필요에너지2 ?? ""} />
+                    <span className="flex-1 text-sm font-semibold text-slate-700 dark:text-slate-200">{mobileDetail.기술명2}</span>
+                    <span className={`text-sm font-bold shrink-0 ${valueColor(mobileDetail.피해량2 ?? "0")}`}>
+                      {mobileDetail.피해량2 && mobileDetail.피해량2 !== "0" && mobileDetail.피해량2 !== "-" ? mobileDetail.피해량2 : "—"}
+                    </span>
+                  </div>
+                  {mobileDetail.기술추가효과2 && mobileDetail.기술추가효과2 !== "-" && (
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{mobileDetail.기술추가효과2}</p>
+                  )}
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-2">
+                <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2 flex flex-col gap-1">
+                  <span className="text-xs text-slate-400">후퇴에너지</span>
+                  <span className="flex gap-0.5 flex-wrap">
+                    {Array.from({ length: mobileDetail.후퇴에너지 }).map((_, i) => (
+                      <span key={i} className="inline-block w-3.5 h-3.5 rounded-full border border-slate-500 bg-slate-500" />
+                    ))}
+                    {mobileDetail.후퇴에너지 === 0 && <span className="text-slate-300 dark:text-slate-600">—</span>}
+                  </span>
+                </div>
+                <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2 flex flex-col gap-1">
+                  <span className="text-xs text-slate-400">약점</span>
+                  {mobileDetail.약점 ? (
+                    <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-medium w-fit ${typeColor(mobileDetail.약점).bg} ${typeColor(mobileDetail.약점).text}`}>{mobileDetail.약점}</span>
+                  ) : (
+                    <span className="text-slate-300 dark:text-slate-600">—</span>
+                  )}
+                </div>
+              </div>
+              <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
+                <span className="text-xs text-slate-400">확장팩: </span>
+                <span className="text-xs text-slate-600 dark:text-slate-300">{mobileDetail.확장팩}</span>
+              </div>
+              {mobileDetail.키워드 && (
+                <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 flex flex-col gap-2">
+                  <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">키워드</span>
+                  <div className="flex flex-wrap gap-1">
+                    {mobileDetail.키워드.split(",").map((k) => k.trim()).filter(Boolean).map((kw) => (
+                      <span key={kw} className="text-xs text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-700/50 rounded px-2 py-0.5 border border-indigo-200 dark:border-indigo-700">{kw}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </>,
@@ -908,7 +1156,7 @@ function EnergyPips({ energy }: { energy: string }) {
 function CardImage({ id, name }: { id: number; name: string }) {
   const [missing, setMissing] = useState(false);
   return missing ? (
-    <div className="w-96 h-[512px] flex items-center justify-center rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50">
+    <div className="w-full aspect-[3/4] flex items-center justify-center rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50">
       <span className="text-sm text-slate-400 dark:text-slate-500">준비중입니다</span>
     </div>
   ) : (
@@ -917,7 +1165,7 @@ function CardImage({ id, name }: { id: number; name: string }) {
       src={`/cards/${id}.webp`}
       alt={name}
       onError={() => setMissing(true)}
-      className="w-96 rounded-lg shadow-md object-contain"
+      className="w-full rounded-lg shadow-md object-contain"
     />
   );
 }

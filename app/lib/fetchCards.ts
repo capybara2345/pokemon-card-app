@@ -6,6 +6,13 @@ const CSV_URLS = [
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=2122449850`,
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=374451566`,
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=483785799`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=670644763`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=2056634255`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1810879939`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=681214415`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=608429894`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=2079896182`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=605265384`
 ];
 
 /** Minimal RFC-4180 CSV parser (handles quoted fields with embedded commas/newlines) */
