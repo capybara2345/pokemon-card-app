@@ -117,7 +117,7 @@ function DeckImageCell({ card }: { card: PokemonCard }) {
     <div className="aspect-[2/3] rounded-md overflow-hidden bg-slate-100 dark:bg-slate-700 flex items-center justify-center relative">
       {!imgError ? (
         <img
-          src={`/cards/${card.ID}.webp`}
+          src={`/cards/${Math.floor(card.ID / 1000)}/${card.ID}.webp`}
           alt={card.이름}
           className="w-full h-full object-contain"
           onError={() => setImgError(true)}
@@ -182,7 +182,7 @@ async function downloadDeckImage(deck: DeckEntry[]) {
 
   const images = await Promise.all(
     Array.from({ length: 20 }, (_, i) =>
-      cells[i] ? loadImg(`/cards/${cells[i].ID}.webp`) : Promise.resolve(null)
+      cells[i] ? loadImg(`/cards/${Math.floor(cells[i].ID / 1000)}/${cells[i].ID}.webp`) : Promise.resolve(null)
     )
   );
 
@@ -264,6 +264,7 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
   const [showDeckImage, setShowDeckImage] = useState(false);
   const [deck, setDeck] = useState<DeckEntry[]>([]);
   const [page, setPage] = useState(1);
+  const [copiedName, setCopiedName] = useState<string | null>(null);
 
   const filterOptions = useMemo(() => {
     const allTypes = [...new Set(cards.map((c) => c.타입))];
@@ -349,7 +350,7 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
 
   const deckNameMap = useMemo(() => {
     const map = new Map<string, number>();
-    for (const e of deck) map.set(e.card.이름, e.count);
+    for (const e of deck) map.set(e.card.이름, (map.get(e.card.이름) ?? 0) + e.count);
     return map;
   }, [deck]);
 
@@ -389,6 +390,20 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
     return [...map.entries()].sort((a, b) => b[1] - a[1]);
   }, [deck]);
 
+  const requiredEnergyTypes = useMemo(() => {
+    const seen = new Set<string>();
+    for (const { card } of deck) {
+      for (const field of [card.필요에너지, card.필요에너지2]) {
+        if (!field || field.trim() === "" || field.trim() === "-") continue;
+        for (const seg of field.split("/")) {
+          const match = seg.trim().match(/^(.+?)\d+$/);
+          if (match) seen.add(match[1].normalize("NFC").trim());
+        }
+      }
+    }
+    return [...seen];
+  }, [deck]);
+
   const toggleFilter = (group: keyof typeof filters, value: string) => {
     setFilters((prev) => {
       const current = prev[group];
@@ -403,6 +418,10 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
 
   return (
     <div className="flex flex-col gap-4 p-4 md:p-6 min-h-screen bg-slate-50 dark:bg-slate-900">
+      {/* Copy toast */}
+      <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-slate-800 text-white text-sm shadow-lg transition-all duration-300 pointer-events-none ${copiedName ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+        <span className="font-medium">{copiedName}</span> 복사됨
+      </div>
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div>
@@ -847,6 +866,25 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
                   })}
                 </div>
               )}
+              {requiredEnergyTypes.length > 0 && (
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs text-slate-400 dark:text-slate-500">필요 에너지</span>
+                  <div className="flex flex-wrap gap-2">
+                    {requiredEnergyTypes.map((type) => {
+                      const imgSrc = getEnergyImageSrc(type);
+                      return (
+                        <div key={type} className="flex items-center gap-1">
+                          {imgSrc
+                            ? <img src={imgSrc} alt={type} className="w-5 h-5 rounded-full" />
+                            : <span className="w-5 h-5 rounded-full bg-gray-200 border border-gray-400 inline-block" />
+                          }
+                          <span className="text-xs text-slate-600 dark:text-slate-300">{type}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700">
@@ -866,6 +904,7 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
                       <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
                       <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
                     </button>
+                    <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title="포켓몬명 복사" className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-xs transition-colors">⧉</button>
                     <button onClick={() => removeAll(card.ID)} className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-xs transition-colors">✕</button>
                   </div>
                 );

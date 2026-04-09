@@ -154,9 +154,9 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     if (search.trim()) {
       const q = search.trim().toLowerCase();
       result = result.filter((card) =>
-        Object.values(card).some((v) =>
-          String(v).toLowerCase().includes(q)
-        )
+        (Object.entries(card) as [string, unknown][])
+          .filter(([key]) => key !== "확장팩")
+          .some(([, v]) => String(v).toLowerCase().includes(q))
       );
     }
 
@@ -1181,7 +1181,7 @@ function CardImage({ id, name }: { id: number; name: string }) {
   ) : (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`/cards/${id}.webp`}
+      src={`/cards/${Math.floor(id / 1000)}/${id}.webp`}
       alt={name}
       onError={() => setMissing(true)}
       className="w-full rounded-lg shadow-md object-contain"
