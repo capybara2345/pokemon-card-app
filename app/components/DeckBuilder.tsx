@@ -262,6 +262,7 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const [showDeckImage, setShowDeckImage] = useState(false);
+  const [showMobileDeck, setShowMobileDeck] = useState(false);
   const [deck, setDeck] = useState<DeckEntry[]>([]);
   const [page, setPage] = useState(1);
   const [copiedName, setCopiedName] = useState<string | null>(null);
@@ -281,6 +282,14 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
       후퇴에너지: [...new Set(cards.map((c) => String(c.후퇴에너지)))].sort((a, b) => Number(a) - Number(b)),
     };
   }, [cards]);
+
+  const deckKeywords = useMemo(() => {
+    const set = new Set<string>();
+    deck.forEach(({ card }) => {
+      if (card.키워드) card.키워드.split(",").map((k) => k.trim()).filter(Boolean).forEach((k) => set.add(k));
+    });
+    return set;
+  }, [deck]);
 
   const energyCounts = useMemo(() => {
     const map = new Map<number, { e1: number; e2: number }>();
@@ -529,27 +538,19 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
                 </div>
               </div>
 
-              {/* 카드타입 / 특성 */}
-              <div className="flex items-center gap-1 flex-wrap">
-                {(["ex", "메가ex", "베이비", "울트라비스트"] as const).map((ct) => {
-                  const active = filterCardTypes.includes(ct);
-                  const activeCls =
-                    ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
-                    : ct === "메가ex" ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
-                    : ct === "베이비" ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border-sky-300 dark:border-sky-700"
-                    : "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border-teal-300 dark:border-teal-700";
-                  return (
-                    <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                    >{ct}</button>
-                  );
-                })}
-                <button onClick={() => setFilterSpecial((v) => !v)}
-                  className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterSpecial ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700" : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                >특성있음</button>
-                <button onClick={() => setFilterColorless((v) => !v)}
-                  className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterColorless ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500" : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                >무색기술있음(무색 포켓몬 제외)</button>
+              {/* 확장팩 필터 (셀렉트박스) */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">확장팩</span>
+                <select
+                  value={filters.확장팩[0] ?? ""}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, 확장팩: e.target.value ? [e.target.value] : [] }))}
+                  className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+                >
+                  <option value="">전체</option>
+                  {filterOptions.확장팩.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
               </div>
 
               {/* 상세필터 토글 */}
@@ -565,17 +566,29 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
             {/* 상세 필터 패널 */}
             {showAdvanced && (
               <div className="flex flex-col gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                {/* 카드타입 / 특성 */}
                 <div className="flex items-start gap-3">
-                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px]">확장팩</span>
-                  <div className="flex gap-1 flex-wrap">
-                    {filterOptions.확장팩.map((opt) => {
-                      const active = filters.확장팩.includes(opt);
-                      return (
-                        <button key={opt} onClick={() => toggleFilter("확장팩", opt)}
-                          className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700" : "bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                        >{opt}</button>
-                      );
-                    })}
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">카드타입</span>
+                  <div className="flex items-center gap-1 flex-wrap">
+                  {(["ex", "메가ex", "베이비", "울트라비스트"] as const).map((ct) => {
+                    const active = filterCardTypes.includes(ct);
+                    const activeCls =
+                      ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
+                      : ct === "메가ex" ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
+                      : ct === "베이비" ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border-sky-300 dark:border-sky-700"
+                      : "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border-teal-300 dark:border-teal-700";
+                    return (
+                      <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
+                        className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                      >{ct}</button>
+                    );
+                  })}
+                  <button onClick={() => setFilterSpecial((v) => !v)}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterSpecial ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700" : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                  >특성있음</button>
+                  <button onClick={() => setFilterColorless((v) => !v)}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterColorless ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500" : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                  >무색기술있음(무색 포켓몬 제외)</button>
                   </div>
                 </div>
                 {(() => {
@@ -590,26 +603,37 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
                   const 시너지 = allKw.filter((k) => !상태이상.includes(k) && !면역.includes(k) && !추가피해.includes(k) && !피해.includes(k) && !에너지.includes(k) && !회복.includes(k) && !교체.includes(k) && k.includes("시너지"));
                   const 금지 = allKw.filter((k) => !상태이상.includes(k) && !면역.includes(k) && !추가피해.includes(k) && !피해.includes(k) && !에너지.includes(k) && !회복.includes(k) && !교체.includes(k) && !시너지.includes(k) && k.includes("금지"));
                   const 기타 = allKw.filter((k) => !상태이상.includes(k) && !면역.includes(k) && !추가피해.includes(k) && !피해.includes(k) && !에너지.includes(k) && !회복.includes(k) && !교체.includes(k) && !시너지.includes(k) && !금지.includes(k));
+                  const sortByDeck = (opts: string[]) => [
+                    ...opts.filter((k) => deckKeywords.has(k)),
+                    ...opts.filter((k) => !deckKeywords.has(k)),
+                  ];
                   return [
-                    { label: "상태 이상", options: 상태이상 },
-                    { label: "면역 관련", options: 면역 },
-                    { label: "에너지 관련", options: 에너지 },
-                    { label: "피해 관련", options: 피해 },
-                    { label: "추가 피해 관련", options: 추가피해 },
-                    { label: "회복 관련", options: 회복 },
-                    { label: "교체 관련", options: 교체 },
-                    { label: "시너지 관련", options: 시너지 },
-                    { label: "금지 관련", options: 금지 },
-                    { label: "기타", options: 기타 },
+                    { label: "상태 이상", options: sortByDeck(상태이상) },
+                    { label: "면역 관련", options: sortByDeck(면역) },
+                    { label: "에너지 관련", options: sortByDeck(에너지) },
+                    { label: "피해 관련", options: sortByDeck(피해) },
+                    { label: "추가 피해 관련", options: sortByDeck(추가피해) },
+                    { label: "회복 관련", options: sortByDeck(회복) },
+                    { label: "교체 관련", options: sortByDeck(교체) },
+                    { label: "시너지 관련", options: sortByDeck(시너지) },
+                    { label: "금지 관련", options: sortByDeck(금지) },
+                    { label: "기타", options: sortByDeck(기타) },
                   ].filter((g) => g.options.length > 0).map(({ label, options }) => (
                     <div key={label} className="flex items-start gap-3">
                       <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">{label}</span>
                       <div className="flex gap-1 flex-wrap">
                         {options.map((opt) => {
                           const active = filters.키워드.includes(opt);
+                          const inDeck = deckKeywords.has(opt);
                           return (
                             <button key={opt} onClick={() => toggleFilter("키워드", opt)}
-                              className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700" : "bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                              className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                                active
+                                  ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700"
+                                  : inDeck
+                                  ? "bg-amber-50 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300 hover:border-amber-400"
+                                  : "bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
+                              }`}
                             >{opt}</button>
                           );
                         })}
@@ -699,10 +723,12 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
 
                       {/* 특성 (특성효과) */}
                       {card.특성 && card.특성효과 && card.특성효과 !== "-" && (
-                        <div className="flex items-start gap-1 bg-purple-50 dark:bg-purple-900/20 rounded px-2 py-1">
-                          <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 shrink-0 pt-px">특성</span>
-                          <span className="text-[11px] text-purple-700 dark:text-purple-300 font-medium">{card.특성}</span>
-                          <span className="text-[10px] text-purple-500 dark:text-purple-400 ml-1">{card.특성효과}</span>
+                        <div className="flex flex-col gap-0.5 bg-purple-50 dark:bg-purple-900/20 rounded px-2 py-1">
+                          <div className="flex items-center gap-1">
+                            <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 shrink-0">특성</span>
+                            <span className="text-[11px] text-purple-700 dark:text-purple-300 font-medium">{card.특성}</span>
+                          </div>
+                          <span className="text-[10px] text-purple-500 dark:text-purple-400 leading-relaxed">{card.특성효과}</span>
                         </div>
                       )}
 
@@ -758,7 +784,7 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
                           <span className="flex items-center gap-0.5">
                             <span className="text-[10px] text-slate-400 mr-0.5">후퇴</span>
                             {Array.from({ length: card.후퇴에너지 }).map((_, i) => (
-                              <span key={i} className="inline-block w-2.5 h-2.5 rounded-full border border-slate-400 bg-slate-400" />
+                              <img key={i} src="/energy/colorless.png" alt="무색" className="inline-block w-2.5 h-2.5" />
                             ))}
                             {card.후퇴에너지 === 0 && <span className="text-slate-300 dark:text-slate-600 text-[10px]">0</span>}
                           </span>
@@ -832,8 +858,8 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
           )}
         </div>
 
-        {/* 덱 패널 */}
-        <div className="lg:w-80 shrink-0 flex flex-col gap-3 order-first lg:order-last">
+        {/* 덱 패널 - 모바일에서 숨김 */}
+        <div className="hidden lg:flex lg:w-80 shrink-0 flex-col gap-3 order-first lg:order-last">
           <div className="sticky top-4 flex flex-col gap-3">
             <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
               <div className="flex flex-col gap-2">
@@ -913,6 +939,122 @@ export default function DeckBuilder({ cards }: { cards: PokemonCard[] }) {
           </div>
         </div>
       </div>
+
+      {/* 모바일 덱 FAB */}
+      <div className="fixed bottom-6 right-6 z-40 lg:hidden">
+        <button
+          onClick={() => setShowMobileDeck(true)}
+          className="relative flex items-center justify-center w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-700 active:scale-95 shadow-xl text-white text-2xl transition-all"
+          aria-label="나의 덱 열기"
+        >
+          🃏
+          {totalCards > 0 && (
+            <span className="absolute -top-1 -right-1 min-w-[22px] h-[22px] flex items-center justify-center rounded-full bg-rose-500 text-white text-[11px] font-bold px-1 leading-none shadow">
+              {totalCards}
+            </span>
+          )}
+        </button>
+      </div>
+
+      {/* 모바일 덱 바텀시트 */}
+      {showMobileDeck && (
+        <div
+          className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end"
+          onClick={() => setShowMobileDeck(false)}
+        >
+          <div className="flex-1 bg-black/50" />
+          <div
+            className="bg-white dark:bg-slate-800 rounded-t-2xl shadow-2xl flex flex-col max-h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 핸들 */}
+            <div className="flex justify-center pt-3 pb-1">
+              <div className="w-10 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+            </div>
+            {/* 헤더 */}
+            <div className="flex items-center justify-between px-4 py-2 border-b border-slate-100 dark:border-slate-700">
+              <div className="flex items-center gap-2">
+                <span className="text-base font-bold text-slate-800 dark:text-slate-100">나의 덱</span>
+                <span className={`text-sm font-semibold ${totalCards === MAX_DECK ? "text-green-600 dark:text-green-400" : "text-indigo-600 dark:text-indigo-400"}`}>
+                  {totalCards} / {MAX_DECK}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button onClick={() => { setShowMobileDeck(false); setShowDeckImage(true); }} disabled={deck.length === 0}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 disabled:opacity-30 transition-colors"
+                >이미지</button>
+                <button onClick={clearDeck} disabled={deck.length === 0}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 dark:border-red-800 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 disabled:opacity-30 transition-colors"
+                >초기화</button>
+                <button onClick={() => setShowMobileDeck(false)}
+                  className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 text-sm transition-colors"
+                >✕</button>
+              </div>
+            </div>
+            {/* 프로그레스바 */}
+            <div className="px-4 pt-2">
+              <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div className={`h-full rounded-full transition-all ${totalCards === MAX_DECK ? "bg-green-500" : "bg-indigo-500"}`} style={{ width: `${(totalCards / MAX_DECK) * 100}%` }} />
+              </div>
+            </div>
+            {/* 타입 분포 + 필요 에너지 */}
+            {(typeDist.length > 0 || requiredEnergyTypes.length > 0) && (
+              <div className="px-4 py-2 flex flex-col gap-1.5">
+                {typeDist.length > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {typeDist.map(([type, count]) => {
+                      const tc = typeColor(type);
+                      return (
+                        <span key={type} className={`px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{type} {count}</span>
+                      );
+                    })}
+                  </div>
+                )}
+                {requiredEnergyTypes.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {requiredEnergyTypes.map((type) => {
+                      const imgSrc = getEnergyImageSrc(type);
+                      return (
+                        <div key={type} className="flex items-center gap-1">
+                          {imgSrc
+                            ? <img src={imgSrc} alt={type} className="w-4 h-4 rounded-full" />
+                            : <span className="w-4 h-4 rounded-full bg-gray-200 border border-gray-400 inline-block" />
+                          }
+                          <span className="text-xs text-slate-600 dark:text-slate-300">{type}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+            {/* 덱 카드 목록 */}
+            <div className="overflow-y-auto divide-y divide-slate-100 dark:divide-slate-700 flex-1">
+              {deck.length === 0 && (
+                <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">카드를 추가해보세요</div>
+              )}
+              {deck.map(({ card, count }) => {
+                const tc = typeColor(card.타입);
+                return (
+                  <div key={card.ID} className="flex items-center gap-2 px-4 py-3">
+                    <button
+                      onClick={() => removeCard(card.ID)}
+                      title="클릭하면 1장 제거"
+                      className="flex items-center gap-2 flex-1 min-w-0 text-left hover:bg-slate-50 dark:hover:bg-slate-700/40 rounded transition-colors"
+                    >
+                      <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
+                      <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
+                      <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
+                    </button>
+                    <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title="포켓몬명 복사" className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-sm transition-colors">⧉</button>
+                    <button onClick={() => removeAll(card.ID)} className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm transition-colors">✕</button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 덱 이미지 보기 모달 */}
       {showDeckImage && (
