@@ -14,9 +14,45 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://pokemon-card-app-nine.vercel.app";
+
 export const metadata: Metadata = {
-  title: "PPCardList",
-  description: "포켓몬 포켓 카드 리스트",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "포켓몬 포켓 카드 도감",
+    template: "%s | 포켓몬 포켓 카드 도감",
+  },
+  description:
+    "포켓몬 포켓(Pokémon TCG Pocket) 전체 카드 목록, 덱 빌더, 카드 검색. 타입·진화단계·확장팩별 필터와 추천 트레이너스 기능 지원.",
+  keywords: [
+    "포켓몬 포켓",
+    "포켓몬 카드",
+    "pokemon pocket",
+    "PTCGP",
+    "포켓몬 TCG 포켓",
+    "포켓몬 덱",
+    "덱 빌더",
+    "카드 도감",
+  ],
+  openGraph: {
+    title: "포켓몬 포켓 카드 도감",
+    description:
+      "포켓몬 포켓(Pokémon TCG Pocket) 전체 카드 목록과 덱 빌더. 타입·진화단계·확장팩별 필터 지원.",
+    url: SITE_URL,
+    siteName: "포켓몬 포켓 카드 도감",
+    locale: "ko_KR",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
+  verification: {
+    google: "hc1c9RVmbN3VqliJ2JehuDGvCAdI71xCFk_qcH6TPyA",
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ko"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
