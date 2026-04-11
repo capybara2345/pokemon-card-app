@@ -147,6 +147,29 @@ function DeckImageCell({ card }: { card: PokemonCard }) {
   );
 }
 
+function encodeDeck(deck: DeckEntry[]): string {
+  const str = deck.map(({ card, count }) => `${card.ID}:${count}`).join(",");
+  return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
+}
+
+function decodeDeck(encoded: string, cards: PokemonCard[]): DeckEntry[] {
+  try {
+    const padded = encoded + "=".repeat((4 - (encoded.length % 4)) % 4);
+    const str = atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
+    const cardMap = new Map(cards.map((c) => [c.ID, c]));
+    return str.split(",").flatMap((part) => {
+      const [idStr, countStr] = part.split(":");
+      const id = parseInt(idStr, 10);
+      const count = parseInt(countStr, 10);
+      const card = cardMap.get(id);
+      if (!card || isNaN(id) || isNaN(count) || count < 1 || count > 2) return [];
+      return [{ card, count }];
+    });
+  } catch {
+    return [];
+  }
+}
+
 function downloadCSV(deck: DeckEntry[]) {
   const header = ["수량", "이름", "타입", "확장팩"];
   const rows = deck.map(({ card, count }) => [
@@ -379,6 +402,24 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
   useEffect(() => { setPage(1); }, [filtered]);
 
+  // URL ?deck= 파라미터로 공유된 덱 자동 로드
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const encoded = params.get("deck");
+    if (!encoded || cards.length === 0) return;
+    const loaded = decodeDeck(encoded, cards);
+    if (loaded.length > 0) {
+      setDeck(loaded);
+      const url = new URL(window.location.href);
+      url.searchParams.delete("deck");
+      window.history.replaceState(null, "", url.toString());
+      setDeckActionMsg(t.deck.shareLoaded);
+      setTimeout(() => setDeckActionMsg(null), 3000);
+    }
+  // cards는 서버에서 오는 정적 prop이므로 첫 마운트 후 변하지 않음
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cards]);
+
   // 즐겨찾기 로드
   useEffect(() => {
     if (!session?.user?.email) return;
@@ -561,6 +602,15 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
   const showMsg = (msg: string) => {
     setDeckActionMsg(msg);
     setTimeout(() => setDeckActionMsg(null), 2000);
+  };
+
+  const handleShareDeck = () => {
+    if (deck.length === 0) return;
+    const encoded = encodeDeck(deck);
+    const url = `${window.location.origin}/deck-builder?deck=${encoded}`;
+    navigator.clipboard.writeText(url)
+      .then(() => showMsg(t.deck.shareCopied))
+      .catch(() => showMsg(t.deck.saveError));
   };
 
   const handleOpenSave = () => {
@@ -1254,6 +1304,9 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                   <button onClick={() => setShowDeckImage(true)} disabled={deck.length === 0}
                     className="px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 disabled:opacity-30 transition-colors"
                   >📄 {t.deck.viewImage}</button>
+                  <button onClick={handleShareDeck} disabled={deck.length === 0}
+                    className="px-3 py-1.5 rounded-lg text-xs font-medium border border-sky-200 dark:border-sky-700 text-sky-600 dark:text-sky-300 hover:bg-sky-50 dark:hover:bg-sky-900/30 disabled:opacity-30 transition-colors"
+                  >🔗 {t.deck.share}</button>
                   {session?.user && (
                     <>
                       <button onClick={handleOpenSave} disabled={totalCards < MAX_DECK}
@@ -1379,6 +1432,9 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 <button onClick={() => { setShowMobileDeck(false); setShowDeckImage(true); }} disabled={deck.length === 0}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 disabled:opacity-30 transition-colors"
                 >🖼️ {t.deck.viewImageShort}</button>
+                <button onClick={() => { setShowMobileDeck(false); handleShareDeck(); }} disabled={deck.length === 0}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-sky-200 dark:border-sky-700 text-sky-600 dark:text-sky-300 hover:bg-sky-50 dark:hover:bg-sky-900/30 disabled:opacity-30 transition-colors"
+                >🔗 {t.deck.shareShort}</button>
                 {session?.user && (
                   <>
                     <button onClick={() => { setShowMobileDeck(false); handleOpenSave(); }} disabled={totalCards < MAX_DECK}

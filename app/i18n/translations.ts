@@ -120,6 +120,10 @@ export type Translations = {
     showDetail: string;
     showSimple: string;
     requiredEnergy: string;
+    share: string;
+    shareShort: string;
+    shareCopied: string;
+    shareLoaded: string;
     columns: {
       qty: string;
       name: string;
@@ -273,6 +277,10 @@ export const ko: Translations = {
     showDetail: "상세보기",
     showSimple: "간소화",
     requiredEnergy: "필요 에너지",
+    share: "링크 공유",
+    shareShort: "공유",
+    shareCopied: "덱 링크가 복사되었습니다!",
+    shareLoaded: "공유된 덱을 불러왔습니다.",
     columns: {
       qty: "수량",
       name: "이름",
@@ -426,6 +434,10 @@ export const en: Translations = {
     showDetail: "Detail",
     showSimple: "Simple",
     requiredEnergy: "Required Energy",
+    share: "Share Link",
+    shareShort: "Share",
+    shareCopied: "Deck link copied!",
+    shareLoaded: "Shared deck loaded.",
     columns: {
       qty: "Qty",
       name: "Name",
