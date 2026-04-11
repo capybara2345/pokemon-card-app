@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { type PokemonCard } from "../data/cards";
+import { type PokemonCard, getCardImageSrc } from "../data/cards";
 
 const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   풀: { bg: "bg-green-100", text: "text-green-800", border: "border-green-300" },
@@ -483,26 +483,36 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             {/* 키워드 필터 - 그룹별 */}
             {(() => {
               const allKw = filterOptions.키워드;
-              const 상태이상키워드 = allKw.filter((k) => /독|혼란|마비|잠듦|화상/.test(k));
-              const 면역키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && k.includes("면역"));
-              const 추가피해키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && k.includes("기반 피해"));
-              const 피해키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && k.includes("피해"));
-              const 에너지키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && !피해키워드.includes(k) && k.includes("에너지"));
-              const 회복키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && !피해키워드.includes(k) && !에너지키워드.includes(k) && k.includes("회복"));
-              const 교체키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && !피해키워드.includes(k) && !에너지키워드.includes(k) && !회복키워드.includes(k) && k.includes("교체"));
-              const 시너지키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && !피해키워드.includes(k) && !에너지키워드.includes(k) && !회복키워드.includes(k) && !교체키워드.includes(k) && k.includes("시너지"));
-              const 금지키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && !피해키워드.includes(k) && !에너지키워드.includes(k) && !회복키워드.includes(k) && !교체키워드.includes(k) && !시너지키워드.includes(k) && k.includes("금지"));
-              const 기타키워드 = allKw.filter((k) => !상태이상키워드.includes(k) && !면역키워드.includes(k) && !추가피해키워드.includes(k) && !피해키워드.includes(k) && !에너지키워드.includes(k) && !회복키워드.includes(k) && !교체키워드.includes(k) && !시너지키워드.includes(k) && !금지키워드.includes(k));
+              const used = new Set<string>();
+              const take = (pred: (k: string) => boolean) => {
+                const r = allKw.filter((k) => !used.has(k) && pred(k));
+                r.forEach((k) => used.add(k));
+                return r;
+              };
+              const 상태이상키워드 = take((k) => /독|혼란|마비|잠듦|화상|상태이상/.test(k));
+              const 방어면역키워드 = take((k) => /면역/.test(k) || ["약점 무시","약점 무효","효과 무시","데미지 감소","기술 데미지 감소 부여","기사회생","동전 피격 방어","HP 만땅 데미지 감소"].includes(k));
+              const 추가피해키워드 = take((k) => k.includes("기반 피해"));
+              const 피해키워드 = take((k) => /피해/.test(k) || ["자해","반격 기절","데미지 반사","데미지 이동","데미지 강화","HP 강제 감소","HP 절반","기절 유발","지연 피해","피격 데미지 증가"].includes(k));
+              const 에너지키워드 = take((k) => /에너지/.test(k) || ["후퇴비용 감소","후퇴비용 증가","기술비용 감소","기술비용 증가"].includes(k));
+              const 회복키워드 = take((k) => /회복/.test(k) || k === "HP 증가");
+              const 교체이동키워드 = take((k) => /교체/.test(k) || ["자신 귀환","기절 시 귀환","상대 귀환 강제","벤치 전개","상대 벤치 전개"].includes(k));
+              const 덱패조작키워드 = take((k) => /드로우|덱 서치|덱 조작|덱 확인|트래쉬 회수|패 조작|패 확인|자신 덱 트래쉬/.test(k));
+              const 방해차단키워드 = take((k) => /차단|금지|덱 파괴|스태디움 제거|도구 트래쉬/.test(k) || ["상대 패 트래쉬","포인트 차단"].includes(k));
+              const 진화키워드 = take((k) => /진화|퇴화|화석/.test(k));
+              const 기술동전키워드 = take((k) => /기술 계승|기술 복사|서포트 복사|연속 기술|차례 종료|동전 확정|HP 조건 실패|추가 포인트/.test(k));
+              const 기타키워드 = take(() => true);
               const kwGroups = [
                 { label: "상태 이상", options: 상태이상키워드 },
-                { label: "면역 관련", options: 면역키워드 },
+                { label: "방어/면역", options: 방어면역키워드 },
+                { label: "추가 피해", options: 추가피해키워드 },
+                { label: "피해/공격", options: 피해키워드 },
                 { label: "에너지 관련", options: 에너지키워드 },
-                { label: "피해 관련", options: 피해키워드 },
-                { label: "추가 피해 관련", options: 추가피해키워드 },
                 { label: "회복 관련", options: 회복키워드 },
-                { label: "교체 관련", options: 교체키워드 },
-                { label: "시너지 관련", options: 시너지키워드 },
-                { label: "금지 관련", options: 금지키워드 },
+                { label: "교체/이동", options: 교체이동키워드 },
+                { label: "덱·패 조작", options: 덱패조작키워드 },
+                { label: "방해/차단", options: 방해차단키워드 },
+                { label: "진화 관련", options: 진화키워드 },
+                { label: "기술/동전", options: 기술동전키워드 },
                 { label: "기타", options: 기타키워드 },
               ].filter((g) => g.options.length > 0);
 
@@ -1059,7 +1069,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       )}
 
       <p className="text-xs text-slate-400 dark:text-slate-500 text-center mt-2">
-        * 데이터는 예시이며 실제 게임과 다를 수 있습니다.
+        * 데이터는 실제 게임과 다를 수 있습니다. 중복된 카드는 제외하였습니다.
       </p>
     </div>
   );
@@ -1166,7 +1176,7 @@ function CardImage({ id, name }: { id: number; name: string }) {
   ) : (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`/cards/${Math.floor(id / 1000)}/${id}.webp`}
+      src={getCardImageSrc(id)}
       alt={name}
       onError={() => setMissing(true)}
       className="w-full rounded-lg shadow-md object-contain"

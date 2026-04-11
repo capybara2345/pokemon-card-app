@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import * as XLSX from "xlsx";
-import { type PokemonCard, pokemonCards } from "../data/cards";
+import { type PokemonCard, pokemonCards, parseCardId } from "../data/cards";
 
 const XLSX_PATH = join(process.cwd(), "app", "data", "card_list.xlsx");
 
@@ -35,7 +35,7 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
     if (!이름) continue;
 
     const card: PokemonCard = {
-      ID: toNumber(get(values, "ID")),
+      ID: parseCardId(get(values, "ID")),
       타입: get(values, "타입"),
       카드타입: get(values, "속성"),
       이름,

@@ -1,3 +1,22 @@
+// 프로모 카드(Z 시리즈)는 내부적으로 900001+ 범위의 숫자 ID를 사용.
+// Z00001 → 900001, Z00002 → 900002, ...
+const PROMO_BASE = 900000;
+
+export function getCardImageSrc(id: number): string {
+  if (id > PROMO_BASE && id < 1000000) {
+    const n = String(id - PROMO_BASE).padStart(5, "0");
+    return `/cards/Z/Z${n}.webp`;
+  }
+  return `/cards/${Math.floor(id / 1000)}/${id}.webp`;
+}
+
+export function parseCardId(rawId: string): number {
+  const promoMatch = rawId.match(/^Z(\d+)$/i);
+  if (promoMatch) return PROMO_BASE + parseInt(promoMatch[1], 10);
+  const n = Number(rawId);
+  return isNaN(n) ? 0 : n;
+}
+
 export type PokemonCard = {
   ID: number;
   타입: string;
