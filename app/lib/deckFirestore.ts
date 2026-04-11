@@ -5,6 +5,8 @@ import {
   updateDoc,
   deleteDoc,
   getDocs,
+  getDoc,
+  setDoc,
   doc,
   query,
   orderBy,
@@ -90,7 +92,6 @@ function favoritesDoc(userEmail: string) {
 export async function loadFavoritesFromFirestore(
   userEmail: string
 ): Promise<number[]> {
-  const { getDoc } = await import("firebase/firestore");
   const snap = await getDoc(favoritesDoc(userEmail));
   if (!snap.exists()) return [];
   return (snap.data().cardIds as number[]) ?? [];
@@ -100,7 +101,6 @@ export async function toggleFavoriteInFirestore(
   userEmail: string,
   cardId: number
 ): Promise<number[]> {
-  const { getDoc, setDoc } = await import("firebase/firestore");
   const ref = favoritesDoc(userEmail);
   const snap = await getDoc(ref);
   let cardIds: number[] = snap.exists() ? (snap.data().cardIds ?? []) : [];

@@ -113,6 +113,7 @@ export type Translations = {
     updated: string;
     saved: string;
     saveError: string;
+    emptyError: string;
     favoriteError: string;
     clickToRemove: string;
     copyName: string;
@@ -265,6 +266,7 @@ export const ko: Translations = {
     updated: "덱이 업데이트되었습니다.",
     saved: "덱이 저장되었습니다.",
     saveError: "저장 실패: ",
+    emptyError: "덱이 비어 있습니다. 카드를 추가해주세요.",
     favoriteError: "즐겨찾기 실패",
     clickToRemove: "클릭하면 1장 제거",
     copyName: "포켓몬명 복사",
@@ -417,6 +419,7 @@ export const en: Translations = {
     updated: "Deck updated.",
     saved: "Deck saved.",
     saveError: "Save failed: ",
+    emptyError: "Deck is empty. Please add some cards.",
     favoriteError: "Favorite failed",
     clickToRemove: "Click to remove one",
     copyName: "Copy Pokémon name",

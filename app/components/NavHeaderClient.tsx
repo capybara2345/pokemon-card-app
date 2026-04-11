@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import { signIn, signOut } from "next-auth/react";
 import type { Session } from "next-auth";
 import { useLanguage } from "../i18n/context";
@@ -59,7 +61,7 @@ export default function NavHeaderClient({ session }: Props) {
             {NAV_ITEMS.map(({ label, href }) => {
               const active = pathname === href;
               return (
-                <a
+                <Link
                   key={href}
                   href={href}
                   className={`px-2 md:px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
@@ -69,7 +71,7 @@ export default function NavHeaderClient({ session }: Props) {
                   }`}
                 >
                   {label}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -102,9 +104,11 @@ export default function NavHeaderClient({ session }: Props) {
                 className="flex items-center gap-1.5 px-1.5 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 {session.user.image ? (
-                  <img
+                  <Image
                     src={session.user.image}
                     alt={session.user.name ?? "user"}
+                    width={28}
+                    height={28}
                     className="w-7 h-7 rounded-full border border-slate-200 dark:border-slate-700"
                   />
                 ) : (

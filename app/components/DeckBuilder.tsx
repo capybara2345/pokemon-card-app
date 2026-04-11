@@ -570,6 +570,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
   const handleConfirmSave = async (asNew: boolean) => {
     if (!deckName.trim() || !session?.user?.email) return;
+    if (deck.length === 0) { showMsg(t.deck.emptyError); return; }
     setSavingDeck(true);
     try {
       const email = session.user.email;
@@ -627,9 +628,13 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
   const handleDeleteSavedDeck = async (deckId: string) => {
     if (!session?.user?.email) return;
-    await deleteDeckFromFirestore(session.user.email, deckId);
-    setSavedDecks(prev => prev.filter(d => d.id !== deckId));
-    if (currentDeckId === deckId) setCurrentDeckId(null);
+    try {
+      await deleteDeckFromFirestore(session.user.email, deckId);
+      setSavedDecks(prev => prev.filter(d => d.id !== deckId));
+      if (currentDeckId === deckId) setCurrentDeckId(null);
+    } catch (e) {
+      showMsg(t.deck.saveError + (e instanceof Error ? e.message : String(e)));
+    }
   };
 
   const typeDist = useMemo(() => {

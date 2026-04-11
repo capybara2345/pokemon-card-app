@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://pokemon-card-app-nine.vercel.app";
+import { SITE_URL } from "./lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

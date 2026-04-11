@@ -49,7 +49,6 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
       특성: get(values, "특성"),
       특성효과: get(values, "특성효과") || "-",
       약점: get(values, "약점"),
-      관련서포터: "",
       키워드: get(values, "키워드"),
       확장팩: get(values, "확장팩"),
     };

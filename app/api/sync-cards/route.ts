@@ -2,11 +2,24 @@ import { NextResponse } from "next/server";
 import { collection, writeBatch, doc, getDocs } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { fetchCards } from "../../lib/fetchCards";
+import { auth } from "../../../auth";
 
 // Firestore 배치 최대 한도
 const BATCH_SIZE = 499;
 
+const ADMIN_EMAILS = (process.env.SYNC_ADMIN_EMAILS ?? "")
+  .split(",")
+  .map((e) => e.trim().toLowerCase())
+  .filter(Boolean);
+
 export async function POST() {
+  const session = await auth();
+  const userEmail = session?.user?.email?.toLowerCase() ?? "";
+
+  if (!userEmail || (ADMIN_EMAILS.length > 0 && !ADMIN_EMAILS.includes(userEmail))) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   try {
     const cards = await fetchCards();
 

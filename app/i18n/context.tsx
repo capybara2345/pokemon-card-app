@@ -28,7 +28,12 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const setLang = (next: Lang) => {
     setLangState(next);
     localStorage.setItem("lang", next);
+    document.documentElement.lang = next;
   };
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   return (
     <LangContext.Provider value={{ lang, setLang, t: translations[lang] }}>
