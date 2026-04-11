@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { type PokemonCard, getCardImageSrc } from "../data/cards";
 import type { Session } from "next-auth";
+import { useLanguage } from "../i18n/context";
 import {
   saveDeckToFirestore,
   updateDeckInFirestore,
@@ -126,6 +127,7 @@ function EnergyPips({ energy }: { energy: string }) {
 
 function DeckImageCell({ card }: { card: PokemonCard }) {
   const [imgError, setImgError] = useState(false);
+  const { t } = useLanguage();
   return (
     <div className="aspect-[2/3] rounded-md overflow-hidden bg-slate-100 dark:bg-slate-700 flex items-center justify-center relative">
       {!imgError ? (
@@ -137,7 +139,7 @@ function DeckImageCell({ card }: { card: PokemonCard }) {
         />
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center gap-1 p-1 text-center">
-          <span className="text-[10px] text-slate-400 dark:text-slate-500 leading-tight">이미지<br />준비중</span>
+          <span className="text-[10px] text-slate-400 dark:text-slate-500 leading-tight">{t.card.imageLoading}</span>
           <span className="text-[10px] font-medium text-slate-600 dark:text-slate-300 break-keep leading-tight">{card.이름}</span>
         </div>
       )}
@@ -260,6 +262,7 @@ async function downloadDeckImage(deck: DeckEntry[]) {
 }
 
 export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; session: Session | null }) {
+  const { t } = useLanguage();
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<{
     타입: string[];
@@ -274,6 +277,10 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
   const [filterSkillEnergy, setFilterSkillEnergy] = useState<number[]>([]);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
+  const [pressedCardId, setPressedCardId] = useState<number | null>(null);
+  const pressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isPreviewRef = useRef(false);
+  const shiftRef = useRef(false);
   const [showDeckImage, setShowDeckImage] = useState(false);
   const [showMobileDeck, setShowMobileDeck] = useState(false);
   const [deck, setDeck] = useState<DeckEntry[]>([]);
@@ -398,31 +405,127 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
     if (deck.length === 0) return [];
     const deckNames = deck.map(({ card }) => card.이름).filter((n) => n.length >= 2);
     if (deckNames.length === 0) return [];
+
+    // 덱에 울트라비스트가 있는지
+    const hasUltraBeast = deck.some(({ card }) =>
+      card.카드타입?.split(",").map((v) => v.trim().toLowerCase()).includes("울트라비스트")
+    );
+
+    // 덱에 있는 포켓몬 타입 목록 (예: "불", "물")
+    const deckPokemonTypes = [...new Set(
+      deck
+        .filter(({ card }) => POKEMON_TYPES.includes(card.타입))
+        .map(({ card }) => card.타입)
+    )];
+
+    // 덱에 있는 진화단계 목록
+    const deckEvolutions = [...new Set(
+      deck
+        .filter(({ card }) => POKEMON_TYPES.includes(card.타입) && card.진화)
+        .map(({ card }) => card.진화)
+    )];
+    const hasAnyEvolution = deckEvolutions.some((e) => e === "1진화" || e === "2진화");
+
+    // 덱에 HP 50 이하 포켓몬 존재 여부
+    const deckHasLowHp = deck.some(({ card: c }) => POKEMON_TYPES.includes(c.타입) && c.HP <= 50);
+
+    // 덱에 동전 관련 키워드 포켓몬 존재 여부 (일목 시너지)
+    const COIN_KEYWORDS = ["동전 상태이상", "동전 기반 피해", "동전 기술 실패 위험"];
+    const deckHasCoinKeyword = deck.some(({ card: c }) =>
+      POKEMON_TYPES.includes(c.타입) &&
+      c.키워드?.split(",").map((v) => v.trim()).some((kw) => COIN_KEYWORDS.includes(kw))
+    );
+
+    // 효과 텍스트에서 "상대의" 컨텍스트 없이 pattern이 포함되는지 확인
+    const includesAsOwn = (text: string, pattern: string) => {
+      let pos = 0;
+      while ((pos = text.indexOf(pattern, pos)) !== -1) {
+        const before = text.slice(Math.max(0, pos - 4), pos);
+        if (!before.includes("상대")) return true;
+        pos += 1;
+      }
+      return false;
+    };
+
     return cards.filter((card) => {
       const nameCount = deckNameMap.get(card.이름) ?? 0;
       if (nameCount >= MAX_SAME_NAME) return false;
       if (favoriteIds.has(card.ID)) return false;
+      if (card.키워드?.split(",").map((v) => v.trim()).includes("화석 포켓몬")) return false;
+      // 루티아는 덱에 HP 50 이하 포켓몬이 있을 때만 추천
+      if (card.이름 === "루티아" && !deckHasLowHp) return false;
+      // 일목은 덱에 동전 관련 키워드 포켓몬이 있을 때만 추천
+      if (card.이름 === "일목" && !deckHasCoinKeyword) return false;
+      // 물고기네트는 덱에 물타입 기본 포켓몬이 있을 때만 추천
+      if (card.이름 === "물고기네트" && !(deckPokemonTypes.includes("물") && deckEvolutions.includes("기본"))) return false;
+      // 항상 제외할 카드
+      if (["포켓몬피리", "벌레회피스프레이"].includes(card.이름)) return false;
+
       const effectTexts = [
         card.기술추가효과 ?? "",
         card.기술추가효과2 ?? "",
         card.특성효과 ?? "",
       ].join(" ");
-      return deckNames.some((name) => effectTexts.includes(`「${name}」`));
+
+      // 1) 포켓몬명 직접 참조 (기존)
+      if (deckNames.some((name) => effectTexts.includes(`「${name}」`))) return true;
+
+      const isTrainerCard = !POKEMON_TYPES.includes(card.타입);
+
+      // 2) 울트라비스트 보유 시 트레이너스 중 "울트라비스트" 효과 포함 카드
+      if (hasUltraBeast && isTrainerCard && effectTexts.includes("울트라비스트")) return true;
+
+      // 3) 덱 타입 기반 트레이너스 추천 ("불포켓몬", "물포켓몬" 등)
+      if (isTrainerCard) {
+        if (deckPokemonTypes.some((type) => effectTexts.includes(`${type}포켓몬`))) return true;
+      }
+
+      // 4) 덱 진화단계 기반 트레이너스 추천 (상대의 포켓몬 관련 효과는 제외)
+      if (isTrainerCard) {
+        for (const evo of deckEvolutions) {
+          if (includesAsOwn(effectTexts, `${evo} 포켓몬`) || includesAsOwn(effectTexts, `${evo}포켓몬`)) return true;
+        }
+        // 진화 포켓몬(1진화/2진화)이 있으면 단독 "진화 포켓몬" 언급 트레이너스도 추천
+        // 단, "1진화 포켓몬"/"2진화 포켓몬" 안의 부분 매치는 제외하기 위해 앞 글자가 숫자가 아닌 경우만
+        if (hasAnyEvolution) {
+          const standaloneEvoRe = /(?<![0-9])진화 ?포켓몬/g;
+          let m: RegExpExecArray | null;
+          while ((m = standaloneEvoRe.exec(effectTexts)) !== null) {
+            const before = effectTexts.slice(Math.max(0, m.index - 4), m.index);
+            if (!before.includes("상대")) { return true; }
+          }
+        }
+      }
+
+      // 5) 일목 - 덱에 동전 관련 키워드 포켓몬이 있으면 추천
+      if (card.이름 === "일목" && deckHasCoinKeyword) return true;
+
+      return false;
     }).slice(0, 20);
   }, [cards, deck, deckNameMap, favoriteIds]);
 
-  const addCard = (card: PokemonCard) => {
-    if (totalCards >= MAX_DECK) return;
+  const addCard = (card: PokemonCard, times = 1) => {
     const nameCount = deckNameMap.get(card.이름) ?? 0;
     if (nameCount >= MAX_SAME_NAME) return;
+    const canAdd = Math.min(times, MAX_DECK - totalCards, MAX_SAME_NAME - nameCount);
+    if (canAdd <= 0) return;
     setDeck((prev) => {
-      const idx = prev.findIndex((e) => e.card.ID === card.ID);
-      if (idx >= 0) {
-        const next = [...prev];
-        next[idx] = { ...next[idx], count: next[idx].count + 1 };
-        return next;
+      let next = [...prev];
+      for (let i = 0; i < canAdd; i++) {
+        const idx = next.findIndex((e) => e.card.ID === card.ID);
+        if (idx >= 0) {
+          next[idx] = { ...next[idx], count: next[idx].count + 1 };
+        } else {
+          next = [...next, { card, count: 1 }];
+        }
       }
-      return [...prev, { card, count: 1 }].sort((a, b) => a.card.ID - b.card.ID);
+      const isTrainer = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+      return next.sort((a, b) => {
+        const aT = isTrainer(a.card) ? 1 : 0;
+        const bT = isTrainer(b.card) ? 1 : 0;
+        if (aT !== bT) return aT - bT;
+        return a.card.ID - b.card.ID;
+      });
     });
   };
 
@@ -439,7 +542,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
   };
 
   const removeAll = (cardId: number) => setDeck((prev) => prev.filter((e) => e.card.ID !== cardId));
-  const clearDeck = () => { setDeck([]); setCurrentDeckId(null); setDeckName(""); };
+  const clearDeck = () => { setDeck([]); setCurrentDeckId(null); setDeckName(""); setSearch(""); };
 
   const handleToggleFavorite = async (e: React.MouseEvent, cardId: number) => {
     e.stopPropagation();
@@ -449,7 +552,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       const newIds = await toggleFavoriteInFirestore(session.user.email, cardId);
       setFavoriteIds(new Set(newIds));
     } catch (err) {
-      showMsg(err instanceof Error ? err.message : "즐겨찾기 실패");
+      showMsg(err instanceof Error ? err.message : t.deck.favoriteError);
     } finally {
       setTogglingFav(null);
     }
@@ -473,16 +576,16 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       const deckCards: DeckCard[] = deck.map(({ card, count }) => ({ cardId: card.ID, count }));
       if (!asNew && currentDeckId) {
         await updateDeckInFirestore(email, currentDeckId, deckName.trim(), deckCards);
-        showMsg("덱이 업데이트되었습니다.");
+        showMsg(t.deck.updated);
         setShowSaveModal(false);
       } else {
         const newId = await saveDeckToFirestore(email, deckName.trim(), deckCards);
         setCurrentDeckId(newId);
-        showMsg("덱이 저장되었습니다.");
+        showMsg(t.deck.saved);
         setShowSaveModal(false);
       }
     } catch (e) {
-      showMsg("저장 실패: " + (e instanceof Error ? e.message : String(e)));
+      showMsg(t.deck.saveError + (e instanceof Error ? e.message : String(e)));
     } finally {
       setSavingDeck(false);
     }
@@ -508,12 +611,18 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         return card ? { card, count } : null;
       })
       .filter((e): e is DeckEntry => e !== null)
-      .sort((a, b) => a.card.ID - b.card.ID);
+      .sort((a, b) => {
+        const isTrainer = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+        const aT = isTrainer(a.card) ? 1 : 0;
+        const bT = isTrainer(b.card) ? 1 : 0;
+        if (aT !== bT) return aT - bT;
+        return a.card.ID - b.card.ID;
+      });
     setDeck(newDeck);
     setCurrentDeckId(saved.id);
     setDeckName(saved.name);
     setShowLoadModal(false);
-    showMsg(`'${saved.name}' 불러오기 완료`);
+    showMsg(`'${saved.name}' ${t.deck.load}`);
   };
 
   const handleDeleteSavedDeck = async (deckId: string) => {
@@ -551,6 +660,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
   };
 
   const hasActiveFilter =
+    !!search ||
     filters.타입.length || filters.진화.length || filters.키워드.length ||
     filters.확장팩.length || filters.후퇴에너지.length ||
     filterCardTypes.length || filterSpecial || filterColorless || filterSkillEnergy.length;
@@ -571,8 +681,35 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       <button
         key={keyPrefix + card.ID}
         type="button"
-        onClick={() => addCard(card)}
         disabled={maxed}
+        onPointerDown={(e) => {
+          if (maxed) return;
+          e.preventDefault();
+          isPreviewRef.current = false;
+          shiftRef.current = e.shiftKey;
+          pressTimerRef.current = setTimeout(() => {
+            isPreviewRef.current = true;
+            setPressedCardId(card.ID);
+          }, 300);
+        }}
+        onPointerUp={() => {
+          if (pressTimerRef.current) { clearTimeout(pressTimerRef.current); pressTimerRef.current = null; }
+          if (isPreviewRef.current) {
+            // 모달은 X 버튼으로 닫으므로 여기서는 닫지 않음
+            isPreviewRef.current = false;
+          } else if (!maxed) {
+            addCard(card, shiftRef.current ? 2 : 1);
+          }
+        }}
+        onPointerLeave={() => {
+          if (pressTimerRef.current) { clearTimeout(pressTimerRef.current); pressTimerRef.current = null; }
+          isPreviewRef.current = false;
+        }}
+        onPointerCancel={() => {
+          if (pressTimerRef.current) { clearTimeout(pressTimerRef.current); pressTimerRef.current = null; }
+          setPressedCardId(null);
+          isPreviewRef.current = false;
+        }}
         className={`text-left w-full flex flex-col gap-2 p-3 rounded-lg border transition-all ${
           maxed
             ? "bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700 opacity-50 cursor-not-allowed"
@@ -590,7 +727,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
           {isBaby && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-sky-400 text-white leading-none ring-1 ring-sky-500">baby</span>}
           <span className="ml-auto flex items-center gap-1.5 shrink-0">
             {card.확장팩 && (
-              <span className="text-[10px] text-slate-400 dark:text-slate-500">{card.확장팩}</span>
+              <span className="text-[10px] text-slate-400 dark:text-slate-300">{card.확장팩}</span>
             )}
             {session?.user && (
               <span
@@ -601,7 +738,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     ? "text-amber-400 hover:text-amber-500"
                     : "text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-400"
                 } ${togglingFav === card.ID ? "opacity-50 pointer-events-none" : ""}`}
-                title={favoriteIds.has(card.ID) ? "즐겨찾기 해제" : `즐겨찾기 추가 (${favoriteIds.size}/${MAX_FAVORITES})`}
+                title={favoriteIds.has(card.ID) ? t.favorites.removeTitle : t.favorites.addTitle(favoriteIds.size, MAX_FAVORITES)}
               >
                 {favoriteIds.has(card.ID) ? "★" : "☆"}
               </span>
@@ -617,86 +754,115 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         {/* 상세 정보 (토글) */}
         {showDetail && (
           <>
-            {!isTrainer && (
-              <div className="text-xs text-slate-500 dark:text-slate-400">
-                HP <span className="text-slate-700 dark:text-slate-200 font-bold">{card.HP === 0 ? "—" : card.HP}</span>
-              </div>
-            )}
-            {card.특성 && card.특성효과 && card.특성효과 !== "-" && (
-              <div className="flex flex-col gap-0.5 bg-purple-50 dark:bg-purple-900/20 rounded px-2 py-1">
-                <div className="flex items-center gap-1">
-                  <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 shrink-0">특성</span>
-                  <span className="text-[11px] text-purple-700 dark:text-purple-300 font-medium">{card.특성}</span>
-                </div>
-                <span className="text-[10px] text-purple-500 dark:text-purple-400 leading-relaxed">{card.특성효과}</span>
-              </div>
-            )}
-            {isTrainer && card.기술추가효과 && card.기술추가효과 !== "-" && (
-              <p className="text-[10px] text-slate-500 dark:text-slate-400">{card.기술추가효과}</p>
-            )}
-            {!isTrainer && (
-              <div className="flex flex-col gap-0.5">
-                <div className="flex items-center gap-1.5">
-                  <EnergyPips energy={card.필요에너지} />
-                  <span className="text-xs text-slate-700 dark:text-slate-200 font-medium flex-1 min-w-0 truncate">{card.기술명 && card.기술명 !== "-" ? card.기술명 : <span className="text-slate-300 dark:text-slate-600 font-normal">—</span>}</span>
-                  {card.피해량 && card.피해량 !== "-" && card.피해량 !== "0" && (
-                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400 shrink-0">{card.피해량}</span>
-                  )}
-                </div>
-                {card.기술추가효과 && card.기술추가효과 !== "-" && (
-                  <p className="text-[10px] text-slate-400 dark:text-slate-500 pl-1">{card.기술추가효과}</p>
+            <div className="flex flex-col gap-1.5 min-w-0">
+                {!isTrainer && (
+                  <div className="text-xs text-slate-500 dark:text-slate-400">
+                    HP <span className="text-slate-700 dark:text-slate-200 font-bold">{card.HP === 0 ? "—" : card.HP}</span>
+                  </div>
                 )}
-              </div>
-            )}
-            {!isTrainer && card.기술명2 && (
-              <div className="flex flex-col gap-0.5">
-                <div className="flex items-center gap-1.5">
-                  <EnergyPips energy={card.필요에너지2 ?? ""} />
-                  <span className="text-xs text-slate-700 dark:text-slate-200 font-medium flex-1 min-w-0 truncate">{card.기술명2}</span>
-                  {card.피해량2 && card.피해량2 !== "-" && card.피해량2 !== "0" && (
-                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400 shrink-0">{card.피해량2}</span>
-                  )}
-                </div>
-                {card.기술추가효과2 && card.기술추가효과2 !== "-" && (
-                  <p className="text-[10px] text-slate-400 dark:text-slate-500 pl-1">{card.기술추가효과2}</p>
+                {card.특성 && card.특성효과 && card.특성효과 !== "-" && (
+                  <div className="flex flex-col gap-0.5 bg-purple-50 dark:bg-purple-900/20 rounded px-2 py-1">
+                    <div className="flex items-center gap-1">
+                      <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 shrink-0">특성</span>
+                      <span className="text-[11px] text-purple-700 dark:text-purple-300 font-medium">{card.특성}</span>
+                    </div>
+                    <span className="text-[10px] text-purple-500 dark:text-purple-400 leading-relaxed">{card.특성효과}</span>
+                  </div>
                 )}
-              </div>
-            )}
-            {!isTrainer && (
-              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                <span>
-                  {card.약점 ? (
-                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${typeColor(card.약점).bg} ${typeColor(card.약점).text}`}>
-                      약점: {card.약점}
+                {isTrainer && card.기술추가효과 && card.기술추가효과 !== "-" && (
+                  <p className="text-[10px] text-slate-500 dark:text-slate-300">{card.기술추가효과}</p>
+                )}
+                {!isTrainer && (
+                  <div className="flex flex-col gap-0.5">
+                    <div className="flex items-center gap-1.5">
+                      <EnergyPips energy={card.필요에너지} />
+                      <span className="text-xs text-slate-700 dark:text-slate-200 font-medium flex-1 min-w-0 truncate">{card.기술명 && card.기술명 !== "-" ? card.기술명 : <span className="text-slate-300 dark:text-slate-600 font-normal">—</span>}</span>
+                      {card.피해량 && card.피해량 !== "-" && card.피해량 !== "0" && (
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400 shrink-0">{card.피해량}</span>
+                      )}
+                    </div>
+                    {card.기술추가효과 && card.기술추가효과 !== "-" && (
+                      <p className="text-[10px] text-slate-400 dark:text-slate-300 pl-1">{card.기술추가효과}</p>
+                    )}
+                  </div>
+                )}
+                {!isTrainer && card.기술명2 && (
+                  <div className="flex flex-col gap-0.5">
+                    <div className="flex items-center gap-1.5">
+                      <EnergyPips energy={card.필요에너지2 ?? ""} />
+                      <span className="text-xs text-slate-700 dark:text-slate-200 font-medium flex-1 min-w-0 truncate">{card.기술명2}</span>
+                      {card.피해량2 && card.피해량2 !== "-" && card.피해량2 !== "0" && (
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400 shrink-0">{card.피해량2}</span>
+                      )}
+                    </div>
+                    {card.기술추가효과2 && card.기술추가효과2 !== "-" && (
+                      <p className="text-[10px] text-slate-400 dark:text-slate-300 pl-1">{card.기술추가효과2}</p>
+                    )}
+                  </div>
+                )}
+                {!isTrainer && (
+                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                    <span>
+                      {card.약점 ? (
+                        <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${typeColor(card.약점).bg} ${typeColor(card.약점).text}`}>
+                          약점: {card.약점}
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-slate-300 dark:text-slate-600">약점 없음</span>
+                      )}
                     </span>
-                  ) : (
-                    <span className="text-[10px] text-slate-300 dark:text-slate-600">약점 없음</span>
-                  )}
-                </span>
-                <span className="flex items-center gap-0.5">
-                  <span className="text-[10px] text-slate-400 mr-0.5">후퇴</span>
-                  {Array.from({ length: card.후퇴에너지 }).map((_, i) => (
-                    <img key={i} src="/energy/colorless.png" alt="무색" className="inline-block w-2.5 h-2.5" />
-                  ))}
-                  {card.후퇴에너지 === 0 && <span className="text-slate-300 dark:text-slate-600 text-[10px]">0</span>}
-                </span>
-              </div>
-            )}
-            {card.키워드 && (
-              <div className="flex flex-wrap gap-1">
-                {card.키워드.split(",").map((k) => k.trim()).filter(Boolean).map((kw) => (
-                  <span key={kw} className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800">{kw}</span>
-                ))}
-              </div>
-            )}
+                    <span className="flex items-center gap-0.5">
+                      <span className="text-[10px] text-slate-400 mr-0.5">후퇴</span>
+                      {Array.from({ length: card.후퇴에너지 }).map((_, i) => (
+                        <img key={i} src="/energy/colorless.png" alt="무색" className="inline-block w-2.5 h-2.5" />
+                      ))}
+                      {card.후퇴에너지 === 0 && <span className="text-slate-300 dark:text-slate-600 text-[10px]">0</span>}
+                    </span>
+                  </div>
+                )}
+                {card.키워드 && (
+                  <div className="flex flex-wrap gap-1">
+                    {card.키워드.split(",").map((k) => k.trim()).filter(Boolean).map((kw) => (
+                      <span key={kw} className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800">{kw}</span>
+                    ))}
+                  </div>
+                )}
+            </div>
           </>
         )}
       </button>
     );
   };
 
+  const previewCard = pressedCardId !== null ? cards.find((c) => c.ID === pressedCardId) ?? null : null;
+
   return (
     <div className="flex flex-col gap-4 p-4 md:p-6 min-h-screen bg-slate-50 dark:bg-slate-900">
+      {/* 카드 이미지 미리보기 모달 */}
+      {previewCard && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          onClick={() => setPressedCardId(null)}
+        >
+          <div
+            className="relative pointer-events-auto bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col items-center gap-3 w-[min(24rem,90vw)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setPressedCardId(null)}
+              className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none px-1"
+            >✕</button>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{previewCard.이름}</p>
+            <img
+              src={getCardImageSrc(previewCard.ID)}
+              alt={previewCard.이름}
+              className="w-full rounded-lg shadow-md object-contain"
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+            />
+          </div>
+        </div>
+      )}
       {/* Copy toast */}
       <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-slate-800 text-white text-sm shadow-lg transition-all duration-300 pointer-events-none ${copiedName ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
         <span className="font-medium">{copiedName}</span> 복사됨
@@ -708,8 +874,8 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">포켓몬 포켓 덱 빌더</h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">최대 20장, 같은 이름 최대 2장</p>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">{t.deck.pageTitle}</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{t.deck.subtitle}</p>
         </div>
       </div>
 
@@ -721,7 +887,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">🔍</span>
             <input
               type="text"
-              placeholder="이름, 기술명, 키워드로 검색..."
+              placeholder={t.search.deckPlaceholder}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400"
@@ -736,7 +902,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
             <div className="flex flex-wrap items-center gap-4">
               {/* 포켓몬 타입 */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">포켓몬 타입</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.pokemonType}</span>
                 <div className="flex gap-1 flex-wrap">
                   {filterOptions.포켓몬타입.map((opt) => {
                     const active = filters.타입.includes(opt);
@@ -744,16 +910,16 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     return (
                       <button key={opt} onClick={() => toggleFilter("타입", opt)}
                         className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${active ? `${tc.bg} ${tc.text} ${tc.border}` : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{opt}</button>
-                    );
-                  })}
+                      >{t.pokemonType[opt] ?? opt}</button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
 
               {/* 트레이너스 타입 */}
               {filterOptions.트레이너스타입.length > 0 && (
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">트레이너스</span>
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.trainers}</span>
                   <div className="flex gap-1 flex-wrap">
                     {filterOptions.트레이너스타입.map((opt) => {
                       const active = filters.타입.includes(opt);
@@ -769,29 +935,28 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
               {/* 진화단계 */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">진화단계</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.evolutionStage}</span>
                 <div className="flex gap-1 flex-wrap">
                   {filterOptions.진화.map((opt) => {
                     const active = filters.진화.includes(opt);
                     return (
                       <button key={opt} onClick={() => toggleFilter("진화", opt)}
                         className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{opt}</button>
-                    );
-                  })}
+                      >{t.evolution[opt] ?? opt}</button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
 
-              {/* 기술에너지 */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">기술에너지</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.skillEnergy}</span>
                 <div className="flex gap-1">
                   {[0, 1, 2, 3, 4, 5].map((n) => {
                     const active = filterSkillEnergy.includes(n);
                     return (
                       <button key={n} onClick={() => setFilterSkillEnergy((prev) => prev.includes(n) ? prev.filter((v) => v !== n) : [...prev, n])}
                         className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{n}개</button>
+                      >{t.filter.energyCount(n)}</button>
                     );
                   })}
                 </div>
@@ -799,14 +964,14 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
               {/* 후퇴에너지 */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">후퇴에너지</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.retreatEnergy}</span>
                 <div className="flex gap-1 flex-wrap">
                   {filterOptions.후퇴에너지.map((opt) => {
                     const active = filters.후퇴에너지.includes(opt);
                     return (
                       <button key={opt} onClick={() => toggleFilter("후퇴에너지", opt)}
                         className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{opt}개</button>
+                      >{t.filter.energyCount(Number(opt))}</button>
                     );
                   })}
                 </div>
@@ -814,13 +979,13 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
               {/* 확장팩 필터 (셀렉트박스) */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">확장팩</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.expansion}</span>
                 <select
                   value={filters.확장팩[0] ?? ""}
                   onChange={(e) => setFilters((prev) => ({ ...prev, 확장팩: e.target.value ? [e.target.value] : [] }))}
                   className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
                 >
-                  <option value="">전체</option>
+                  <option value="">{t.filter.all}</option>
                   {filterOptions.확장팩.map((opt) => (
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
@@ -832,7 +997,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 <button onClick={() => setShowAdvanced((v) => !v)}
                   className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${showAdvanced ? "bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
                 >
-                  상세 필터 <span className="text-[10px]">{showAdvanced ? "▲" : "▼"}</span>
+                  🔍 {t.filter.detailFilter} <span className="text-[10px]">{showAdvanced ? "▲" : "▼"}</span>
                 </button>
               </div>
             </div>
@@ -842,7 +1007,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
               <div className="flex flex-col gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 {/* 카드타입 / 특성 */}
                 <div className="flex items-start gap-3">
-                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">카드타입</span>
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">{t.filter.cardType}</span>
                   <div className="flex items-center gap-1 flex-wrap">
                   {(["ex", "메가ex", "베이비", "울트라비스트"] as const).map((ct) => {
                     const active = filterCardTypes.includes(ct);
@@ -854,15 +1019,15 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     return (
                       <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
                         className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{ct}</button>
+                      >{ct === "메가ex" ? t.cardTypeLabel.megaEx : ct === "베이비" ? t.cardTypeLabel.baby : ct === "울트라비스트" ? t.cardTypeLabel.ultraBeast : ct}</button>
                     );
                   })}
                   <button onClick={() => setFilterSpecial((v) => !v)}
                     className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterSpecial ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700" : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                  >특성있음</button>
+                  >{t.filter.hasAbility}</button>
                   <button onClick={() => setFilterColorless((v) => !v)}
                     className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterColorless ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500" : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                  >무색기술있음(무색 포켓몬 제외)</button>
+                  >{t.filter.hasColorlessSkill}</button>
                   </div>
                 </div>
                 {(() => {
@@ -890,18 +1055,18 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     ...opts.filter((k) => !deckKeywords.has(k)),
                   ];
                   return [
-                    { label: "상태 이상", options: sortByDeck(상태이상) },
-                    { label: "방어/면역", options: sortByDeck(방어면역) },
-                    { label: "추가 피해", options: sortByDeck(추가피해) },
-                    { label: "피해/공격", options: sortByDeck(피해) },
-                    { label: "에너지 관련", options: sortByDeck(에너지) },
-                    { label: "회복 관련", options: sortByDeck(회복) },
-                    { label: "교체/이동", options: sortByDeck(교체이동) },
-                    { label: "덱·패 조작", options: sortByDeck(덱패조작) },
-                    { label: "방해/차단", options: sortByDeck(방해차단) },
-                    { label: "진화 관련", options: sortByDeck(진화) },
-                    { label: "기술/동전", options: sortByDeck(기술동전) },
-                    { label: "기타", options: sortByDeck(기타) },
+                    { label: t.filter.keywordGroups.abnormal, options: sortByDeck(상태이상) },
+                    { label: t.filter.keywordGroups.defense, options: sortByDeck(방어면역) },
+                    { label: t.filter.keywordGroups.bonusDamage, options: sortByDeck(추가피해) },
+                    { label: t.filter.keywordGroups.damage, options: sortByDeck(피해) },
+                    { label: t.filter.keywordGroups.energy, options: sortByDeck(에너지) },
+                    { label: t.filter.keywordGroups.recovery, options: sortByDeck(회복) },
+                    { label: t.filter.keywordGroups.swap, options: sortByDeck(교체이동) },
+                    { label: t.filter.keywordGroups.deckHand, options: sortByDeck(덱패조작) },
+                    { label: t.filter.keywordGroups.disrupt, options: sortByDeck(방해차단) },
+                    { label: t.filter.keywordGroups.evolution, options: sortByDeck(진화) },
+                    { label: t.filter.keywordGroups.skillCoin, options: sortByDeck(기술동전) },
+                    { label: t.filter.keywordGroups.other, options: sortByDeck(기타) },
                   ].filter((g) => g.options.length > 0).map(({ label, options }) => (
                     <div key={label} className="flex items-start gap-3">
                       <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">{label}</span>
@@ -932,20 +1097,19 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
             {hasActiveFilter ? (
               <div>
                 <button
-                  onClick={() => { setFilters({ 타입: [], 진화: [], 키워드: [], 확장팩: [], 후퇴에너지: [] }); setFilterCardTypes([]); setFilterSpecial(false); setFilterColorless(false); setFilterSkillEnergy([]); }}
+                  onClick={() => { setSearch(""); setFilters({ 타입: [], 진화: [], 키워드: [], 확장팩: [], 후퇴에너지: [] }); setFilterCardTypes([]); setFilterSpecial(false); setFilterColorless(false); setFilterSkillEnergy([]); }}
                   className="px-2.5 py-1 rounded-full text-xs font-medium text-red-500 dark:text-red-400 border border-red-200 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
-                >초기화</button>
+                >{t.filter.clear}</button>
               </div>
             ) : null}
           </div>
 
-          {/* 즐겨찾기 상단 섹션 */}
           {session?.user && favoriteIds.size > 0 && (() => {
             const favoriteCards = cards.filter((c) => favoriteIds.has(c.ID));
             return (
               <div className="flex flex-col gap-2 p-3 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">★ 즐겨찾기</span>
+                  <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">★ {t.favorites.title}</span>
                   <span className="text-xs text-amber-500 dark:text-amber-500">{favoriteIds.size} / {MAX_FAVORITES}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
@@ -959,8 +1123,8 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
           {recommendedCards.length > 0 && (
             <div className="flex flex-col gap-2 p-3 rounded-xl bg-teal-50 dark:bg-teal-900/10 border border-teal-200 dark:border-teal-800/50">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-teal-600 dark:text-teal-400">✦ 추천 카드</span>
-                <span className="text-xs text-teal-500 dark:text-teal-500">덱에 있는 포켓몬과 시너지가 있는 카드</span>
+                <span className="text-xs font-semibold text-teal-600 dark:text-teal-400">✦ {t.recommended.title}</span>
+                <span className="text-xs text-teal-500 dark:text-teal-500">{t.recommended.synergy}</span>
                 <span className="ml-auto text-xs text-teal-400 dark:text-teal-600">{recommendedCards.length}장</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
@@ -970,19 +1134,22 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
           )}
 
           {/* 카드 목록 */}
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-slate-400 dark:text-slate-500">{filtered.length}장 · {page}/{totalPages}페이지 · 클릭하면 덱에 추가</p>
-            <button
-              onClick={() => setShowDetail((v) => !v)}
-              className="px-2.5 py-1 rounded-lg text-xs border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-            >
-              {showDetail ? "간소화" : "상세보기"}
-            </button>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-xs text-slate-400 dark:text-slate-500">{filtered.length}장 · {page}/{totalPages}페이지</p>
+              <button
+                onClick={() => setShowDetail((v) => !v)}
+                className="shrink-0 px-2.5 py-1 rounded-lg text-xs border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+              >
+                {showDetail ? t.deck.showSimple : t.deck.showDetail}
+              </button>
+            </div>
+            <p className="text-[10px] text-slate-300 dark:text-slate-600">클릭: 덱 추가 · 길게 누름: 이미지 확인 · Shift+클릭: 2장 추가</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
             {pagedCards.map((card) => renderCard(card))}
             {filtered.length === 0 && (
-              <div className="col-span-full text-center py-10 text-slate-400 dark:text-slate-500 text-sm">검색 결과가 없습니다.</div>
+              <div className="col-span-full text-center py-10 text-slate-400 dark:text-slate-500 text-sm">{t.search.noResults}</div>
             )}
           </div>
 
@@ -1052,21 +1219,21 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 <div className="flex gap-2 flex-wrap">
                   <button onClick={() => setShowDeckImage(true)} disabled={deck.length === 0}
                     className="px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 disabled:opacity-30 transition-colors"
-                  >이미지로 보기</button>
+                  >📄 {t.deck.viewImage}</button>
                   {session?.user && (
                     <>
                       <button onClick={handleOpenSave} disabled={totalCards < MAX_DECK}
                         className="px-3 py-1.5 rounded-lg text-xs font-medium border border-green-200 dark:border-green-800 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/30 disabled:opacity-30 transition-colors"
-                      >저장</button>
+                      >{t.deck.save}</button>
                       <button onClick={handleOpenLoad}
                         className="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-                      >불러오기</button>
+                      >{t.deck.load}</button>
                     </>
                   )}
                   {/* CSV 저장 버튼 숨김 처리 */}
-                  <button onClick={clearDeck} disabled={deck.length === 0}
+                  <button onClick={clearDeck} disabled={deck.length === 0 && !search}
                     className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 dark:border-red-800 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 disabled:opacity-30 transition-colors"
-                  >초기화</button>
+                  >{t.deck.clear}</button>
                 </div>
               </div>
               <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
@@ -1084,7 +1251,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
               )}
               {requiredEnergyTypes.length > 0 && (
                 <div className="flex flex-col gap-1">
-                  <span className="text-xs text-slate-400 dark:text-slate-500">필요 에너지</span>
+                  <span className="text-xs text-slate-400 dark:text-slate-500">{t.deck.requiredEnergy}</span>
                   <div className="flex flex-wrap gap-2">
                     {requiredEnergyTypes.map((type) => {
                       const imgSrc = getEnergyImageSrc(type);
@@ -1105,7 +1272,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
 
             <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-700">
               {deck.length === 0 && (
-                <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">카드를 추가해보세요</div>
+                <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">{t.deck.addCards}</div>
               )}
               {deck.map(({ card, count }) => {
                 const tc = typeColor(card.타입);
@@ -1113,14 +1280,14 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                   <div key={card.ID} className="flex items-center gap-2 px-3 py-2.5">
                     <button
                       onClick={() => removeCard(card.ID)}
-                      title="클릭하면 1장 제거"
+                      title={t.deck.clickToRemove}
                       className="flex items-center gap-2 flex-1 min-w-0 text-left hover:bg-slate-50 dark:hover:bg-slate-700/40 rounded transition-colors"
                     >
                       <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
                       <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
                       <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
                     </button>
-                    <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title="포켓몬명 복사" className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-xs transition-colors">⧉</button>
+                    <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title={t.deck.copyName} className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-xs transition-colors">⧉</button>
                     <button onClick={() => removeAll(card.ID)} className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-xs transition-colors">✕</button>
                   </div>
                 );
@@ -1177,20 +1344,20 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
               <div className="flex items-center gap-2 flex-wrap justify-end">
                 <button onClick={() => { setShowMobileDeck(false); setShowDeckImage(true); }} disabled={deck.length === 0}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-200 dark:border-indigo-700 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 disabled:opacity-30 transition-colors"
-                >이미지</button>
+                >🖼️ {t.deck.viewImageShort}</button>
                 {session?.user && (
                   <>
                     <button onClick={() => { setShowMobileDeck(false); handleOpenSave(); }} disabled={totalCards < MAX_DECK}
                       className="px-3 py-1.5 rounded-lg text-xs font-medium border border-green-200 dark:border-green-800 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/30 disabled:opacity-30 transition-colors"
-                    >저장</button>
+                    >{t.deck.save}</button>
                     <button onClick={() => { setShowMobileDeck(false); handleOpenLoad(); }}
                       className="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-                    >불러오기</button>
+                    >{t.deck.load}</button>
                   </>
                 )}
                 <button onClick={clearDeck} disabled={deck.length === 0}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 dark:border-red-800 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 disabled:opacity-30 transition-colors"
-                >초기화</button>
+                >{t.deck.clear}</button>
                 <button onClick={() => setShowMobileDeck(false)}
                   className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 text-sm transition-colors"
                 >✕</button>
@@ -1236,7 +1403,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
             {/* 덱 카드 목록 */}
             <div className="overflow-y-auto divide-y divide-slate-100 dark:divide-slate-700 flex-1">
               {deck.length === 0 && (
-                <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">카드를 추가해보세요</div>
+                <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">{t.deck.addCards}</div>
               )}
               {deck.map(({ card, count }) => {
                 const tc = typeColor(card.타입);
@@ -1244,14 +1411,14 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                   <div key={card.ID} className="flex items-center gap-2 px-4 py-3">
                     <button
                       onClick={() => removeCard(card.ID)}
-                      title="클릭하면 1장 제거"
+                      title={t.deck.clickToRemove}
                       className="flex items-center gap-2 flex-1 min-w-0 text-left hover:bg-slate-50 dark:hover:bg-slate-700/40 rounded transition-colors"
                     >
                       <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
                       <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
                       <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
                     </button>
-                    <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title="포켓몬명 복사" className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-sm transition-colors">⧉</button>
+                    <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title={t.deck.copyName} className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-sm transition-colors">⧉</button>
                     <button onClick={() => removeAll(card.ID)} className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm transition-colors">✕</button>
                   </div>
                 );
@@ -1279,7 +1446,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 <button
                   onClick={() => downloadDeckImage(deck)}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors"
-                >이미지 다운로드</button>
+                >{t.deck.imageDownload}</button>
                 <button
                   onClick={() => setShowDeckImage(false)}
                   className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 dark:text-slate-500 text-sm transition-colors"
@@ -1310,12 +1477,12 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowSaveModal(false)}>
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-sm flex flex-col gap-4 p-5" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <span className="text-base font-bold text-slate-800 dark:text-slate-100">덱 저장</span>
+              <span className="text-base font-bold text-slate-800 dark:text-slate-100">{t.deck.saveDeckTitle}</span>
               <button onClick={() => setShowSaveModal(false)} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 text-sm transition-colors">✕</button>
             </div>
             <input
               type="text"
-              placeholder="덱 이름 입력..."
+              placeholder={t.deck.namePlaceholder}
               value={deckName}
               onChange={e => setDeckName(e.target.value)}
               onKeyDown={e => { if (e.key === "Enter" && deckName.trim()) handleConfirmSave(!currentDeckId); }}
@@ -1329,13 +1496,13 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                   onClick={() => handleConfirmSave(false)}
                   disabled={savingDeck || !deckName.trim()}
                   className="px-4 py-2 rounded-lg text-sm font-medium border border-green-200 dark:border-green-800 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/30 disabled:opacity-40 transition-colors"
-                >업데이트</button>
+                >{t.deck.update}</button>
               )}
               <button
                 onClick={() => handleConfirmSave(true)}
                 disabled={savingDeck || !deckName.trim()}
                 className="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-500 hover:bg-indigo-600 text-white disabled:opacity-40 transition-colors"
-              >{currentDeckId ? "새로 저장" : "저장"}</button>
+              >{currentDeckId ? t.deck.saveNew : t.deck.save}</button>
             </div>
           </div>
         </div>
@@ -1346,15 +1513,15 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowLoadModal(false)}>
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-sm flex flex-col gap-3 p-5 max-h-[80vh]" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <span className="text-base font-bold text-slate-800 dark:text-slate-100">저장된 덱
+              <span className="text-base font-bold text-slate-800 dark:text-slate-100">{t.deck.savedDecksTitle}
                 <span className="ml-2 text-sm font-normal text-slate-400 dark:text-slate-500">{savedDecks.length} / {MAX_DECKS}</span>
               </span>
               <button onClick={() => setShowLoadModal(false)} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 text-sm transition-colors">✕</button>
             </div>
             {loadingDecks ? (
-              <div className="text-center py-8 text-slate-400 text-sm">불러오는 중...</div>
+              <div className="text-center py-8 text-slate-400 text-sm">{t.deck.loading}</div>
             ) : savedDecks.length === 0 ? (
-              <div className="text-center py-8 text-slate-400 text-sm">저장된 덱이 없습니다.</div>
+              <div className="text-center py-8 text-slate-400 text-sm">{t.deck.noDecks}</div>
             ) : (
               <div className="overflow-y-auto flex flex-col divide-y divide-slate-100 dark:divide-slate-700">
                 {savedDecks.map(saved => (
@@ -1366,7 +1533,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     <button
                       onClick={() => handleLoadDeck(saved)}
                       className="shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors"
-                    >불러오기</button>
+                    >{t.deck.load}</button>
                     <button
                       onClick={() => handleDeleteSavedDeck(saved.id)}
                       className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-xs transition-colors"

@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { type PokemonCard, getCardImageSrc } from "../data/cards";
+import { useLanguage } from "../i18n/context";
 
 const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   풀: { bg: "bg-green-100", text: "text-green-800", border: "border-green-300" },
@@ -26,23 +27,6 @@ const EVOLUTION_COLORS: Record<string, string> = {
 
 
 
-const COLUMNS: { key: keyof PokemonCard; label: string; width: string }[] = [
-  { key: "타입", label: "타입", width: "w-16" },
-  { key: "이름", label: "이름", width: "w-24" },
-  { key: "진화", label: "진화", width: "w-16" },
-  { key: "HP", label: "HP", width: "w-14" },
-  { key: "기술명", label: "기술명", width: "w-28" },
-  { key: "기술추가효과", label: "효과", width: "w-56" },
-  { key: "필요에너지", label: "기술에너지", width: "w-24" },
-  { key: "피해량", label: "피해", width: "w-14" },
-  { key: "후퇴에너지", label: "후퇴에너지", width: "w-14" },
-  { key: "특성", label: "특성", width: "w-24" },
-  { key: "약점", label: "약점", width: "w-16" },
-  { key: "관련서포터", label: "관련서포터", width: "w-28" },
-  { key: "키워드", label: "키워드", width: "w-16" },
-  { key: "확장팩", label: "확장팩", width: "w-32" },
-];
-
 const EVOLUTION_ORDER = ["기본", "1진화", "2진화"];
 const PAGE_SIZE = 50;
 
@@ -59,6 +43,25 @@ function countEnergy(energy: string | undefined): number {
 type SortDir = "asc" | "desc" | null;
 
 export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
+  const { t } = useLanguage();
+
+  const COLUMNS: { key: keyof PokemonCard; label: string; width: string }[] = [
+    { key: "타입", label: t.card.type, width: "w-16" },
+    { key: "이름", label: t.card.name, width: "w-24" },
+    { key: "진화", label: t.card.evolutionLabel, width: "w-16" },
+    { key: "HP", label: "HP", width: "w-14" },
+    { key: "기술명", label: t.card.skillName, width: "w-28" },
+    { key: "기술추가효과", label: t.card.effect, width: "w-56" },
+    { key: "필요에너지", label: t.filter.skillEnergy, width: "w-24" },
+    { key: "피해량", label: t.card.damage, width: "w-14" },
+    { key: "후퇴에너지", label: t.filter.retreatEnergy, width: "w-14" },
+    { key: "특성", label: t.card.ability, width: "w-24" },
+    { key: "약점", label: t.card.weakness, width: "w-16" },
+    { key: "관련서포터", label: t.card.relatedSupporters, width: "w-28" },
+    { key: "키워드", label: t.card.keyword, width: "w-16" },
+    { key: "확장팩", label: t.card.expansion, width: "w-32" },
+  ];
+
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   useEffect(() => {
@@ -234,15 +237,15 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
-            포켓몬 포켓 카드 리스트
+            {t.app.cardListTitle}
           </h1>
           <div className="flex items-center gap-2">
           </div>
         </div>
         <p className="text-sm text-slate-500 dark:text-slate-400">
-          총 <span className="font-semibold text-slate-700 dark:text-slate-200">{filtered.length}</span>장 / {cards.length}장
+          {t.search.total(filtered.length, cards.length)}
           {totalPages > 1 && (
-            <span className="ml-2 text-slate-400 dark:text-slate-500">(페이지 {page} / {totalPages})</span>
+            <span className="ml-2 text-slate-400 dark:text-slate-500">({t.search.pageOf(page, totalPages)})</span>
           )}
         </p>
       </div>
@@ -254,7 +257,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
         </span>
         <input
           type="text"
-          placeholder="이름, 기술명, 키워드 등으로 검색..."
+          placeholder={t.search.placeholder}
           value={search}
           onChange={(e) => { setSearch(e.target.value); resetPage(); }}
           className="w-full pl-9 pr-3 py-2 text-sm text-slate-900 dark:text-slate-100 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 placeholder:text-slate-400 dark:placeholder:text-slate-500"
@@ -274,8 +277,8 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
         {/* 기본 필터 행 */}
         <div className="flex flex-wrap items-center gap-4">
           {([
-              { group: "타입", label: "포켓몬 타입", options: filterOptions.포켓몬타입 },
-              { group: "진화", label: "진화단계", options: filterOptions.진화 },
+              { group: "타입", label: t.filter.pokemonType, options: filterOptions.포켓몬타입 },
+              { group: "진화", label: t.filter.evolutionStage, options: filterOptions.진화 },
             ] as { group: "타입" | "진화" | "후퇴에너지"; label: string; options: string[] }[]
           ).map(({ group, label, options }) => (
             <div key={group} className="flex items-center gap-2 flex-wrap">
@@ -299,7 +302,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                       onClick={() => toggleFilter(group, opt)}
                       className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${colorCls}`}
                     >
-                      {group === "후퇴에너지" ? `${opt}개` : opt}
+                      {group === "후퇴에너지" ? t.filter.energyCount(Number(opt)) : (group === "타입" ? (t.pokemonType[opt] ?? opt) : (t.evolution[opt] ?? opt))}
                     </button>
                   );
                 })}
@@ -309,7 +312,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
 
           {filterOptions.트레이너스타입.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">트레이너스</span>
+              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.trainers}</span>
               <div className="flex gap-1 flex-wrap">
                 {filterOptions.트레이너스타입.map((opt) => {
                   const active = filters.타입.includes(opt);
@@ -332,7 +335,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
           {/* 기술에너지 개수 필터 */}
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-              기술에너지
+              {t.filter.skillEnergy}
             </span>
             <div className="flex gap-1">
               {[0, 1, 2, 3, 4, 5].map((n) => {
@@ -347,7 +350,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                         : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
                     }`}
                   >
-                    {n}개
+                    {t.filter.energyCount(n)}
                   </button>
                 );
               })}
@@ -357,7 +360,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
           {/* 후퇴에너지 필터 */}
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-              후퇴에너지
+              {t.filter.retreatEnergy}
             </span>
             <div className="flex gap-1 flex-wrap">
               {filterOptions.후퇴에너지.map((opt) => {
@@ -372,7 +375,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                         : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
                     }`}
                   >
-                    {opt}개
+                    {t.filter.energyCount(Number(opt))}
                   </button>
                 );
               })}
@@ -381,13 +384,13 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
 
           {/* 확장팩 필터 (셀렉트박스) */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">확장팩</span>
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.expansion}</span>
             <select
               value={filters.확장팩[0] ?? ""}
               onChange={(e) => { setFilters((prev) => ({ ...prev, 확장팩: e.target.value ? [e.target.value] : [] })); resetPage(); }}
               className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
             >
-              <option value="">전체</option>
+              <option value="">{t.filter.all}</option>
               {filterOptions.확장팩.map((opt) => (
                 <option key={opt} value={opt}>{opt}</option>
               ))}
@@ -397,7 +400,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
           {/* 상세필터 토글 버튼 */}
           <div className="ml-auto flex items-center gap-2">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs text-slate-500 dark:text-slate-400">페이지당</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">{t.filter.perPage}</span>
               <select
                 value={pageSize}
                 onChange={(e) => { setPageSize(Number(e.target.value)); resetPage(); }}
@@ -416,7 +419,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                   : "bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
               }`}
             >
-              상세 필터
+              {t.filter.detailFilter}
               <span className="text-[10px]">{showAdvanced ? "▲" : "▼"}</span>
             </button>
           </div>
@@ -427,7 +430,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
           <div className="flex flex-col gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
             {/* 카드타입 / 특성 */}
             <div className="flex items-start gap-3">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">카드타입</span>
+              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">{t.filter.cardType}</span>
               <div className="flex items-center gap-1 flex-wrap">
               <button
                 onClick={() => { setFilterCardTypes((prev) => prev.includes("ex") ? prev.filter((v) => v !== "ex") : [...prev, "ex"]); resetPage(); }}
@@ -444,7 +447,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                     ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
                     : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
                 }`}
-              >메가ex</button>
+              >{t.cardTypeLabel.megaEx}</button>
               <button
                 onClick={() => { setFilterCardTypes((prev) => prev.includes("베이비") ? prev.filter((v) => v !== "베이비") : [...prev, "베이비"]); resetPage(); }}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
@@ -452,7 +455,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                     ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border-sky-300 dark:border-sky-700"
                     : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
                 }`}
-              >베이비</button>
+              >{t.cardTypeLabel.baby}</button>
               <button
                 onClick={() => { setFilterCardTypes((prev) => prev.includes("울트라비스트") ? prev.filter((v) => v !== "울트라비스트") : [...prev, "울트라비스트"]); resetPage(); }}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
@@ -460,7 +463,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                     ? "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border-teal-300 dark:border-teal-700"
                     : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
                 }`}
-              >울트라비스트</button>
+              >{t.cardTypeLabel.ultraBeast}</button>
               <button
                 onClick={() => { setFilterSpecial((v) => !v); resetPage(); }}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
@@ -468,7 +471,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                     ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700"
                     : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
                 }`}
-              >특성있음</button>
+              >{t.filter.hasAbility}</button>
               <button
                 onClick={() => { setFilterColorless((v) => !v); resetPage(); }}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
@@ -476,7 +479,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                     ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500"
                     : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
                 }`}
-              >무색기술있음</button>
+              >{t.filter.hasColorlessSkillShort}</button>
               </div>
             </div>
 
@@ -502,18 +505,18 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               const 기술동전키워드 = take((k) => /기술 계승|기술 복사|서포트 복사|연속 기술|차례 종료|동전 확정|HP 조건 실패|추가 포인트/.test(k));
               const 기타키워드 = take(() => true);
               const kwGroups = [
-                { label: "상태 이상", options: 상태이상키워드 },
-                { label: "방어/면역", options: 방어면역키워드 },
-                { label: "추가 피해", options: 추가피해키워드 },
-                { label: "피해/공격", options: 피해키워드 },
-                { label: "에너지 관련", options: 에너지키워드 },
-                { label: "회복 관련", options: 회복키워드 },
-                { label: "교체/이동", options: 교체이동키워드 },
-                { label: "덱·패 조작", options: 덱패조작키워드 },
-                { label: "방해/차단", options: 방해차단키워드 },
-                { label: "진화 관련", options: 진화키워드 },
-                { label: "기술/동전", options: 기술동전키워드 },
-                { label: "기타", options: 기타키워드 },
+                { label: t.filter.keywordGroups.abnormal, options: 상태이상키워드 },
+                { label: t.filter.keywordGroups.defense, options: 방어면역키워드 },
+                { label: t.filter.keywordGroups.bonusDamage, options: 추가피해키워드 },
+                { label: t.filter.keywordGroups.damage, options: 피해키워드 },
+                { label: t.filter.keywordGroups.energy, options: 에너지키워드 },
+                { label: t.filter.keywordGroups.recovery, options: 회복키워드 },
+                { label: t.filter.keywordGroups.swap, options: 교체이동키워드 },
+                { label: t.filter.keywordGroups.deckHand, options: 덱패조작키워드 },
+                { label: t.filter.keywordGroups.disrupt, options: 방해차단키워드 },
+                { label: t.filter.keywordGroups.evolution, options: 진화키워드 },
+                { label: t.filter.keywordGroups.skillCoin, options: 기술동전키워드 },
+                { label: t.filter.keywordGroups.other, options: 기타키워드 },
               ].filter((g) => g.options.length > 0);
 
               return kwGroups.map(({ label, options }) => (
@@ -552,7 +555,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               onClick={() => { setFilters({ 타입: [], 진화: [], 키워드: [], 확장팩: [], 후퇴에너지: [] }); setFilterCardTypes([]); setFilterSpecial(false); setFilterColorless(false); setFilterSkillEnergy([]); resetPage(); }}
               className="px-2.5 py-1 rounded-full text-xs font-medium text-red-500 dark:text-red-400 border border-red-200 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
             >
-              초기화
+              {t.filter.clear}
             </button>
           </div>
         ) : null}
@@ -562,7 +565,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       <div className="block md:hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800 divide-y divide-slate-100 dark:divide-slate-700">
         {paginated.length === 0 && (
           <div className="text-center py-12 text-slate-400 dark:text-slate-500 text-sm">
-            검색 결과가 없습니다.
+            {t.search.noResults}
           </div>
         )}
         {paginated.map((card) => {
@@ -593,7 +596,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                 onClick={() => setMobileDetail(card)}
                 className="shrink-0 px-2.5 py-1 rounded-lg text-xs font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-100 dark:hover:bg-indigo-800/40 transition-colors"
               >
-                상세보기
+                {t.deck.showDetail}
               </button>
             </div>
           );
@@ -626,7 +629,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                   colSpan={COLUMNS.length}
                   className="text-center py-12 text-slate-400 dark:text-slate-500 text-sm"
                 >
-                  검색 결과가 없습니다.
+                  {t.search.noResults}
                 </td>
               </tr>
             )}
@@ -923,11 +926,11 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               </div>
               <div className="grid grid-cols-3 gap-2">
                 <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
-                  <span className="text-xs text-slate-400">타입</span>
+                  <span className="text-xs text-slate-400">{t.card.type}</span>
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${typeColor(mobileDetail.타입).bg} ${typeColor(mobileDetail.타입).text} ${typeColor(mobileDetail.타입).border}`}>{mobileDetail.타입}</span>
                 </div>
                 <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
-                  <span className="text-xs text-slate-400">진화</span>
+                  <span className="text-xs text-slate-400">{t.card.evolutionLabel}</span>
                   <span className={`px-2 py-0.5 rounded text-xs font-medium ${EVOLUTION_COLORS[mobileDetail.진화] ?? "bg-gray-100 text-gray-600"}`}>{mobileDetail.진화}</span>
                 </div>
                 <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
@@ -937,7 +940,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               </div>
               {mobileDetail.특성 && (
                 <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3 flex flex-col gap-1">
-                  <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">특성: {mobileDetail.특성}</span>
+                  <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">{t.card.ability}: {mobileDetail.특성}</span>
                   {mobileDetail.특성효과 && mobileDetail.특성효과 !== "-" && (
                     <p className="text-xs text-slate-600 dark:text-slate-300">{mobileDetail.특성효과}</p>
                   )}
@@ -971,7 +974,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               )}
               <div className="grid grid-cols-2 gap-2">
                 <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2 flex flex-col gap-1">
-                  <span className="text-xs text-slate-400">후퇴에너지</span>
+                  <span className="text-xs text-slate-400">{t.card.retreatEnergyLabel}</span>
                   <span className="flex gap-0.5 flex-wrap">
                     {Array.from({ length: mobileDetail.후퇴에너지 }).map((_, i) => (
                       <img key={i} src="/energy/colorless.png" alt="무색" className="inline-block w-3.5 h-3.5" />
@@ -980,7 +983,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                   </span>
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2 flex flex-col gap-1">
-                  <span className="text-xs text-slate-400">약점</span>
+                  <span className="text-xs text-slate-400">{t.card.weakness}</span>
                   {mobileDetail.약점 ? (
                     <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-medium w-fit ${typeColor(mobileDetail.약점).bg} ${typeColor(mobileDetail.약점).text}`}>{mobileDetail.약점}</span>
                   ) : (
@@ -989,12 +992,12 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                 </div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
-                <span className="text-xs text-slate-400">확장팩: </span>
+                <span className="text-xs text-slate-400">{t.card.expansion}: </span>
                 <span className="text-xs text-slate-600 dark:text-slate-300">{mobileDetail.확장팩}</span>
               </div>
               {mobileDetail.키워드 && (
                 <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 flex flex-col gap-2">
-                  <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">키워드</span>
+                  <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">{t.card.keyword}</span>
                   <div className="flex flex-wrap gap-1">
                     {mobileDetail.키워드.split(",").map((k) => k.trim()).filter(Boolean).map((kw) => (
                       <span key={kw} className="text-xs text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-700/50 rounded px-2 py-0.5 border border-indigo-200 dark:border-indigo-700">{kw}</span>
@@ -1023,7 +1026,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             disabled={page === 1}
             className="px-3 py-1 rounded text-xs border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            이전
+            {t.pagination.prev}
           </button>
           <div className="flex gap-1">
             {Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -1056,7 +1059,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             disabled={page === totalPages}
             className="px-3 py-1 rounded text-xs border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            다음
+            {t.pagination.next}
           </button>
           <button
             onClick={() => setPage(totalPages)}
@@ -1069,7 +1072,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       )}
 
       <p className="text-xs text-slate-400 dark:text-slate-500 text-center mt-2">
-        * 데이터는 실제 게임과 다를 수 있습니다. 중복된 카드는 제외하였습니다.
+        {t.misc.disclaimer}
       </p>
     </div>
   );
@@ -1169,9 +1172,10 @@ function EnergyPips({ energy }: { energy: string }) {
 
 function CardImage({ id, name }: { id: number; name: string }) {
   const [missing, setMissing] = useState(false);
+  const { t } = useLanguage();
   return missing ? (
     <div className="w-full aspect-[3/4] flex items-center justify-center rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50">
-      <span className="text-sm text-slate-400 dark:text-slate-500">준비중입니다</span>
+      <span className="text-sm text-slate-400 dark:text-slate-500">{t.card.preparing}</span>
     </div>
   ) : (
     // eslint-disable-next-line @next/next/no-img-element
@@ -1188,6 +1192,7 @@ function KeywordBadge({ keywords }: { keywords: string }) {
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const { t } = useLanguage();
   const kwList = keywords.split(",").map((k) => k.trim()).filter(Boolean);
 
   const handleClick = () => {
@@ -1211,7 +1216,7 @@ function KeywordBadge({ keywords }: { keywords: string }) {
         onClick={handleClick}
         className="px-2 py-0.5 rounded text-[11px] font-medium border border-indigo-200 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800/40 transition-colors cursor-pointer"
       >
-        보기
+        {t.card.viewKeywords}
       </button>
       {open && pos && typeof window !== "undefined" && createPortal(
         <>
@@ -1220,7 +1225,7 @@ function KeywordBadge({ keywords }: { keywords: string }) {
             style={{ top: pos.top, left: pos.left }}
             className="fixed z-50 w-52 rounded-lg shadow-lg border border-indigo-200 dark:border-indigo-700 bg-white dark:bg-slate-800 p-3"
           >
-            <p className="text-xs font-semibold text-indigo-700 dark:text-indigo-400 mb-2">키워드</p>
+            <p className="text-xs font-semibold text-indigo-700 dark:text-indigo-400 mb-2">{t.card.keyword}</p>
             <div className="flex flex-col gap-1">
               {kwList.map((kw) => (
                 <span key={kw} className="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-700/50 rounded px-2 py-0.5">
