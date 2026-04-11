@@ -997,7 +997,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 <button onClick={() => setShowAdvanced((v) => !v)}
                   className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${showAdvanced ? "bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
                 >
-                  🔍 {t.filter.detailFilter} <span className="text-[10px]">{showAdvanced ? "▲" : "▼"}</span>
+                  {t.filter.detailFilter} <span className="text-[10px]">{showAdvanced ? "▲" : "▼"}</span>
                 </button>
               </div>
             </div>
