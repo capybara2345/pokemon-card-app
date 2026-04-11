@@ -73,6 +73,15 @@ export default function RootLayout({
         <LangProvider>
           <NavHeader />
           {children}
+          <footer className="mt-auto border-t border-slate-200 dark:border-slate-700 py-4 text-center text-xs text-slate-400 dark:text-slate-500">
+            광고 및 문의:{" "}
+            <a
+              href="mailto:kkojimo20@gmail.com"
+              className="hover:text-slate-600 dark:hover:text-slate-300 underline underline-offset-2"
+            >
+              kkojimo20@gmail.com
+            </a>
+          </footer>
         </LangProvider>
       </body>
     </html>

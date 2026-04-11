@@ -241,7 +241,7 @@ export const ko: Translations = {
     next: "다음",
   },
   misc: {
-    disclaimer: "* 데이터는 실제 게임과 다를 수 있습니다. 중복된 카드는 제외하였습니다.",
+    disclaimer: "* 중복된 카드는 제외하였습니다.",
   },
   deck: {
     title: "나의 덱",
