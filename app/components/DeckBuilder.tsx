@@ -407,7 +407,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         card.기술추가효과2 ?? "",
         card.특성효과 ?? "",
       ].join(" ");
-      return deckNames.some((name) => effectTexts.includes(name));
+      return deckNames.some((name) => effectTexts.includes(`「${name}」`));
     }).slice(0, 20);
   }, [cards, deck, deckNameMap, favoriteIds]);
 
