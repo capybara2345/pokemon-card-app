@@ -124,6 +124,11 @@ export type Translations = {
     shareShort: string;
     shareCopied: string;
     shareLoaded: string;
+    memo: string;
+    memoPlaceholder: string;
+    copyDeck: string;
+    copyOf: string;
+    undo: string;
     columns: {
       qty: string;
       name: string;
@@ -281,6 +286,11 @@ export const ko: Translations = {
     shareShort: "공유",
     shareCopied: "덱 링크가 복사되었습니다!",
     shareLoaded: "공유된 덱을 불러왔습니다.",
+    memo: "메모",
+    memoPlaceholder: "전략 메모, 교체 후보 카드, 플레이 팁 등...",
+    copyDeck: "복사본으로 새 덱 만들기",
+    copyOf: "복사본 - ",
+    undo: "실행 취소",
     columns: {
       qty: "수량",
       name: "이름",
@@ -438,6 +448,11 @@ export const en: Translations = {
     shareShort: "Share",
     shareCopied: "Deck link copied!",
     shareLoaded: "Shared deck loaded.",
+    memo: "Memo",
+    memoPlaceholder: "Strategy notes, alt cards, tips...",
+    copyDeck: "Copy as New Deck",
+    copyOf: "Copy of ",
+    undo: "Undo",
     columns: {
       qty: "Qty",
       name: "Name",

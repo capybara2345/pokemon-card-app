@@ -19,6 +19,7 @@ export type SavedDeck = {
   name: string;
   cards: DeckCard[];
   cardCount: number;
+  memo?: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -32,7 +33,8 @@ export const MAX_DECKS = 10;
 export async function saveDeckToFirestore(
   userEmail: string,
   name: string,
-  cards: DeckCard[]
+  cards: DeckCard[],
+  memo?: string
 ): Promise<string> {
   const existing = await getDocs(decksCol(userEmail));
   if (existing.size >= MAX_DECKS) {
@@ -43,6 +45,7 @@ export async function saveDeckToFirestore(
     name,
     cards,
     cardCount: cards.reduce((s, c) => s + c.count, 0),
+    memo: memo ?? "",
     createdAt: now,
     updatedAt: now,
   });
@@ -53,12 +56,25 @@ export async function updateDeckInFirestore(
   userEmail: string,
   deckId: string,
   name: string,
-  cards: DeckCard[]
+  cards: DeckCard[],
+  memo?: string
 ): Promise<void> {
   await updateDoc(doc(db, `users/${userEmail}/decks/${deckId}`), {
     name,
     cards,
     cardCount: cards.reduce((s, c) => s + c.count, 0),
+    memo: memo ?? "",
+    updatedAt: new Date().toISOString(),
+  });
+}
+
+export async function updateDeckMemoInFirestore(
+  userEmail: string,
+  deckId: string,
+  memo: string
+): Promise<void> {
+  await updateDoc(doc(db, `users/${userEmail}/decks/${deckId}`), {
+    memo,
     updatedAt: new Date().toISOString(),
   });
 }
