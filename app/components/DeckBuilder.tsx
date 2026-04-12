@@ -124,7 +124,7 @@ function EnergyPips({ energy }: { energy: string }) {
       {pips.map((pip, i) => {
         const imgSrc = getEnergyImageSrc(pip.type);
         return imgSrc ? (
-          <img key={i} src={imgSrc} alt={pip.type} title={pip.type} className="inline-block w-4 h-4 object-contain" />
+          <img key={i} src={imgSrc} alt={pip.type} title={pip.type} className="inline-block w-3.5 h-3.5 object-contain" />
         ) : (
           <span key={i} title={pip.type} className={`inline-block w-3 h-3 rounded-full border ${pip.colorClass}`} />
         );
@@ -421,7 +421,10 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         c.키워드 && filters.키워드.some((kw) => c.키워드.split(",").map((k) => k.trim()).includes(kw))
       );
     if (filters.확장팩.length) result = result.filter((c) => filters.확장팩.includes(c.확장팩));
-    if (filters.후퇴에너지.length) result = result.filter((c) => filters.후퇴에너지.includes(String(c.후퇴에너지)));
+    if (filters.후퇴에너지.length) result = result.filter((c) => {
+      if (filters.후퇴에너지.includes("0") && !POKEMON_TYPES.includes(c.타입)) return false;
+      return filters.후퇴에너지.includes(String(c.후퇴에너지));
+    });
     if (filterCardTypes.length)
       result = result.filter((c) =>
         filterCardTypes.some((ct) =>
@@ -441,6 +444,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
     }
     if (filterSkillEnergy.length) {
       result = result.filter((c) => {
+        if (filterSkillEnergy.includes(0) && !POKEMON_TYPES.includes(c.타입)) return false;
         const ec = energyCounts.get(c.ID);
         if (!ec) return false;
         return filterSkillEnergy.includes(ec.e1) || (ec.e2 >= 0 && filterSkillEnergy.includes(ec.e2));
@@ -939,7 +943,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                       )}
                     </div>
                     {card.기술추가효과 && card.기술추가효과 !== "-" && (
-                      <p className="text-[10px] text-slate-400 dark:text-slate-300 pl-1">{renderEffectLines(card.기술추가효과, "text-[10px] text-slate-400 dark:text-slate-300")}</p>
+                      <p className="text-[10px] text-slate-400 dark:text-slate-300">{renderEffectLines(card.기술추가효과, "text-[10px] text-slate-400 dark:text-slate-300")}</p>
                     )}
                   </div>
                 )}
@@ -953,7 +957,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                       )}
                     </div>
                     {card.기술추가효과2 && card.기술추가효과2 !== "-" && (
-                      <p className="text-[10px] text-slate-400 dark:text-slate-300 pl-1">{renderEffectLines(card.기술추가효과2, "text-[10px] text-slate-400 dark:text-slate-300")}</p>
+                      <p className="text-[10px] text-slate-400 dark:text-slate-300">{renderEffectLines(card.기술추가효과2, "text-[10px] text-slate-400 dark:text-slate-300")}</p>
                     )}
                   </div>
                 )}
@@ -1105,33 +1109,51 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                   </div>
                 </div>
 
+              {/* 카드타입 (ex / 메가ex) */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.skillEnergy}</span>
-                <div className="flex gap-1">
-                  {[0, 1, 2, 3, 4, 5].map((n) => {
-                    const active = filterSkillEnergy.includes(n);
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.cardType}</span>
+                <div className="flex items-center gap-1 flex-wrap">
+                  {(["ex", "메가ex"] as const).map((ct) => {
+                    const active = filterCardTypes.includes(ct);
+                    const activeCls =
+                      ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
+                      : "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700";
                     return (
-                      <button key={n} onClick={() => setFilterSkillEnergy((prev) => prev.includes(n) ? prev.filter((v) => v !== n) : [...prev, n])}
-                        className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{t.filter.energyCount(n)}</button>
+                      <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
+                        className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                      >{ct === "메가ex" ? t.cardTypeLabel.megaEx : ct}</button>
                     );
                   })}
                 </div>
               </div>
 
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.skillEnergy}</span>
+                <select
+                  value={filterSkillEnergy[0] !== undefined ? String(filterSkillEnergy[0]) : ""}
+                  onChange={(e) => setFilterSkillEnergy(e.target.value !== "" ? [Number(e.target.value)] : [])}
+                  className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+                >
+                  <option value="">{t.filter.all}</option>
+                  {[0, 1, 2, 3, 4, 5].map((n) => (
+                    <option key={n} value={n}>{t.filter.energyCount(n)}</option>
+                  ))}
+                </select>
+              </div>
+
               {/* 후퇴에너지 */}
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.retreatEnergy}</span>
-                <div className="flex gap-1 flex-wrap">
-                  {filterOptions.후퇴에너지.map((opt) => {
-                    const active = filters.후퇴에너지.includes(opt);
-                    return (
-                      <button key={opt} onClick={() => toggleFilter("후퇴에너지", opt)}
-                        className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{t.filter.energyCount(Number(opt))}</button>
-                    );
-                  })}
-                </div>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.retreatEnergy}</span>
+                <select
+                  value={filters.후퇴에너지[0] ?? ""}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, 후퇴에너지: e.target.value ? [e.target.value] : [] }))}
+                  className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+                >
+                  <option value="">{t.filter.all}</option>
+                  {filterOptions.후퇴에너지.map((opt) => (
+                    <option key={opt} value={opt}>{t.filter.energyCount(Number(opt))}</option>
+                  ))}
+                </select>
               </div>
 
               {/* 확장팩 필터 (셀렉트박스) */}
@@ -1149,7 +1171,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 </select>
               </div>
 
-              {/* 상세필터 토글 */}
+              {/* 상세필터 토글 (키워드) */}
               <div className="ml-auto">
                 <button onClick={() => setShowAdvanced((v) => !v)}
                   className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${showAdvanced ? "bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
@@ -1162,29 +1184,27 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
             {/* 상세 필터 패널 */}
             {showAdvanced && (
               <div className="flex flex-col gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                {/* 카드타입 / 특성 */}
-                <div className="flex items-start gap-3">
-                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">{t.filter.cardType}</span>
+                {/* 카드타입 (베이비 / 울트라비스트 / 특성 / 무색기술) */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.cardType}</span>
                   <div className="flex items-center gap-1 flex-wrap">
-                  {(["ex", "메가ex", "베이비", "울트라비스트"] as const).map((ct) => {
-                    const active = filterCardTypes.includes(ct);
-                    const activeCls =
-                      ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
-                      : ct === "메가ex" ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
-                      : ct === "베이비" ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border-sky-300 dark:border-sky-700"
-                      : "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border-teal-300 dark:border-teal-700";
-                    return (
-                      <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
-                        className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{ct === "메가ex" ? t.cardTypeLabel.megaEx : ct === "베이비" ? t.cardTypeLabel.baby : ct === "울트라비스트" ? t.cardTypeLabel.ultraBeast : ct}</button>
-                    );
-                  })}
-                  <button onClick={() => setFilterSpecial((v) => !v)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterSpecial ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700" : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                  >{t.filter.hasAbility}</button>
-                  <button onClick={() => setFilterColorless((v) => !v)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterColorless ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500" : "bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                  >{t.filter.hasColorlessSkill}</button>
+                    {(["베이비", "울트라비스트"] as const).map((ct) => {
+                      const active = filterCardTypes.includes(ct);
+                      const activeCls =
+                        ct === "베이비" ? "bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border-sky-300 dark:border-sky-700"
+                        : "bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border-teal-300 dark:border-teal-700";
+                      return (
+                        <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
+                          className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                        >{ct === "베이비" ? t.cardTypeLabel.baby : t.cardTypeLabel.ultraBeast}</button>
+                      );
+                    })}
+                    <button onClick={() => setFilterSpecial((v) => !v)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterSpecial ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700" : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                    >{t.filter.hasAbility}</button>
+                    <button onClick={() => setFilterColorless((v) => !v)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterColorless ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-500" : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                    >{t.filter.hasColorlessSkillShort}</button>
                   </div>
                 </div>
                 {(() => {

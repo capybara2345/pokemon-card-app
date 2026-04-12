@@ -144,6 +144,15 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     };
   }, [cards]);
 
+  // 확장팩별 전체 카드 수
+  const expansionCardCount = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const c of cards) {
+      if (c.확장팩) map.set(c.확장팩, (map.get(c.확장팩) ?? 0) + 1);
+    }
+    return map;
+  }, [cards]);
+
   // 카드 ID별 기술에너지 수 사전 계산 (필터용)
   const energyCounts = useMemo(() => {
     const map = new Map<number, { e1: number; e2: number }>();
@@ -181,7 +190,10 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     if (filters.확장팩.length)
       result = result.filter((c) => filters.확장팩.includes(c.확장팩));
     if (filters.후퇴에너지.length)
-      result = result.filter((c) => filters.후퇴에너지.includes(String(c.후퇴에너지)));
+      result = result.filter((c) => {
+        if (filters.후퇴에너지.includes("0") && !POKEMON_TYPES.includes(c.타입)) return false;
+        return filters.후퇴에너지.includes(String(c.후퇴에너지));
+      });
     if (filterCardTypes.length)
       result = result.filter((c) => filterCardTypes.some((ct) => c.카드타입?.split(",").map((v) => v.trim().toLowerCase()).includes(ct.toLowerCase())));
     if (filterSpecial)
@@ -197,6 +209,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     }
     if (filterSkillEnergy.length) {
       result = result.filter((c) => {
+        if (filterSkillEnergy.includes(0) && !POKEMON_TYPES.includes(c.타입)) return false;
         const ec = energyCounts.get(c.ID);
         if (!ec) return false;
         return filterSkillEnergy.includes(ec.e1) || (ec.e2 >= 0 && filterSkillEnergy.includes(ec.e2));
@@ -276,40 +289,23 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       <div className="flex flex-col gap-3">
         {/* 기본 필터 행 */}
         <div className="flex flex-wrap items-center gap-4">
-          {([
-              { group: "타입", label: t.filter.pokemonType, options: filterOptions.포켓몬타입 },
-              { group: "진화", label: t.filter.evolutionStage, options: filterOptions.진화 },
-            ] as { group: "타입" | "진화" | "후퇴에너지"; label: string; options: string[] }[]
-          ).map(({ group, label, options }) => (
-            <div key={group} className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                {label}
-              </span>
-              <div className="flex gap-1 flex-wrap">
-                {options.map((opt) => {
-                  const active = filters[group].includes(opt);
-                  const colorCls =
-                    group === "타입"
-                      ? active
-                        ? `${typeColor(opt).bg} ${typeColor(opt).text} ${typeColor(opt).border} border`
-                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
-                      : active
-                      ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700"
-                      : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400";
-                  return (
-                    <button
-                      key={opt}
-                      onClick={() => toggleFilter(group, opt)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${colorCls}`}
-                    >
-                      {group === "후퇴에너지" ? t.filter.energyCount(Number(opt)) : (group === "타입" ? (t.pokemonType[opt] ?? opt) : (t.evolution[opt] ?? opt))}
-                    </button>
-                  );
-                })}
-              </div>
+          {/* 포켓몬 타입 */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.pokemonType}</span>
+            <div className="flex gap-1 flex-wrap">
+              {filterOptions.포켓몬타입.map((opt) => {
+                const active = filters.타입.includes(opt);
+                const tc = typeColor(opt);
+                return (
+                  <button key={opt} onClick={() => toggleFilter("타입", opt)}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${active ? `${tc.bg} ${tc.text} ${tc.border}` : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                  >{t.pokemonType[opt] ?? opt}</button>
+                );
+              })}
             </div>
-          ))}
+          </div>
 
+          {/* 트레이너스 타입 */}
           {filterOptions.트레이너스타입.length > 0 && (
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.trainers}</span>
@@ -332,54 +328,71 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             </div>
           )}
 
-          {/* 기술에너지 개수 필터 */}
+          {/* 진화단계 */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-              {t.filter.skillEnergy}
-            </span>
-            <div className="flex gap-1">
-              {[0, 1, 2, 3, 4, 5].map((n) => {
-                const active = filterSkillEnergy.includes(n);
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.filter.evolutionStage}</span>
+            <div className="flex gap-1 flex-wrap">
+              {filterOptions.진화.map((opt) => {
+                const active = filters.진화.includes(opt);
                 return (
-                  <button
-                    key={n}
-                    onClick={() => { setFilterSkillEnergy((prev) => prev.includes(n) ? prev.filter((v) => v !== n) : [...prev, n]); resetPage(); }}
-                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                      active
-                        ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700"
-                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
-                    }`}
-                  >
-                    {t.filter.energyCount(n)}
-                  </button>
+                  <button key={opt} onClick={() => toggleFilter("진화", opt)}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer border ${active ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border-indigo-300 dark:border-indigo-700" : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                  >{t.evolution[opt] ?? opt}</button>
                 );
               })}
             </div>
           </div>
 
-          {/* 후퇴에너지 필터 */}
+          {/* 카드타입 (ex / 메가ex) */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-              {t.filter.retreatEnergy}
-            </span>
-            <div className="flex gap-1 flex-wrap">
-              {filterOptions.후퇴에너지.map((opt) => {
-                const active = filters.후퇴에너지.includes(opt);
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.cardType}</span>
+            <div className="flex items-center gap-1 flex-wrap">
+              {(["ex", "메가ex"] as const).map((ct) => {
+                const active = filterCardTypes.includes(ct);
+                const activeCls =
+                  ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
+                  : "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700";
                 return (
-                  <button
-                    key={opt}
-                    onClick={() => toggleFilter("후퇴에너지", opt)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                      active
-                        ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700"
-                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
-                    }`}
-                  >
-                    {t.filter.energyCount(Number(opt))}
-                  </button>
+                  <button key={ct} onClick={() => { setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct]); resetPage(); }}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
+                  >{ct === "메가ex" ? t.cardTypeLabel.megaEx : ct}</button>
                 );
               })}
             </div>
+          </div>
+
+          {/* 기술에너지 개수 필터 */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">
+              {t.filter.skillEnergy}
+            </span>
+            <select
+              value={filterSkillEnergy[0] !== undefined ? String(filterSkillEnergy[0]) : ""}
+              onChange={(e) => { setFilterSkillEnergy(e.target.value !== "" ? [Number(e.target.value)] : []); resetPage(); }}
+              className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+            >
+              <option value="">{t.filter.all}</option>
+              {[0, 1, 2, 3, 4, 5].map((n) => (
+                <option key={n} value={n}>{t.filter.energyCount(n)}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 후퇴에너지 필터 */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">
+              {t.filter.retreatEnergy}
+            </span>
+            <select
+              value={filters.후퇴에너지[0] ?? ""}
+              onChange={(e) => { setFilters((prev) => ({ ...prev, 후퇴에너지: e.target.value ? [e.target.value] : [] })); resetPage(); }}
+              className="px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+            >
+              <option value="">{t.filter.all}</option>
+              {filterOptions.후퇴에너지.map((opt) => (
+                <option key={opt} value={opt}>{t.filter.energyCount(Number(opt))}</option>
+              ))}
+            </select>
           </div>
 
           {/* 확장팩 필터 (셀렉트박스) */}
@@ -392,7 +405,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             >
               <option value="">{t.filter.all}</option>
               {filterOptions.확장팩.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
+                <option key={opt} value={opt}>{opt} ({expansionCardCount.get(opt) ?? 0})</option>
               ))}
             </select>
           </div>
@@ -428,26 +441,10 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
         {/* 상세 필터 패널 */}
         {showAdvanced && (
           <div className="flex flex-col gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            {/* 카드타입 / 특성 */}
+            {/* 카드타입 / 특성 (베이비 / 울트라비스트 / 특성 / 무색기술) */}
             <div className="flex items-start gap-3">
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide pt-1 min-w-[48px] whitespace-nowrap">{t.filter.cardType}</span>
               <div className="flex items-center gap-1 flex-wrap">
-              <button
-                onClick={() => { setFilterCardTypes((prev) => prev.includes("ex") ? prev.filter((v) => v !== "ex") : [...prev, "ex"]); resetPage(); }}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
-                  filterCardTypes.includes("ex")
-                    ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
-                    : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
-                }`}
-              >ex</button>
-              <button
-                onClick={() => { setFilterCardTypes((prev) => prev.includes("메가ex") ? prev.filter((v) => v !== "메가ex") : [...prev, "메가ex"]); resetPage(); }}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
-                  filterCardTypes.includes("메가ex")
-                    ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
-                    : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
-                }`}
-              >{t.cardTypeLabel.megaEx}</button>
               <button
                 onClick={() => { setFilterCardTypes((prev) => prev.includes("베이비") ? prev.filter((v) => v !== "베이비") : [...prev, "베이비"]); resetPage(); }}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
