@@ -34,9 +34,21 @@ const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> 
   무색: { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" },
   강철: { bg: "bg-slate-200", text: "text-slate-700", border: "border-slate-400" },
   드래곤: { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-300" },
+  // EN aliases
+  Grass: { bg: "bg-green-100", text: "text-green-800", border: "border-green-300" },
+  Fire: { bg: "bg-red-100", text: "text-red-800", border: "border-red-300" },
+  Water: { bg: "bg-blue-100", text: "text-blue-800", border: "border-blue-300" },
+  Lightning: { bg: "bg-yellow-100", text: "text-yellow-800", border: "border-yellow-300" },
+  Psychic: { bg: "bg-purple-100", text: "text-purple-800", border: "border-purple-300" },
+  Darkness: { bg: "bg-gray-800", text: "text-gray-100", border: "border-gray-600" },
+  Fighting: { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-300" },
+  Colorless: { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" },
+  Metal: { bg: "bg-slate-200", text: "text-slate-700", border: "border-slate-400" },
+  Dragon: { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-300" },
 };
 
-const POKEMON_TYPES = ["풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "무색"];
+const POKEMON_TYPES = ["풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "무색",
+  "Grass", "Fire", "Water", "Lightning", "Psychic", "Fighting", "Darkness", "Metal", "Dragon", "Colorless"];
 
 const EVOLUTION_COLORS: Record<string, string> = {
   기본: "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200",
@@ -56,9 +68,20 @@ const ENERGY_PIP_COLORS: Record<string, string> = {
   무색: "bg-gray-200 border-gray-400",
   강철: "bg-slate-400 border-slate-600",
   드래곤: "bg-indigo-400 border-indigo-600",
+  // EN aliases
+  Grass: "bg-green-400 border-green-600",
+  Fire: "bg-red-400 border-red-600",
+  Water: "bg-blue-400 border-blue-600",
+  Lightning: "bg-yellow-300 border-yellow-500",
+  Psychic: "bg-purple-400 border-purple-600",
+  Darkness: "bg-gray-700 border-gray-900",
+  Fighting: "bg-orange-400 border-orange-600",
+  Colorless: "bg-gray-200 border-gray-400",
+  Metal: "bg-slate-400 border-slate-600",
+  Dragon: "bg-indigo-400 border-indigo-600",
 };
 
-const EVOLUTION_ORDER = ["기본", "1진화", "2진화"];
+const EVOLUTION_ORDER = ["기본", "1진화", "2진화", "Basic", "Stage 1", "Stage 2"];
 
 type DeckEntry = { card: PokemonCard; count: number };
 
@@ -86,7 +109,18 @@ const ENERGY_IMAGES: Partial<Record<string, string>> = {
   격투: "/energy/fighting.png",
   강철: "/energy/steel.png",
   드래곤: "/energy/dragon.png",
-  무색: "/energy/colorless.png"
+  무색: "/energy/colorless.png",
+  // EN aliases
+  Grass: "/energy/grass.png",
+  Fire: "/energy/fire.png",
+  Water: "/energy/water.png",
+  Lightning: "/energy/lightning.png",
+  Psychic: "/energy/psychic.png",
+  Darkness: "/energy/darkness.png",
+  Fighting: "/energy/fighting.png",
+  Metal: "/energy/steel.png",
+  Dragon: "/energy/dragon.png",
+  Colorless: "/energy/colorless.png",
 };
 
 function getEnergyImageSrc(type: string): string | undefined {

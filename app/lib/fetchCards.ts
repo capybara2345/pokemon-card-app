@@ -4,6 +4,29 @@ import * as XLSX from "xlsx";
 import { type PokemonCard, pokemonCards, parseCardId } from "../data/cards";
 
 const XLSX_PATH = join(process.cwd(), "app", "data", "card_list.xlsx");
+const XLSX_PATH_EN = join(process.cwd(), "app", "data", "card_list_en.xlsx");
+
+// English header → Korean header alias (EN xlsx uses English column names)
+const HEADER_ALIAS: Record<string, string> = {
+  Name: "이름",
+  Type: "타입",
+  Attribute: "속성",
+  Stage: "진화",
+  "Move 1": "기술명",
+  "Move 2": "기술명2",
+  "Move 1 Effect": "기술추가효과",
+  "Move 2 Effect": "기술추가효과2",
+  "Move 1 Energy": "기술에너지",
+  "Move 2 Energy": "기술에너지2",
+  "Damage 1": "피해량",
+  "Damage 2": "피해량2",
+  "Retreat Energy": "후퇴에너지",
+  Ability: "특성",
+  "Ability Effect": "특성효과",
+  Weakness: "약점",
+  Keywords: "키워드",
+  Expansion: "확장팩",
+};
 
 function toNumber(v: string | number): number {
   if (typeof v === "number") return v;
@@ -18,9 +41,11 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
   });
   if (rows.length < 2) return [];
 
-  const headers = (rows[0] as (string | number)[]).map((h) =>
-    String(h).trim()
-  );
+  // Normalize headers: map English names → Korean so the rest of the code is unchanged
+  const headers = (rows[0] as (string | number)[]).map((h) => {
+    const raw = String(h).trim();
+    return HEADER_ALIAS[raw] ?? raw;
+  });
 
   const get = (row: (string | number)[], key: string) => {
     const idx = headers.indexOf(key);
@@ -68,9 +93,10 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
   return cards;
 }
 
-export async function fetchCards(): Promise<PokemonCard[]> {
+export async function fetchCards(lang?: string): Promise<PokemonCard[]> {
+  const xlsxPath = lang === "en" ? XLSX_PATH_EN : XLSX_PATH;
   try {
-    const buf = readFileSync(XLSX_PATH);
+    const buf = readFileSync(xlsxPath);
     const wb = XLSX.read(buf, { type: "buffer" });
 
     const allCards: PokemonCard[] = [];

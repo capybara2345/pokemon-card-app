@@ -1,0 +1,20 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^node -e \"const xl=require\\('xlsx'\\);const wb=xl\\.readFile\\('app/data/card_list\\.xlsx'\\);console\\.log\\('Sheets:',wb\\.SheetNames\\);wb\\.SheetNames\\.forEach\\(n=>\\{const rows=xl\\.utils\\.sheet_to_json\\(wb\\.Sheets\\[n\\]\\);console\\.log\\(n\\+': '\\+rows\\.length\\+' rows'\\);\\}\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"const xl=require\\('xlsx'\\);const wb=xl\\.readFile\\('app/data/card_list\\.xlsx'\\);\\['트레이너스','프로모','불포켓몬','일반포켓몬'\\]\\.forEach\\(n=>\\{const rows=xl\\.utils\\.sheet_to_json\\(wb\\.Sheets\\[n\\],\\{header:1\\}\\);console\\.log\\(n\\+' headers:',rows\\[0\\]\\);if\\(rows\\[1\\]\\)console\\.log\\(n\\+' row1 sample:',rows\\[1\\]\\.slice\\(0,5\\)\\);\\}\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd f:\\\\project\\\\pokemon-card-app && node -e \"\nconst xl=require\\('xlsx'\\);\nconst wb=xl\\.readFile\\('app/data/card_list\\.xlsx'\\);\nconst names=new Set\\(\\);\nconst trainerTypes=new Set\\(\\);\nwb\\.SheetNames\\.forEach\\(sn=>\\{\n  const rows=xl\\.utils\\.sheet_to_json\\(wb\\.Sheets\\[sn\\],\\{header:1,defval:''\\}\\);\n  const hdrs=rows\\[0\\]\\.map\\(h=>String\\(h\\)\\.trim\\(\\)\\);\n  const nameIdx=hdrs\\.indexOf\\('이름'\\);\n  const typeIdx=hdrs\\.indexOf\\('타입'\\);\n  for\\(let i=1;i<rows\\.length;i\\+\\+\\)\\{\n    const r=rows\\[i\\];\n    if\\(nameIdx>=0&&r\\[nameIdx\\]\\) names\\.add\\(String\\(r\\[nameIdx\\]\\)\\.trim\\(\\)\\);\n    if\\(typeIdx>=0&&r\\[typeIdx\\]\\) trainerTypes\\.add\\(String\\(r\\[typeIdx\\]\\)\\.trim\\(\\)\\);\n  \\}\n\\}\\);\nconsole\\.log\\('총 이름 수:',names\\.size\\);\nconsole\\.log\\('타입 값들:',JSON\\.stringify\\(\\[\\.\\.\\.trainerTypes\\]\\.sort\\(\\)\\)\\);\nconst arr=\\[\\.\\.\\.names\\]\\.sort\\(\\(a,b\\)=>a\\.localeCompare\\(b,'ko'\\)\\);\nconsole\\.log\\(JSON\\.stringify\\(arr\\)\\);\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node -e \"\nconst xl=require\\('xlsx'\\);\nconst wb=xl\\.readFile\\('app/data/card_list\\.xlsx'\\);\nconst names=new Set\\(\\);\nconst trainerTypes=new Set\\(\\);\nwb\\.SheetNames\\.forEach\\(sn=>\\{\n  const rows=xl\\.utils\\.sheet_to_json\\(wb\\.Sheets\\[sn\\],\\{header:1,defval:''\\}\\);\n  const hdrs=rows\\[0\\]\\.map\\(h=>String\\(h\\)\\.trim\\(\\)\\);\n  const nameIdx=hdrs\\.indexOf\\('이름'\\);\n  const typeIdx=hdrs\\.indexOf\\('타입'\\);\n  for\\(let i=1;i<rows\\.length;i\\+\\+\\)\\{\n    const r=rows\\[i\\];\n    if\\(nameIdx>=0&&r\\[nameIdx\\]\\) names\\.add\\(String\\(r\\[nameIdx\\]\\)\\.trim\\(\\)\\);\n    if\\(typeIdx>=0&&r\\[typeIdx\\]\\) trainerTypes\\.add\\(String\\(r\\[typeIdx\\]\\)\\.trim\\(\\)\\);\n  \\}\n\\}\\);\nconsole\\.log\\('총 이름 수:',names\\.size\\);\nconsole\\.log\\('타입 값들:',JSON\\.stringify\\(\\[\\.\\.\\.trainerTypes\\]\\.sort\\(\\)\\)\\);\nconst arr=\\[\\.\\.\\.names\\]\\.sort\\(\\(a,b\\)=>a\\.localeCompare\\(b,'ko'\\)\\);\nconsole\\.log\\(JSON\\.stringify\\(arr\\)\\);\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

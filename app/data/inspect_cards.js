@@ -1,0 +1,10 @@
+const XLSX = require('xlsx');
+const wb = XLSX.readFile('app/data/card_list.xlsx');
+const ws = wb.Sheets[wb.SheetNames[0]];
+const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
+const PT = ['풀','불','물','번개','초','격투','악','강철','드래곤','무색'];
+const trainers = rows.filter(r => PT.indexOf(r['타입']) === -1).map(r => r['타입'] + '|' + r['이름'] + '|' + r['진화']);
+const evo = [...new Set(rows.map(r => r['진화']))];
+console.log('evo:' + JSON.stringify(evo));
+console.log('trainerCount:' + trainers.length);
+trainers.forEach(t => console.log(t));

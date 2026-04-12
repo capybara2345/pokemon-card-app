@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { Lang, Translations, translations } from "./translations";
 
 type LangContextValue = {
@@ -17,6 +18,7 @@ const LangContext = createContext<LangContextValue>({
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("ko");
+  const router = useRouter();
 
   useEffect(() => {
     const saved = localStorage.getItem("lang") as Lang | null;
@@ -28,7 +30,9 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const setLang = (next: Lang) => {
     setLangState(next);
     localStorage.setItem("lang", next);
+    document.cookie = `lang=${next};path=/;max-age=31536000`;
     document.documentElement.lang = next;
+    router.refresh();
   };
 
   useEffect(() => {
