@@ -553,6 +553,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
         .map(({ card }) => card.진화)
     )];
     const hasAnyEvolution = deckEvolutions.some((e) => e === "1진화" || e === "2진화");
+    const deckHasStage2 = deckEvolutions.some((e) => e === "2진화" || e === "Stage 2");
 
     // 덱에 HP 50 이하 포켓몬 존재 여부
     const deckHasLowHp = deck.some(({ card: c }) => POKEMON_TYPES.includes(c.타입) && c.HP <= 50);
@@ -586,6 +587,8 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       if (card.이름 === "일목" && !deckHasCoinKeyword) return false;
       // 물고기네트는 덱에 물타입 기본 포켓몬이 있을 때만 추천
       if (card.이름 === "물고기네트" && !(deckPokemonTypes.includes("물") && deckEvolutions.includes("기본"))) return false;
+      // 이상한사탕은 덱에 2진화 포켓몬이 있을 때만 추천
+      if (card.이름 === "이상한사탕") return deckHasStage2;
       // 항상 제외할 카드
       if (["포켓몬피리", "벌레회피스프레이"].includes(card.이름)) return false;
 
@@ -876,10 +879,13 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       <button
         key={keyPrefix + card.ID}
         type="button"
-        disabled={maxed}
         onPointerDown={(e) => {
           if (maxed) return;
           e.preventDefault();
+          // 모바일에서 input 포커스가 유지되면 스크롤이 input 위치로 복귀하므로 blur 처리
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
           isPreviewRef.current = false;
           shiftRef.current = e.shiftKey;
           pressTimerRef.current = setTimeout(() => {
@@ -927,8 +933,10 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
             {session?.user && (
               <span
                 role="button"
+                onPointerDown={(e) => e.stopPropagation()}
+                onPointerUp={(e) => e.stopPropagation()}
                 onClick={(e) => handleToggleFavorite(e, card.ID)}
-                className={`w-5 h-5 flex items-center justify-center rounded text-sm transition-colors ${
+                className={`w-5 h-5 flex items-center justify-center rounded text-sm transition-colors cursor-pointer ${
                   favoriteIds.has(card.ID)
                     ? "text-amber-400 hover:text-amber-500"
                     : "text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-400"
