@@ -145,6 +145,33 @@ export type Translations = {
     title: string;
     synergy: string;
   };
+  diagnosis: {
+    button: string;
+    title: string;
+    noWarnings: string;
+    compositionTitle: string;
+    typeTitle: string;
+    pokemon: string;
+    trainer: string;
+    noPokemon: string;
+    noTrainer: string;
+    fewPokemon: (n: number) => string;
+    fewTrainer: (n: number) => string;
+    noStage1: string;
+    noBasic: string;
+    keywordsTitle: string;
+    strengthWeaknessTitle: string;
+    strengthLabel: string;
+    weaknessLabel: string;
+    strongAgainst: (type: string) => string;
+    weakAgainst: (type: string) => string;
+    noWeaknessInDeck: string;
+    noStrength: string;
+    weakToItemBan: string;
+    weakToSupportBan: string;
+    strongVsItemHeavy: string;
+    strongVsSupportHeavy: string;
+  };
 };
 
 export const ko: Translations = {
@@ -307,6 +334,33 @@ export const ko: Translations = {
     title: "추천 카드",
     synergy: "덱에 있는 포켓몬과 시너지가 있는 카드",
   },
+  diagnosis: {
+    button: "덱 진단",
+    title: "덱 진단",
+    noWarnings: "덱 구성이 양호합니다.",
+    compositionTitle: "구성 비율",
+    typeTitle: "타입별 분포",
+    pokemon: "포켓몬",
+    trainer: "트레이너스",
+    noPokemon: "포켓몬 카드가 없습니다.",
+    noTrainer: "트레이너스 카드가 없습니다.",
+    fewPokemon: (n) => `포켓몬 ${n}장 (권장 8장 이상)`,
+    fewTrainer: (n) => `트레이너스 ${n}장 (권장 4장 이상)`,
+    noStage1: "2진화 포켓몬이 있지만 1진화 포켓몬이 없습니다.",
+    noBasic: "진화 포켓몬이 있지만 기본 포켓몬이 없습니다.",
+    keywordsTitle: "키워드 집합",
+    strengthWeaknessTitle: "강점 / 약점",
+    strengthLabel: "강점",
+    weaknessLabel: "약점",
+    strongAgainst: (type) => `타입 덱에 강합니다`,
+    weakAgainst: (type) => `타입 덱에 약합니다`,
+    noWeaknessInDeck: "덱은 약점 타입이 없습니다",
+    noStrength: "분석 불가",
+    weakToItemBan: "아이템 금지 덱에 약합니다",
+    weakToSupportBan: "서포트 금지 덱에 약합니다",
+    strongVsItemHeavy: "아이템을 많이 보유한 덱에 강합니다",
+    strongVsSupportHeavy: "서포트를 많이 보유한 덱에 강합니다",
+  },
 };
 
 export const en: Translations = {
@@ -468,6 +522,33 @@ export const en: Translations = {
   recommended: {
     title: "Recommended",
     synergy: "Cards with synergy for your deck",
+  },
+  diagnosis: {
+    button: "Diagnose",
+    title: "Deck Diagnosis",
+    noWarnings: "Deck composition looks good.",
+    compositionTitle: "Composition",
+    typeTitle: "Type Distribution",
+    pokemon: "Pokémon",
+    trainer: "Trainers",
+    noPokemon: "No Pokémon cards in deck.",
+    noTrainer: "No Trainer cards in deck.",
+    fewPokemon: (n) => `${n} Pokémon (8+ recommended)`,
+    fewTrainer: (n) => `${n} Trainers (4+ recommended)`,
+    noStage1: "Has Stage 2 but no Stage 1 Pokémon.",
+    noBasic: "Has evolved Pokémon but no Basic.",
+    keywordsTitle: "Keywords",
+    strengthWeaknessTitle: "Strengths / Weaknesses",
+    strengthLabel: "Strengths",
+    weaknessLabel: "Weaknesses",
+    strongAgainst: (type) => `Strong against ${type}-type decks`,
+    weakAgainst: (type) => `Weak against ${type}-type decks`,
+    noWeaknessInDeck: "This deck has no type weaknesses",
+    noStrength: "N/A",
+    weakToItemBan: "Weak against Item-lock decks",
+    weakToSupportBan: "Weak against Supporter-lock decks",
+    strongVsItemHeavy: "Strong against Item-heavy decks",
+    strongVsSupportHeavy: "Strong against Supporter-heavy decks",
   },
 };
 
