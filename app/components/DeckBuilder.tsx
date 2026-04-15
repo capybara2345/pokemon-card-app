@@ -580,6 +580,21 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       c.키워드?.split(",").map((v) => v.trim()).some((kw) => COIN_KEYWORDS.includes(kw))
     );
 
+    // 덱의 진화 포켓몬 중 이전이름이 덱에 없는 경우 → 해당 이전이름 카드 추천
+    // 방향1: 덱 카드의 이전이름이 덱에 없을 때 → 해당 이름을 가진 카드 추천 (예: 리자드.이전이름=파이리 → 파이리 추천)
+    const missingPreEvoNames = new Set<string>(
+      deck
+        .filter(({ card: c }) =>
+          !!c.이전이름?.trim() &&
+          !deckNameMap.has(c.이전이름.trim())
+        )
+        .map(({ card: c }) => c.이전이름!.trim())
+    );
+
+    // 방향2(역방향): 전체 카드 중 이전이름이 덱의 포켓몬 이름과 일치하는 카드 추천
+    // (예: 지느러미화석.이전이름=아마루스 → 아마루스가 덱에 있으면 지느러미화석 추천)
+    const deckNameSet = new Set(deck.map(({ card }) => card.이름));
+
     // 효과 텍스트에서 "상대의" 컨텍스트 없이 pattern이 포함되는지 확인
     const includesAsOwn = (text: string, pattern: string) => {
       let pos = 0;
@@ -595,7 +610,11 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       const nameCount = deckNameMap.get(card.이름) ?? 0;
       if (nameCount >= MAX_SAME_NAME) return false;
       if (favoriteIds.has(card.ID)) return false;
-      if (card.키워드?.split(",").map((v) => v.trim()).includes("화석 포켓몬")) return false;
+      // 화석 타입 포켓몬은 이전이름으로 추천되는 경우를 제외하고 일반 추천에서 제외
+      if (
+        card.타입 === "화석" &&
+        !missingPreEvoNames.has(card.이름)
+      ) return false;
       // 루티아는 덱에 HP 50 이하 포켓몬이 있을 때만 추천
       if (card.이름 === "루티아" && !deckHasLowHp) return false;
       // 일목은 덱에 동전 관련 키워드 포켓몬이 있을 때만 추천
@@ -646,6 +665,17 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       // 5) 일목 - 덱에 동전 관련 키워드 포켓몬이 있으면 추천
       if (card.이름 === "일목" && deckHasCoinKeyword) return true;
 
+      // 6) 이전이름 일치 (방향1): 덱 카드의 이전이름과 같은 카드 추천
+      if (missingPreEvoNames.has(card.이름)) return true;
+
+      // 7) 이전이름 역방향 (방향2): 이 카드의 이전이름이 덱의 포켓몬 이름과 일치하면 추천
+      // (화석 트레이너스처럼 트레이너스.이전이름 = 포켓몬이름 구조 지원)
+      if (
+        card.이전이름?.trim() &&
+        deckNameSet.has(card.이전이름.trim()) &&
+        !deckNameMap.has(card.이름)
+      ) return true;
+
       return false;
     }).slice(0, 20);
   }, [cards, deck, deckNameMap, favoriteIds]);
@@ -690,6 +720,21 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
     const deckKeywordSet = new Set(keywordDist.map(([kw]) => kw));
     const hasItemBlock = deckKeywordSet.has("아이템 차단");
     const hasSupportBlock = deckKeywordSet.has("서포트 차단");
+    // 이전이름 누락 검사
+    const deckNameSet = new Set(deck.map(({ card }) => card.이름));
+    const missingPreEvolutions: { evoName: string; preName: string }[] = [];
+    for (const { card } of pokemonEntries) {
+      const preName = card.이전이름?.trim();
+      if (
+        (card.진화 === "1진화" || card.진화 === "2진화" || card.진화 === "Stage 1" || card.진화 === "Stage 2") &&
+        preName &&
+        !deckNameSet.has(preName)
+      ) {
+        if (!missingPreEvolutions.some((m) => m.evoName === card.이름)) {
+          missingPreEvolutions.push({ evoName: card.이름, preName });
+        }
+      }
+    }
     return {
       pokemonCount,
       trainerCount,
@@ -708,6 +753,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       weakToSupportBan,
       hasItemBlock,
       hasSupportBlock,
+      missingPreEvolutions,
     };
   }, [deck]);
 
@@ -1171,6 +1217,9 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 if (deckDiagnosis.noTrainer) warnings.push({ level: "warn", msg: t.diagnosis.noTrainer });
                 if (deckDiagnosis.noStage1) warnings.push({ level: "warn", msg: t.diagnosis.noStage1 });
                 if (deckDiagnosis.noBasic) warnings.push({ level: "warn", msg: t.diagnosis.noBasic });
+                for (const m of deckDiagnosis.missingPreEvolutions) {
+                  warnings.push({ level: "warn", msg: t.diagnosis.missingPreEvolution(m.evoName, m.preName) });
+                }
                 if (deckDiagnosis.fewTrainer) warnings.push({ level: "info", msg: t.diagnosis.fewTrainer(deckDiagnosis.trainerCount) });
                 if (warnings.length === 0) return (
                   <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-2">
@@ -1663,18 +1712,22 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
           })()}
 
           {/* 추천 카드 섹션 */}
-          {recommendedCards.length > 0 && (
-            <div className="flex flex-col gap-2 p-3 rounded-xl bg-teal-50 dark:bg-teal-900/10 border border-teal-200 dark:border-teal-800/50">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-teal-600 dark:text-teal-400">✦ {t.recommended.title}</span>
-                <span className="text-xs text-teal-500 dark:text-teal-500">{t.recommended.synergy}</span>
-                <span className="ml-auto text-xs text-teal-400 dark:text-teal-600">{recommendedCards.length}장</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+          <div className="flex flex-col gap-2 p-3 rounded-xl bg-teal-50 dark:bg-teal-900/10 border border-teal-200 dark:border-teal-800/50 h-[230px]">
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-xs font-semibold text-teal-600 dark:text-teal-400">✦ {t.recommended.title}</span>
+              <span className="text-xs text-teal-500 dark:text-teal-500">{t.recommended.synergy}</span>
+              <span className="ml-auto text-xs text-teal-400 dark:text-teal-600">{recommendedCards.length > 0 ? `${recommendedCards.length}장` : ""}</span>
+            </div>
+            {recommendedCards.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 overflow-y-auto pr-1 flex-1">
                 {recommendedCards.map((card) => renderCard(card, "rec-"))}
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="flex-1 flex items-center justify-center text-xs text-teal-300 dark:text-teal-700">
+                덱에 카드를 추가하면 시너지 카드를 추천해드립니다
+              </div>
+            )}
+          </div>
 
           {/* 카드 목록 */}
           <div className="flex flex-col gap-1">
@@ -1854,17 +1907,15 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
               )}
               {deck.map(({ card, count }) => {
                 const tc = typeColor(card.타입);
+                const nameCount = deckNameMap.get(card.이름) ?? 0;
+                const canAdd = totalCards < MAX_DECK && nameCount < MAX_SAME_NAME;
                 return (
-                  <div key={card.ID} className="flex items-center gap-2 px-3 py-2.5">
-                    <button
-                      onClick={() => removeCard(card.ID)}
-                      title={t.deck.clickToRemove}
-                      className="flex items-center gap-2 flex-1 min-w-0 text-left hover:bg-slate-50 dark:hover:bg-slate-700/40 rounded transition-colors"
-                    >
-                      <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
-                      <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
-                      <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
-                    </button>
+                  <div key={card.ID} className="flex items-center gap-1.5 px-3 py-2">
+                    <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
+                    <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
+                    <button onClick={() => removeCard(card.ID)} disabled={count <= 0} className="shrink-0 w-6 h-6 flex items-center justify-center rounded border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-red-500 hover:border-red-300 dark:hover:text-red-400 dark:hover:border-red-700 text-xs font-bold transition-colors">−</button>
+                    <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
+                    <button onClick={() => addCard(card)} disabled={!canAdd} className="shrink-0 w-6 h-6 flex items-center justify-center rounded border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-indigo-500 hover:border-indigo-300 dark:hover:text-indigo-400 dark:hover:border-indigo-700 disabled:opacity-30 disabled:cursor-not-allowed text-xs font-bold transition-colors">+</button>
                     <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title={t.deck.copyName} className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-xs transition-colors">⧉</button>
                     <button onClick={() => removeAll(card.ID)} className="shrink-0 w-6 h-6 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-xs transition-colors">✕</button>
                   </div>
@@ -2000,17 +2051,15 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
               )}
               {deck.map(({ card, count }) => {
                 const tc = typeColor(card.타입);
+                const nameCount = deckNameMap.get(card.이름) ?? 0;
+                const canAdd = totalCards < MAX_DECK && nameCount < MAX_SAME_NAME;
                 return (
-                  <div key={card.ID} className="flex items-center gap-2 px-4 py-3">
-                    <button
-                      onClick={() => removeCard(card.ID)}
-                      title={t.deck.clickToRemove}
-                      className="flex items-center gap-2 flex-1 min-w-0 text-left hover:bg-slate-50 dark:hover:bg-slate-700/40 rounded transition-colors"
-                    >
-                      <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
-                      <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
-                      <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
-                    </button>
+                  <div key={card.ID} className="flex items-center gap-1.5 px-4 py-2.5">
+                    <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
+                    <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
+                    <button onClick={() => removeCard(card.ID)} disabled={count <= 0} className="shrink-0 w-7 h-7 flex items-center justify-center rounded border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-red-500 hover:border-red-300 dark:hover:text-red-400 dark:hover:border-red-700 text-sm font-bold transition-colors">−</button>
+                    <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
+                    <button onClick={() => addCard(card)} disabled={!canAdd} className="shrink-0 w-7 h-7 flex items-center justify-center rounded border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-indigo-500 hover:border-indigo-300 dark:hover:text-indigo-400 dark:hover:border-indigo-700 disabled:opacity-30 disabled:cursor-not-allowed text-sm font-bold transition-colors">+</button>
                     <button onClick={() => { navigator.clipboard.writeText(card.이름); setCopiedName(card.이름); setTimeout(() => setCopiedName(null), 1500); }} title={t.deck.copyName} className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-sm transition-colors">⧉</button>
                     <button onClick={() => removeAll(card.ID)} className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-red-500 dark:text-slate-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm transition-colors">✕</button>
                   </div>

@@ -159,6 +159,7 @@ export type Translations = {
     fewTrainer: (n: number) => string;
     noStage1: string;
     noBasic: string;
+    missingPreEvolution: (evoName: string, preName: string) => string;
     keywordsTitle: string;
     strengthWeaknessTitle: string;
     strengthLabel: string;
@@ -347,8 +348,7 @@ export const ko: Translations = {
     fewPokemon: (n) => `포켓몬 ${n}장 (권장 8장 이상)`,
     fewTrainer: (n) => `트레이너스 ${n}장 (권장 4장 이상)`,
     noStage1: "2진화 포켓몬이 있지만 1진화 포켓몬이 없습니다.",
-    noBasic: "진화 포켓몬이 있지만 기본 포켓몬이 없습니다.",
-    keywordsTitle: "키워드 집합",
+    noBasic: "진화 포켓몬이 있지만 기본 포켓몬이 없습니다.",    missingPreEvolution: (evoName, preName) => `${evoName}을(를) 진화시킬 ${preName}이(가) 덱에 없습니다.`,    keywordsTitle: "키워드 집합",
     strengthWeaknessTitle: "강점 / 약점",
     strengthLabel: "강점",
     weaknessLabel: "약점",
@@ -537,6 +537,7 @@ export const en: Translations = {
     fewTrainer: (n) => `${n} Trainers (4+ recommended)`,
     noStage1: "Has Stage 2 but no Stage 1 Pokémon.",
     noBasic: "Has evolved Pokémon but no Basic.",
+    missingPreEvolution: (evoName, preName) => `No ${preName} in deck to evolve into ${evoName}.`,
     keywordsTitle: "Keywords",
     strengthWeaknessTitle: "Strengths / Weaknesses",
     strengthLabel: "Strengths",

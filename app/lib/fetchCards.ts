@@ -26,6 +26,7 @@ const HEADER_ALIAS: Record<string, string> = {
   Weakness: "약점",
   Keywords: "키워드",
   Expansion: "확장팩",
+  BeforeName: "이전이름",
 };
 
 function toNumber(v: string | number): number {
@@ -86,6 +87,9 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
         get(values, "기술에너지2") || get(values, "필요에너지2") || undefined;
       card.피해량2 = get(values, "피해량2") || undefined;
     }
+
+    const 이전이름 = get(values, "이전이름");
+    if (이전이름) card.이전이름 = 이전이름;
 
     cards.push(card);
   }
