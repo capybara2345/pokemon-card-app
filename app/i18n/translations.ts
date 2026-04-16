@@ -172,6 +172,7 @@ export type Translations = {
     weakToSupportBan: string;
     strongVsItemHeavy: string;
     strongVsSupportHeavy: string;
+    strongVsStatusDeck: string;
   };
 };
 
@@ -360,6 +361,7 @@ export const ko: Translations = {
     weakToSupportBan: "서포트 금지 덱에 약합니다",
     strongVsItemHeavy: "아이템을 많이 보유한 덱에 강합니다",
     strongVsSupportHeavy: "서포트를 많이 보유한 덱에 강합니다",
+    strongVsStatusDeck: "특수상태를 부여하는 덱에 강합니다",
   },
 };
 
@@ -550,6 +552,7 @@ export const en: Translations = {
     weakToSupportBan: "Weak against Supporter-lock decks",
     strongVsItemHeavy: "Strong against Item-heavy decks",
     strongVsSupportHeavy: "Strong against Supporter-heavy decks",
+    strongVsStatusDeck: "Strong against decks that inflict Special Conditions",
   },
 };
 

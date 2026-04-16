@@ -714,12 +714,14 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
     const itemCount = trainerEntries.filter(({ card }) => card.타입 === "아이템").reduce((s, e) => s + e.count, 0);
     const supportCount = trainerEntries.filter(({ card }) => card.타입 === "서포트").reduce((s, e) => s + e.count, 0);
     const totalCards = pokemonCount + trainerCount;
-    const weakToItemBan = totalCards > 0 && itemCount / totalCards >= 0.25;   // 아이템이 전체의 25% 이상
-    const weakToSupportBan = totalCards > 0 && supportCount / totalCards >= 0.20; // 서포트가 전체의 20% 이상
+    const weakToItemBan = totalCards > 0 && itemCount / totalCards >= 0.3;   // 아이템이 전체의 25% 이상
+    const weakToSupportBan = totalCards > 0 && supportCount / totalCards >= 0.3; // 서포트가 전체의 20% 이상
     // 아이템/서포트 차단 키워드 보유 여부
     const deckKeywordSet = new Set(keywordDist.map(([kw]) => kw));
     const hasItemBlock = deckKeywordSet.has("아이템 차단");
     const hasSupportBlock = deckKeywordSet.has("서포트 차단");
+    // 특수상태 면역 키워드 보유 여부
+    const hasStatusImmunity = [...deckKeywordSet].some((kw) => /특수상태 면역|상태이상 회복|잠듦 면역/.test(kw));
     // 이전이름 누락 검사
     const deckNameSet = new Set(deck.map(({ card }) => card.이름));
     const missingPreEvolutions: { evoName: string; preName: string }[] = [];
@@ -753,6 +755,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       weakToSupportBan,
       hasItemBlock,
       hasSupportBlock,
+      hasStatusImmunity,
       missingPreEvolutions,
     };
   }, [deck]);
@@ -1276,6 +1279,12 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                       <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
                         <span>🚫</span>
                         <span>{t.diagnosis.strongVsSupportHeavy}</span>
+                      </div>
+                    )}
+                    {deckDiagnosis.hasStatusImmunity && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>🛡️</span>
+                        <span>{t.diagnosis.strongVsStatusDeck}</span>
                       </div>
                     )}
                     {deckDiagnosis.weaknessTypes.length === 0 && (
