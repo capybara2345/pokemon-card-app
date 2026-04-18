@@ -160,6 +160,7 @@ export type Translations = {
     noStage1: string;
     noBasic: string;
     missingPreEvolution: (evoName: string, preName: string) => string;
+    missingSynergyTarget: (cardName: string, targetName: string) => string;
     keywordsTitle: string;
     strengthWeaknessTitle: string;
     strengthLabel: string;
@@ -173,6 +174,18 @@ export type Translations = {
     strongVsItemHeavy: string;
     strongVsSupportHeavy: string;
     strongVsStatusDeck: string;
+    strongVsEnergyDeck: string;
+    weakToEnergyDeck: string;
+    weakToExDeck: string;
+    strongVsBenchCountDeck: string;
+    weakToBenchCountDeck: string;
+    fastDeckRotation: string;
+    slowDeckRotation: string;
+    fastEnergySupply: string;
+    weakToToolTrash: string;
+    strongVsToolTrash: string;
+    strongVsItemBan: string;
+    strongVsSupportBan: string;
   };
 };
 
@@ -349,7 +362,7 @@ export const ko: Translations = {
     fewPokemon: (n) => `포켓몬 ${n}장 (권장 8장 이상)`,
     fewTrainer: (n) => `트레이너스 ${n}장 (권장 4장 이상)`,
     noStage1: "2진화 포켓몬이 있지만 1진화 포켓몬이 없습니다.",
-    noBasic: "진화 포켓몬이 있지만 기본 포켓몬이 없습니다.",    missingPreEvolution: (evoName, preName) => `${evoName}을(를) 진화시킬 ${preName}이(가) 덱에 없습니다.`,    keywordsTitle: "키워드 집합",
+    noBasic: "진화 포켓몬이 있지만 기본 포켓몬이 없습니다.",    missingPreEvolution: (evoName, preName) => `${evoName}을(를) 진화시킬 ${preName}이(가) 덱에 없습니다.`,    missingSynergyTarget: (cardName, targetName) => `${cardName}이(가) 참조하는 「${targetName}」이(가) 덱에 없어 시너지가 떨어집니다.`,    keywordsTitle: "키워드 집합",
     strengthWeaknessTitle: "강점 / 약점",
     strengthLabel: "강점",
     weaknessLabel: "약점",
@@ -362,7 +375,17 @@ export const ko: Translations = {
     strongVsItemHeavy: "아이템을 많이 보유한 덱에 강합니다",
     strongVsSupportHeavy: "서포트를 많이 보유한 덱에 강합니다",
     strongVsStatusDeck: "특수상태를 부여하는 덱에 강합니다",
-  },
+    strongVsEnergyDeck: "에너지 기반 피해 덱에 강합니다",
+    weakToEnergyDeck: "에너지 기반 피해 덱에 약합니다",
+    weakToExDeck: "ex 기반 피해 덱에 약합니다",
+    strongVsBenchCountDeck: "벤치 수 기반 피해 덱에 강합니다",
+    weakToBenchCountDeck: "벤치 수 기반 피해 덱에 약합니다",
+    fastDeckRotation: "덱 회전이 빠릅니다",
+    slowDeckRotation: "덱 회전이 느립니다",
+    fastEnergySupply: "에너지 수급이 빠릅니다",
+    weakToToolTrash: "도구 트래쉬 덱에 약합니다",
+    strongVsToolTrash: "도구 트래쉬 덱에 강합니다",    strongVsItemBan: "아이템 차단 덱에 강합니다",
+    strongVsSupportBan: "서포트 차단 덱에 강합니다",  },
 };
 
 export const en: Translations = {
@@ -540,6 +563,7 @@ export const en: Translations = {
     noStage1: "Has Stage 2 but no Stage 1 Pokémon.",
     noBasic: "Has evolved Pokémon but no Basic.",
     missingPreEvolution: (evoName, preName) => `No ${preName} in deck to evolve into ${evoName}.`,
+    missingSynergyTarget: (cardName, targetName) => `${cardName} references 「${targetName}」 but it's not in the deck — synergy reduced.`,
     keywordsTitle: "Keywords",
     strengthWeaknessTitle: "Strengths / Weaknesses",
     strengthLabel: "Strengths",
@@ -553,6 +577,18 @@ export const en: Translations = {
     strongVsItemHeavy: "Strong against Item-heavy decks",
     strongVsSupportHeavy: "Strong against Supporter-heavy decks",
     strongVsStatusDeck: "Strong against decks that inflict Special Conditions",
+    strongVsEnergyDeck: "Strong against energy-cost-based damage decks",
+    weakToEnergyDeck: "Weak against energy-cost-based damage decks",
+    weakToExDeck: "Weak against ex-based damage decks",
+    strongVsBenchCountDeck: "Strong against bench-count-based damage decks",
+    weakToBenchCountDeck: "Weak against bench-count-based damage decks",
+    fastDeckRotation: "Fast deck rotation",
+    slowDeckRotation: "Slow deck rotation",
+    fastEnergySupply: "Fast energy supply",
+    weakToToolTrash: "Weak against tool-trash decks",
+    strongVsToolTrash: "Strong against tool-trash decks",
+    strongVsItemBan: "Strong against item-ban decks",
+    strongVsSupportBan: "Strong against support-ban decks",
   },
 };
 

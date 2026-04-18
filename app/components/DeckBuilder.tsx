@@ -716,12 +716,55 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
     const totalCards = pokemonCount + trainerCount;
     const weakToItemBan = totalCards > 0 && itemCount / totalCards >= 0.3;   // 아이템이 전체의 25% 이상
     const weakToSupportBan = totalCards > 0 && supportCount / totalCards >= 0.3; // 서포트가 전체의 20% 이상
+    const strongVsItemBan = deck.length > 0 && itemCount === 0;
+    const strongVsSupportBan = deck.length > 0 && supportCount === 0;
     // 아이템/서포트 차단 키워드 보유 여부
     const deckKeywordSet = new Set(keywordDist.map(([kw]) => kw));
     const hasItemBlock = deckKeywordSet.has("아이템 차단");
     const hasSupportBlock = deckKeywordSet.has("서포트 차단");
     // 특수상태 면역 키워드 보유 여부
     const hasStatusImmunity = [...deckKeywordSet].some((kw) => /특수상태 면역|상태이상 회복|잠듦 면역/.test(kw));
+    // 에너지 기반 피해 덱 강점/약점 (포켓몬 기술 에너지 비용 기준)
+    const hasHighEnergyCostCard = pokemonEntries.some(({ card }) =>
+      countEnergy(card.필요에너지) >= 3 || (!!card.기술명2 && countEnergy(card.필요에너지2) >= 3)
+    );
+    const strongVsEnergyDeck = pokemonEntries.length > 0 && !hasHighEnergyCostCard;
+    const weakToEnergyDeck = hasHighEnergyCostCard;
+    // ex/메가ex 카드 4장 이상이면 ex 기반 피해 덱에 약함
+    const exCardCount = deck
+      .filter(({ card }) => {
+        const types = card.카드타입?.split(",").map((v) => v.trim().toLowerCase()) ?? [];
+        return types.includes("ex") || types.includes("메가ex");
+      })
+      .reduce((s, e) => s + e.count, 0);
+    const weakToExDeck = exCardCount >= 4;
+    // 기본 포켓몬 수 기반 벤치 수 피해 덱 강점/약점
+    const basicPokemonCount = pokemonEntries
+      .filter(({ card }) => card.진화 === "기본" || card.진화 === "Basic")
+      .reduce((s, e) => s + e.count, 0);
+    const weakToBenchCountDeck = basicPokemonCount >= 5;
+    const strongVsBenchCountDeck = pokemonEntries.length > 0 && basicPokemonCount <= 2;
+    // 덱 회전 속도 (덱 드로우 + 덱 서치 키워드 카드 수)
+    const DECK_CYCLE_KEYWORDS = ["덱 드로우", "덱 서치"];
+    const deckCycleCardCount = deck
+      .filter(({ card }) => card.키워드?.split(",").map((k) => k.trim()).some((kw) => DECK_CYCLE_KEYWORDS.includes(kw)))
+      .reduce((s, e) => s + e.count, 0);
+    const fastDeckRotation = deck.length > 0 && deckCycleCardCount >= 6;
+    const slowDeckRotation = deck.length > 0 && deckCycleCardCount <= 2;
+    // 에너지 수급 속도 (에너지 부착 키워드 4장 이상 OR 에너지 2배 키워드 존재)
+    const energyAttachCount = deck
+      .filter(({ card }) => card.키워드?.split(",").map((k) => k.trim()).includes("에너지 부착"))
+      .reduce((s, e) => s + e.count, 0);
+    const hasEnergyDouble = deck.some(({ card }) =>
+      card.키워드?.split(",").map((k) => k.trim()).includes("에너지 2배")
+    );
+    const fastEnergySupply = deck.length > 0 && (energyAttachCount >= 4 || hasEnergyDouble);
+    // 도구 카드 수 기반 도구 트래쉬 덱 약점 / 도구 기반 피해에 강함
+    const toolCount = deck
+      .filter(({ card }) => card.타입 === "도구")
+      .reduce((s, e) => s + e.count, 0);
+    const weakToToolTrash = deck.length > 0 && toolCount >= 4;
+    const strongVsToolTrash = deck.length > 0 && toolCount === 0;
     // 이전이름 누락 검사
     const deckNameSet = new Set(deck.map(({ card }) => card.이름));
     const missingPreEvolutions: { evoName: string; preName: string }[] = [];
@@ -734,6 +777,24 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       ) {
         if (!missingPreEvolutions.some((m) => m.evoName === card.이름)) {
           missingPreEvolutions.push({ evoName: card.이름, preName });
+        }
+      }
+    }
+    // 특정 포켓몬 기반 피해 키워드 카드의 시너지 대상 누락 검사
+    const missingSynergyTargets: { cardName: string; targetName: string }[] = [];
+    for (const { card } of deck) {
+      const keywords = card.키워드?.split(",").map((k) => k.trim()) ?? [];
+      if (!keywords.includes("특정 포켓몬 기반 피해")) continue;
+      const effectText = [
+        card.기술추가효과 ?? "",
+        card.기술추가효과2 ?? "",
+        card.특성효과 ?? "",
+      ].join("");
+      const matches = [...effectText.matchAll(/「([^」]+)」/g)];
+      for (const m of matches) {
+        const targetName = m[1].trim();
+        if (!deckNameSet.has(targetName) && !missingSynergyTargets.some((s) => s.cardName === card.이름 && s.targetName === targetName)) {
+          missingSynergyTargets.push({ cardName: card.이름, targetName });
         }
       }
     }
@@ -753,10 +814,23 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
       strengthTypes,
       weakToItemBan,
       weakToSupportBan,
+      strongVsItemBan,
+      strongVsSupportBan,
       hasItemBlock,
       hasSupportBlock,
       hasStatusImmunity,
+      strongVsEnergyDeck,
+      weakToEnergyDeck,
+      weakToExDeck,
+      weakToBenchCountDeck,
+      strongVsBenchCountDeck,
+      fastDeckRotation,
+      slowDeckRotation,
+      fastEnergySupply,
+      weakToToolTrash,
+      strongVsToolTrash,
       missingPreEvolutions,
+      missingSynergyTargets,
     };
   }, [deck]);
 
@@ -1223,6 +1297,9 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 for (const m of deckDiagnosis.missingPreEvolutions) {
                   warnings.push({ level: "warn", msg: t.diagnosis.missingPreEvolution(m.evoName, m.preName) });
                 }
+                for (const s of deckDiagnosis.missingSynergyTargets) {
+                  warnings.push({ level: "warn", msg: t.diagnosis.missingSynergyTarget(s.cardName, s.targetName) });
+                }
                 if (deckDiagnosis.fewTrainer) warnings.push({ level: "info", msg: t.diagnosis.fewTrainer(deckDiagnosis.trainerCount) });
                 if (warnings.length === 0) return (
                   <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-2">
@@ -1275,16 +1352,58 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                         <span>{t.diagnosis.strongVsItemHeavy}</span>
                       </div>
                     )}
+                    {deckDiagnosis.strongVsItemBan && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>🛡️</span>
+                        <span>{t.diagnosis.strongVsItemBan}</span>
+                      </div>
+                    )}
                     {deckDiagnosis.hasSupportBlock && (
                       <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
                         <span>🚫</span>
                         <span>{t.diagnosis.strongVsSupportHeavy}</span>
                       </div>
                     )}
+                    {deckDiagnosis.strongVsSupportBan && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>🛡️</span>
+                        <span>{t.diagnosis.strongVsSupportBan}</span>
+                      </div>
+                    )}
                     {deckDiagnosis.hasStatusImmunity && (
                       <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
                         <span>🛡️</span>
                         <span>{t.diagnosis.strongVsStatusDeck}</span>
+                      </div>
+                    )}
+                    {deckDiagnosis.strongVsEnergyDeck && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>⚡</span>
+                        <span>{t.diagnosis.strongVsEnergyDeck}</span>
+                      </div>
+                    )}
+                    {deckDiagnosis.strongVsBenchCountDeck && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>🛡️</span>
+                        <span>{t.diagnosis.strongVsBenchCountDeck}</span>
+                      </div>
+                    )}
+                    {deckDiagnosis.fastDeckRotation && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>🔄</span>
+                        <span>{t.diagnosis.fastDeckRotation}</span>
+                      </div>
+                    )}
+                    {deckDiagnosis.fastEnergySupply && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>⚡</span>
+                        <span>{t.diagnosis.fastEnergySupply}</span>
+                      </div>
+                    )}
+                    {deckDiagnosis.strongVsToolTrash && (
+                      <div className="flex items-center gap-2 text-xs text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 rounded-lg px-3 py-1.5">
+                        <span>🛡️</span>
+                        <span>{t.diagnosis.strongVsToolTrash}</span>
                       </div>
                     )}
                     {deckDiagnosis.weaknessTypes.length === 0 && (
@@ -1295,7 +1414,7 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     )}
                   </div>
                   {/* 약점 */}
-                  {(deckDiagnosis.weaknessTypes.length > 0 || deckDiagnosis.weakToItemBan || deckDiagnosis.weakToSupportBan) && (
+                  {(deckDiagnosis.weaknessTypes.length > 0 || deckDiagnosis.weakToItemBan || deckDiagnosis.weakToSupportBan || deckDiagnosis.weakToEnergyDeck || deckDiagnosis.fastEnergySupply || deckDiagnosis.weakToExDeck || deckDiagnosis.weakToBenchCountDeck || deckDiagnosis.slowDeckRotation || deckDiagnosis.weakToToolTrash) && (
                     <div className="flex flex-col gap-1 mt-1">
                       <span className="text-[10px] font-semibold text-red-500 dark:text-red-400">{t.diagnosis.weaknessLabel}</span>
                       {deckDiagnosis.weaknessTypes.map((type) => {
@@ -1318,6 +1437,36 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                         <div className="flex items-center gap-2 text-xs text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-1.5">
                           <span>⚠️</span>
                           <span>{t.diagnosis.weakToSupportBan}</span>
+                        </div>
+                      )}
+                      {(deckDiagnosis.weakToEnergyDeck || deckDiagnosis.fastEnergySupply) && (
+                        <div className="flex items-center gap-2 text-xs text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-1.5">
+                          <span>⚡</span>
+                          <span>{t.diagnosis.weakToEnergyDeck}</span>
+                        </div>
+                      )}
+                      {deckDiagnosis.weakToExDeck && (
+                        <div className="flex items-center gap-2 text-xs text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-1.5">
+                          <span>⚠️</span>
+                          <span>{t.diagnosis.weakToExDeck}</span>
+                        </div>
+                      )}
+                      {deckDiagnosis.weakToBenchCountDeck && (
+                        <div className="flex items-center gap-2 text-xs text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-1.5">
+                          <span>⚠️</span>
+                          <span>{t.diagnosis.weakToBenchCountDeck}</span>
+                        </div>
+                      )}
+                      {deckDiagnosis.slowDeckRotation && (
+                        <div className="flex items-center gap-2 text-xs text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-1.5">
+                          <span>🐢</span>
+                          <span>{t.diagnosis.slowDeckRotation}</span>
+                        </div>
+                      )}
+                      {deckDiagnosis.weakToToolTrash && (
+                        <div className="flex items-center gap-2 text-xs text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 rounded-lg px-3 py-1.5">
+                          <span>⚠️</span>
+                          <span>{t.diagnosis.weakToToolTrash}</span>
                         </div>
                       )}
                     </div>
