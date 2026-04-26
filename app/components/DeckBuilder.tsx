@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
-import { type PokemonCard, getCardImageSrc } from "../data/cards";
+import { type PokemonCard, getCardImageSrc, parseCardId } from "../data/cards";
 import type { Session } from "next-auth";
+import type { RecommendedDeck } from "@/app/lib/fetchCards";
 import { useLanguage } from "../i18n/context";
 import {
   saveDeckToFirestore,
@@ -340,7 +341,7 @@ async function downloadDeckImage(deck: DeckEntry[]) {
   link.click();
 }
 
-export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; session: Session | null }) {
+export default function DeckBuilder({ cards, session, recommendedDecks = [] }: { cards: PokemonCard[]; session: Session | null; recommendedDecks?: RecommendedDeck[] }) {
   const { t } = useLanguage();
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<{
@@ -381,6 +382,10 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
   const [favoriteIds, setFavoriteIds] = useState<Set<number>>(new Set());
   const [togglingFav, setTogglingFav] = useState<number | null>(null);
   const [showDiagnosisModal, setShowDiagnosisModal] = useState(false);
+  const [showExcelModal, setShowExcelModal] = useState(false);
+  const [excelDecks, setExcelDecks] = useState<{ name: string; ids: number[] }[]>([]);
+  const excelInputRef = useRef<HTMLInputElement>(null);
+  const [showRecommendedModal, setShowRecommendedModal] = useState(false);
 
   // deck 변경 시 히스토리 ref에 이전 상태 push (최대 30개 유지)
   const pushHistory = (current: DeckEntry[]) => {
@@ -1027,6 +1032,82 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
     } catch (e) {
       showMsg(t.deck.saveError + (e instanceof Error ? e.message : String(e)));
     }
+  };
+
+  const handleExcelImport = () => {
+    excelInputRef.current?.click();
+  };
+
+  const handleExcelFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = "";
+    try {
+      const { read, utils } = await import("xlsx");
+      const data = await file.arrayBuffer();
+      const workbook = read(data);
+      const decks: { name: string; ids: number[] }[] = [];
+      for (const sheetName of workbook.SheetNames) {
+        const sheet = workbook.Sheets[sheetName];
+        const rows = utils.sheet_to_json<unknown[]>(sheet, { header: 1 }) as unknown[][];
+        rows.forEach((row, rowIdx) => {
+          if (!Array.isArray(row) || row.length === 0) return;
+          const firstCell = String(row[0] ?? "").trim();
+          let deckName: string;
+          let idCells: unknown[];
+          if (firstCell && isNaN(Number(firstCell)) && !/^Z\d+$/i.test(firstCell)) {
+            deckName = firstCell;
+            idCells = row.slice(1);
+          } else {
+            deckName = `${sheetName} ${rowIdx + 1}`;
+            idCells = row;
+          }
+          const ids = idCells
+            .filter(cell => cell !== null && cell !== undefined && String(cell).trim() !== "")
+            .map(cell => parseCardId(String(cell).trim()))
+            .filter(id => id > 0);
+          if (ids.length > 0) decks.push({ name: deckName, ids });
+        });
+      }
+      if (decks.length === 0) {
+        showMsg("유효한 덱 정보를 찾을 수 없습니다");
+        return;
+      }
+      setExcelDecks(decks);
+      setShowExcelModal(true);
+    } catch {
+      showMsg("파일을 읽는 중 오류가 발생했습니다");
+    }
+  };
+
+  const handleLoadRecommendedDeck = (rec: RecommendedDeck) => {
+    handleLoadExcelDeck({ name: rec.name, ids: rec.cardIds });
+  };
+
+  const handleLoadExcelDeck = (deckInfo: { name: string; ids: number[] }) => {
+    const cardMap = new Map(cards.map(c => [c.ID, c]));
+    const idCounts = new Map<number, number>();
+    for (const id of deckInfo.ids) {
+      idCounts.set(id, (idCounts.get(id) ?? 0) + 1);
+    }
+    const newDeck: DeckEntry[] = [];
+    for (const [id, count] of idCounts) {
+      const card = cardMap.get(id);
+      if (card) newDeck.push({ card, count: Math.min(count, MAX_SAME_NAME) });
+    }
+    const isTrainerFn = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+    newDeck.sort((a, b) => {
+      const aT = isTrainerFn(a.card) ? 1 : 0;
+      const bT = isTrainerFn(b.card) ? 1 : 0;
+      if (aT !== bT) return aT - bT;
+      return a.card.ID - b.card.ID;
+    });
+    pushHistory(deck);
+    setDeck(newDeck);
+    setCurrentDeckId(null);
+    setDeckName(deckInfo.name);
+    setShowExcelModal(false);
+    showMsg(`'${deckInfo.name}' 덱을 불러왔습니다`);
   };
 
   const typeDist = useMemo(() => {
@@ -2019,6 +2100,9 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                       >{t.deck.load}</button>
                     </>
                   )}
+                  <button onClick={() => setShowRecommendedModal(true)}
+                    className="px-2 py-1.5 rounded-lg text-xs font-medium border border-emerald-200 dark:border-emerald-700 text-emerald-600 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors whitespace-nowrap"
+                  >⭐ 추천덱</button>
                   {/* CSV 저장 버튼 숨김 처리 */}
                   <button onClick={clearDeck} disabled={deck.length === 0 && !search}
                     className="px-2 py-1.5 rounded-lg text-xs font-medium border border-red-200 dark:border-red-800 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 disabled:opacity-30 transition-colors whitespace-nowrap"
@@ -2160,6 +2244,9 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                     >{t.deck.load}</button>
                   </>
                 )}
+                <button onClick={() => { setShowMobileDeck(false); setShowRecommendedModal(true); }}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-emerald-200 dark:border-emerald-700 text-emerald-600 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors"
+                >⭐ 추천덱</button>
                 <button onClick={clearDeck} disabled={deck.length === 0}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 dark:border-red-800 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 disabled:opacity-30 transition-colors"
                 >{t.deck.clear}</button>
@@ -2311,6 +2398,136 @@ export default function DeckBuilder({ cards, session }: { cards: PokemonCard[]; 
                 disabled={savingDeck || !deckName.trim()}
                 className="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-500 hover:bg-indigo-600 text-white disabled:opacity-40 transition-colors"
               >{currentDeckId ? t.deck.saveNew : t.deck.save}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 추천덱 모달 */}
+      {showRecommendedModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          onClick={() => setShowRecommendedModal(false)}
+        >
+          <div
+            className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-lg flex flex-col gap-3 p-5 max-h-[85vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 헤더 */}
+            <div className="flex items-center justify-between shrink-0">
+              <div>
+                <span className="text-base font-bold text-slate-800 dark:text-slate-100">⭐ 추천덱</span>
+                <span className="ml-2 text-sm font-normal text-slate-400 dark:text-slate-500">{recommendedDecks.length}개</span>
+              </div>
+              <button
+                onClick={() => setShowRecommendedModal(false)}
+                className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 text-sm transition-colors"
+              >✕</button>
+            </div>
+
+            {recommendedDecks.length === 0 ? (
+              <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">추천덱 데이터가 없습니다</div>
+            ) : (
+              <div className="overflow-y-auto flex flex-col divide-y divide-slate-100 dark:divide-slate-700">
+                {/* 테이블 헤더 */}
+                <div className="flex items-center gap-3 pb-2 text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wide">
+                  <span className="w-20 shrink-0">생성일</span>
+                  <span className="w-14 shrink-0">타입</span>
+                  <span className="flex-1">덱 이름</span>
+                  <span className="w-16 shrink-0" />
+                </div>
+                {recommendedDecks.map((rec, i) => {
+                  const cardMap = new Map(cards.map(c => [c.ID, c]));
+                  const matched = rec.cardIds.filter(id => cardMap.has(id)).length;
+                  return (
+                    <div key={i} className="flex items-center gap-3 py-2.5">
+                      {/* 생성일 */}
+                      <span className="w-20 shrink-0 text-xs text-slate-400 dark:text-slate-500 tabular-nums">
+                        {rec.createdAt}
+                      </span>
+                      {/* 타입 에너지 이미지 */}
+                      <div className="w-14 shrink-0 flex items-center gap-0.5 flex-wrap">
+                        {rec.types.map((type) => {
+                          const imgSrc = getEnergyImageSrc(type);
+                          return imgSrc ? (
+                            <img key={type} src={imgSrc} alt={type} title={type} className="w-5 h-5 object-contain" />
+                          ) : (
+                            <span key={type} className={`w-4 h-4 rounded-full border ${ENERGY_PIP_COLORS[type] ?? "bg-gray-200 border-gray-400"}`} title={type} />
+                          );
+                        })}
+                      </div>
+                      {/* 덱 이름 */}
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{rec.name}</div>
+                        <div className="text-[10px] text-slate-400 dark:text-slate-500">{matched}장 인식</div>
+                      </div>
+                      {/* 불러오기 */}
+                      <button
+                        onClick={() => { handleLoadRecommendedDeck(rec); setShowRecommendedModal(false); }}
+                        disabled={matched === 0}
+                        className="shrink-0 w-16 px-2 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                      >불러오기</button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* 숨김 파일 입력 */}
+      <input
+        ref={excelInputRef}
+        type="file"
+        accept=".xlsx,.xls,.csv"
+        className="hidden"
+        onChange={handleExcelFile}
+      />
+
+      {/* 엑셀 대회 덱 불러오기 모달 */}
+      {showExcelModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowExcelModal(false)}>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md flex flex-col gap-3 p-5 max-h-[80vh]" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-base font-bold text-slate-800 dark:text-slate-100">📊 대회 덱 불러오기</span>
+                <span className="ml-2 text-sm font-normal text-slate-400 dark:text-slate-500">{excelDecks.length}개 덱</span>
+              </div>
+              <button onClick={() => setShowExcelModal(false)} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 text-sm transition-colors">✕</button>
+            </div>
+            <div className="overflow-y-auto flex flex-col divide-y divide-slate-100 dark:divide-slate-700">
+              {excelDecks.map((deckInfo, i) => {
+                const cardMap = new Map(cards.map(c => [c.ID, c]));
+                const matched = deckInfo.ids.filter(id => cardMap.has(id));
+                const unmatched = deckInfo.ids.length - matched.length;
+                const previewNames = [...new Map(matched.map(id => [id, cardMap.get(id)!])).values()]
+                  .slice(0, 4)
+                  .map(c => c.이름);
+                return (
+                  <div key={i} className="flex items-center gap-3 py-2.5">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{deckInfo.name}</div>
+                      <div className="flex items-center gap-1.5 flex-wrap mt-0.5">
+                        <span className="text-xs text-slate-400 dark:text-slate-500">{matched.length}장 인식</span>
+                        {unmatched > 0 && (
+                          <span className="text-xs text-amber-500 dark:text-amber-400">({unmatched}개 미인식)</span>
+                        )}
+                      </div>
+                      {previewNames.length > 0 && (
+                        <div className="text-[10px] text-slate-400 dark:text-slate-500 truncate mt-0.5">
+                          {previewNames.join(" · ")}{matched.length > 4 ? ` 외 ${matched.length - 4}장` : ""}
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => handleLoadExcelDeck(deckInfo)}
+                      disabled={matched.length === 0}
+                      className="shrink-0 px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    >불러오기</button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -97,6 +97,70 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
   return cards;
 }
 
+export type RecommendedDeck = {
+  name: string;
+  types: string[];
+  createdAt: string; // "YYYY-MM-DD"
+  cardIds: number[];
+};
+
+export function fetchRecommendedDecks(): RecommendedDeck[] {
+  try {
+    const buf = readFileSync(XLSX_PATH);
+    const wb = XLSX.read(buf, { type: "buffer" });
+    const ws = wb.Sheets["추천덱"];
+    if (!ws) return [];
+
+    const rows = XLSX.utils.sheet_to_json<unknown[]>(ws, {
+      header: 1,
+      defval: "",
+    }) as unknown[][];
+
+    // 헤더 행 skip
+    const dataRows = rows.slice(1);
+    const decks: RecommendedDeck[] = [];
+
+    for (const row of dataRows) {
+      if (!Array.isArray(row) || row.length < 3) continue;
+
+      // 생성일: Excel 시리얼 숫자 → "YYYY-MM-DD"
+      const rawDate = row[0];
+      let createdAt = "";
+      if (typeof rawDate === "number" && rawDate > 0) {
+        const dateObj = XLSX.SSF.parse_date_code(rawDate);
+        createdAt = `${dateObj.y}-${String(dateObj.m).padStart(2, "0")}-${String(dateObj.d).padStart(2, "0")}`;
+      } else {
+        createdAt = String(rawDate ?? "").trim();
+      }
+
+      // 타입: 쉼표 구분 or 단일 문자열
+      const rawType = String(row[1] ?? "").trim();
+      const types = rawType
+        ? rawType.split(",").map((t) => t.trim()).filter(Boolean)
+        : [];
+
+      // 덱 이름
+      const name = String(row[2] ?? "").trim();
+      if (!name) continue;
+
+      // 카드 ID (index 3~22, 최대 20개)
+      const cardIds = (row as unknown[])
+        .slice(3, 23)
+        .filter((cell) => cell !== null && cell !== undefined && String(cell).trim() !== "")
+        .map((cell) => parseCardId(String(cell).trim()))
+        .filter((id) => id > 0);
+
+      if (cardIds.length > 0) {
+        decks.push({ name, types, createdAt, cardIds });
+      }
+    }
+
+    return decks;
+  } catch {
+    return [];
+  }
+}
+
 export async function fetchCards(lang?: string): Promise<PokemonCard[]> {
   const xlsxPath = lang === "en" ? XLSX_PATH_EN : XLSX_PATH;
   try {

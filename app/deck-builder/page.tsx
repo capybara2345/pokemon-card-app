@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import DeckBuilder from "../components/DeckBuilder";
-import { fetchCards } from "../lib/fetchCards";
+import { fetchCards, fetchRecommendedDecks } from "../lib/fetchCards";
 import { auth } from "@/auth";
 import { SITE_URL } from "../lib/constants";
 
@@ -42,9 +42,10 @@ export default async function DeckBuilderPage() {
   const cookieStore = await cookies();
   const lang = cookieStore.get("lang")?.value ?? "ko";
   const [cards, session] = await Promise.all([fetchCards(lang), auth()]);
+  const recommendedDecks = fetchRecommendedDecks();
   return (
     <main className="min-h-screen">
-      <DeckBuilder cards={cards} session={session} />
+      <DeckBuilder cards={cards} session={session} recommendedDecks={recommendedDecks} />
     </main>
   );
 }
