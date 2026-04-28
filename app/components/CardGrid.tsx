@@ -800,9 +800,11 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                       if (card.타입 === "풀") supporters.push("민화");
                       if (card.타입 === "물") supporters.push("이슬");
                       if (card.타입 === "물") supporters.push("낚시꾼");
+                      if (card.타입 === "물" && !card.카드타입?.includes("메가ex")) supporters.push("파라솔 아가씨");
                       if (card.타입 === "초") supporters.push("유빈");
                       if (card.타입 === "초") supporters.push("카르네");
                       if (card.타입 === "격투") supporters.push("등산가");
+                      if (card.타입 === "격투") supporters.push("코르니");
                       if (card.타입 === "강철") supporters.push("찬석");
                       if (card.타입 === "무색") supporters.push("일리마");
                       if (card.이름 === "딱구리" || card.이름 === "롱스톤") supporters.push("웅");
@@ -830,6 +832,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                       if (card.이름 === "가라르 가로막구리") supporters.push("두송");
                       if (card.이름 === "빠르모트") supporters.push("네모");
                       if (card.이름 === "엑스라이즈") supporters.push("아이리스");
+                      if (card.이름 === "보르그" || card.이름 === "바랜드") supporters.push("체렌");
                       if (card.카드타입?.includes("울트라비스트")) supporters.push("루자미네");
                       if (card.카드타입?.includes("메가ex")) supporters.push("세레나");
                       if (card.카드타입?.includes("메가ex")) supporters.push("칼름");
