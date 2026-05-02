@@ -772,16 +772,19 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     const strongVsToolTrash = deck.length > 0 && toolCount === 0;
     // 이전이름 누락 검사
     const deckNameSet = new Set(deck.map(({ card }) => card.이름));
+    const hasRareCandy = deckNameSet.has("이상한사탕");
     const missingPreEvolutions: { evoName: string; preName: string }[] = [];
-    for (const { card } of pokemonEntries) {
-      const preName = card.이전이름?.trim();
-      if (
-        (card.진화 === "1진화" || card.진화 === "2진화" || card.진화 === "Stage 1" || card.진화 === "Stage 2") &&
-        preName &&
-        !deckNameSet.has(preName)
-      ) {
-        if (!missingPreEvolutions.some((m) => m.evoName === card.이름)) {
-          missingPreEvolutions.push({ evoName: card.이름, preName });
+    if (!hasRareCandy) {
+      for (const { card } of pokemonEntries) {
+        const preName = card.이전이름?.trim();
+        if (
+          (card.진화 === "1진화" || card.진화 === "2진화" || card.진화 === "Stage 1" || card.진화 === "Stage 2") &&
+          preName &&
+          !deckNameSet.has(preName)
+        ) {
+          if (!missingPreEvolutions.some((m) => m.evoName === card.이름)) {
+            missingPreEvolutions.push({ evoName: card.이름, preName });
+          }
         }
       }
     }
@@ -808,7 +811,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       trainerCount,
       noPokemon: pokemonCount === 0 && deck.length > 0,
       noTrainer: pokemonCount > 0 && trainerCount === 0,
-      noStage1: evoStages.has("2진화") && !evoStages.has("1진화"),
+      noStage1: evoStages.has("2진화") && !evoStages.has("1진화") && !hasRareCandy,
       noBasic: (evoStages.has("1진화") || evoStages.has("2진화"))
         && !evoStages.has("기본") && !evoStages.has("Basic"),
       fewPokemon: pokemonCount > 0 && pokemonCount < 8,
