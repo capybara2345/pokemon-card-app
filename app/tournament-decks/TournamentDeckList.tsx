@@ -52,6 +52,7 @@ function getTierColor(index: number, total: number): string {
 function formatDateTime(iso: string): string {
   const d = new Date(iso);
   return d.toLocaleString("ko-KR", {
+    timeZone: "Asia/Seoul",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
