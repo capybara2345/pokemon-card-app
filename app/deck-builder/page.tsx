@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     "pokemon pocket deck list",
     "ポケポケ デッキ",
     "ポケモンポケット デッキ",
+    "ポケポケ デッキビルダー",
+    "ポケポケ デッキ作成",
+    "ポケポケ おすすめデッキ",
+    "ポケポケ デッキ構築",
+    "ポケポケ カード",
+    "ポケモン カード ポケット デッキ",
+    "ポケポケ デッキレシピ",
   ],
   openGraph: {
     title: "포켓몬 포켓 덱 빌더 | Pokemon TCG Pocket Deck Builder",
