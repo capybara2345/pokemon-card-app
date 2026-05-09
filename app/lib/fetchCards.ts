@@ -161,6 +161,42 @@ export function fetchRecommendedDecks(): RecommendedDeck[] {
   }
 }
 
+function loadApiImageMap(): Map<string, string> {
+  const path = join(process.cwd(), "public", "data", "cards.json");
+  const content = readFileSync(path, "utf-8");
+  const cards = JSON.parse(content) as Array<{ id: string; image: string }>;
+  const map = new Map<string, string>();
+  for (const card of cards) {
+    if (card.id && card.image) {
+      map.set(String(card.id).trim(), card.image);
+    }
+  }
+  return map;
+}
+
+function loadSerialToIdMap(): Map<string, number> {
+  const path = join(process.cwd(), "app", "data", "card_list.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const map = new Map<string, number>();
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" }) as Array<{
+      ID: string | number;
+      Serial: string;
+    }>;
+    for (const row of rows) {
+      if (row.Serial && row.ID) {
+        const numericId = parseCardId(String(row.ID).trim());
+        if (numericId > 0) {
+          map.set(String(row.Serial).trim(), numericId);
+        }
+      }
+    }
+  }
+  return map;
+}
+
 export async function fetchCards(lang?: string): Promise<PokemonCard[]> {
   const xlsxPath = lang === "en" ? XLSX_PATH_EN : XLSX_PATH;
   try {
@@ -172,6 +208,22 @@ export async function fetchCards(lang?: string): Promise<PokemonCard[]> {
       const ws = wb.Sheets[sheetName];
       const cards = parseSheetCards(ws);
       allCards.push(...cards);
+    }
+
+    if (lang === "en" && allCards.length > 0) {
+      const apiImageMap = loadApiImageMap();
+      const serialToId = loadSerialToIdMap();
+      const numericIdToSerial = new Map<number, string>();
+      for (const [serial, numericId] of serialToId.entries()) {
+        numericIdToSerial.set(numericId, serial);
+      }
+      for (const card of allCards) {
+        const serial = numericIdToSerial.get(card.ID);
+        if (serial) {
+          const image = apiImageMap.get(serial);
+          if (image) card.image = image;
+        }
+      }
     }
 
     return allCards.length > 0 ? allCards : pokemonCards;

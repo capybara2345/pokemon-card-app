@@ -20,9 +20,27 @@ export default function NavHeaderClient({ session }: Props) {
   const { lang, setLang, t } = useLanguage();
 
     const NAV_ITEMS = [
-    { label: t.nav.cardList, href: "/" },
-    { label: t.nav.deckBuilder, href: "/deck-builder" },
-    { label: t.nav.tournamentDecks, href: "/tournament-decks" },
+    {
+      label: t.nav.cardList,
+      href: "/",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      ),
+    },
+    {
+      label: t.nav.deckBuilder,
+      href: "/deck-builder",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      ),
+    },
+    {
+      label: t.nav.tournamentDecks,
+      href: "/tournament-decks",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      ),
+    },
   ];
 
   useEffect(() => {
@@ -59,19 +77,21 @@ export default function NavHeaderClient({ session }: Props) {
         <div className="flex items-center gap-2 md:gap-4 min-w-0">
           <span className="text-sm md:text-base font-bold tracking-tight text-slate-800 dark:text-slate-100 shrink-0">PPCardList</span>
           <nav className="flex items-center gap-0.5 md:gap-1">
-            {NAV_ITEMS.map(({ label, href }) => {
+            {NAV_ITEMS.map(({ label, href, icon }) => {
               const active = pathname === href;
               return (
                 <Link
                   key={href}
                   href={href}
+                  title={label}
                   className={`px-2 md:px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
                     active
                       ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300"
                       : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-800 dark:hover:text-slate-200"
                   }`}
                 >
-                  {label}
+                  <span className="hidden md:inline">{label}</span>
+                  <span className="inline-flex items-center justify-center md:hidden">{icon}</span>
                 </Link>
               );
             })}

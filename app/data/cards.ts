@@ -40,6 +40,7 @@ export type PokemonCard = {
   이전이름?: string;
   키워드: string;
   확장팩: string;
+  image?: string;
 };
 
 export const pokemonCards: PokemonCard[] = [

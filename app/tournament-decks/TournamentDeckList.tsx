@@ -176,6 +176,8 @@ export default function TournamentDeckList({ decks, lastUpdated, session }: Prop
   const [saveName, setSaveName] = useState("");
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 50;
 
   const filtered = useMemo(() => {
     let list = decks.filter((d) => {
@@ -205,7 +207,15 @@ export default function TournamentDeckList({ decks, lastUpdated, session }: Prop
     return list;
   }, [decks, query, sortBy, minGames]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query, sortBy, minGames]);
+
   const total = filtered.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const startIdx = (currentPage - 1) * PAGE_SIZE;
+  const endIdx = Math.min(startIdx + PAGE_SIZE, total);
+  const paginatedDecks = filtered.slice(startIdx, endIdx);
 
   const closeModal = useCallback(() => {
     setSelectedDeck(null);
@@ -308,14 +318,14 @@ export default function TournamentDeckList({ decks, lastUpdated, session }: Prop
 
       {/* 결과 개수 & 업데이트 시간 */}
       <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-        <span>{total}개 덱</span>
+        <span>{total > 0 ? `${startIdx + 1}-${endIdx} / ${total}개 덱` : `${total}개 덱`}</span>
         <span>최신 업데이트: {formatDateTime(lastUpdated)}</span>
       </div>
 
       {/* 카드 그리드 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {filtered.map((deck, i) => {
-          const tierColor = getTierColor(i, total || 1);
+        {paginatedDecks.map((deck, i) => {
+          const tierColor = getTierColor(startIdx + i, total || 1);
           return (
             <button
               key={deck.name}
@@ -396,6 +406,46 @@ export default function TournamentDeckList({ decks, lastUpdated, session }: Prop
           );
         })}
       </div>
+
+      {/* 페이징 */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 pt-2">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage <= 1}
+            className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+          >
+            이전
+          </button>
+
+          <div className="flex items-center gap-1">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+              const isActive = page === currentPage;
+              return (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
+                    isActive
+                      ? "bg-sky-500 text-white"
+                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
+                  }`}
+                >
+                  {page}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            disabled={currentPage >= totalPages}
+            className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+          >
+            다음
+          </button>
+        </div>
+      )}
 
       {filtered.length === 0 && (
         <div className="text-center py-12 text-sm text-slate-500 dark:text-slate-400">

@@ -73,9 +73,16 @@ function loadJson<T>(filename: string): T {
 }
 
 function getLastUpdated(): string {
-  const path = join(process.cwd(), "public", "data", "best-decks.json");
-  const stats = statSync(path);
-  return stats.mtime.toISOString();
+  const metaPath = join(process.cwd(), "public", "data", "tournament-meta.json");
+  try {
+    const content = readFileSync(metaPath, "utf-8");
+    const meta = JSON.parse(content) as { updatedAt: string };
+    return meta.updatedAt;
+  } catch {
+    const fallbackPath = join(process.cwd(), "public", "data", "best-decks.json");
+    const stats = statSync(fallbackPath);
+    return stats.mtime.toISOString();
+  }
 }
 
 const PROMO_BASE = 900000;
@@ -180,11 +187,12 @@ export default async function TournamentDecksPage() {
   const session = await auth();
   const decks = loadJson<BestDeck[]>("best-decks.json");
   const matchupData = loadJson<MatchupData>("matchup-data.json");
+  const lastUpdated = getLastUpdated();
+
   const cardsData = loadJson<RawCard[]>("cards.json");
   const serialToId = loadSerialToIdMap();
   const serialToKoName = loadSerialToKoNameMap();
   const serialToEnergy = loadSerialToEnergyMap();
-  const lastUpdated = getLastUpdated();
 
   const cardMap = new Map<string, RawCard>(
     cardsData.map((c) => [c.id, c])
@@ -213,14 +221,12 @@ export default async function TournamentDecksPage() {
         };
       });
 
-      // Aggregate energy types across all cards in the deck
       const allEnergyTypes: string[] = [];
       for (const card of bestList.cards) {
         const [, id] = card.split(":");
         const types = serialToEnergy.get(id) ?? [];
         allEnergyTypes.push(...types);
       }
-      // Deduplicate while preserving order
       const uniqueEnergyTypes = allEnergyTypes.filter((t, i, arr) => arr.indexOf(t) === i);
 
       return {

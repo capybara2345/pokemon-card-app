@@ -910,7 +910,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                 ✕
               </button>
               <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{selectedCard.이름}</p>
-              <CardImage id={selectedCard.ID} name={selectedCard.이름} />
+              <CardImage id={selectedCard.ID} name={selectedCard.이름} image={selectedCard.image} />
             </div>
           </div>
         </>,
@@ -938,7 +938,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             <div className="overflow-y-auto p-4 flex flex-col gap-4">
               <div className="flex justify-center">
                 <div className="w-48">
-                  <CardImage id={mobileDetail.ID} name={mobileDetail.이름} />
+                  <CardImage id={mobileDetail.ID} name={mobileDetail.이름} image={mobileDetail.image} />
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-2">
@@ -1228,9 +1228,10 @@ function EnergyPips({ energy }: { energy: string }) {
   );
 }
 
-function CardImage({ id, name }: { id: number; name: string }) {
+function CardImage({ id, name, image }: { id: number; name: string; image?: string }) {
   const [missing, setMissing] = useState(false);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const src = image && lang === "en" ? image : getCardImageSrc(id);
   return missing ? (
     <div className="w-full aspect-[3/4] flex items-center justify-center rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50">
       <span className="text-sm text-slate-400 dark:text-slate-500">{t.card.preparing}</span>
@@ -1238,7 +1239,7 @@ function CardImage({ id, name }: { id: number; name: string }) {
   ) : (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={getCardImageSrc(id)}
+      src={src}
       alt={name}
       onError={() => setMissing(true)}
       className="w-full rounded-lg shadow-md object-contain"

@@ -7,7 +7,10 @@
       "Bash(cp F:/project/pokemon-tcg-pocket-tier-list/public/data/matchup-data.json F:/project/pokemon-card-app/public/data/)",
       "Bash(npm run *)",
       "Bash(curl -sL https://raw.githubusercontent.com/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/v4.json)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "WebSearch",
+      "WebFetch(domain:docs.limitlesstcg.com)",
+      "Bash(npx tsc *)"
     ]
   }
 }
