@@ -8,9 +8,9 @@ const PUBLIC_DATA = join(__dirname, "..", "public", "data");
 const API_BASE = "https://play.limitlesstcg.com/api";
 
 // 병렬 처리 청크 크기
-const CHUNK_SIZE = 3;
-const DELAY_MS = 1000;
-const RETRY_DELAY_MS = 2000;
+const CHUNK_SIZE = 1;
+const DELAY_MS = 3000;
+const RETRY_DELAY_MS = 3000;
 const MAX_RETRIES = 3;
 
 function sleep(ms) {
@@ -314,7 +314,12 @@ async function main() {
     finalMatchups[deckName] = entries;
   }
 
-  const updatedAt = new Date().toISOString();
+  const latestTournamentDate =
+    tournaments.length > 0
+      ? new Date(
+          Math.max(...tournaments.map((t) => new Date(t.date).getTime()))
+        ).toISOString()
+      : new Date().toISOString();
 
   writeFileSync(
     join(PUBLIC_DATA, "best-decks.json"),
@@ -326,14 +331,14 @@ async function main() {
   );
   writeFileSync(
     join(PUBLIC_DATA, "tournament-meta.json"),
-    JSON.stringify({ updatedAt }, null, 2)
+    JSON.stringify({ updatedAt: latestTournamentDate }, null, 2)
   );
 
   console.log(`\nUpdated best-decks.json with ${bestDecks.length} archetypes`);
   console.log(
     `Updated matchup-data.json with ${Object.keys(finalMatchups).length} matchups`
   );
-  console.log(`Updated tournament-meta.json: ${updatedAt}`);
+  console.log(`Updated tournament-meta.json: ${latestTournamentDate}`);
 }
 
 main().catch((err) => {
