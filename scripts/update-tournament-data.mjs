@@ -314,6 +314,8 @@ async function main() {
     finalMatchups[deckName] = entries;
   }
 
+  const updatedAt = new Date().toISOString();
+
   writeFileSync(
     join(PUBLIC_DATA, "best-decks.json"),
     JSON.stringify(bestDecks, null, 2)
@@ -322,11 +324,16 @@ async function main() {
     join(PUBLIC_DATA, "matchup-data.json"),
     JSON.stringify(finalMatchups, null, 2)
   );
+  writeFileSync(
+    join(PUBLIC_DATA, "tournament-meta.json"),
+    JSON.stringify({ updatedAt }, null, 2)
+  );
 
   console.log(`\nUpdated best-decks.json with ${bestDecks.length} archetypes`);
   console.log(
     `Updated matchup-data.json with ${Object.keys(finalMatchups).length} matchups`
   );
+  console.log(`Updated tournament-meta.json: ${updatedAt}`);
 }
 
 main().catch((err) => {
