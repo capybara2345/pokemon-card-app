@@ -19,9 +19,10 @@ export default function NavHeaderClient({ session }: Props) {
   const userMenuRef = useRef<HTMLDivElement>(null);
   const { lang, setLang, t } = useLanguage();
 
-  const NAV_ITEMS = [
+    const NAV_ITEMS = [
     { label: t.nav.cardList, href: "/" },
     { label: t.nav.deckBuilder, href: "/deck-builder" },
+    { label: t.nav.tournamentDecks, href: "/tournament-decks" },
   ];
 
   useEffect(() => {

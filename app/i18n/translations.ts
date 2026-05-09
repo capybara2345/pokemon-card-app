@@ -1,9 +1,10 @@
 export type Lang = "ko" | "en";
 
 export type Translations = {
-  nav: {
+    nav: {
     cardList: string;
     deckBuilder: string;
+    tournamentDecks: string;
   };
   auth: {
     login: string;
@@ -193,6 +194,7 @@ export const ko: Translations = {
   nav: {
     cardList: "카드 리스트",
     deckBuilder: "덱 빌더",
+    tournamentDecks: "토너먼트 덱",
   },
   auth: {
     login: "Google 로그인",
@@ -392,6 +394,7 @@ export const en: Translations = {
   nav: {
     cardList: "Card List",
     deckBuilder: "Deck Builder",
+    tournamentDecks: "Tournament Decks",
   },
   auth: {
     login: "Sign in with Google",

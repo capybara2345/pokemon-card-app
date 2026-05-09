@@ -2103,9 +2103,9 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                       >{t.deck.load}</button>
                     </>
                   )}
-                  <button onClick={() => setShowRecommendedModal(true)}
+                  {/* <button onClick={() => setShowRecommendedModal(true)}
                     className="px-2 py-1.5 rounded-lg text-xs font-medium border border-emerald-200 dark:border-emerald-700 text-emerald-600 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors whitespace-nowrap"
-                  >⭐ 추천덱</button>
+                  >⭐ 추천덱</button> */}
                   {/* CSV 저장 버튼 숨김 처리 */}
                   <button onClick={clearDeck} disabled={deck.length === 0 && !search}
                     className="px-2 py-1.5 rounded-lg text-xs font-medium border border-red-200 dark:border-red-800 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 disabled:opacity-30 transition-colors whitespace-nowrap"
