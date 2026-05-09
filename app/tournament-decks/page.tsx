@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { readFileSync, statSync } from "fs";
+import { readFileSync } from "fs";
 import { join } from "path";
 import TournamentDeckList from "./TournamentDeckList";
 import * as XLSX from "xlsx";
@@ -104,19 +104,6 @@ function loadJson<T>(filename: string): T {
   return JSON.parse(content) as T;
 }
 
-function getLastUpdated(): string {
-  const metaPath = join(process.cwd(), "public", "data", "tournament-meta.json");
-  try {
-    const content = readFileSync(metaPath, "utf-8");
-    const meta = JSON.parse(content) as { updatedAt: string };
-    return meta.updatedAt;
-  } catch {
-    const fallbackPath = join(process.cwd(), "public", "data", "best-decks.json");
-    const stats = statSync(fallbackPath);
-    return stats.mtime.toISOString();
-  }
-}
-
 const PROMO_BASE = 900000;
 
 function parseCardId_(rawId: string): number {
@@ -219,7 +206,6 @@ export default async function TournamentDecksPage() {
   const session = await auth();
   const decks = loadJson<BestDeck[]>("best-decks.json");
   const matchupData = loadJson<MatchupData>("matchup-data.json");
-  const lastUpdated = getLastUpdated();
 
   const cardsData = loadJson<RawCard[]>("cards.json");
   const serialToId = loadSerialToIdMap();
@@ -303,7 +289,7 @@ export default async function TournamentDecksPage() {
           최근 토너먼트에서 좋은 성적을 거둔 덱 리스트입니다.
         </p>
 
-        <TournamentDeckList decks={enriched} lastUpdated={lastUpdated} session={session} />
+        <TournamentDeckList decks={enriched} session={session} />
       </div>
     </main>
   );

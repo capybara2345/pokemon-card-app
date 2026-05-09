@@ -13,7 +13,6 @@ type SortKey = "score" | "winRate" | "totalGames" | "popularity";
 
 interface Props {
   decks: EnrichedDeck[];
-  lastUpdated: string;
   session: Session | null;
 }
 
@@ -164,9 +163,17 @@ async function downloadDeckImage(
   link.click();
 }
 
-export default function TournamentDeckList({ decks, lastUpdated, session }: Props) {
+export default function TournamentDeckList({ decks, session }: Props) {
   const { lang } = useLanguage();
   const [query, setQuery] = useState("");
+  const [lastUpdated, setLastUpdated] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/data/tournament-meta.json")
+      .then((res) => res.json())
+      .then((data: { updatedAt: string }) => setLastUpdated(data.updatedAt))
+      .catch(() => setLastUpdated(""));
+  }, []);
   const [sortBy, setSortBy] = useState<SortKey>("score");
   const [minGames, setMinGames] = useState(0);
   const [selectedDeck, setSelectedDeck] = useState<EnrichedDeck | null>(null);
@@ -320,7 +327,7 @@ export default function TournamentDeckList({ decks, lastUpdated, session }: Prop
       {/* 결과 개수 & 업데이트 시간 */}
       <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
         <span>{total > 0 ? `${startIdx + 1}-${endIdx} / ${total}개 덱` : `${total}개 덱`}</span>
-        <span>최신 업데이트: {formatDateTime(lastUpdated)}</span>
+        <span>최신 업데이트: {lastUpdated ? formatDateTime(lastUpdated) : "-"}</span>
       </div>
 
       {/* 카드 그리드 */}
