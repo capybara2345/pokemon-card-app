@@ -325,7 +325,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
       </div>
 
       {/* 결과 개수 & 업데이트 시간 */}
-      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 flex-wrap gap-y-1">
         <span>{total > 0 ? `${startIdx + 1}-${endIdx} / ${total}개 덱` : `${total}개 덱`}</span>
         <span>최신 업데이트: {lastUpdated ? formatDateTime(lastUpdated) : "-"}</span>
       </div>
@@ -343,7 +343,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
               <div className={`h-1.5 w-full ${tierColor}`} />
               <div className="flex flex-col gap-3 p-4">
                 <div className="flex items-start justify-between gap-2">
-                  <h2 className="text-sm font-bold text-slate-800 dark:text-slate-100 leading-snug line-clamp-2 min-h-[2.5rem] flex-1">
+                  <h2 className="text-sm font-bold text-slate-800 dark:text-slate-100 leading-snug line-clamp-2 min-h-[2.5rem] flex-1 min-w-0">
                     {deck.displayName}
                   </h2>
                   {deck.energyTypes.length > 0 && (
@@ -386,7 +386,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                     <span className="text-[10px] font-medium text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                       경기
                     </span>
-                    <span className="text-sm font-bold text-slate-700 dark:text-slate-200">
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-200 break-all">
                       {deck.totalGames !== null
                         ? deck.totalGames.toLocaleString()
                         : "-"}
@@ -417,7 +417,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
 
       {/* 페이징 */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 pt-2">
+        <div className="flex items-center justify-center gap-2 pt-2 flex-wrap">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage <= 1}
@@ -426,7 +426,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
             이전
           </button>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 flex-wrap">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
               const isActive = page === currentPage;
               return (

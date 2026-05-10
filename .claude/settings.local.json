@@ -10,7 +10,11 @@
       "Bash(curl *)",
       "WebSearch",
       "WebFetch(domain:docs.limitlesstcg.com)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(Get-Content public\\\\data\\\\best-decks.json)",
+      "Bash(ConvertFrom-Json)",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -Property Count)"
     ]
   }
 }
