@@ -14,7 +14,8 @@
       "Bash(Get-Content public\\\\data\\\\best-decks.json)",
       "Bash(ConvertFrom-Json)",
       "Bash(Measure-Object)",
-      "Bash(Select-Object -Property Count)"
+      "Bash(Select-Object -Property Count)",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); matches=[c for c in data if c['id'].startswith\\('pb-'\\)]; print\\([c['id'] for c in matches[:5]]\\)\")"
     ]
   }
 }

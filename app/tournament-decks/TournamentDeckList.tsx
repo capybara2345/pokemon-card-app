@@ -564,6 +564,9 @@ export default function TournamentDeckList({ decks, session }: Props) {
                         </span>
                         <span className="text-[10px] text-slate-400 dark:text-slate-500">
                           {card.id}
+                          {card.expansion && (
+                            <span className="ml-1 text-slate-400 dark:text-slate-500">· {card.expansion}</span>
+                          )}
                         </span>
                       </div>
                       <button

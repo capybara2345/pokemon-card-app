@@ -71,6 +71,7 @@ interface CardItem {
   koName: string | null;
   image: string;
   numericId: number | null;
+  expansion: string | null;
 }
 
 export interface EnrichedDeck {
@@ -105,6 +106,10 @@ function loadJson<T>(filename: string): T {
 }
 
 const PROMO_BASE = 900000;
+
+function normalizeCardId(id: string): string {
+  return id.replace(/^p-([a-z])-/i, "p$1-");
+}
 
 function parseCardId_(rawId: string): number {
   const promoMatch = rawId.match(/^Z(\d+)$/i);
@@ -172,6 +177,26 @@ function loadSerialToKoNameMap(): Map<string, string> {
   return map;
 }
 
+function loadSerialToExpansionMap(): Map<string, string> {
+  const path = join(process.cwd(), "app", "data", "card_list.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const map = new Map<string, string>();
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" }) as Array<{
+      Serial: string;
+      확장팩: string;
+    }>;
+    for (const row of rows) {
+      if (row.Serial && row.확장팩) {
+        map.set(String(row.Serial).trim(), String(row.확장팩).trim());
+      }
+    }
+  }
+  return map;
+}
+
 function loadSerialToEnergyMap(): Map<string, string[]> {
   const path = join(process.cwd(), "app", "data", "card_list.xlsx");
   const buf = readFileSync(path);
@@ -210,6 +235,7 @@ export default async function TournamentDecksPage() {
   const cardsData = loadJson<RawCard[]>("cards.json");
   const serialToId = loadSerialToIdMap();
   const serialToKoName = loadSerialToKoNameMap();
+  const serialToExpansion = loadSerialToExpansionMap();
   const serialToEnergy = loadSerialToEnergyMap();
 
   const cardMap = new Map<string, RawCard>(
@@ -226,9 +252,11 @@ export default async function TournamentDecksPage() {
 
       const cards: CardItem[] = bestList.cards.map((raw) => {
         const [countStr, id] = raw.split(":");
-        const card = cardMap.get(id);
-        const numericId = serialToId.get(id) ?? null;
-        const koName = serialToKoName.get(id) ?? null;
+        const normalizedId = normalizeCardId(id);
+        const card = cardMap.get(normalizedId);
+        const numericId = serialToId.get(normalizedId) ?? null;
+        const koName = serialToKoName.get(normalizedId) ?? null;
+        const expansion = serialToExpansion.get(normalizedId) ?? null;
         return {
           count: Number(countStr),
           id,
@@ -236,13 +264,14 @@ export default async function TournamentDecksPage() {
           koName,
           image: card?.image ?? "",
           numericId,
+          expansion,
         };
       });
 
       const allEnergyTypes: string[] = [];
       for (const card of bestList.cards) {
         const [, id] = card.split(":");
-        const types = serialToEnergy.get(id) ?? [];
+        const types = serialToEnergy.get(normalizeCardId(id)) ?? [];
         allEnergyTypes.push(...types);
       }
       const uniqueEnergyTypes = allEnergyTypes.filter((t, i, arr) => arr.indexOf(t) === i);
