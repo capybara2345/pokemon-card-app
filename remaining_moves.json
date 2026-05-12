@@ -1,0 +1,8452 @@
+[
+  {
+    "move": "밟기",
+    "count": 11,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6016,
+        "name": "Morelull"
+      },
+      {
+        "sheet": "Grass",
+        "id": 6018,
+        "name": "Bounsweet"
+      },
+      {
+        "sheet": "Fire",
+        "id": 9030,
+        "name": "Magmar"
+      }
+    ]
+  },
+  {
+    "move": "펀치",
+    "count": 10,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 7006,
+        "name": "Buzzwole ex"
+      },
+      {
+        "sheet": "Grass",
+        "id": 9012,
+        "name": "Ledian"
+      },
+      {
+        "sheet": "Grass",
+        "id": 13001,
+        "name": "Ledyba"
+      }
+    ]
+  },
+  {
+    "move": "한방 먹이기",
+    "count": 10,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11026,
+        "name": "Thwackey"
+      },
+      {
+        "sheet": "Water",
+        "id": 3032,
+        "name": "Horsea"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 11105,
+        "name": "Honchkrow"
+      }
+    ]
+  },
+  {
+    "move": "사이코숏",
+    "count": 10,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 1132,
+        "name": "Arcanine"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 2032,
+        "name": "Mew ex"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 5029,
+        "name": "Abra"
+      }
+    ]
+  },
+  {
+    "move": "홰치기",
+    "count": 9,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3006,
+        "name": "Yanma"
+      },
+      {
+        "sheet": "Water",
+        "id": 1085,
+        "name": "Liepard"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 14043,
+        "name": "Blitzle"
+      }
+    ]
+  },
+  {
+    "move": "궤찌르기",
+    "count": 9,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3018,
+        "name": "Vespiquen"
+      },
+      {
+        "sheet": "Grass",
+        "id": 12006,
+        "name": "Ariados"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 3083,
+        "name": "Gligar"
+      }
+    ]
+  },
+  {
+    "move": "스위트릴레이",
+    "count": 8,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 8007,
+        "name": "Appletun"
+      },
+      {
+        "sheet": "Grass",
+        "id": 9023,
+        "name": "Cherubi"
+      },
+      {
+        "sheet": "Water",
+        "id": 8018,
+        "name": "Vanillite"
+      }
+    ]
+  },
+  {
+    "move": "때리기",
+    "count": 8,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11013,
+        "name": "Pansage"
+      },
+      {
+        "sheet": "Grass",
+        "id": 11025,
+        "name": "Grookey"
+      },
+      {
+        "sheet": "Fire",
+        "id": 11037,
+        "name": "Cradily"
+      }
+    ]
+  },
+  {
+    "move": "가드프레스",
+    "count": 7,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13003,
+        "name": "Forretress"
+      },
+      {
+        "sheet": "Water",
+        "id": 6043,
+        "name": "Karrablast"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 11119,
+        "name": "Meltan"
+      }
+    ]
+  },
+  {
+    "move": "쥐어박기",
+    "count": 7,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13006,
+        "name": "Cacnea"
+      },
+      {
+        "sheet": "Water",
+        "id": 4020,
+        "name": "Piloswine"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 4039,
+        "name": "Dreepy"
+      }
+    ]
+  },
+  {
+    "move": "물뿌리기",
+    "count": 7,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1090,
+        "name": "Palossand"
+      },
+      {
+        "sheet": "Water",
+        "id": 5014,
+        "name": "Starmie"
+      },
+      {
+        "sheet": "Water",
+        "id": 5021,
+        "name": "Shelmet"
+      }
+    ]
+  },
+  {
+    "move": "걸기",
+    "count": 6,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6007,
+        "name": "Phantump"
+      },
+      {
+        "sheet": "Grass",
+        "id": 14004,
+        "name": "Tarountula"
+      },
+      {
+        "sheet": "Water",
+        "id": 6052,
+        "name": "Dewpider"
+      }
+    ]
+  },
+  {
+    "move": "예리한이빨",
+    "count": 6,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 12016,
+        "name": "Houndoom"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 13061,
+        "name": "Jynx"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 9095,
+        "name": "Gliscor"
+      }
+    ]
+  },
+  {
+    "move": "뒤로 차기",
+    "count": 6,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 6063,
+        "name": "Electivire"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 7016,
+        "name": "Stunfisk"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 14046,
+        "name": "Starly"
+      }
+    ]
+  },
+  {
+    "move": "돌격",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 4005,
+        "name": "Vespiquen"
+      },
+      {
+        "sheet": "Fire",
+        "id": 11039,
+        "name": "Darmanitan"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 9099,
+        "name": "Riolu"
+      }
+    ]
+  },
+  {
+    "move": "발톱 베어가르기",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6008,
+        "name": "Trevenant"
+      },
+      {
+        "sheet": "Fire",
+        "id": 8012,
+        "name": "Armarouge"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 13073,
+        "name": "Mimikyu ex"
+      }
+    ]
+  },
+  {
+    "move": "히트블라스트",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 1047,
+        "name": "Moltres ex"
+      },
+      {
+        "sheet": "Fire",
+        "id": 9036,
+        "name": "Darmanitan"
+      },
+      {
+        "sheet": "Fire",
+        "id": 10009,
+        "name": "Magcargo"
+      }
+    ]
+  },
+  {
+    "move": "헤드볼트",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 1108,
+        "name": "Galvantula"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 7014,
+        "name": "Luxio"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 7017,
+        "name": "Zebstrika"
+      }
+    ]
+  },
+  {
+    "move": "찌릿찌릿",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 7018,
+        "name": "Emolga"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 9067,
+        "name": "Mareep"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 10029,
+        "name": "Mawile"
+      }
+    ]
+  },
+  {
+    "move": "뺨치기",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16060,
+        "name": "Toxel"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 1113,
+        "name": "Igglybuff"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 3069,
+        "name": "Girafarig"
+      }
+    ]
+  },
+  {
+    "move": "랜드크래시",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 1150,
+        "name": "Larvitar"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 2046,
+        "name": "Aerodactyl ex"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 3090,
+        "name": "Wormadam"
+      }
+    ]
+  },
+  {
+    "move": "드래곤클로",
+    "count": 5,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 4047,
+        "name": "Garchomp ex"
+      },
+      {
+        "sheet": "Dragon",
+        "id": 2056,
+        "name": "Dracovish"
+      },
+      {
+        "sheet": "Dragon",
+        "id": 3123,
+        "name": "Garchomp"
+      }
+    ]
+  },
+  {
+    "move": "리프스텝",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3003,
+        "name": "Bellossom"
+      },
+      {
+        "sheet": "Grass",
+        "id": 8004,
+        "name": "Steenee"
+      },
+      {
+        "sheet": "Grass",
+        "id": 9002,
+        "name": "Gloom"
+      }
+    ]
+  },
+  {
+    "move": "직격비행",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6010,
+        "name": "Rowlet"
+      },
+      {
+        "sheet": "Grass",
+        "id": 7004,
+        "name": "Dartrix"
+      },
+      {
+        "sheet": "Grass",
+        "id": 11005,
+        "name": "Beautifly"
+      }
+    ]
+  },
+  {
+    "move": "걸어 넘어뜨리기",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 10005,
+        "name": "Sunflora"
+      },
+      {
+        "sheet": "Grass",
+        "id": 13004,
+        "name": "Roselia"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 7028,
+        "name": "Meditite"
+      }
+    ]
+  },
+  {
+    "move": "오버스매시",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 15011,
+        "name": "Rapidash"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 3065,
+        "name": "Togekiss"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 11158,
+        "name": "Bonsly"
+      }
+    ]
+  },
+  {
+    "move": "라이트닝볼",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 7015,
+        "name": "Luxray"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 11091,
+        "name": "Zebstrika"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 13057,
+        "name": "Joltik"
+      }
+    ]
+  },
+  {
+    "move": "머리박치기",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 9097,
+        "name": "Horsea"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 13088,
+        "name": "Drilbur"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11202,
+        "name": "Houndoom"
+      }
+    ]
+  },
+  {
+    "move": "어둠엄니",
+    "count": 4,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 3101,
+        "name": "Mightyena"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 4050,
+        "name": "Crobat"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 9112,
+        "name": "Umbreon ex"
+      }
+    ]
+  },
+  {
+    "move": "커터윈드",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 8001,
+        "name": "Tropius"
+      },
+      {
+        "sheet": "Grass",
+        "id": 12010,
+        "name": "Mothim"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 16099,
+        "name": "Golbat"
+      }
+    ]
+  },
+  {
+    "move": "미혹댄스",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11019,
+        "name": "Maractus"
+      },
+      {
+        "sheet": "Water",
+        "id": 10019,
+        "name": "Jynx"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 6076,
+        "name": "Swablu"
+      }
+    ]
+  },
+  {
+    "move": "마그마펀치",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 1044,
+        "name": "Quilava"
+      },
+      {
+        "sheet": "Fire",
+        "id": 9029,
+        "name": "Typhlosion"
+      },
+      {
+        "sheet": "Fire",
+        "id": 16027,
+        "name": "Pignite"
+      }
+    ]
+  },
+  {
+    "move": "밀어올리기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 2011,
+        "name": "Rapidash"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 12041,
+        "name": "Probopass"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 6128,
+        "name": "Tauros"
+      }
+    ]
+  },
+  {
+    "move": "타오르기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 3023,
+        "name": "Quilava"
+      },
+      {
+        "sheet": "Fire",
+        "id": 5010,
+        "name": "Charizard ex"
+      },
+      {
+        "sheet": "Fire",
+        "id": 16026,
+        "name": "Tepig"
+      }
+    ]
+  },
+  {
+    "move": "불토하기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 6028,
+        "name": "Sizzlipede"
+      },
+      {
+        "sheet": "Fire",
+        "id": 12012,
+        "name": "Charmeleon"
+      },
+      {
+        "sheet": "Fire",
+        "id": 16031,
+        "name": "Larvesta"
+      }
+    ]
+  },
+  {
+    "move": "발톱세우기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11028,
+        "name": "Growlithe"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 13098,
+        "name": "Galarian Zigzagoon"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 16131,
+        "name": "Teddiursa"
+      }
+    ]
+  },
+  {
+    "move": "킥",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13025,
+        "name": "Raboot"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 4043,
+        "name": "Meditite"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 5040,
+        "name": "Carracosta"
+      }
+    ]
+  },
+  {
+    "move": "프로스트 스매시",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3034,
+        "name": "Regice"
+      },
+      {
+        "sheet": "Water",
+        "id": 14035,
+        "name": "Frigibax"
+      },
+      {
+        "sheet": "Water",
+        "id": 16047,
+        "name": "Beartic"
+      }
+    ]
+  },
+  {
+    "move": "고드름",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 4018,
+        "name": "Swinub"
+      },
+      {
+        "sheet": "Water",
+        "id": 11074,
+        "name": "Snom"
+      },
+      {
+        "sheet": "Water",
+        "id": 14037,
+        "name": "Chien-Pao ex"
+      }
+    ]
+  },
+  {
+    "move": "걷어차기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16036,
+        "name": "Paldean Tauros"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 6062,
+        "name": "Ampharos"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 14059,
+        "name": "Sunkern"
+      }
+    ]
+  },
+  {
+    "move": "마하볼트",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 7019,
+        "name": "Tapu Koko ex"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 11081,
+        "name": "Jolteon ex"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 12027,
+        "name": "Emolga"
+      }
+    ]
+  },
+  {
+    "move": "딱딱해지기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6086,
+        "name": "Cosmoem"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 12056,
+        "name": "Porygon"
+      },
+      {
+        "sheet": "Promo",
+        "id": "Z00048",
+        "name": "Arctibax"
+      }
+    ]
+  },
+  {
+    "move": "두들겨 부수기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 7025,
+        "name": "Trevenant"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 3081,
+        "name": "Rhyhorn"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 11165,
+        "name": "Tinkatuff"
+      }
+    ]
+  },
+  {
+    "move": "와일드태클",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9089,
+        "name": "Goodra"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 14068,
+        "name": "Mabilis"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11183,
+        "name": "Tauros ex"
+      }
+    ]
+  },
+  {
+    "move": "소울슛",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11111,
+        "name": "Cofagrigus"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 13072,
+        "name": "Pumpkaboo"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 14052,
+        "name": "Woobat"
+      }
+    ]
+  },
+  {
+    "move": "치기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 2043,
+        "name": "Graveler"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 7040,
+        "name": "Bisharp"
+      },
+      {
+        "sheet": "Metal",
+        "id": 14073,
+        "name": "Spinda"
+      }
+    ]
+  },
+  {
+    "move": "넘어뜨리기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 2044,
+        "name": "Geodude"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 11126,
+        "name": "Manectric"
+      },
+      {
+        "sheet": "Metal",
+        "id": 7049,
+        "name": "Garbodor"
+      }
+    ]
+  },
+  {
+    "move": "두번차기",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 5044,
+        "name": "Popplio"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 12062,
+        "name": "Beldum"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 12063,
+        "name": "Metang"
+      }
+    ]
+  },
+  {
+    "move": "독이빨",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 5046,
+        "name": "Arbok"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 9107,
+        "name": "Zubat"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 9108,
+        "name": "Golbat"
+      }
+    ]
+  },
+  {
+    "move": "메탈클로",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 1180,
+        "name": "Hitmonchan"
+      },
+      {
+        "sheet": "Metal",
+        "id": 3112,
+        "name": "Registeel"
+      },
+      {
+        "sheet": "Metal",
+        "id": 13111,
+        "name": "Perrserker"
+      }
+    ]
+  },
+  {
+    "move": "테일스매시",
+    "count": 3,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9139,
+        "name": "Darumaka"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11185,
+        "name": "Aipom"
+      },
+      {
+        "sheet": "Promo",
+        "id": "Z00041",
+        "name": "Larvitar"
+      }
+    ]
+  },
+  {
+    "move": "독채찍",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3009,
+        "name": "Roserade"
+      },
+      {
+        "sheet": "Grass",
+        "id": 12003,
+        "name": "Venusaur"
+      }
+    ]
+  },
+  {
+    "move": "따끔따끔찌르기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6005,
+        "name": "Maractus"
+      },
+      {
+        "sheet": "Grass",
+        "id": 12005,
+        "name": "Spinarak"
+      }
+    ]
+  },
+  {
+    "move": "데스스래시",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 7008,
+        "name": "Kartana"
+      },
+      {
+        "sheet": "Metal",
+        "id": 15048,
+        "name": "Kartana"
+      }
+    ]
+  },
+  {
+    "move": "블룸샤인",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 9010,
+        "name": "Meganium"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 2038,
+        "name": "Florges"
+      }
+    ]
+  },
+  {
+    "move": "뛰어오르기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 10002,
+        "name": "Skiploom"
+      },
+      {
+        "sheet": "Water",
+        "id": 11072,
+        "name": "Frogadier"
+      }
+    ]
+  },
+  {
+    "move": "매달리기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 12009,
+        "name": "Burmy"
+      },
+      {
+        "sheet": "Grass",
+        "id": 15002,
+        "name": "Pineco"
+      }
+    ]
+  },
+  {
+    "move": "진화의징조",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13012,
+        "name": "Spewpa"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 6098,
+        "name": "Rockruff"
+      }
+    ]
+  },
+  {
+    "move": "붙들어매기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14005,
+        "name": "Spidops"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 9111,
+        "name": "Ariados"
+      }
+    ]
+  },
+  {
+    "move": "연속 구르기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14011,
+        "name": "Brambleghast"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11209,
+        "name": "Ursaluna"
+      }
+    ]
+  },
+  {
+    "move": "멘탈크래시",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 15004,
+        "name": "Illumise"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 16071,
+        "name": "Hatterene"
+      }
+    ]
+  },
+  {
+    "move": "다같이물기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16018,
+        "name": "Durant"
+      },
+      {
+        "sheet": "Metal",
+        "id": 11168,
+        "name": "Durant"
+      }
+    ]
+  },
+  {
+    "move": "태워그을리기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 3026,
+        "name": "Magcargo"
+      },
+      {
+        "sheet": "Fire",
+        "id": 10012,
+        "name": "Talonflame"
+      }
+    ]
+  },
+  {
+    "move": "스모크봄",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 5012,
+        "name": "Magmortar"
+      },
+      {
+        "sheet": "Fire",
+        "id": 6026,
+        "name": "Arcanine"
+      }
+    ]
+  },
+  {
+    "move": "불꽃날개",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 6029,
+        "name": "Talonflame"
+      },
+      {
+        "sheet": "Fire",
+        "id": 10011,
+        "name": "Sizzlipede"
+      }
+    ]
+  },
+  {
+    "move": "불씨",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9025,
+        "name": "Vulpix"
+      },
+      {
+        "sheet": "Fire",
+        "id": 11045,
+        "name": "Litleo"
+      }
+    ]
+  },
+  {
+    "move": "댄싱옐",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13022,
+        "name": "Swablu"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 16089,
+        "name": "Meloetta"
+      }
+    ]
+  },
+  {
+    "move": "그을리기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13023,
+        "name": "Pupitar ex"
+      },
+      {
+        "sheet": "Fire",
+        "id": 15010,
+        "name": "Ponyta"
+      }
+    ]
+  },
+  {
+    "move": "띄어날리기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16021,
+        "name": "Numel"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 16143,
+        "name": "Cinccino"
+      }
+    ]
+  },
+  {
+    "move": "더블스매시",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16030,
+        "name": "Darmanitan"
+      },
+      {
+        "sheet": "Promo",
+        "id": "Z00031",
+        "name": "Tropius"
+      }
+    ]
+  },
+  {
+    "move": "하이드로 스플래시",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1076,
+        "name": "Wailmer ex"
+      },
+      {
+        "sheet": "Water",
+        "id": 16043,
+        "name": "Huntail"
+      }
+    ]
+  },
+  {
+    "move": "튀튀기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 2017,
+        "name": "Magikarp"
+      },
+      {
+        "sheet": "Water",
+        "id": 10021,
+        "name": "Centiskorch"
+      }
+    ]
+  },
+  {
+    "move": "스파이럴 드레인",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6056,
+        "name": "Tapu Lele"
+      },
+      {
+        "sheet": "Dragon",
+        "id": 11179,
+        "name": "Grumpig"
+      }
+    ]
+  },
+  {
+    "move": "얼음칼날",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 8017,
+        "name": "Glaceon"
+      },
+      {
+        "sheet": "Water",
+        "id": 10024,
+        "name": "Articuno"
+      }
+    ]
+  },
+  {
+    "move": "튀어올라 피하기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9044,
+        "name": "Magikarp"
+      },
+      {
+        "sheet": "Water",
+        "id": 14022,
+        "name": "Quaxwell"
+      }
+    ]
+  },
+  {
+    "move": "신경독",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 10016,
+        "name": "Toxicroak"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 11153,
+        "name": "Drapion"
+      }
+    ]
+  },
+  {
+    "move": "등껍질 어택",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11066,
+        "name": "Tirtouga"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 1158,
+        "name": "Omanyte"
+      }
+    ]
+  },
+  {
+    "move": "기습공격",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 12021,
+        "name": "Basculin"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 16100,
+        "name": "Crobat"
+      }
+    ]
+  },
+  {
+    "move": "썰렁",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13037,
+        "name": "Vanillite"
+      },
+      {
+        "sheet": "Water",
+        "id": 14034,
+        "name": "Arctibax"
+      }
+    ]
+  },
+  {
+    "move": "제트헤드",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13047,
+        "name": "Lanturn"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11189,
+        "name": "Linoone"
+      }
+    ]
+  },
+  {
+    "move": "버스터테일",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14036,
+        "name": "Baxcalibur"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 9119,
+        "name": "Tyranitar"
+      }
+    ]
+  },
+  {
+    "move": "번개쇼크",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 1112,
+        "name": "Finneon"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 2030,
+        "name": "Dedenne"
+      }
+    ]
+  },
+  {
+    "move": "썬더블라스트",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3053,
+        "name": "Magnezone"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 14040,
+        "name": "Pawmot"
+      }
+    ]
+  },
+  {
+    "move": "볼어택",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3055,
+        "name": "Voltorb"
+      },
+      {
+        "sheet": "Metal",
+        "id": 4054,
+        "name": "Magneton"
+      }
+    ]
+  },
+  {
+    "move": "숨기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3058,
+        "name": "Shinx"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 13074,
+        "name": "Arctibax"
+      }
+    ]
+  },
+  {
+    "move": "번개발톱",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3059,
+        "name": "Luxio"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 7021,
+        "name": "Zeraora"
+      }
+    ]
+  },
+  {
+    "move": "찌리리펀치",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 5028,
+        "name": "Pawmot"
+      },
+      {
+        "sheet": "Lightning",
+        "id": 11083,
+        "name": "Flaaffy"
+      }
+    ]
+  },
+  {
+    "move": "상처때리기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 11089,
+        "name": "Pachirisu"
+      },
+      {
+        "sheet": "Promo",
+        "id": "Z00017",
+        "name": "Floatzel"
+      }
+    ]
+  },
+  {
+    "move": "스피드윙",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 14044,
+        "name": "Zebstrika"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11181,
+        "name": "Pidgeotto"
+      }
+    ]
+  },
+  {
+    "move": "소울이트",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3072,
+        "name": "Honchkrow"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 10039,
+        "name": "Politoed"
+      }
+    ]
+  },
+  {
+    "move": "최면파동",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 4033,
+        "name": "Gengar"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 15029,
+        "name": "Hypno"
+      }
+    ]
+  },
+  {
+    "move": "에너지크래시",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 8028,
+        "name": "Eevee"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 15044,
+        "name": "Zoroark"
+      }
+    ]
+  },
+  {
+    "move": "스피드비행",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9079,
+        "name": "Togetic"
+      },
+      {
+        "sheet": "Metal",
+        "id": 16117,
+        "name": "Bronzor"
+      }
+    ]
+  },
+  {
+    "move": "별떨구기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11106,
+        "name": "Jirachi"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 6105,
+        "name": "Minior"
+      }
+    ]
+  },
+  {
+    "move": "조금원망하기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13068,
+        "name": "Shieldon"
+      },
+      {
+        "sheet": "Psychic",
+        "id": 16072,
+        "name": "Bramblin"
+      }
+    ]
+  },
+  {
+    "move": "잽",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 1155,
+        "name": "Palossand"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 3091,
+        "name": "Riolu"
+      }
+    ]
+  },
+  {
+    "move": "스피드어택",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 4040,
+        "name": "Larvitar"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 12057,
+        "name": "Porygon2"
+      }
+    ]
+  },
+  {
+    "move": "한방차기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 4044,
+        "name": "Medicham"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 8040,
+        "name": "Flygon"
+      }
+    ]
+  },
+  {
+    "move": "후려갈기기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 5038,
+        "name": "Machoke"
+      },
+      {
+        "sheet": "Metal",
+        "id": 13116,
+        "name": "Ferrothorn"
+      }
+    ]
+  },
+  {
+    "move": "매그넘펀치",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 5041,
+        "name": "Palossand"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 11141,
+        "name": "Cubchoo"
+      }
+    ]
+  },
+  {
+    "move": "파워빔",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 7031,
+        "name": "Hippopotas"
+      },
+      {
+        "sheet": "Metal",
+        "id": 4055,
+        "name": "Magnezone"
+      }
+    ]
+  },
+  {
+    "move": "머드샷",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 8038,
+        "name": "Oshawott"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 11128,
+        "name": "Hippopotas"
+      }
+    ]
+  },
+  {
+    "move": "모래보라",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 10046,
+        "name": "Numel"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 11122,
+        "name": "Sandshrew"
+      }
+    ]
+  },
+  {
+    "move": "촙",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 12043,
+        "name": "Flygon"
+      },
+      {
+        "sheet": "Fighting",
+        "id": 13080,
+        "name": "Machoke"
+      }
+    ]
+  },
+  {
+    "move": "더블할퀴기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13077,
+        "name": "Sandshrew"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 3098,
+        "name": "Salazzle"
+      }
+    ]
+  },
+  {
+    "move": "다함께 때려잡기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 3107,
+        "name": "Clefairy"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 3108,
+        "name": "Croagunk"
+      }
+    ]
+  },
+  {
+    "move": "오물던지기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 6110,
+        "name": "Alolan Grimer"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 15041,
+        "name": "Mightyena"
+      }
+    ]
+  },
+  {
+    "move": "슬래시크루",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 8046,
+        "name": "Purugly"
+      },
+      {
+        "sheet": "Metal",
+        "id": 13114,
+        "name": "Ferroseed"
+      }
+    ]
+  },
+  {
+    "move": "다크커터",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 9114,
+        "name": "Honchkrow"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 16115,
+        "name": "Bombirdier"
+      }
+    ]
+  },
+  {
+    "move": "스핀턴",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 15038,
+        "name": "Haunter"
+      },
+      {
+        "sheet": "Darkness",
+        "id": 16098,
+        "name": "Zubat"
+      }
+    ]
+  },
+  {
+    "move": "메탈암즈",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 3111,
+        "name": "Corviknight"
+      },
+      {
+        "sheet": "Metal",
+        "id": 11174,
+        "name": "Melmetal ex"
+      }
+    ]
+  },
+  {
+    "move": "헤드뱅",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 3114,
+        "name": "Armaldo"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 6137,
+        "name": "Gumshoos"
+      }
+    ]
+  },
+  {
+    "move": "메탈터보",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 3119,
+        "name": "Dialga ex"
+      },
+      {
+        "sheet": "Metal",
+        "id": 12053,
+        "name": "Nosepass"
+      }
+    ]
+  },
+  {
+    "move": "빔",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 11173,
+        "name": "Meltan"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 3127,
+        "name": "Porygon"
+      }
+    ]
+  },
+  {
+    "move": "베기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 13118,
+        "name": "Bisharp"
+      },
+      {
+        "sheet": "Metal",
+        "id": 16119,
+        "name": "Pawniard"
+      }
+    ]
+  },
+  {
+    "move": "꽉쥐기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 15057,
+        "name": "Dracovish"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 3134,
+        "name": "Staravia"
+      }
+    ]
+  },
+  {
+    "move": "꼬리펀치",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3130,
+        "name": "Aipom"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 9143,
+        "name": "Ambipom"
+      }
+    ]
+  },
+  {
+    "move": "퀵어택",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 7060,
+        "name": "Type: Null"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 15064,
+        "name": "Meowstic"
+      }
+    ]
+  },
+  {
+    "move": "가져오기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 8055,
+        "name": "Eevee"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 11201,
+        "name": "Patrat"
+      }
+    ]
+  },
+  {
+    "move": "늘어나는혀",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 10057,
+        "name": "Eevee"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 10058,
+        "name": "Togekiss"
+      }
+    ]
+  },
+  {
+    "move": "불어지나가기",
+    "count": 2,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13138,
+        "name": "Tornadus"
+      },
+      {
+        "sheet": "Colorless",
+        "id": 16133,
+        "name": "Castform"
+      }
+    ]
+  },
+  {
+    "move": "자이언트 블룸",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 1004,
+        "name": "Venusaur ex"
+      }
+    ]
+  },
+  {
+    "move": "조금성장",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 2001,
+        "name": "Exeggcute"
+      }
+    ]
+  },
+  {
+    "move": "파워풀블룸",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 2003,
+        "name": "Celebi ex"
+      }
+    ]
+  },
+  {
+    "move": "흔들포자",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 2008,
+        "name": "Shiinotic"
+      }
+    ]
+  },
+  {
+    "move": "에너지휩",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 2009,
+        "name": "Dhelmise"
+      }
+    ]
+  },
+  {
+    "move": "트랜스멜로디",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3014,
+        "name": "Kricketune"
+      }
+    ]
+  },
+  {
+    "move": "잎사귀베기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3016,
+        "name": "Wormadam"
+      }
+    ]
+  },
+  {
+    "move": "휩다운",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3019,
+        "name": "Carnivine"
+      }
+    ]
+  },
+  {
+    "move": "잎날사이클론",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3020,
+        "name": "Leafeon"
+      }
+    ]
+  },
+  {
+    "move": "에너지커트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3021,
+        "name": "Mow Rotom"
+      }
+    ]
+  },
+  {
+    "move": "돌아다녀 뛰기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 3022,
+        "name": "Shaymin"
+      }
+    ]
+  },
+  {
+    "move": "한판던지기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 4001,
+        "name": "Heracross"
+      }
+    ]
+  },
+  {
+    "move": "증식하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 5001,
+        "name": "Weedle"
+      }
+    ]
+  },
+  {
+    "move": "크래시스피어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 5003,
+        "name": "Beedrill ex"
+      }
+    ]
+  },
+  {
+    "move": "자르기러시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 5004,
+        "name": "Pinsir"
+      }
+    ]
+  },
+  {
+    "move": "친구부르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 5005,
+        "name": "Sprigatito"
+      }
+    ]
+  },
+  {
+    "move": "투지의손톱",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 5007,
+        "name": "Meowscarada"
+      }
+    ]
+  },
+  {
+    "move": "트로피컬해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6002,
+        "name": "Alolan Exeggutor"
+      }
+    ]
+  },
+  {
+    "move": "날카로운날개",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6011,
+        "name": "Dartrix"
+      }
+    ]
+  },
+  {
+    "move": "상처노려쏘기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6012,
+        "name": "Decidueye ex"
+      }
+    ]
+  },
+  {
+    "move": "깜빡이는빛",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6017,
+        "name": "Shiinotic"
+      }
+    ]
+  },
+  {
+    "move": "삼연각",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6020,
+        "name": "Tsareena"
+      }
+    ]
+  },
+  {
+    "move": "앵커샷",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6023,
+        "name": "Dhelmise ex"
+      }
+    ]
+  },
+  {
+    "move": "박히는태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 6024,
+        "name": "Tapu Bulu"
+      }
+    ]
+  },
+  {
+    "move": "스나이핑애로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 7005,
+        "name": "Decidueye"
+      }
+    ]
+  },
+  {
+    "move": "빅비트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 7006,
+        "name": "Buzzwole ex"
+      }
+    ]
+  },
+  {
+    "move": "점프블루스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 7007,
+        "name": "Pheromosa"
+      }
+    ]
+  },
+  {
+    "move": "리프블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 8002,
+        "name": "Leafeon"
+      }
+    ]
+  },
+  {
+    "move": "차서떨구기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 8005,
+        "name": "Tsareena"
+      }
+    ]
+  },
+  {
+    "move": "트리플뺨치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 9021,
+        "name": "Forretress ex"
+      }
+    ]
+  },
+  {
+    "move": "한곳찌르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 9022,
+        "name": "Heracross"
+      }
+    ]
+  },
+  {
+    "move": "산들바람어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 10003,
+        "name": "Jumpluff ex"
+      }
+    ]
+  },
+  {
+    "move": "시간의나뭇잎",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 10006,
+        "name": "Celebi"
+      }
+    ]
+  },
+  {
+    "move": "산갉아먹기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 10007,
+        "name": "Durant"
+      }
+    ]
+  },
+  {
+    "move": "크리티컬시저",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11002,
+        "name": "Mega Pinsir ex"
+      }
+    ]
+  },
+  {
+    "move": "셀렉트파우더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11007,
+        "name": "Dustox"
+      }
+    ]
+  },
+  {
+    "move": "찬바람선풍",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11010,
+        "name": "Shiftry"
+      }
+    ]
+  },
+  {
+    "move": "우드혼",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11024,
+        "name": "Trevenant"
+      }
+    ]
+  },
+  {
+    "move": "드럼러시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 11027,
+        "name": "Rillaboom"
+      }
+    ]
+  },
+  {
+    "move": "크라이시스 블룸",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 12004,
+        "name": "Mega Venusaur ex"
+      }
+    ]
+  },
+  {
+    "move": "조숙빔",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 12008,
+        "name": "Sunflora"
+      }
+    ]
+  },
+  {
+    "move": "포이즌서클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13005,
+        "name": "Roserade"
+      }
+    ]
+  },
+  {
+    "move": "가시로도려내기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13007,
+        "name": "Cacturne"
+      }
+    ]
+  },
+  {
+    "move": "니들래리엇",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13010,
+        "name": "Chesnaught"
+      }
+    ]
+  },
+  {
+    "move": "비비드파우더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13013,
+        "name": "Vivillon"
+      }
+    ]
+  },
+  {
+    "move": "그라운드비트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13014,
+        "name": "Buzzwole"
+      }
+    ]
+  },
+  {
+    "move": "두리둥실",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13016,
+        "name": "Eldegoss"
+      }
+    ]
+  },
+  {
+    "move": "에너지리프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 13017,
+        "name": "Ogerpon Teal Mask ex"
+      }
+    ]
+  },
+  {
+    "move": "트릭플라워",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14003,
+        "name": "Meowscarada ex"
+      }
+    ]
+  },
+  {
+    "move": "개구쟁이킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14012,
+        "name": "Capsakid"
+      }
+    ]
+  },
+  {
+    "move": "레드핫헤드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14013,
+        "name": "Scovillain"
+      }
+    ]
+  },
+  {
+    "move": "구슬구르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14014,
+        "name": "Rellor"
+      }
+    ]
+  },
+  {
+    "move": "탐욕바인드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 14015,
+        "name": "Wo-Chien"
+      }
+    ]
+  },
+  {
+    "move": "럼블스톰프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 15006,
+        "name": "Trevenant"
+      }
+    ]
+  },
+  {
+    "move": "일당백",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16003,
+        "name": "Heracross"
+      }
+    ]
+  },
+  {
+    "move": "스나이프에지",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16006,
+        "name": "Grovyle"
+      }
+    ]
+  },
+  {
+    "move": "데들리테일",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16008,
+        "name": "Mega Sceptile ex"
+      }
+    ]
+  },
+  {
+    "move": "소화",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16009,
+        "name": "Surskit"
+      }
+    ]
+  },
+  {
+    "move": "잠들때노리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16012,
+        "name": "Breloom"
+      }
+    ]
+  },
+  {
+    "move": "얼얼파우더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16013,
+        "name": "Budew"
+      }
+    ]
+  },
+  {
+    "move": "나눠주기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16019,
+        "name": "Applin"
+      }
+    ]
+  },
+  {
+    "move": "새콤한타액",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Grass",
+        "id": 16020,
+        "name": "Flapple"
+      }
+    ]
+  },
+  {
+    "move": "홍련의바람",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 1036,
+        "name": "Charizard ex"
+      }
+    ]
+  },
+  {
+    "move": "화쇄류",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 2014,
+        "name": "Heatmor"
+      }
+    ]
+  },
+  {
+    "move": "독발톱",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 2016,
+        "name": "Charmander"
+      }
+    ]
+  },
+  {
+    "move": "버스트 인페르노",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 3024,
+        "name": "Magmortar"
+      }
+    ]
+  },
+  {
+    "move": "불꽃튀는펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 3028,
+        "name": "Combusken"
+      }
+    ]
+  },
+  {
+    "move": "히트브레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 3030,
+        "name": "Heat Rotom"
+      }
+    ]
+  },
+  {
+    "move": "대노봄버",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 4013,
+        "name": "Heatran"
+      }
+    ]
+  },
+  {
+    "move": "타오르는대포",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 5010,
+        "name": "Charizard ex"
+      }
+    ]
+  },
+  {
+    "move": "블레이즈태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 5013,
+        "name": "Paldean Tauros"
+      }
+    ]
+  },
+  {
+    "move": "불타는 뼈다귀부메랑",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 6027,
+        "name": "Alolan Cubone"
+      }
+    ]
+  },
+  {
+    "move": "스카스매시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 6033,
+        "name": "Incineroar ex"
+      }
+    ]
+  },
+  {
+    "move": "활활",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 6034,
+        "name": "Swablu"
+      }
+    ]
+  },
+  {
+    "move": "히트포이즌",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 6036,
+        "name": "Charmander"
+      }
+    ]
+  },
+  {
+    "move": "비트펑크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 7009,
+        "name": "Pupitar"
+      }
+    ]
+  },
+  {
+    "move": "어시스트히터",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 8008,
+        "name": "Flareon"
+      }
+    ]
+  },
+  {
+    "move": "작열하는숨결",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9026,
+        "name": "Ninetales"
+      }
+    ]
+  },
+  {
+    "move": "쏟아내기 파이어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9031,
+        "name": "Magcargo"
+      }
+    ]
+  },
+  {
+    "move": "따끈따끈토스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9032,
+        "name": "Magby"
+      }
+    ]
+  },
+  {
+    "move": "스트롱플레어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9033,
+        "name": "Entei"
+      }
+    ]
+  },
+  {
+    "move": "피닉스터보",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9034,
+        "name": "Ho-Oh ex"
+      }
+    ]
+  },
+  {
+    "move": "그슬려태우기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 9037,
+        "name": "Slugma"
+      }
+    ]
+  },
+  {
+    "move": "블레이즈비트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 10010,
+        "name": "Entei ex"
+      }
+    ]
+  },
+  {
+    "move": "플레어 스프린터",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11031,
+        "name": "Rapidash ex"
+      }
+    ]
+  },
+  {
+    "move": "홀리번",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11032,
+        "name": "Ho-Oh"
+      }
+    ]
+  },
+  {
+    "move": "블레이즈킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11035,
+        "name": "Blaziken"
+      }
+    ]
+  },
+  {
+    "move": "메가버닝",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11036,
+        "name": "Mega Blaziken ex"
+      }
+    ]
+  },
+  {
+    "move": "달마연속탄",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11040,
+        "name": "Darmanitan"
+      }
+    ]
+  },
+  {
+    "move": "혀채찍",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 11044,
+        "name": "Slugma"
+      }
+    ]
+  },
+  {
+    "move": "그렌다이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 12014,
+        "name": "Mega Charizard Y ex"
+      }
+    ]
+  },
+  {
+    "move": "히트본",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13018,
+        "name": "Alolan Cubone"
+      }
+    ]
+  },
+  {
+    "move": "팝펑크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13023,
+        "name": "Pupitar ex"
+      }
+    ]
+  },
+  {
+    "move": "불구슬슛",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13026,
+        "name": "Cinderace"
+      }
+    ]
+  },
+  {
+    "move": "화덕의춤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 13027,
+        "name": "Ogerpon Hearthflame Mask"
+      }
+    ]
+  },
+  {
+    "move": "명랑하게 노래하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 14016,
+        "name": "Turtonator"
+      }
+    ]
+  },
+  {
+    "move": "아머캐논",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 14020,
+        "name": "Celesteela ex"
+      }
+    ]
+  },
+  {
+    "move": "시기의겁화",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 14021,
+        "name": "Xurkitree"
+      }
+    ]
+  },
+  {
+    "move": "불꽃 꼬리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 15007,
+        "name": "Charmander"
+      }
+    ]
+  },
+  {
+    "move": "레이징 블레이즈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 15009,
+        "name": "Mega Charizard X ex"
+      }
+    ]
+  },
+  {
+    "move": "천둥볼케이노",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 15013,
+        "name": "Magmortar"
+      }
+    ]
+  },
+  {
+    "move": "볼케닉쾅쾅",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16023,
+        "name": "Mega Camerupt ex"
+      }
+    ]
+  },
+  {
+    "move": "불붙는태양",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16024,
+        "name": "Castform Sunny Form"
+      }
+    ]
+  },
+  {
+    "move": "V플레임",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16025,
+        "name": "Victini"
+      }
+    ]
+  },
+  {
+    "move": "플레어스톰",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16028,
+        "name": "Emboar"
+      }
+    ]
+  },
+  {
+    "move": "파이어애로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fire",
+        "id": 16032,
+        "name": "Volcarona"
+      }
+    ]
+  },
+  {
+    "move": "하이드로 바주카",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1056,
+        "name": "Blastoise ex"
+      }
+    ]
+  },
+  {
+    "move": "두통",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1057,
+        "name": "Golduck"
+      }
+    ]
+  },
+  {
+    "move": "독촉수",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1063,
+        "name": "Toxicroak"
+      }
+    ]
+  },
+  {
+    "move": "뿔로쪼기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1073,
+        "name": "Cloyster"
+      }
+    ]
+  },
+  {
+    "move": "고대의 바다회오리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1082,
+        "name": "Lycanroc"
+      }
+    ]
+  },
+  {
+    "move": "아픈데때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 1091,
+        "name": "Mienfoo"
+      }
+    ]
+  },
+  {
+    "move": "난동 바다회오리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 2018,
+        "name": "Gyarados ex"
+      }
+    ]
+  },
+  {
+    "move": "아쿠아라이너",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 2021,
+        "name": "Lanturn"
+      }
+    ]
+  },
+  {
+    "move": "프로스트덤프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3033,
+        "name": "Timburr"
+      }
+    ]
+  },
+  {
+    "move": "잠시 쉬기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3035,
+        "name": "Piplup"
+      }
+    ]
+  },
+  {
+    "move": "제트 스크루",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3039,
+        "name": "Floatzel"
+      }
+    ]
+  },
+  {
+    "move": "우아하게 헤엄치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3042,
+        "name": "Bruxish"
+      }
+    ]
+  },
+  {
+    "move": "디멘션스톰",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3049,
+        "name": "Palkia ex"
+      }
+    ]
+  },
+  {
+    "move": "바다의 소포",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 3050,
+        "name": "Manaphy"
+      }
+    ]
+  },
+  {
+    "move": "프리즈윈드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 4022,
+        "name": "Glaceon ex"
+      }
+    ]
+  },
+  {
+    "move": "존브레이크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 4023,
+        "name": "Origin Palkia"
+      }
+    ]
+  },
+  {
+    "move": "튀어나오기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 5018,
+        "name": "Alolan Dugtrio"
+      }
+    ]
+  },
+  {
+    "move": "여기저기분출",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 5019,
+        "name": "Alolan Dugtrio ex"
+      }
+    ]
+  },
+  {
+    "move": "오션사이클론",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 5020,
+        "name": "Oranguru"
+      }
+    ]
+  },
+  {
+    "move": "가시갑옷",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6039,
+        "name": "Alolan Exeggutor"
+      }
+    ]
+  },
+  {
+    "move": "냉기부르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6040,
+        "name": "Alolan Vulpix"
+      }
+    ]
+  },
+  {
+    "move": "더욱더욱봄버",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6049,
+        "name": "Crawdaunt ex"
+      }
+    ]
+  },
+  {
+    "move": "어군스톰",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6051,
+        "name": "Dratini ex"
+      }
+    ]
+  },
+  {
+    "move": "데인저러스 크루",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6053,
+        "name": "Shellos"
+      }
+    ]
+  },
+  {
+    "move": "물뿌려대기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 6054,
+        "name": "Palossand"
+      }
+    ]
+  },
+  {
+    "move": "파괴의 바다회오리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 8016,
+        "name": "Shaymin"
+      }
+    ]
+  },
+  {
+    "move": "물끼얹기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 8022,
+        "name": "Klang"
+      }
+    ]
+  },
+  {
+    "move": "스톰제일",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9043,
+        "name": "Kingdra ex"
+      }
+    ]
+  },
+  {
+    "move": "난동스윙",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9045,
+        "name": "Gyarados"
+      }
+    ]
+  },
+  {
+    "move": "파괴의회오리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9048,
+        "name": "Feraligatr"
+      }
+    ]
+  },
+  {
+    "move": "꽈당드로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9057,
+        "name": "Delibird"
+      }
+    ]
+  },
+  {
+    "move": "큐어 스트림",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9059,
+        "name": "Suicune"
+      }
+    ]
+  },
+  {
+    "move": "집게해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9061,
+        "name": "Crawdaunt"
+      }
+    ]
+  },
+  {
+    "move": "페더사이클론",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 9063,
+        "name": "Swannaでしょ"
+      }
+    ]
+  },
+  {
+    "move": "함부로버리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 10018,
+        "name": "Slowking"
+      }
+    ]
+  },
+  {
+    "move": "크리스털왈츠",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 10020,
+        "name": "Suicune ex"
+      }
+    ]
+  },
+  {
+    "move": "참방참방토스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 10023,
+        "name": "Mantine"
+      }
+    ]
+  },
+  {
+    "move": "폭포오르기 진화",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11050,
+        "name": "Magikarp"
+      }
+    ]
+  },
+  {
+    "move": "테일해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11051,
+        "name": "Gyarados"
+      }
+    ]
+  },
+  {
+    "move": "메가블래스터",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11052,
+        "name": "Mega Gyarados ex"
+      }
+    ]
+  },
+  {
+    "move": "리드믹스텝",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11055,
+        "name": "Lombre"
+      }
+    ]
+  },
+  {
+    "move": "웨일펌프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11057,
+        "name": "Wailord"
+      }
+    ]
+  },
+  {
+    "move": "커플태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11060,
+        "name": "Snubbull"
+      }
+    ]
+  },
+  {
+    "move": "빙글빙글펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11065,
+        "name": "Dunsparce"
+      }
+    ]
+  },
+  {
+    "move": "블록셸",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11067,
+        "name": "Beartic"
+      }
+    ]
+  },
+  {
+    "move": "프로스트 배리어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11075,
+        "name": "Spheal"
+      }
+    ]
+  },
+  {
+    "move": "아판사판태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 11079,
+        "name": "Lanturn"
+      }
+    ]
+  },
+  {
+    "move": "더블스플래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 12019,
+        "name": "Blastoise"
+      }
+    ]
+  },
+  {
+    "move": "트리플봄바드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 12020,
+        "name": "Mega Blastoise ex"
+      }
+    ]
+  },
+  {
+    "move": "아쿠아샤워",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 12023,
+        "name": "Clawitzer"
+      }
+    ]
+  },
+  {
+    "move": "스노바인드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13029,
+        "name": "Alolan Ninetales ex"
+      }
+    ]
+  },
+  {
+    "move": "스노아이스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13030,
+        "name": "Galarian Mr. Mime"
+      }
+    ]
+  },
+  {
+    "move": "트리플스핀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13031,
+        "name": "Mr. Rime"
+      }
+    ]
+  },
+  {
+    "move": "서프라이즈 박스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13032,
+        "name": "Delibird"
+      }
+    ]
+  },
+  {
+    "move": "큰바다회오리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13035,
+        "name": "Swampert"
+      }
+    ]
+  },
+  {
+    "move": "완강버스터",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13036,
+        "name": "Mega Swampert ex"
+      }
+    ]
+  },
+  {
+    "move": "프로즌록",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13040,
+        "name": "Articuno"
+      }
+    ]
+  },
+  {
+    "move": "헤일프리즌",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13042,
+        "name": "Aurorus"
+      }
+    ]
+  },
+  {
+    "move": "토해내기샷",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13045,
+        "name": "Trubbish"
+      }
+    ]
+  },
+  {
+    "move": "우물의춤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 13048,
+        "name": "Ogerpon Wellspring Mask"
+      }
+    ]
+  },
+  {
+    "move": "스플래시턴",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14023,
+        "name": "Psyduck"
+      }
+    ]
+  },
+  {
+    "move": "하이드로킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14024,
+        "name": "Wailmer"
+      }
+    ]
+  },
+  {
+    "move": "삼연속채찍",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14026,
+        "name": "Alolan Dugtrio"
+      }
+    ]
+  },
+  {
+    "move": "제트펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14028,
+        "name": "Excadrill"
+      }
+    ]
+  },
+  {
+    "move": "고드름미사일",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14029,
+        "name": "Walrein"
+      }
+    ]
+  },
+  {
+    "move": "다이어트 스크루",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14031,
+        "name": "Gumshoos"
+      }
+    ]
+  },
+  {
+    "move": "반격하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14033,
+        "name": "Shelmet"
+      }
+    ]
+  },
+  {
+    "move": "아이시클 다이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 14037,
+        "name": "Chien-Pao ex"
+      }
+    ]
+  },
+  {
+    "move": "론드리돌리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 15016,
+        "name": "Mega Slowbro ex"
+      }
+    ]
+  },
+  {
+    "move": "레이징프리즈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 15017,
+        "name": "Lapras"
+      }
+    ]
+  },
+  {
+    "move": "물보라",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 15019,
+        "name": "Prinplup"
+      }
+    ]
+  },
+  {
+    "move": "황제의일격",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 15020,
+        "name": "Empoleon"
+      }
+    ]
+  },
+  {
+    "move": "아쿠아터보",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 15021,
+        "name": "Phione"
+      }
+    ]
+  },
+  {
+    "move": "두번때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16034,
+        "name": "Poliwhirl"
+      }
+    ]
+  },
+  {
+    "move": "습격",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16035,
+        "name": "Politoed"
+      }
+    ]
+  },
+  {
+    "move": "흙탕헤드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16039,
+        "name": "Quagsire"
+      }
+    ]
+  },
+  {
+    "move": "빗방울흡수",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16040,
+        "name": "Castform Rainy Form"
+      }
+    ]
+  },
+  {
+    "move": "얼어붙은설운",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16041,
+        "name": "Castform Snowy Form"
+      }
+    ]
+  },
+  {
+    "move": "구슬의 반짝임",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16042,
+        "name": "Clamperl"
+      }
+    ]
+  },
+  {
+    "move": "에너지 리플렉트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16045,
+        "name": "Regice"
+      }
+    ]
+  },
+  {
+    "move": "고드름펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16046,
+        "name": "Cubchoo"
+      }
+    ]
+  },
+  {
+    "move": "토네이도숏",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Water",
+        "id": 16051,
+        "name": "Rapid Strike Urshifu"
+      }
+    ]
+  },
+  {
+    "move": "허리케인 썬더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 1104,
+        "name": "Zapdos ex"
+      }
+    ]
+  },
+  {
+    "move": "프티번개",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 1107,
+        "name": "Galvantula"
+      }
+    ]
+  },
+  {
+    "move": "기가스파크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 2026,
+        "name": "Raichu"
+      }
+    ]
+  },
+  {
+    "move": "폭발",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3054,
+        "name": "Galvantula"
+      }
+    ]
+  },
+  {
+    "move": "익사이팅볼트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3057,
+        "name": "Electivire"
+      }
+    ]
+  },
+  {
+    "move": "볼티지애로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3060,
+        "name": "Luxray"
+      }
+    ]
+  },
+  {
+    "move": "가젯스파크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3061,
+        "name": "Pachirisu ex"
+      }
+    ]
+  },
+  {
+    "move": "이솔트레이저",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 3062,
+        "name": "Rotom"
+      }
+    ]
+  },
+  {
+    "move": "롤링어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 5024,
+        "name": "Voltorb"
+      }
+    ]
+  },
+  {
+    "move": "플라스마",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 5025,
+        "name": "Pachirisu"
+      }
+    ]
+  },
+  {
+    "move": "초전자포",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 6061,
+        "name": "Alolan Golem"
+      }
+    ]
+  },
+  {
+    "move": "전자장해",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 6065,
+        "name": "Omastar"
+      }
+    ]
+  },
+  {
+    "move": "톡톡",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 6066,
+        "name": "Swablu"
+      }
+    ]
+  },
+  {
+    "move": "일렉트릭 스매시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 6067,
+        "name": "Togedemaru"
+      }
+    ]
+  },
+  {
+    "move": "플라스마 허리케인",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 7019,
+        "name": "Tapu Koko ex"
+      }
+    ]
+  },
+  {
+    "move": "일렉트로니카",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 7020,
+        "name": "Trevenant"
+      }
+    ]
+  },
+  {
+    "move": "비기닝볼트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 8025,
+        "name": "Jolteon"
+      }
+    ]
+  },
+  {
+    "move": "프티쇼크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 8026,
+        "name": "Mienshao"
+      }
+    ]
+  },
+  {
+    "move": "썬더쇼크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 8027,
+        "name": "Galvantula"
+      }
+    ]
+  },
+  {
+    "move": "시그널플래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 9065,
+        "name": "Lanturn ex"
+      }
+    ]
+  },
+  {
+    "move": "파칙파칙토스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 9066,
+        "name": "Pichu"
+      }
+    ]
+  },
+  {
+    "move": "찌리릿샷",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 9070,
+        "name": "Elekid"
+      }
+    ]
+  },
+  {
+    "move": "볼티지불릿",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 10025,
+        "name": "Raikou ex"
+      }
+    ]
+  },
+  {
+    "move": "프티볼트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 10026,
+        "name": "Galvantula"
+      }
+    ]
+  },
+  {
+    "move": "오기스파크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 10031,
+        "name": "Shuckle"
+      }
+    ]
+  },
+  {
+    "move": "뒤로차기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 11082,
+        "name": "Mareep"
+      }
+    ]
+  },
+  {
+    "move": "라이트닝랜서",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 11085,
+        "name": "Mega Ampharos ex"
+      }
+    ]
+  },
+  {
+    "move": "플래시임팩트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 11088,
+        "name": "Luxray"
+      }
+    ]
+  },
+  {
+    "move": "프티전기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 11090,
+        "name": "Stunfisk"
+      }
+    ]
+  },
+  {
+    "move": "전기갉기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 11094,
+        "name": "Dedenne"
+      }
+    ]
+  },
+  {
+    "move": "미러샷",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 12026,
+        "name": "Magnezone"
+      }
+    ]
+  },
+  {
+    "move": "전격",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 13049,
+        "name": "Pikachu"
+      }
+    ]
+  },
+  {
+    "move": "빅썬더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 13051,
+        "name": "Zapdos"
+      }
+    ]
+  },
+  {
+    "move": "전기꼬리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 13052,
+        "name": "Plusle"
+      }
+    ]
+  },
+  {
+    "move": "버디스파크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 13053,
+        "name": "Minun"
+      }
+    ]
+  },
+  {
+    "move": "데미지스파크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 13055,
+        "name": "Toxtricity ex"
+      }
+    ]
+  },
+  {
+    "move": "전자 스파크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 14038,
+        "name": "Pawmi"
+      }
+    ]
+  },
+  {
+    "move": "고전압포",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 14042,
+        "name": "Joltik ex"
+      }
+    ]
+  },
+  {
+    "move": "라이트닝 레이저",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 14045,
+        "name": "Miraidon"
+      }
+    ]
+  },
+  {
+    "move": "폭열썬더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 15025,
+        "name": "Electivire"
+      }
+    ]
+  },
+  {
+    "move": "라이트닝엑셀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 15027,
+        "name": "Mega Manectric ex"
+      }
+    ]
+  },
+  {
+    "move": "마그넷 블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16053,
+        "name": "Magneton"
+      }
+    ]
+  },
+  {
+    "move": "우뢰의검",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16054,
+        "name": "Magnezone ex"
+      }
+    ]
+  },
+  {
+    "move": "한방봄",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16055,
+        "name": "Voltorb"
+      }
+    ]
+  },
+  {
+    "move": "일렉봄버",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16056,
+        "name": "Electrode"
+      }
+    ]
+  },
+  {
+    "move": "리벤지쇼크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16061,
+        "name": "Toxtricity"
+      }
+    ]
+  },
+  {
+    "move": "만복볼트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Lightning",
+        "id": 16062,
+        "name": "Morpeko"
+      }
+    ]
+  },
+  {
+    "move": "사이코 드라이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 1129,
+        "name": "Mewtwo ex"
+      }
+    ]
+  },
+  {
+    "move": "게놈핵",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 2032,
+        "name": "Mew ex"
+      }
+    ]
+  },
+  {
+    "move": "스파이크드로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 2033,
+        "name": "Mime Jr."
+      }
+    ]
+  },
+  {
+    "move": "마인드잭",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 2035,
+        "name": "Mandibuzz"
+      }
+    ]
+  },
+  {
+    "move": "바라보기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 2036,
+        "name": "Flabébé"
+      }
+    ]
+  },
+  {
+    "move": "리프드레인",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 2037,
+        "name": "Floette"
+      }
+    ]
+  },
+  {
+    "move": "매지컬트립",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3067,
+        "name": "Mismagius ex"
+      }
+    ]
+  },
+  {
+    "move": "부풀기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3073,
+        "name": "Oranguru"
+      }
+    ]
+  },
+  {
+    "move": "벌룬어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3074,
+        "name": "Drifloon"
+      }
+    ]
+  },
+  {
+    "move": "마인드부스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3075,
+        "name": "Uxie"
+      }
+    ]
+  },
+  {
+    "move": "갓블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3076,
+        "name": "Mesprit"
+      }
+    ]
+  },
+  {
+    "move": "사이코애로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3077,
+        "name": "Azelf"
+      }
+    ]
+  },
+  {
+    "move": "문라이트게인",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 3079,
+        "name": "Cresselia"
+      }
+    ]
+  },
+  {
+    "move": "대시어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 4035,
+        "name": "Rotom"
+      }
+    ]
+  },
+  {
+    "move": "사이코 서프레션",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 5031,
+        "name": "Alakazam"
+      }
+    ]
+  },
+  {
+    "move": "저글링",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 5032,
+        "name": "Mr. Mime"
+      }
+    ]
+  },
+  {
+    "move": "카오스임팩트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 5035,
+        "name": "Giratina ex"
+      }
+    ]
+  },
+  {
+    "move": "상자에숨기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 5036,
+        "name": "Chandelure"
+      }
+    ]
+  },
+  {
+    "move": "배리어푸시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6069,
+        "name": "Mr. Mime"
+      }
+    ]
+  },
+  {
+    "move": "사이코차지",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6071,
+        "name": "Spoink"
+      }
+    ]
+  },
+  {
+    "move": "문프레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6073,
+        "name": "Lunatone"
+      }
+    ]
+  },
+  {
+    "move": "나이트바인드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6075,
+        "name": "Darkrai"
+      }
+    ]
+  },
+  {
+    "move": "원한의춤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6077,
+        "name": "Swablu"
+      }
+    ]
+  },
+  {
+    "move": "진동",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6081,
+        "name": "Sandile"
+      }
+    ]
+  },
+  {
+    "move": "섀도히트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6083,
+        "name": "Mimikyu"
+      }
+    ]
+  },
+  {
+    "move": "에너지애로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6084,
+        "name": "Tapu Lele"
+      }
+    ]
+  },
+  {
+    "move": "루나블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 6087,
+        "name": "Lunala ex"
+      }
+    ]
+  },
+  {
+    "move": "문킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 7023,
+        "name": "Clefable"
+      }
+    ]
+  },
+  {
+    "move": "이볼브하모니",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 8033,
+        "name": "Sylveon"
+      }
+    ]
+  },
+  {
+    "move": "흉내내보기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 8035,
+        "name": "Mimikyu"
+      }
+    ]
+  },
+  {
+    "move": "한가득스위트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 8037,
+        "name": "Whipped Dream"
+      }
+    ]
+  },
+  {
+    "move": "오싹오싹 웨이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9075,
+        "name": "Granbull"
+      }
+    ]
+  },
+  {
+    "move": "헤롱헤롱어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9076,
+        "name": "Jynx"
+      }
+    ]
+  },
+  {
+    "move": "반짝반짝콜",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9077,
+        "name": "Cleffa"
+      }
+    ]
+  },
+  {
+    "move": "라이프다운",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9082,
+        "name": "Xatu"
+      }
+    ]
+  },
+  {
+    "move": "세게되돌리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9086,
+        "name": "Chingling"
+      }
+    ]
+  },
+  {
+    "move": "꿈춤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 9091,
+        "name": "Musharna"
+      }
+    ]
+  },
+  {
+    "move": "저주의언령",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 10033,
+        "name": "Mismagius"
+      }
+    ]
+  },
+  {
+    "move": "크로스 플라이트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 10036,
+        "name": "Latias"
+      }
+    ]
+  },
+  {
+    "move": "러스터퍼지",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 10037,
+        "name": "Latios"
+      }
+    ]
+  },
+  {
+    "move": "더티스로우",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11101,
+        "name": "Misdreavus"
+      }
+    ]
+  },
+  {
+    "move": "메가하모니",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11102,
+        "name": "Mega Aromatisse ex"
+      }
+    ]
+  },
+  {
+    "move": "덮치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11103,
+        "name": "Duskull"
+      }
+    ]
+  },
+  {
+    "move": "바람분사",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11107,
+        "name": "Oranguru"
+      }
+    ]
+  },
+  {
+    "move": "벌룬봄버",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11108,
+        "name": "Drifloon"
+      }
+    ]
+  },
+  {
+    "move": "짤랑짤랑 노이즈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11109,
+        "name": "Dedenne"
+      }
+    ]
+  },
+  {
+    "move": "별의요람",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11114,
+        "name": "Wailord"
+      }
+    ]
+  },
+  {
+    "move": "흔들흔들퍼퓸",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 11116,
+        "name": "Gardevoir"
+      }
+    ]
+  },
+  {
+    "move": "인도하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 12030,
+        "name": "Misdreavus"
+      }
+    ]
+  },
+  {
+    "move": "퍼퓸봄",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 12036,
+        "name": "Gardevoir"
+      }
+    ]
+  },
+  {
+    "move": "지오버스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 12037,
+        "name": "Xerneas"
+      }
+    ]
+  },
+  {
+    "move": "포톤레이저",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13059,
+        "name": "Galarian Rapidash"
+      }
+    ]
+  },
+  {
+    "move": "기상어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13060,
+        "name": "Chingling"
+      }
+    ]
+  },
+  {
+    "move": "사이코터보",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13065,
+        "name": "Arcanine"
+      }
+    ]
+  },
+  {
+    "move": "판타지아포스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13066,
+        "name": "Mega Gardevoir ex"
+      }
+    ]
+  },
+  {
+    "move": "데드스톡",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13069,
+        "name": "Chandelure"
+      }
+    ]
+  },
+  {
+    "move": "사념의뭉치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 13076,
+        "name": "Elgyem"
+      }
+    ]
+  },
+  {
+    "move": "투사의대검",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 14048,
+        "name": "Parasect"
+      }
+    ]
+  },
+  {
+    "move": "성묘",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 14053,
+        "name": "Meowth"
+      }
+    ]
+  },
+  {
+    "move": "연속 코인 던지기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 14054,
+        "name": "Chandelure"
+      }
+    ]
+  },
+  {
+    "move": "미라클메모리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 15030,
+        "name": "Mew"
+      }
+    ]
+  },
+  {
+    "move": "휘젓기댄스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 15032,
+        "name": "Grumpig"
+      }
+    ]
+  },
+  {
+    "move": "현기증추격",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Psychic",
+        "id": 16068,
+        "name": "Oricorio"
+      }
+    ]
+  },
+  {
+    "move": "뼈때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 1152,
+        "name": "Cubone"
+      }
+    ]
+  },
+  {
+    "move": "늘어나는킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 1154,
+        "name": "Carracosta"
+      }
+    ]
+  },
+  {
+    "move": "회전차기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 1161,
+        "name": "Vibrava"
+      }
+    ]
+  },
+  {
+    "move": "힘껏후려치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 1163,
+        "name": "Clauncher"
+      }
+    ]
+  },
+  {
+    "move": "마운틴스윙",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 3082,
+        "name": "Rhydon"
+      }
+    ]
+  },
+  {
+    "move": "에크러뱃",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 3084,
+        "name": "Gliscor"
+      }
+    ]
+  },
+  {
+    "move": "콕스매시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 3087,
+        "name": "Regirock"
+      }
+    ]
+  },
+  {
+    "move": "서브머린블로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 3092,
+        "name": "Lucario"
+      }
+    ]
+  },
+  {
+    "move": "그라운드 프레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 3094,
+        "name": "Hippopotas"
+      }
+    ]
+  },
+  {
+    "move": "에너지 블레이드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 3095,
+        "name": "Gallade ex"
+      }
+    ]
+  },
+  {
+    "move": "투지의박치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 4036,
+        "name": "Purrloin"
+      }
+    ]
+  },
+  {
+    "move": "롤링스핀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 4038,
+        "name": "Binacle"
+      }
+    ]
+  },
+  {
+    "move": "직격탄",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 4047,
+        "name": "Garchomp ex"
+      }
+    ]
+  },
+  {
+    "move": "파워프레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 5039,
+        "name": "Machamp"
+      }
+    ]
+  },
+  {
+    "move": "뺨때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 6090,
+        "name": "Manectric"
+      }
+    ]
+  },
+  {
+    "move": "밀어내기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 6091,
+        "name": "Hariyama"
+      }
+    ]
+  },
+  {
+    "move": "블러드팽",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 6101,
+        "name": "Lycanroc"
+      }
+    ]
+  },
+  {
+    "move": "갈팽",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 7033,
+        "name": "Lycanroc ex"
+      }
+    ]
+  },
+  {
+    "move": "다같이던지기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 7034,
+        "name": "Primeape"
+      }
+    ]
+  },
+  {
+    "move": "샌드샷",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 7035,
+        "name": "Sandile"
+      }
+    ]
+  },
+  {
+    "move": "하드롤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 8042,
+        "name": "Meltan"
+      }
+    ]
+  },
+  {
+    "move": "기간트프레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 9100,
+        "name": "Binacle ex"
+      }
+    ]
+  },
+  {
+    "move": "펑펑너클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 9101,
+        "name": "Pancham"
+      }
+    ]
+  },
+  {
+    "move": "빠져나가기 스핀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 9102,
+        "name": "Hitmontop"
+      }
+    ]
+  },
+  {
+    "move": "폭발촙",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 9106,
+        "name": "Barbaracle"
+      }
+    ]
+  },
+  {
+    "move": "절벽허물기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 10041,
+        "name": "Dugtrio"
+      }
+    ]
+  },
+  {
+    "move": "하이드로너클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 10042,
+        "name": "Qwilfish ex"
+      }
+    ]
+  },
+  {
+    "move": "퀵스트레이트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11124,
+        "name": "Palossand ex"
+      }
+    ]
+  },
+  {
+    "move": "뺨때려떨구기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11127,
+        "name": "Hariyama"
+      }
+    ]
+  },
+  {
+    "move": "크래시팽",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11129,
+        "name": "Hippopotas"
+      }
+    ]
+  },
+  {
+    "move": "우걱우걱 바이트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11132,
+        "name": "Krookodile"
+      }
+    ]
+  },
+  {
+    "move": "와일드스핀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11134,
+        "name": "Archeops"
+      }
+    ]
+  },
+  {
+    "move": "헤비로켓",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11136,
+        "name": "Golurk"
+      }
+    ]
+  },
+  {
+    "move": "아슬아슬펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11140,
+        "name": "Crawdaunt"
+      }
+    ]
+  },
+  {
+    "move": "라이프서커",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11144,
+        "name": "Krokorok"
+      }
+    ]
+  },
+  {
+    "move": "석탄떨구기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 11147,
+        "name": "Slugma"
+      }
+    ]
+  },
+  {
+    "move": "메가톤 뺨때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 12040,
+        "name": "Hariyama"
+      }
+    ]
+  },
+  {
+    "move": "래피드스매셔",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 12042,
+        "name": "Mega Metagross ex"
+      }
+    ]
+  },
+  {
+    "move": "깨부수기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13079,
+        "name": "Machop"
+      }
+    ]
+  },
+  {
+    "move": "노크해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13081,
+        "name": "Machamp"
+      }
+    ]
+  },
+  {
+    "move": "사이코킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13084,
+        "name": "Medicham"
+      }
+    ]
+  },
+  {
+    "move": "메가톤캐논",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13087,
+        "name": "Gigalith ex"
+      }
+    ]
+  },
+  {
+    "move": "티라노팽",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13090,
+        "name": "Gigalith"
+      }
+    ]
+  },
+  {
+    "move": "공격해나가기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13092,
+        "name": "Ambipom"
+      }
+    ]
+  },
+  {
+    "move": "주춧돌의춤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 13093,
+        "name": "Ogerpon Cornerstone Mask"
+      }
+    ]
+  },
+  {
+    "move": "다이너마이트 펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 14057,
+        "name": "Gallade"
+      }
+    ]
+  },
+  {
+    "move": "아드레나해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 14061,
+        "name": "Hitmonlee"
+      }
+    ]
+  },
+  {
+    "move": "거만임팩트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 14062,
+        "name": "Ting-Lu"
+      }
+    ]
+  },
+  {
+    "move": "램페이지팽",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 14063,
+        "name": "Koraidon"
+      }
+    ]
+  },
+  {
+    "move": "가벼운돌입",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 15033,
+        "name": "Diglett"
+      }
+    ]
+  },
+  {
+    "move": "가이아 블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 15035,
+        "name": "Groudon"
+      }
+    ]
+  },
+  {
+    "move": "매드해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16077,
+        "name": "Regirock"
+      }
+    ]
+  },
+  {
+    "move": "글썽글썽어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16078,
+        "name": "Bonsly"
+      }
+    ]
+  },
+  {
+    "move": "투지의주먹",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16079,
+        "name": "Riolu"
+      }
+    ]
+  },
+  {
+    "move": "파이팅비트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16081,
+        "name": "Mega Lucario ex"
+      }
+    ]
+  },
+  {
+    "move": "그라운드소드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16084,
+        "name": "Gallade"
+      }
+    ]
+  },
+  {
+    "move": "깨트리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16086,
+        "name": "Sawk"
+      }
+    ]
+  },
+  {
+    "move": "록스매시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16088,
+        "name": "Crustle ex"
+      }
+    ]
+  },
+  {
+    "move": "트리플스매시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16091,
+        "name": "Bewear"
+      }
+    ]
+  },
+  {
+    "move": "마운틴크래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16094,
+        "name": "Coalossal"
+      }
+    ]
+  },
+  {
+    "move": "굉장한 모래뿌리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16096,
+        "name": "Sandaconda"
+      }
+    ]
+  },
+  {
+    "move": "단련",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Fighting",
+        "id": 16097,
+        "name": "Kubfu"
+      }
+    ]
+  },
+  {
+    "move": "분열",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 2049,
+        "name": "Koffing"
+      }
+    ]
+  },
+  {
+    "move": "스크래치네일",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 3099,
+        "name": "Salazzle ex"
+      }
+    ]
+  },
+  {
+    "move": "소용돌이재앙",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 3104,
+        "name": "Roggenrola"
+      }
+    ]
+  },
+  {
+    "move": "다크프리즘",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 3110,
+        "name": "Darkrai ex"
+      }
+    ]
+  },
+  {
+    "move": "뒤져서먹기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 6107,
+        "name": "Alolan Rattata"
+      }
+    ]
+  },
+  {
+    "move": "케미컬패닉",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 6111,
+        "name": "Alolan Muk ex"
+      }
+    ]
+  },
+  {
+    "move": "어새신클로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 6112,
+        "name": "Absol"
+      }
+    ]
+  },
+  {
+    "move": "독의숨",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 6114,
+        "name": "Trubbish"
+      }
+    ]
+  },
+  {
+    "move": "간섭하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7037,
+        "name": "Alolan Meowth"
+      }
+    ]
+  },
+  {
+    "move": "속이기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7038,
+        "name": "Alolan Persian"
+      }
+    ]
+  },
+  {
+    "move": "빼내기팽",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7041,
+        "name": "Krookodile"
+      }
+    ]
+  },
+  {
+    "move": "뉴웨이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7042,
+        "name": "Marowak"
+      }
+    ]
+  },
+  {
+    "move": "그라인드코어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7043,
+        "name": "Weavile ex"
+      }
+    ]
+  },
+  {
+    "move": "타이런트홀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7043,
+        "name": "Weavile ex"
+      }
+    ]
+  },
+  {
+    "move": "투스텝",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7044,
+        "name": "Poipole"
+      }
+    ]
+  },
+  {
+    "move": "애시드하우스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 7045,
+        "name": "Jangmo-o"
+      }
+    ]
+  },
+  {
+    "move": "블랙바인드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 8043,
+        "name": "Umbreon"
+      }
+    ]
+  },
+  {
+    "move": "치근거려 떨구기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 8045,
+        "name": "Espurr"
+      }
+    ]
+  },
+  {
+    "move": "베놈슬래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 9109,
+        "name": "Crobat ex"
+      }
+    ]
+  },
+  {
+    "move": "스내치다이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 9118,
+        "name": "Houndoom"
+      }
+    ]
+  },
+  {
+    "move": "넘어뛰기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 9120,
+        "name": "Absol"
+      }
+    ]
+  },
+  {
+    "move": "인연엄니",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 10048,
+        "name": "Seviper"
+      }
+    ]
+  },
+  {
+    "move": "브레인서지",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 10052,
+        "name": "Malamar"
+      }
+    ]
+  },
+  {
+    "move": "녹이기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 10053,
+        "name": "Seel"
+      }
+    ]
+  },
+  {
+    "move": "악의굴레",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 11149,
+        "name": "Honchkrow"
+      }
+    ]
+  },
+  {
+    "move": "불길한발톱",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 11150,
+        "name": "Absol"
+      }
+    ]
+  },
+  {
+    "move": "다크니스클로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 11151,
+        "name": "Mega Absol ex"
+      }
+    ]
+  },
+  {
+    "move": "섀도쿠프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 11154,
+        "name": "Darkrai"
+      }
+    ]
+  },
+  {
+    "move": "하이퍼빔",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 11157,
+        "name": "Altaria"
+      }
+    ]
+  },
+  {
+    "move": "드래곤휩",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 11160,
+        "name": "Drakloak ex"
+      }
+    ]
+  },
+  {
+    "move": "뺏고사라지기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 12048,
+        "name": "Purugly"
+      }
+    ]
+  },
+  {
+    "move": "무자비한일격",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13100,
+        "name": "Galarian Farfetch'd"
+      }
+    ]
+  },
+  {
+    "move": "분비액뿜기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13101,
+        "name": "Stunky"
+      }
+    ]
+  },
+  {
+    "move": "연기탄",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13102,
+        "name": "Skuntank"
+      }
+    ]
+  },
+  {
+    "move": "콧소리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13104,
+        "name": "Espurr"
+      }
+    ]
+  },
+  {
+    "move": "발톱 드러내기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13105,
+        "name": "Purugly"
+      }
+    ]
+  },
+  {
+    "move": "약자제압",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13107,
+        "name": "Hakamo-o"
+      }
+    ]
+  },
+  {
+    "move": "이블크래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13108,
+        "name": "Yveltal"
+      }
+    ]
+  },
+  {
+    "move": "브레이크코어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 13109,
+        "name": "Weavile"
+      }
+    ]
+  },
+  {
+    "move": "흙탕해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 14065,
+        "name": "Paldean Tauros"
+      }
+    ]
+  },
+  {
+    "move": "로켓점프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 14066,
+        "name": "Krokorok"
+      }
+    ]
+  },
+  {
+    "move": "컬러풀어택",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 14070,
+        "name": "Tauros"
+      }
+    ]
+  },
+  {
+    "move": "섀도래버린스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 15039,
+        "name": "Mega Gengar ex"
+      }
+    ]
+  },
+  {
+    "move": "검은꿈결",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 15040,
+        "name": "Darkrai"
+      }
+    ]
+  },
+  {
+    "move": "오물회오리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 15042,
+        "name": "Trubbish"
+      }
+    ]
+  },
+  {
+    "move": "에너지차륜",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 15045,
+        "name": "Morpeko"
+      }
+    ]
+  },
+  {
+    "move": "방귀봄",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16101,
+        "name": "Koffing"
+      }
+    ]
+  },
+  {
+    "move": "가시러쉬",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16103,
+        "name": "Qwilfish"
+      }
+    ]
+  },
+  {
+    "move": "각성",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16105,
+        "name": "Zorua"
+      }
+    ]
+  },
+  {
+    "move": "비트다운",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16106,
+        "name": "Zoroark ex"
+      }
+    ]
+  },
+  {
+    "move": "위험한포자",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16108,
+        "name": "Amoonguss"
+      }
+    ]
+  },
+  {
+    "move": "암습",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16110,
+        "name": "Mandibuzz"
+      }
+    ]
+  },
+  {
+    "move": "진화방해",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16112,
+        "name": "Malamar"
+      }
+    ]
+  },
+  {
+    "move": "다크리벤지",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Darkness",
+        "id": 16114,
+        "name": "Zarude"
+      }
+    ]
+  },
+  {
+    "move": "트리플노즈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 3118,
+        "name": "Nosepass"
+      }
+    ]
+  },
+  {
+    "move": "강철태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 3120,
+        "name": "Heatran"
+      }
+    ]
+  },
+  {
+    "move": "철골깨기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 4056,
+        "name": "Gardevoir"
+      }
+    ]
+  },
+  {
+    "move": "프로텍트유닛",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 4057,
+        "name": "Nosepass ex"
+      }
+    ]
+  },
+  {
+    "move": "타임크래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 4060,
+        "name": "Origin Dialga"
+      }
+    ]
+  },
+  {
+    "move": "노력해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 5053,
+        "name": "Spinda"
+      }
+    ]
+  },
+  {
+    "move": "호쾌스탬프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 5054,
+        "name": "Loudred ex"
+      }
+    ]
+  },
+  {
+    "move": "스핀드리프트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 5056,
+        "name": "Copperajah"
+      }
+    ]
+  },
+  {
+    "move": "럭셔리서핑",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 5057,
+        "name": "Talonflame"
+      }
+    ]
+  },
+  {
+    "move": "롱스피어",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 6120,
+        "name": "Escavalier"
+      }
+    ]
+  },
+  {
+    "move": "언록",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 6121,
+        "name": "Klefki"
+      }
+    ]
+  },
+  {
+    "move": "솔브레이크",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 6122,
+        "name": "Solgaleo ex"
+      }
+    ]
+  },
+  {
+    "move": "실버캐논",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 6123,
+        "name": "Magearna"
+      }
+    ]
+  },
+  {
+    "move": "빼꼼헤드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 7046,
+        "name": "Alolan Diglett"
+      }
+    ]
+  },
+  {
+    "move": "트리플렛헤드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 7047,
+        "name": "Alolan Dugtrio ex"
+      }
+    ]
+  },
+  {
+    "move": "가시로찌르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 7051,
+        "name": "Ferroseed"
+      }
+    ]
+  },
+  {
+    "move": "브라스록",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 7053,
+        "name": "Steelix"
+      }
+    ]
+  },
+  {
+    "move": "바이스집게",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 8047,
+        "name": "Gardevoir"
+      }
+    ]
+  },
+  {
+    "move": "곤두선가시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 8048,
+        "name": "Togedemaru"
+      }
+    ]
+  },
+  {
+    "move": "셸크래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 9121,
+        "name": "Pawniard"
+      }
+    ]
+  },
+  {
+    "move": "질풍찌르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 9123,
+        "name": "Scizor"
+      }
+    ]
+  },
+  {
+    "move": "기어커터",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 9127,
+        "name": "Klink"
+      }
+    ]
+  },
+  {
+    "move": "기어스피너",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 9128,
+        "name": "Klinklang"
+      }
+    ]
+  },
+  {
+    "move": "슬라이스 블레이드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 11172,
+        "name": "Aegislash"
+      }
+    ]
+  },
+  {
+    "move": "무쇠날개",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 11175,
+        "name": "Ting-Lu"
+      }
+    ]
+  },
+  {
+    "move": "메탈디펜더",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 12051,
+        "name": "Aggron"
+      }
+    ]
+  },
+  {
+    "move": "애더먼트롤링",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 12052,
+        "name": "Mega Aggron ex"
+      }
+    ]
+  },
+  {
+    "move": "메탈블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 12054,
+        "name": "Genesect"
+      }
+    ]
+  },
+  {
+    "move": "쩍바이트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 13112,
+        "name": "Gardevoir"
+      }
+    ]
+  },
+  {
+    "move": "히트업크런치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 13113,
+        "name": "Mega Gardevoir ex"
+      }
+    ]
+  },
+  {
+    "move": "트랩집게",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 13117,
+        "name": "Galarian Mawile"
+      }
+    ]
+  },
+  {
+    "move": "쌍검베기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 13119,
+        "name": "Bisharp"
+      }
+    ]
+  },
+  {
+    "move": "그레이트실드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 13120,
+        "name": "Aegislash"
+      }
+    ]
+  },
+  {
+    "move": "거대해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 14074,
+        "name": "Loudred"
+      }
+    ]
+  },
+  {
+    "move": "철분서플라이",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 14077,
+        "name": "Cufant"
+      }
+    ]
+  },
+  {
+    "move": "뿌리기러시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 14078,
+        "name": "Talonflame ex"
+      }
+    ]
+  },
+  {
+    "move": "특대폭발",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 15046,
+        "name": "Pawniard"
+      }
+    ]
+  },
+  {
+    "move": "불릿슬러거",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 15047,
+        "name": "Mega Scizor ex"
+      }
+    ]
+  },
+  {
+    "move": "우락부락대시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 15050,
+        "name": "Copperajah"
+      }
+    ]
+  },
+  {
+    "move": "프로텍트차지",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 16116,
+        "name": "Registeel"
+      }
+    ]
+  },
+  {
+    "move": "사이코 레저넌스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 16118,
+        "name": "Bronzong"
+      }
+    ]
+  },
+  {
+    "move": "기계장치캐논",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 16121,
+        "name": "Magearna"
+      }
+    ]
+  },
+  {
+    "move": "에어 크래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Metal",
+        "id": 16124,
+        "name": "Corviknight ex"
+      }
+    ]
+  },
+  {
+    "move": "크라이시스 다이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 4061,
+        "name": "Giratina"
+      }
+    ]
+  },
+  {
+    "move": "발끈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 6124,
+        "name": "Dreepy"
+      }
+    ]
+  },
+  {
+    "move": "용의오의",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 10055,
+        "name": "Aromatisse"
+      }
+    ]
+  },
+  {
+    "move": "기가클로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 11176,
+        "name": "Dracovish"
+      }
+    ]
+  },
+  {
+    "move": "드래곤폴",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 13123,
+        "name": "Salamence"
+      }
+    ]
+  },
+  {
+    "move": "꼬리로찌르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 15051,
+        "name": "Dratini"
+      }
+    ]
+  },
+  {
+    "move": "천공의기도",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 15052,
+        "name": "Dragonair"
+      }
+    ]
+  },
+  {
+    "move": "드래곤웨이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 15053,
+        "name": "Dragonite"
+      }
+    ]
+  },
+  {
+    "move": "광란의칼날",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 15056,
+        "name": "Haxorus"
+      }
+    ]
+  },
+  {
+    "move": "샌드윈드",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Dragon",
+        "id": 16125,
+        "name": "Vibrava"
+      }
+    ]
+  },
+  {
+    "move": "파로 때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 1198,
+        "name": "Seel"
+      }
+    ]
+  },
+  {
+    "move": "연속낼름낼름",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 1201,
+        "name": "Eevee"
+      }
+    ]
+  },
+  {
+    "move": "차흩뜨리기 사이클론",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 2059,
+        "name": "Pidgeot ex"
+      }
+    ]
+  },
+  {
+    "move": "투지의태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 2060,
+        "name": "Tauros"
+      }
+    ]
+  },
+  {
+    "move": "연속스텝",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 2061,
+        "name": "Eevee"
+      }
+    ]
+  },
+  {
+    "move": "낼름낼름러시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3125,
+        "name": "Togekiss ex"
+      }
+    ]
+  },
+  {
+    "move": "버그빔",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3129,
+        "name": "Porygon-Z"
+      }
+    ]
+  },
+  {
+    "move": "폼잡기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3139,
+        "name": "Persian"
+      }
+    ]
+  },
+  {
+    "move": "방해하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3140,
+        "name": "Meowth"
+      }
+    ]
+  },
+  {
+    "move": "선풍",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3142,
+        "name": "Fan Rotom"
+      }
+    ]
+  },
+  {
+    "move": "레이징해머",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 3143,
+        "name": "Regigigas"
+      }
+    ]
+  },
+  {
+    "move": "쓰러지기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 4063,
+        "name": "Snorlax"
+      }
+    ]
+  },
+  {
+    "move": "사일런트윙",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 4065,
+        "name": "Murkrow"
+      }
+    ]
+  },
+  {
+    "move": "황공",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 4066,
+        "name": "Starly"
+      }
+    ]
+  },
+  {
+    "move": "얼티메이트 포스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 4071,
+        "name": "Arceus ex"
+      }
+    ]
+  },
+  {
+    "move": "유유자적 프레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 5065,
+        "name": "Bibarel ex"
+      }
+    ]
+  },
+  {
+    "move": "홉핑슛",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 5067,
+        "name": "Metang"
+      }
+    ]
+  },
+  {
+    "move": "오버엑셀",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 5068,
+        "name": "Morpeko"
+      }
+    ]
+  },
+  {
+    "move": "에너지 어시스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 6130,
+        "name": "Delcatty"
+      }
+    ]
+  },
+  {
+    "move": "정의의프레스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 6132,
+        "name": "Hawlucha"
+      }
+    ]
+  },
+  {
+    "move": "날뛰기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 6139,
+        "name": "Beartic"
+      }
+    ]
+  },
+  {
+    "move": "원숭이함정",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 6140,
+        "name": "Oranguru"
+      }
+    ]
+  },
+  {
+    "move": "괴력허그",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 7058,
+        "name": "Beartic"
+      }
+    ]
+  },
+  {
+    "move": "버디브레이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 7061,
+        "name": "Silvally"
+      }
+    ]
+  },
+  {
+    "move": "뭄바톤",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 7062,
+        "name": "Zamazenta"
+      }
+    ]
+  },
+  {
+    "move": "자빠지기펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 8057,
+        "name": "Snorlax ex"
+      }
+    ]
+  },
+  {
+    "move": "음치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 8060,
+        "name": "Togekiss"
+      }
+    ]
+  },
+  {
+    "move": "강화앞니",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 8065,
+        "name": "Maushold"
+      }
+    ]
+  },
+  {
+    "move": "벌레쪼아대기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9130,
+        "name": "Gastrodon"
+      }
+    ]
+  },
+  {
+    "move": "둥글둥글",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9131,
+        "name": "Chansey"
+      }
+    ]
+  },
+  {
+    "move": "에너지블로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9132,
+        "name": "Blissey"
+      }
+    ]
+  },
+  {
+    "move": "내리치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9133,
+        "name": "Kangaskhan"
+      }
+    ]
+  },
+  {
+    "move": "슬로빔",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9137,
+        "name": "Porygon-Z"
+      }
+    ]
+  },
+  {
+    "move": "원숭이흉내",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9142,
+        "name": "Aipom"
+      }
+    ]
+  },
+  {
+    "move": "스네이크 플래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9144,
+        "name": "Natu"
+      }
+    ]
+  },
+  {
+    "move": "꿀핥기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9145,
+        "name": "Sneasel"
+      }
+    ]
+  },
+  {
+    "move": "휘두르기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9146,
+        "name": "Ursaring"
+      }
+    ]
+  },
+  {
+    "move": "강화호른",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9147,
+        "name": "Noibat"
+      }
+    ]
+  },
+  {
+    "move": "막칠하기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9148,
+        "name": "Ludicolo"
+      }
+    ]
+  },
+  {
+    "move": "엘리멘탈 블라스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9149,
+        "name": "Lugia ex"
+      }
+    ]
+  },
+  {
+    "move": "연속박치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 9150,
+        "name": "Amoonguss"
+      }
+    ]
+  },
+  {
+    "move": "파로 마구 때리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 10056,
+        "name": "Seel"
+      }
+    ]
+  },
+  {
+    "move": "새근새근송",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 10059,
+        "name": "Wigglytuff"
+      }
+    ]
+  },
+  {
+    "move": "구르기피버",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 10062,
+        "name": "Miltank"
+      }
+    ]
+  },
+  {
+    "move": "말랑말랑힐",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 10063,
+        "name": "Azurill"
+      }
+    ]
+  },
+  {
+    "move": "익사이팅테일",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11186,
+        "name": "Ambipom"
+      }
+    ]
+  },
+  {
+    "move": "대폭음",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11192,
+        "name": "Exploud"
+      }
+    ]
+  },
+  {
+    "move": "고양이킥",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11194,
+        "name": "Delcatty"
+      }
+    ]
+  },
+  {
+    "move": "흔들흔들 박치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11195,
+        "name": "Glameow"
+      }
+    ]
+  },
+  {
+    "move": "예리한앞니",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11200,
+        "name": "Grimmsnarl"
+      }
+    ]
+  },
+  {
+    "move": "데인저러스 바이트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11203,
+        "name": "Kommo-o"
+      }
+    ]
+  },
+  {
+    "move": "저력",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 11210,
+        "name": "Togetic"
+      }
+    ]
+  },
+  {
+    "move": "친구복사",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 12055,
+        "name": "Ditto"
+      }
+    ]
+  },
+  {
+    "move": "사이버잭",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 12058,
+        "name": "Porygon-Z"
+      }
+    ]
+  },
+  {
+    "move": "허리케인윙",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 12061,
+        "name": "Staravia"
+      }
+    ]
+  },
+  {
+    "move": "꿀기분",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13124,
+        "name": "Meowth"
+      }
+    ]
+  },
+  {
+    "move": "원투펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13126,
+        "name": "Kangaskhan"
+      }
+    ]
+  },
+  {
+    "move": "패밀리 더블 펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13127,
+        "name": "Mega Kangaskhan ex"
+      }
+    ]
+  },
+  {
+    "move": "꼬리로 뺨치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13128,
+        "name": "Mr. Mime"
+      }
+    ]
+  },
+  {
+    "move": "전력펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13135,
+        "name": "Helioptile"
+      }
+    ]
+  },
+  {
+    "move": "묵펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13136,
+        "name": "Slaking"
+      }
+    ]
+  },
+  {
+    "move": "흔들흔들스텝",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13137,
+        "name": "Glameow"
+      }
+    ]
+  },
+  {
+    "move": "무리짓기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13142,
+        "name": "Duosion"
+      }
+    ]
+  },
+  {
+    "move": "패밀리비트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 13143,
+        "name": "Pachirisu"
+      }
+    ]
+  },
+  {
+    "move": "레그스탬프",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 14080,
+        "name": "Purugly"
+      }
+    ]
+  },
+  {
+    "move": "트리플 갉아먹기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 14082,
+        "name": "Pachirisu"
+      }
+    ]
+  },
+  {
+    "move": "버디드라이브",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 14084,
+        "name": "Morpeko"
+      }
+    ]
+  },
+  {
+    "move": "차서흩뜨리기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 15060,
+        "name": "Miltank"
+      }
+    ]
+  },
+  {
+    "move": "회전드로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 15061,
+        "name": "Togekiss"
+      }
+    ]
+  },
+  {
+    "move": "상처치료",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16127,
+        "name": "Chansey"
+      }
+    ]
+  },
+  {
+    "move": "뛰어차기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16129,
+        "name": "Eevee"
+      }
+    ]
+  },
+  {
+    "move": "찌르고 파고들기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16130,
+        "name": "Dunsparce"
+      }
+    ]
+  },
+  {
+    "move": "분노발톱",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16132,
+        "name": "Ursaring"
+      }
+    ]
+  },
+  {
+    "move": "기가터보",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16134,
+        "name": "Regigigas"
+      }
+    ]
+  },
+  {
+    "move": "강아지투성이",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16137,
+        "name": "Lillipup"
+      }
+    ]
+  },
+  {
+    "move": "투사의엄니",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16139,
+        "name": "Stoutland"
+      }
+    ]
+  },
+  {
+    "move": "치유의빛",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16140,
+        "name": "Audino"
+      }
+    ]
+  },
+  {
+    "move": "하트풀샤인",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16141,
+        "name": "Mega Audino ex"
+      }
+    ]
+  },
+  {
+    "move": "푹신푹신테일",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16142,
+        "name": "Minccino"
+      }
+    ]
+  },
+  {
+    "move": "변덕 태클",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16144,
+        "name": "Furfrou"
+      }
+    ]
+  },
+  {
+    "move": "노려떨구기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Colorless",
+        "id": 16146,
+        "name": "Corvisquire"
+      }
+    ]
+  },
+  {
+    "move": "사이코플래시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00013",
+        "name": "Cresselia ex"
+      }
+    ]
+  },
+  {
+    "move": "스파이럴러시",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00019",
+        "name": "Rayquaza"
+      }
+    ]
+  },
+  {
+    "move": "사이코빌리",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00023",
+        "name": "Dawn Wings Necrozma"
+      }
+    ]
+  },
+  {
+    "move": "블랙메탈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00024",
+        "name": "Dusk Mane Necrozma"
+      }
+    ]
+  },
+  {
+    "move": "포튼클로",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00025",
+        "name": "Ultra Necrozma ex"
+      }
+    ]
+  },
+  {
+    "move": "슈게이즈",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00025",
+        "name": "Ultra Necrozma ex"
+      }
+    ]
+  },
+  {
+    "move": "탈피",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00026",
+        "name": "Dragonair"
+      }
+    ]
+  },
+  {
+    "move": "드레인 뺨치기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00027",
+        "name": "Ducklett"
+      }
+    ]
+  },
+  {
+    "move": "유인하는빛",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00029",
+        "name": "Psyduck"
+      }
+    ]
+  },
+  {
+    "move": "행복펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00030",
+        "name": "Blissey ex"
+      }
+    ]
+  },
+  {
+    "move": "허리케인펀치",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00035",
+        "name": "Machamp"
+      }
+    ]
+  },
+  {
+    "move": "자이언트 트위스터",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00038",
+        "name": "Mega Pidgeot ex"
+      }
+    ]
+  },
+  {
+    "move": "튀어오르기 고수",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00039",
+        "name": "Magikarp"
+      }
+    ]
+  },
+  {
+    "move": "제비반환",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00042",
+        "name": "Hawlucha"
+      }
+    ]
+  },
+  {
+    "move": "소닉임펄스",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00043",
+        "name": "Mega Latios ex"
+      }
+    ]
+  },
+  {
+    "move": "차크라피스트",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00046",
+        "name": "Mega Kangaskhan ex"
+      }
+    ]
+  },
+  {
+    "move": "영양소",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00047",
+        "name": "Smoliv"
+      }
+    ]
+  },
+  {
+    "move": "셀스톰",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00052",
+        "name": "Zygarde"
+      }
+    ]
+  },
+  {
+    "move": "그라운드 레이저",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00053",
+        "name": "Zygarde ex"
+      }
+    ]
+  },
+  {
+    "move": "다이내믹혼",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00054",
+        "name": "Mega Heracross ex"
+      }
+    ]
+  },
+  {
+    "move": "불내뿜기",
+    "count": 1,
+    "refs": [
+      {
+        "sheet": "Promo",
+        "id": "Z00055",
+        "name": "Tepig"
+      }
+    ]
+  }
+]

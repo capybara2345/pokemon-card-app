@@ -15,7 +15,17 @@
       "Bash(ConvertFrom-Json)",
       "Bash(Measure-Object)",
       "Bash(Select-Object -Property Count)",
-      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); matches=[c for c in data if c['id'].startswith\\('pb-'\\)]; print\\([c['id'] for c in matches[:5]]\\)\")"
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); matches=[c for c in data if c['id'].startswith\\('pb-'\\)]; print\\([c['id'] for c in matches[:5]]\\)\")",
+      "Bash(python *)",
+      "Bash(npm ls *)",
+      "Bash(yarn list *)",
+      "Bash(pnpm list *)",
+      "WebFetch(domain:serebii.net)",
+      "WebFetch(domain:bulbapedia.bulbagarden.net)",
+      "WebFetch(domain:pocketcards.net)",
+      "WebFetch(domain:game8.co)",
+      "WebFetch(domain:pokemontcgpocket.app)",
+      "WebFetch(domain:www.serebii.net)"
     ]
   }
 }
