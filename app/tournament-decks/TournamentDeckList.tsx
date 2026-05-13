@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { useLanguage } from "../i18n/context";
+import type { Translations } from "../i18n/translations";
 import type { EnrichedDeck } from "./page";
 import type { Session } from "next-auth";
 import {
@@ -62,7 +63,8 @@ function formatDateTime(iso: string): string {
 
 async function downloadDeckImage(
   deckCards: { count: number; image: string; name: string; numericId: number | null }[],
-  lang: string
+  lang: string,
+  t: Translations
 ) {
   const COLS = 4;
   const ROWS = 5;
@@ -500,7 +502,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                 {showTextView ? t.tournament.viewAsImage : t.tournament.viewAsText}
               </button>
               <button
-                onClick={() => downloadDeckImage(selectedDeck.cards, lang)}
+                onClick={() => downloadDeckImage(selectedDeck.cards, lang, t)}
                 className="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors"
               >
                 {t.tournament.downloadImage}
