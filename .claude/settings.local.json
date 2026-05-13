@@ -25,7 +25,8 @@
       "WebFetch(domain:pocketcards.net)",
       "WebFetch(domain:game8.co)",
       "WebFetch(domain:pokemontcgpocket.app)",
-      "WebFetch(domain:www.serebii.net)"
+      "WebFetch(domain:www.serebii.net)",
+      "WebFetch(domain:pokemon-card-app-nine.vercel.app)"
     ]
   }
 }
