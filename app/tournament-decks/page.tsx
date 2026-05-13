@@ -5,6 +5,8 @@ import TournamentDeckList from "./TournamentDeckList";
 import * as XLSX from "xlsx";
 import { auth } from "@/auth";
 
+import { cookies } from "next/headers";
+import { translations, type Lang } from "../i18n/translations";
 import { SITE_URL } from "../lib/constants";
 
 export const metadata: Metadata = {
@@ -228,6 +230,10 @@ function loadSerialToEnergyMap(): Map<string, string[]> {
 }
 
 export default async function TournamentDecksPage() {
+  const cookieStore = await cookies();
+  const lang = (cookieStore.get("lang")?.value ?? "ko") as Lang;
+  const t = translations[lang].tournament;
+
   const session = await auth();
   const decks = loadJson<BestDeck[]>("best-decks.json");
   const matchupData = loadJson<MatchupData>("matchup-data.json");
@@ -295,12 +301,14 @@ export default async function TournamentDecksPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "포켓몬 포켓 토너먼트 덱 리스트",
+    name: lang === "en" ? "Pokémon Pocket Tournament Deck List" : "포켓몬 포켓 토너먼트 덱 리스트",
     itemListElement: topDecks.map((deck, i) => ({
       "@type": "ListItem",
       position: i + 1,
       name: deck.displayName,
-      description: `승률 ${deck.winRate ?? "-"}% · ${deck.totalGames ?? "-"}경기 · 인기도 ${(deck.popularity * 100).toFixed(1)}%`,
+      description: lang === "en"
+        ? `Win rate ${deck.winRate ?? "-"}% · ${deck.totalGames ?? "-"} games · Popularity ${(deck.popularity * 100).toFixed(1)}%`
+        : `승률 ${deck.winRate ?? "-"}% · ${deck.totalGames ?? "-"}경기 · 인기도 ${(deck.popularity * 100).toFixed(1)}%`,
     })),
   };
 
@@ -312,10 +320,10 @@ export default async function TournamentDecksPage() {
       />
       <div className="flex flex-col gap-4 p-4 md:p-6 min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors">
         <h1 className="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
-          포켓몬 포켓 토너먼트 덱 — 최신 메타 덱 리스트
+          {t.pageTitle}
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          최근 토너먼트에서 좋은 성적을 거둔 덱 리스트입니다.
+          {t.subtitle}
         </p>
 
         <TournamentDeckList decks={enriched} session={session} />

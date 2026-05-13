@@ -89,6 +89,30 @@ export type Translations = {
     prev: string;
     next: string;
   };
+  tournament: {
+    pageTitle: string;
+    subtitle: string;
+    searchPlaceholder: string;
+    sortScore: string;
+    sortWinRate: string;
+    sortTotalGames: string;
+    sortPopularity: string;
+    allGames: string;
+    gamesAbove: (n: number) => string;
+    lastUpdated: string;
+    decksCount: string;
+    games: string;
+    score: string;
+    popularity: string;
+    winRate: string;
+    noResults: string;
+    viewAsImage: string;
+    viewAsText: string;
+    downloadImage: string;
+    deckComposition: string;
+    copyCardName: string;
+    imageLoading: string;
+  };
   misc: {
     disclaimer: string;
   };
@@ -115,6 +139,7 @@ export type Translations = {
     saved: string;
     saveError: string;
     emptyError: string;
+    nameRequired: string;
     favoriteError: string;
     clickToRemove: string;
     copyName: string;
@@ -294,6 +319,30 @@ export const ko: Translations = {
     prev: "이전",
     next: "다음",
   },
+  tournament: {
+    pageTitle: "포켓몬 포켓 토너먼트 덱 — 최신 메타 덱 리스트",
+    subtitle: "최근 토너먼트에서 좋은 성적을 거둔 덱 리스트입니다.",
+    searchPlaceholder: "덱 이름 검색...",
+    sortScore: "점수 높은 순",
+    sortWinRate: "승률 높은 순",
+    sortTotalGames: "경기 수 많은 순",
+    sortPopularity: "인기도 높은 순",
+    allGames: "모든 경기",
+    gamesAbove: (n) => `${n}경기 이상`,
+    lastUpdated: "최신 업데이트:",
+    decksCount: "개 덱",
+    games: "경기",
+    score: "점수",
+    popularity: "인기도",
+    winRate: "승률",
+    noResults: "검색 조건에 맞는 덱이 없습니다.",
+    viewAsImage: "이미지로 보기",
+    viewAsText: "텍스트로 보기",
+    downloadImage: "이미지 다운로드",
+    deckComposition: "덱 구성",
+    copyCardName: "포켓몬명 복사",
+    imageLoading: "이미지 준비중",
+  },
   misc: {
     disclaimer: "* 중복된 카드는 제외하였습니다.",
   },
@@ -320,6 +369,7 @@ export const ko: Translations = {
     saved: "덱이 저장되었습니다.",
     saveError: "저장 실패: ",
     emptyError: "덱이 비어 있습니다. 카드를 추가해주세요.",
+    nameRequired: "덱 이름을 입력해주세요.",
     favoriteError: "즐겨찾기 실패",
     clickToRemove: "클릭하면 1장 제거",
     copyName: "포켓몬명 복사",
@@ -494,6 +544,30 @@ export const en: Translations = {
     prev: "Prev",
     next: "Next",
   },
+  tournament: {
+    pageTitle: "Pokémon Pocket Tournament Decks — Latest Meta Deck Lists",
+    subtitle: "Deck lists that performed well in recent tournaments.",
+    searchPlaceholder: "Search deck name...",
+    sortScore: "Score (High to Low)",
+    sortWinRate: "Win Rate (High to Low)",
+    sortTotalGames: "Games Played (High to Low)",
+    sortPopularity: "Popularity (High to Low)",
+    allGames: "All Games",
+    gamesAbove: (n) => `${n}+ Games`,
+    lastUpdated: "Last updated:",
+    decksCount: "decks",
+    games: "Games",
+    score: "Score",
+    popularity: "Popularity",
+    winRate: "Win Rate",
+    noResults: "No decks match your search.",
+    viewAsImage: "Image View",
+    viewAsText: "Text View",
+    downloadImage: "Download Image",
+    deckComposition: "Deck List",
+    copyCardName: "Copy Card Name",
+    imageLoading: "Image loading",
+  },
   misc: {
     disclaimer: "* Data may differ from the actual game. Duplicate cards are excluded.",
   },
@@ -520,6 +594,7 @@ export const en: Translations = {
     saved: "Deck saved.",
     saveError: "Save failed: ",
     emptyError: "Deck is empty. Please add some cards.",
+    nameRequired: "Please enter a deck name.",
     favoriteError: "Favorite failed",
     clickToRemove: "Click to remove one",
     copyName: "Copy Pokémon name",

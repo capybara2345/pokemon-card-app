@@ -150,7 +150,7 @@ async function downloadDeckImage(
       ctx.fillStyle = "#94a3b8";
       ctx.font = "bold 11px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("이미지 준비중", x + CARD_W / 2, y + CARD_H / 2 - 8);
+      ctx.fillText(t.card.imageLoading, x + CARD_W / 2, y + CARD_H / 2 - 8);
       ctx.fillStyle = "#475569";
       ctx.font = "12px sans-serif";
       ctx.fillText(cells[i].name, x + CARD_W / 2, y + CARD_H / 2 + 12);
@@ -164,7 +164,7 @@ async function downloadDeckImage(
 }
 
 export default function TournamentDeckList({ decks, session }: Props) {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [lastUpdated, setLastUpdated] = useState<string>("");
 
@@ -236,7 +236,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
   const handleSaveDeck = useCallback(async () => {
     if (!session?.user?.email || !selectedDeck) return;
     if (!saveName.trim()) {
-      setSaveMsg("덱 이름을 입력해주세요.");
+      setSaveMsg(t.deck.nameRequired);
       return;
     }
     setSaving(true);
@@ -246,14 +246,14 @@ export default function TournamentDeckList({ decks, session }: Props) {
         .filter((c) => c.numericId !== null)
         .map((c) => ({ cardId: c.numericId!, count: c.count }));
       await saveDeckToFirestore(session.user.email, saveName.trim(), deckCards, "");
-      setSaveMsg("덱이 저장되었습니다. 덱 빌더에서 불러오기로 확인할 수 있습니다.");
+      setSaveMsg(t.deck.saved);
       setTimeout(() => {
         setShowSaveModal(false);
         setSaveName("");
         setSaveMsg(null);
       }, 2000);
     } catch (e) {
-      setSaveMsg("저장 중 오류가 발생했습니다.");
+      setSaveMsg(t.deck.saveError);
     } finally {
       setSaving(false);
     }
@@ -293,7 +293,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="덱 이름 검색..."
+            placeholder={t.tournament.searchPlaceholder}
             className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500"
           />
         </div>
@@ -304,10 +304,10 @@ export default function TournamentDeckList({ decks, session }: Props) {
             onChange={(e) => setSortBy(e.target.value as SortKey)}
             className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
-            <option value="score">점수 높은 순</option>
-            <option value="winRate">승률 높은 순</option>
-            <option value="totalGames">경기 수 많은 순</option>
-            <option value="popularity">인기도 높은 순</option>
+            <option value="score">{t.tournament.sortScore}</option>
+            <option value="winRate">{t.tournament.sortWinRate}</option>
+            <option value="totalGames">{t.tournament.sortTotalGames}</option>
+            <option value="popularity">{t.tournament.sortPopularity}</option>
           </select>
 
           <select
@@ -315,19 +315,19 @@ export default function TournamentDeckList({ decks, session }: Props) {
             onChange={(e) => setMinGames(Number(e.target.value))}
             className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
-            <option value={0}>모든 경기</option>
-            <option value={10}>10경기 이상</option>
-            <option value={50}>50경기 이상</option>
-            <option value={100}>100경기 이상</option>
-            <option value={200}>200경기 이상</option>
+            <option value={0}>{t.tournament.allGames}</option>
+            <option value={10}>{t.tournament.gamesAbove(10)}</option>
+            <option value={50}>{t.tournament.gamesAbove(50)}</option>
+            <option value={100}>{t.tournament.gamesAbove(100)}</option>
+            <option value={200}>{t.tournament.gamesAbove(200)}</option>
           </select>
         </div>
       </div>
 
       {/* 결과 개수 & 업데이트 시간 */}
       <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 flex-wrap gap-y-1">
-        <span>{total > 0 ? `${startIdx + 1}-${endIdx} / ${total}개 덱` : `${total}개 덱`}</span>
-        <span>최신 업데이트: {lastUpdated ? formatDateTime(lastUpdated) : "-"}</span>
+        <span>{total > 0 ? `${startIdx + 1}-${endIdx} / ${total}${t.tournament.decksCount}` : `${total}${t.tournament.decksCount}`}</span>
+        <span>{t.tournament.lastUpdated} {lastUpdated ? formatDateTime(lastUpdated) : "-"}</span>
       </div>
 
       {/* 카드 그리드 */}
@@ -372,11 +372,11 @@ export default function TournamentDeckList({ decks, session }: Props) {
                           : "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300"
                       }`}
                     >
-                      승률 {deck.winRate}%
+                      {t.tournament.winRate} {deck.winRate}%
                     </span>
                   ) : (
                     <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
-                      승률 -
+                      {t.tournament.winRate} -
                     </span>
                   )}
                 </div>
@@ -384,7 +384,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                 <div className="grid grid-cols-3 gap-2 pt-1">
                   <div className="flex flex-col items-center rounded-lg bg-slate-50 dark:bg-slate-700/50 p-2">
                     <span className="text-[10px] font-medium text-slate-400 dark:text-slate-400 uppercase tracking-wider">
-                      경기
+                      {t.tournament.games}
                     </span>
                     <span className="text-sm font-bold text-slate-700 dark:text-slate-200 break-all">
                       {deck.totalGames !== null
@@ -394,7 +394,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                   </div>
                   <div className="flex flex-col items-center rounded-lg bg-slate-50 dark:bg-slate-700/50 p-2">
                     <span className="text-[10px] font-medium text-slate-400 dark:text-slate-400 uppercase tracking-wider">
-                      점수
+                      {t.tournament.score}
                     </span>
                     <span className="text-sm font-bold text-slate-700 dark:text-slate-200">
                       {deck.bestScore.toFixed(3)}
@@ -402,7 +402,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                   </div>
                   <div className="flex flex-col items-center rounded-lg bg-slate-50 dark:bg-slate-700/50 p-2">
                     <span className="text-[10px] font-medium text-slate-400 dark:text-slate-400 uppercase tracking-wider">
-                      인기도
+                      {t.tournament.popularity}
                     </span>
                     <span className="text-sm font-bold text-slate-700 dark:text-slate-200">
                       {(deck.popularity * 100).toFixed(1)}%
@@ -423,7 +423,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
             disabled={currentPage <= 1}
             className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
           >
-            이전
+            {t.pagination.prev}
           </button>
 
           <div className="flex items-center gap-1 flex-wrap">
@@ -450,14 +450,14 @@ export default function TournamentDeckList({ decks, session }: Props) {
             disabled={currentPage >= totalPages}
             className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
           >
-            다음
+            {t.pagination.next}
           </button>
         </div>
       )}
 
       {filtered.length === 0 && (
         <div className="text-center py-12 text-sm text-slate-500 dark:text-slate-400">
-          검색 조건에 맞는 덱이 없습니다.
+          {t.tournament.noResults}
         </div>
       )}
 
@@ -497,13 +497,13 @@ export default function TournamentDeckList({ decks, session }: Props) {
                     : "border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                 }`}
               >
-                {showTextView ? "이미지로 보기" : "텍스트로 보기"}
+                {showTextView ? t.tournament.viewAsImage : t.tournament.viewAsText}
               </button>
               <button
                 onClick={() => downloadDeckImage(selectedDeck.cards, lang)}
                 className="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors"
               >
-                이미지 다운로드
+                {t.tournament.downloadImage}
               </button>
               {session?.user && (
                 <button
@@ -513,7 +513,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                   }}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium border border-green-200 dark:border-green-800 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/30 transition-colors"
                 >
-                  덱 저장
+                  {t.deck.save}
                 </button>
               )}
             </div>
@@ -530,24 +530,24 @@ export default function TournamentDeckList({ decks, session }: Props) {
                       : "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300"
                   }`}
                 >
-                  승률 {selectedDeck.winRate}%
+                  {t.tournament.winRate} {selectedDeck.winRate}%
                 </span>
               )}
               <span className="text-xs text-slate-500 dark:text-slate-400">
                 {selectedDeck.totalGames !== null
-                  ? `${selectedDeck.totalGames.toLocaleString()}경기`
+                  ? `${selectedDeck.totalGames.toLocaleString()}${t.tournament.games}`
                   : "-"}
                 {" · "}
-                점수 {selectedDeck.bestScore.toFixed(3)}
+                {t.tournament.score} {selectedDeck.bestScore.toFixed(3)}
                 {" · "}
-                인기도 {(selectedDeck.popularity * 100).toFixed(1)}%
+                {t.tournament.popularity} {(selectedDeck.popularity * 100).toFixed(1)}%
               </span>
             </div>
 
             {showTextView ? (
               <div className="flex flex-col gap-3">
                 <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-                  덱 구성 ({selectedDeck.cards.reduce((s, c) => s + c.count, 0)}장)
+                  {t.tournament.deckComposition} ({selectedDeck.cards.reduce((s, c) => s + c.count, 0)})
                 </h4>
                 <div className="flex flex-col gap-2">
                   {selectedDeck.cards.map((card, idx) => (
@@ -576,7 +576,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                           setCopiedId(card.id);
                           setTimeout(() => setCopiedId((prev) => (prev === card.id ? null : prev)), 1500);
                         }}
-                        title="카드명 복사"
+                        title={t.tournament.copyCardName}
                         className="shrink-0 w-7 h-7 flex items-center justify-center rounded text-slate-300 hover:text-indigo-500 dark:text-slate-500 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-xs transition-colors"
                       >
                         {copiedId === card.id ? (
@@ -662,7 +662,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
           >
             <div className="flex items-center justify-between">
               <span className="text-base font-bold text-slate-800 dark:text-slate-100">
-                덱 저장
+                {t.deck.save}
               </span>
               <button
                 onClick={() => {
@@ -678,7 +678,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
               type="text"
               value={saveName}
               onChange={(e) => setSaveName(e.target.value)}
-              placeholder="덱 이름"
+              placeholder={t.deck.namePlaceholder}
               className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-green-300"
               maxLength={30}
               autoFocus
@@ -687,7 +687,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
               }}
             />
             {saveMsg && (
-              <div className={`text-xs ${saveMsg.includes("오류") ? "text-red-500" : "text-emerald-500"}`}>
+              <div className={`text-xs ${saveMsg === t.deck.saved ? "text-emerald-500" : "text-red-500"}`}>
                 {saveMsg}
               </div>
             )}
@@ -697,7 +697,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
                 disabled={saving || !saveName.trim()}
                 className="px-4 py-2 rounded-lg text-sm font-medium bg-green-500 hover:bg-green-600 text-white disabled:opacity-40 transition-colors"
               >
-                {saving ? "저장 중..." : "저장"}
+                {saving ? `${t.deck.save}...` : t.deck.save}
               </button>
             </div>
           </div>
