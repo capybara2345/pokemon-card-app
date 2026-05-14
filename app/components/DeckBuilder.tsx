@@ -1309,7 +1309,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                 {card.키워드 && (
                   <div className="flex flex-wrap gap-1">
                     {card.키워드.split(",").map((k) => k.trim()).filter(Boolean).map((kw) => (
-                      <span key={kw} className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800">{kw}</span>
+                      <span key={kw} className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800">{t.keywords[kw] ?? kw}</span>
                     ))}
                   </div>
                 )}
@@ -1661,7 +1661,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                         title={cardNames.join(", ")}
                         className="relative inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 cursor-default group"
                       >
-                        {kw}
+                        {t.keywords[kw] ?? kw}
                         <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">{count}</span>
                         {cardNames.length > 0 && (
                           <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 z-10 hidden group-hover:flex flex-col gap-0.5 bg-slate-800 dark:bg-slate-900 text-white rounded-lg px-2.5 py-1.5 shadow-lg whitespace-nowrap min-w-max">
@@ -1917,7 +1917,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                                   ? "bg-amber-50 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300 hover:border-amber-400"
                                   : "bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
                               }`}
-                            >{opt}</button>
+                            >{t.keywords[opt] ?? opt}</button>
                           );
                         })}
                       </div>

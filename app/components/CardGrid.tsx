@@ -551,7 +551,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                               : "bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400"
                           }`}
                         >
-                          {opt}
+                          {t.keywords[opt] ?? opt}
                         </button>
                       );
                     })}
@@ -1017,7 +1017,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                   <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">{t.card.keyword}</span>
                   <div className="flex flex-wrap gap-1">
                     {mobileDetail.키워드.split(",").map((k) => k.trim()).filter(Boolean).map((kw) => (
-                      <span key={kw} className="text-xs text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-700/50 rounded px-2 py-0.5 border border-indigo-200 dark:border-indigo-700">{kw}</span>
+                      <span key={kw} className="text-xs text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-700/50 rounded px-2 py-0.5 border border-indigo-200 dark:border-indigo-700">{t.keywords[kw] ?? kw}</span>
                     ))}
                   </div>
                 </div>
@@ -1251,7 +1251,7 @@ function KeywordBadge({ keywords }: { keywords: string }) {
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const kwList = keywords.split(",").map((k) => k.trim()).filter(Boolean);
 
   const handleClick = () => {
@@ -1288,7 +1288,7 @@ function KeywordBadge({ keywords }: { keywords: string }) {
             <div className="flex flex-col gap-1">
               {kwList.map((kw) => (
                 <span key={kw} className="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-700/50 rounded px-2 py-0.5">
-                  {kw}
+                  {t.keywords[kw] ?? kw}
                 </span>
               ))}
             </div>

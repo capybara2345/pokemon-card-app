@@ -27,7 +27,11 @@
       "WebFetch(domain:pokemontcgpocket.app)",
       "WebFetch(domain:www.serebii.net)",
       "WebFetch(domain:pokemon-card-app-nine.vercel.app)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pip install *)",
+      "WebFetch(domain:tcgpocket.app)"
     ]
   }
 }
