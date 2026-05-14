@@ -178,6 +178,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
   }, []);
   const [sortBy, setSortBy] = useState<SortKey>("score");
   const [minGames, setMinGames] = useState(0);
+  const [selectedEnergy, setSelectedEnergy] = useState("");
   const [selectedDeck, setSelectedDeck] = useState<EnrichedDeck | null>(null);
   const [showTextView, setShowTextView] = useState(false);
   const [brokenImages, setBrokenImages] = useState<Set<string>>(new Set());
@@ -196,6 +197,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
         if (!d.displayName.toLowerCase().includes(q)) return false;
       }
       if (minGames > 0 && (d.totalGames ?? 0) < minGames) return false;
+      if (selectedEnergy && !d.energyTypes.includes(selectedEnergy)) return false;
       return true;
     });
 
@@ -215,11 +217,11 @@ export default function TournamentDeckList({ decks, session }: Props) {
     });
 
     return list;
-  }, [decks, query, sortBy, minGames]);
+  }, [decks, query, sortBy, minGames, selectedEnergy]);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [query, sortBy, minGames]);
+  }, [query, sortBy, minGames, selectedEnergy]);
 
   const total = filtered.length;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -322,6 +324,21 @@ export default function TournamentDeckList({ decks, session }: Props) {
             <option value={50}>{t.tournament.gamesAbove(50)}</option>
             <option value={100}>{t.tournament.gamesAbove(100)}</option>
             <option value={200}>{t.tournament.gamesAbove(200)}</option>
+          </select>
+
+          <select
+            value={selectedEnergy}
+            onChange={(e) => setSelectedEnergy(e.target.value)}
+            className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          >
+            <option value="">{t.filter.skillEnergy}</option>
+            {Object.keys(ENERGY_IMAGE_MAP)
+              .filter((type) => type !== "드래곤")
+              .map((type) => (
+                <option key={type} value={type}>
+                  {t.pokemonType[type] ?? type}
+                </option>
+              ))}
           </select>
         </div>
       </div>

@@ -26,7 +26,8 @@
       "WebFetch(domain:game8.co)",
       "WebFetch(domain:pokemontcgpocket.app)",
       "WebFetch(domain:www.serebii.net)",
-      "WebFetch(domain:pokemon-card-app-nine.vercel.app)"
+      "WebFetch(domain:pokemon-card-app-nine.vercel.app)",
+      "Bash(python3 *)"
     ]
   }
 }

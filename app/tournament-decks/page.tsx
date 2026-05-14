@@ -71,9 +71,11 @@ interface CardItem {
   id: string;
   name: string;
   koName: string | null;
+  enName: string | null;
   image: string;
   numericId: number | null;
   expansion: string | null;
+  hp: number | null;
 }
 
 export interface EnrichedDeck {
@@ -89,16 +91,144 @@ export interface EnrichedDeck {
   energyTypes: string[];
 }
 
-function formatDeckName(raw: string): string {
-  return raw
-    .split("&")
-    .map((part) => {
-      const segments = part.split("-");
-      const nameSegments = segments.slice(0, -2);
-      const formatted = nameSegments.join(" ");
-      return formatted.charAt(0).toUpperCase() + formatted.slice(1);
-    })
-    .join(" + ");
+function getCardDisplayName(card: CardItem, lang: Lang): string {
+  if (lang === "ko") return card.koName ?? card.name;
+  return card.enName ?? card.name;
+}
+
+function getDeckDisplayName(cards: CardItem[], lang: Lang): string {
+  const pokemonCards = cards.filter(
+    (c) => c.hp !== null && c.hp !== undefined && c.hp > 0
+  );
+  if (pokemonCards.length === 0) {
+    const fallback = cards[0];
+    if (!fallback) return lang === "ko" ? "알 수 없는 덱" : "Unknown Deck";
+    const name = getCardDisplayName(fallback, lang);
+    return lang === "ko" ? `${name} 덱` : `${name} Deck`;
+  }
+
+  const exCards = pokemonCards.filter((c) => {
+    const displayName = getCardDisplayName(c, lang);
+    return /\s*ex$/i.test(displayName);
+  });
+
+  const targetCards = exCards.length > 0 ? exCards : pokemonCards;
+
+  let chosen: CardItem[];
+  if (exCards.length > 0) {
+    const seen = new Set<string>();
+    const unique: CardItem[] = [];
+    for (const card of targetCards) {
+      const displayName = getCardDisplayName(card, lang);
+      if (!seen.has(displayName)) {
+        seen.add(displayName);
+        unique.push(card);
+      }
+    }
+    unique.sort((a, b) => b.count - a.count);
+    chosen = unique;
+  } else {
+    const maxHp = Math.max(...targetCards.map((c) => c.hp ?? 0));
+    const tied = targetCards.filter((c) => (c.hp ?? 0) === maxHp);
+
+    const seen = new Set<string>();
+    const unique: CardItem[] = [];
+    for (const card of tied) {
+      const displayName = getCardDisplayName(card, lang);
+      if (!seen.has(displayName)) {
+        seen.add(displayName);
+        unique.push(card);
+      }
+    }
+
+    unique.sort((a, b) => b.count - a.count);
+    chosen = unique;
+  }
+
+  const names = chosen.map((c) => getCardDisplayName(c, lang));
+
+  const joined = names.join(" & ");
+  return lang === "ko" ? `${joined} 덱` : `${joined} Deck`;
+}
+
+function loadIdToEnNameMap(): Map<number, string> {
+  const path = join(process.cwd(), "app", "data", "card_list_en.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const map = new Map<number, string>();
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" }) as Array<{
+      ID: string | number;
+      Name: string;
+    }>;
+    for (const row of rows) {
+      if (row.ID && row.Name) {
+        const numericId = parseCardId_(String(row.ID).trim());
+        if (numericId > 0) {
+          map.set(numericId, String(row.Name).trim());
+        }
+      }
+    }
+  }
+  return map;
+}
+
+function loadIdToEnHpMap(): Map<number, number> {
+  const path = join(process.cwd(), "app", "data", "card_list_en.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const map = new Map<number, number>();
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" }) as Array<{
+      ID: string | number;
+      HP: string | number;
+    }>;
+    for (const row of rows) {
+      if (
+        row.ID &&
+        row.HP !== "" &&
+        row.HP !== undefined &&
+        row.HP !== null
+      ) {
+        const numericId = parseCardId_(String(row.ID).trim());
+        const hp = Number(row.HP);
+        if (!isNaN(hp) && hp > 0 && numericId > 0) {
+          map.set(numericId, hp);
+        }
+      }
+    }
+  }
+  return map;
+}
+
+function loadSerialToHpMap(): Map<string, number> {
+  const path = join(process.cwd(), "app", "data", "card_list.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const map = new Map<string, number>();
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" }) as Array<{
+      Serial: string;
+      HP: string | number;
+    }>;
+    for (const row of rows) {
+      if (
+        row.Serial &&
+        row.HP !== "" &&
+        row.HP !== undefined &&
+        row.HP !== null
+      ) {
+        const hp = Number(row.HP);
+        if (!isNaN(hp) && hp > 0) {
+          map.set(String(row.Serial).trim(), hp);
+        }
+      }
+    }
+  }
+  return map;
 }
 
 function loadJson<T>(filename: string): T {
@@ -243,6 +373,9 @@ export default async function TournamentDecksPage() {
   const serialToKoName = loadSerialToKoNameMap();
   const serialToExpansion = loadSerialToExpansionMap();
   const serialToEnergy = loadSerialToEnergyMap();
+  const serialToHp = loadSerialToHpMap();
+  const idToEnName = loadIdToEnNameMap();
+  const idToEnHp = loadIdToEnHpMap();
 
   const cardMap = new Map<string, RawCard>(
     cardsData.map((c) => [c.id, c])
@@ -263,14 +396,20 @@ export default async function TournamentDecksPage() {
         const numericId = serialToId.get(normalizedId) ?? null;
         const koName = serialToKoName.get(normalizedId) ?? null;
         const expansion = serialToExpansion.get(normalizedId) ?? null;
+        const enName = numericId ? idToEnName.get(numericId) ?? null : null;
+        const hp = numericId
+          ? (lang === "en" ? idToEnHp.get(numericId) : serialToHp.get(normalizedId)) ?? null
+          : null;
         return {
           count: Number(countStr),
           id,
           name: card?.name ?? id,
           koName,
+          enName,
           image: card?.image ?? "",
           numericId,
           expansion,
+          hp,
         };
       });
 
@@ -284,7 +423,7 @@ export default async function TournamentDecksPage() {
 
       return {
         name: deck.name,
-        displayName: formatDeckName(deck.name),
+        displayName: getDeckDisplayName(cards, lang),
         winRate: total ? Math.round(total.winRate * 1000) / 10 : null,
         totalGames: total?.totalGames ?? null,
         bestScore: bestList.score,
