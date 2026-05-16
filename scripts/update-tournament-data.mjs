@@ -10,8 +10,8 @@ const API_BASE = "https://play.limitlesstcg.com/api";
 // 병렬 처리 청크 크기
 const CHUNK_SIZE = 1;
 const DELAY_MS = 3000;
-const RETRY_DELAY_MS = 3000;
-const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 5000;
+const MAX_RETRIES = 10;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
