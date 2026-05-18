@@ -113,6 +113,7 @@ export type Translations = {
     deckComposition: string;
     copyCardName: string;
     imageLoading: string;
+    source: string;
   };
   misc: {
     disclaimer: string;
@@ -476,6 +477,7 @@ export const ko: Translations = {
     deckComposition: "덱 구성",
     copyCardName: "포켓몬명 복사",
     imageLoading: "이미지 준비중",
+    source: "데이터 출처: Limitless",
   },
   misc: {
     disclaimer: "* 중복된 카드는 제외하였습니다.",
@@ -834,6 +836,7 @@ export const en: Translations = {
     deckComposition: "Deck List",
     copyCardName: "Copy Card Name",
     imageLoading: "Image loading",
+    source: "Data source: Limitless",
   },
   misc: {
     disclaimer: "* Data may differ from the actual game. Duplicate cards are excluded.",

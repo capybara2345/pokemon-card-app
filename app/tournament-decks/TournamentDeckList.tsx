@@ -188,7 +188,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = 50;
+  const PAGE_SIZE = 40;
 
   const filtered = useMemo(() => {
     let list = decks.filter((d) => {

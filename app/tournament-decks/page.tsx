@@ -132,6 +132,17 @@ export default async function TournamentDecksPage() {
         </p>
 
         <TournamentDeckList decks={enriched} session={session} />
+
+        <div className="text-center text-[10px] text-slate-400 dark:text-slate-500 mt-2">
+          <a
+            href="https://play.limitlesstcg.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-slate-600 dark:hover:text-slate-300 underline underline-offset-2"
+          >
+            {t.source}
+          </a>
+        </div>
       </div>
     </main>
   );
