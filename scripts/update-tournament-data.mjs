@@ -1,9 +1,11 @@
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import * as XLSX from "xlsx";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DATA = join(__dirname, "..", "public", "data");
+const APP_DATA = join(__dirname, "..", "app", "data");
 
 const API_BASE = "https://play.limitlesstcg.com/api";
 
@@ -136,6 +138,186 @@ async function chunkedFetch(tournaments, fetchFn, label) {
     }
   }
   return results;
+}
+
+// ---- 카드 메타데이터 로드 ----
+
+const PROMO_BASE = 900000;
+
+function normalizeCardId(id) {
+  return id.replace(/^p-([a-z])-/i, "p$1-");
+}
+
+function parseCardId_(rawId) {
+  const promoMatch = rawId.match(/^Z(\d+)$/i);
+  if (promoMatch) return PROMO_BASE + parseInt(promoMatch[1], 10);
+  const n = Number(rawId);
+  return isNaN(n) ? 0 : n;
+}
+
+function extractEnergyTypes(energyStr) {
+  if (!energyStr) return [];
+  const types = [];
+  const parts = String(energyStr).split("/");
+  for (const part of parts) {
+    const match = part.match(/^([가-힣a-zA-Z]+)(\d+)$/);
+    if (match) {
+      const type = match[1];
+      if (type !== "무색") {
+        types.push(type);
+      }
+    }
+  }
+  return types;
+}
+
+function loadCardListEnData() {
+  const path = join(APP_DATA, "card_list_en.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const idToEnName = new Map();
+  const idToEnHp = new Map();
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" });
+    for (const row of rows) {
+      if (row.ID) {
+        const numericId = parseCardId_(String(row.ID).trim());
+        if (numericId > 0) {
+          if (row.Name) {
+            idToEnName.set(numericId, String(row.Name).trim());
+          }
+          if (row.HP !== "" && row.HP !== undefined && row.HP !== null) {
+            const hp = Number(row.HP);
+            if (!isNaN(hp) && hp > 0) {
+              idToEnHp.set(numericId, hp);
+            }
+          }
+        }
+      }
+    }
+  }
+  return { idToEnName, idToEnHp };
+}
+
+function loadCardListData() {
+  const path = join(APP_DATA, "card_list.xlsx");
+  const buf = readFileSync(path);
+  const wb = XLSX.read(buf, { type: "buffer" });
+  const serialToId = new Map();
+  const serialToKoName = new Map();
+  const serialToExpansion = new Map();
+  const serialToHp = new Map();
+  const serialToEnergy = new Map();
+
+  for (const sheetName of wb.SheetNames) {
+    const ws = wb.Sheets[sheetName];
+
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: "" });
+    for (const row of rows) {
+      if (row.Serial) {
+        const serial = String(row.Serial).trim();
+        if (row.ID) {
+          const numericId = parseCardId_(String(row.ID).trim());
+          if (numericId > 0) serialToId.set(serial, numericId);
+        }
+        if (row.이름) serialToKoName.set(serial, String(row.이름).trim());
+        if (row.확장팩) serialToExpansion.set(serial, String(row.확장팩).trim());
+        if (row.HP !== "" && row.HP !== undefined && row.HP !== null) {
+          const hp = Number(row.HP);
+          if (!isNaN(hp) && hp > 0) serialToHp.set(serial, hp);
+        }
+      }
+    }
+
+    const headers = XLSX.utils.sheet_to_json(ws, { defval: "", header: 1 })[0];
+    const energyCol = headers.find((h) => h === "기술에너지" || h === "필요에너지");
+    const energyCol2 = headers.find((h) => h === "기술에너지2" || h === "필요에너지2");
+    if (energyCol || energyCol2) {
+      const energyRows = XLSX.utils.sheet_to_json(ws, { defval: "" });
+      for (const row of energyRows) {
+        if (row.Serial) {
+          const serial = String(row.Serial).trim();
+          const types = [
+            ...extractEnergyTypes(row[energyCol ?? ""]),
+            ...extractEnergyTypes(row[energyCol2 ?? ""]),
+          ];
+          if (types.length > 0) {
+            const existing = serialToEnergy.get(serial) ?? [];
+            serialToEnergy.set(serial, [...existing, ...types]);
+          }
+        }
+      }
+    }
+  }
+
+  return { serialToId, serialToKoName, serialToExpansion, serialToHp, serialToEnergy };
+}
+
+function loadJson(filename) {
+  const path = join(PUBLIC_DATA, filename);
+  const content = readFileSync(path, "utf-8");
+  return JSON.parse(content);
+}
+
+function getCardDisplayName(card, lang) {
+  if (lang === "ko") return card.koName ?? card.name;
+  return card.enName ?? card.name;
+}
+
+function getDeckDisplayName(cards, lang) {
+  const pokemonCards = cards.filter(
+    (c) => c.hp !== null && c.hp !== undefined && c.hp > 0
+  );
+  if (pokemonCards.length === 0) {
+    const fallback = cards[0];
+    if (!fallback) return lang === "ko" ? "알 수 없는 덱" : "Unknown Deck";
+    const name = getCardDisplayName(fallback, lang);
+    return lang === "ko" ? `${name} 덱` : `${name} Deck`;
+  }
+
+  const exCards = pokemonCards.filter((c) => {
+    const displayName = getCardDisplayName(c, lang);
+    return /\s*ex$/i.test(displayName);
+  });
+
+  const targetCards = exCards.length > 0 ? exCards : pokemonCards;
+
+  let chosen;
+  if (exCards.length > 0) {
+    const seen = new Set();
+    const unique = [];
+    for (const card of targetCards) {
+      const displayName = getCardDisplayName(card, lang);
+      if (!seen.has(displayName)) {
+        seen.add(displayName);
+        unique.push(card);
+      }
+    }
+    unique.sort((a, b) => b.count - a.count);
+    chosen = unique;
+  } else {
+    const maxHp = Math.max(...targetCards.map((c) => c.hp ?? 0));
+    const tied = targetCards.filter((c) => (c.hp ?? 0) === maxHp);
+
+    const seen = new Set();
+    const unique = [];
+    for (const card of tied) {
+      const displayName = getCardDisplayName(card, lang);
+      if (!seen.has(displayName)) {
+        seen.add(displayName);
+        unique.push(card);
+      }
+    }
+
+    unique.sort((a, b) => b.count - a.count);
+    chosen = unique;
+  }
+
+  const names = chosen.map((c) => getCardDisplayName(c, lang));
+
+  const joined = names.join(" & ");
+  return lang === "ko" ? `${joined} 덱` : `${joined} Deck`;
 }
 
 async function main() {
@@ -339,6 +521,77 @@ async function main() {
     `Updated matchup-data.json with ${Object.keys(finalMatchups).length} matchups`
   );
   console.log(`Updated tournament-meta.json: ${latestTournamentDate}`);
+
+  // ---- tournament-decks.json 생성 ----
+  console.log("\nBuilding tournament-decks.json...");
+
+  const cardsData = loadJson("cards.json");
+  const cardMap = new Map(cardsData.map((c) => [c.id, c]));
+  const { serialToId, serialToKoName, serialToExpansion, serialToHp, serialToEnergy } = loadCardListData();
+  const { idToEnName, idToEnHp } = loadCardListEnData();
+
+  const enrichedDecks = bestDecks.map((deck) => {
+    const matchups = finalMatchups[deck.name] ?? [];
+    const total = matchups.find((m) => m.name === "Total");
+    const bestList = deck.lists.reduce((best, list) =>
+      list.score > best.score ? list : best
+    );
+
+    const cards = bestList.cards.map((raw) => {
+      const [countStr, id] = raw.split(":");
+      const normalizedId = normalizeCardId(id);
+      const card = cardMap.get(normalizedId);
+      const numericId = serialToId.get(normalizedId) ?? null;
+      const koName = serialToKoName.get(normalizedId) ?? null;
+      const expansion = serialToExpansion.get(normalizedId) ?? null;
+      const enName = numericId ? (idToEnName.get(numericId) ?? null) : null;
+      const hp = numericId
+        ? (idToEnHp.get(numericId) ?? serialToHp.get(normalizedId) ?? null)
+        : null;
+      return {
+        count: Number(countStr),
+        id,
+        name: card?.name ?? id,
+        koName,
+        enName,
+        image: card?.image ?? "",
+        numericId,
+        expansion,
+        hp,
+      };
+    });
+
+    const allEnergyTypes = [];
+    for (const card of bestList.cards) {
+      const [, id] = card.split(":");
+      const types = serialToEnergy.get(normalizeCardId(id)) ?? [];
+      allEnergyTypes.push(...types);
+    }
+    const uniqueEnergyTypes = allEnergyTypes.filter((t, i, arr) => arr.indexOf(t) === i);
+
+    return {
+      name: deck.name,
+      displayNameKo: getDeckDisplayName(cards, "ko"),
+      displayNameEn: getDeckDisplayName(cards, "en"),
+      winRate: total ? Math.round(total.winRate * 1000) / 10 : null,
+      totalGames: total?.totalGames ?? null,
+      bestScore: bestList.score,
+      bestStrength: bestList.strength,
+      popularity: deck.popularity,
+      percentOfGames: deck.percentOfGames,
+      cards,
+      energyTypes: uniqueEnergyTypes,
+    };
+  });
+
+  enrichedDecks.sort((a, b) => b.bestScore - a.bestScore);
+
+  writeFileSync(
+    join(PUBLIC_DATA, "tournament-decks.json"),
+    JSON.stringify({ updatedAt: latestTournamentDate, decks: enrichedDecks }, null, 2)
+  );
+
+  console.log(`Updated tournament-decks.json with ${enrichedDecks.length} decks`);
 }
 
 main().catch((err) => {

@@ -16,6 +16,7 @@ export default function NavHeaderClient({ session }: Props) {
   const pathname = usePathname();
   const [dark, setDark] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const { lang, setLang, t } = useLanguage();
 
@@ -52,6 +53,10 @@ export default function NavHeaderClient({ session }: Props) {
   }, []);
 
   useEffect(() => {
+    setIsNavigating(false);
+  }, [pathname]);
+
+  useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
         setUserMenuOpen(false);
@@ -84,6 +89,7 @@ export default function NavHeaderClient({ session }: Props) {
                   key={href}
                   href={href}
                   title={label}
+                  onClick={() => setIsNavigating(true)}
                   className={`px-2 md:px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-colors whitespace-nowrap ${
                     active
                       ? "bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300"
@@ -163,6 +169,12 @@ export default function NavHeaderClient({ session }: Props) {
           )}
         </div>
       </div>
+
+      {isNavigating && (
+        <div className="fixed inset-0 top-12 z-40 bg-black/30 dark:bg-black/50 flex items-start justify-center pt-[20vh]">
+          <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+        </div>
+      )}
     </header>
   );
 }
