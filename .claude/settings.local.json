@@ -31,7 +31,12 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(pip install *)",
-      "WebFetch(domain:tcgpocket.app)"
+      "WebFetch(domain:tcgpocket.app)",
+      "WebFetch(domain:tcgpocket.pokemon.com)",
+      "WebFetch(domain:press.pokemon.com)",
+      "WebFetch(domain:www.pokemon.com)",
+      "WebFetch(domain:docs.pokemontcg.io)",
+      "WebFetch(domain:ptcgpocket.gg)"
     ]
   }
 }

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { signIn, signOut } from "next-auth/react";
 import type { Session } from "next-auth";
 import { useLanguage } from "../i18n/context";
+import { getProfile, updateProfile } from "../actions/profile";
 
 interface Props {
   session: Session | null;
@@ -17,13 +18,22 @@ export default function NavHeaderClient({ session }: Props) {
   const [dark, setDark] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [friendId, setFriendId] = useState("");
+  const [saveStatus, setSaveStatus] = useState<"saved" | "error" | null>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const { lang, setLang, t } = useLanguage();
 
     const NAV_ITEMS = [
     {
-      label: t.nav.cardList,
+      label: t.nav.home,
       href: "/",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      ),
+    },
+    {
+      label: t.nav.cardList,
+      href: "/cards",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       ),
@@ -55,6 +65,23 @@ export default function NavHeaderClient({ session }: Props) {
   useEffect(() => {
     setIsNavigating(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (userMenuOpen && session?.user?.email) {
+      getProfile().then((res) => {
+        if (res.success && res.profile) {
+          setFriendId(res.profile.friendId ?? "");
+        }
+      });
+    }
+  }, [userMenuOpen, session?.user?.email]);
+
+  useEffect(() => {
+    if (saveStatus) {
+      const t = setTimeout(() => setSaveStatus(null), 2000);
+      return () => clearTimeout(t);
+    }
+  }, [saveStatus]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -149,6 +176,32 @@ export default function NavHeaderClient({ session }: Props) {
                   <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-700">
                     <p className="text-xs font-medium text-slate-800 dark:text-slate-100 truncate">{session.user.name}</p>
                     <p className="text-[10px] text-slate-400 dark:text-slate-500 truncate">{session.user.email}</p>
+                  </div>
+                  <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-700 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={friendId}
+                        onChange={(e) => setFriendId(e.target.value)}
+                        placeholder={t.profile.friendIdPlaceholder}
+                        className="flex-1 min-w-0 px-2 py-1.5 rounded-md text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                      <button
+                        onClick={async () => {
+                          const res = await updateProfile({ friendId: friendId.trim() || undefined });
+                          setSaveStatus(res.success ? "saved" : "error");
+                        }}
+                        className="shrink-0 px-2 py-1.5 rounded-md text-xs font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
+                      >
+                        {t.profile.save}
+                      </button>
+                    </div>
+                    {saveStatus === "saved" && (
+                      <p className="text-[10px] text-green-600 dark:text-green-400">{t.profile.saved}</p>
+                    )}
+                    {saveStatus === "error" && (
+                      <p className="text-[10px] text-red-500 dark:text-red-400">{t.profile.saveError}</p>
+                    )}
                   </div>
                   <button
                     onClick={() => { setUserMenuOpen(false); signOut(); }}

@@ -2,6 +2,7 @@ export type Lang = "ko" | "en";
 
 export type Translations = {
     nav: {
+    home: string;
     cardList: string;
     deckBuilder: string;
     tournamentDecks: string;
@@ -19,6 +20,15 @@ export type Translations = {
   };
   app: {
     cardListTitle: string;
+  };
+  home: {
+    latestNews: string;
+    officialSite: string;
+    viewMore: string;
+    features: string;
+    cardListDesc: string;
+    deckBuilderDesc: string;
+    tournamentDesc: string;
   };
   search: {
     placeholder: string;
@@ -169,6 +179,13 @@ export type Translations = {
     addTitle: (current: number, max: number) => string;
     removeTitle: string;
   };
+  profile: {
+    friendId: string;
+    friendIdPlaceholder: string;
+    save: string;
+    saved: string;
+    saveError: string;
+  };
   recommended: {
     title: string;
     synergy: string;
@@ -219,6 +236,7 @@ export type Translations = {
 
 export const ko: Translations = {
   nav: {
+    home: "홈",
     cardList: "카드 리스트",
     deckBuilder: "덱 빌더",
     tournamentDecks: "토너먼트 덱",
@@ -236,6 +254,15 @@ export const ko: Translations = {
   },
   app: {
     cardListTitle: "포켓몬 포켓 카드 리스트",
+  },
+  home: {
+    latestNews: "최신 소식",
+    officialSite: "공식 사이트",
+    viewMore: "더 보기",
+    features: "주요 기능",
+    cardListDesc: "전체 카드 검색 및 필터",
+    deckBuilderDesc: "덱 구성 및 저장",
+    tournamentDesc: "최신 메타 덱 확인",
   },
   search: {
     placeholder: "이름, 기술명, 키워드 등으로 검색...",
@@ -533,6 +560,13 @@ export const ko: Translations = {
     addTitle: (current, max) => `즐겨찾기 추가 (${current}/${max})`,
     removeTitle: "즐겨찾기 해제",
   },
+  profile: {
+    friendId: "친구 ID",
+    friendIdPlaceholder: "포켓몬 POCKET ID",
+    save: "저장",
+    saved: "저장되었습니다.",
+    saveError: "저장 실패",
+  },
   recommended: {
     title: "추천 카드",
     synergy: "덱에 있는 포켓몬과 시너지가 있는 카드",
@@ -578,6 +612,7 @@ export const ko: Translations = {
 
 export const en: Translations = {
   nav: {
+    home: "Home",
     cardList: "Card List",
     deckBuilder: "Deck Builder",
     tournamentDecks: "Tournament Decks",
@@ -595,6 +630,15 @@ export const en: Translations = {
   },
   app: {
     cardListTitle: "Pokémon Pocket Card List",
+  },
+  home: {
+    latestNews: "Latest News",
+    officialSite: "Official Site",
+    viewMore: "Learn more",
+    features: "Features",
+    cardListDesc: "Search and filter all cards",
+    deckBuilderDesc: "Build and save decks",
+    tournamentDesc: "Check latest meta decks",
   },
   search: {
     placeholder: "Search by name, skill, keyword...",
@@ -891,6 +935,13 @@ export const en: Translations = {
     title: "Favorites",
     addTitle: (current, max) => `Add to Favorites (${current}/${max})`,
     removeTitle: "Remove from Favorites",
+  },
+  profile: {
+    friendId: "Friend ID",
+    friendIdPlaceholder: "Pokémon POCKET ID",
+    save: "Save",
+    saved: "Saved.",
+    saveError: "Failed to save",
   },
   recommended: {
     title: "Recommended",

@@ -306,7 +306,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortKey)}
-            className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="flex-1 min-w-0 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
             <option value="score">{t.tournament.sortScore}</option>
             <option value="winRate">{t.tournament.sortWinRate}</option>
@@ -317,7 +317,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
           <select
             value={minGames}
             onChange={(e) => setMinGames(Number(e.target.value))}
-            className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="flex-1 min-w-0 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
             <option value={0}>{t.tournament.allGames}</option>
             <option value={10}>{t.tournament.gamesAbove(10)}</option>
@@ -329,7 +329,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
           <select
             value={selectedEnergy}
             onChange={(e) => setSelectedEnergy(e.target.value)}
-            className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="flex-1 min-w-0 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
             <option value="">{t.filter.skillEnergy}</option>
             {Object.keys(ENERGY_IMAGE_MAP)
