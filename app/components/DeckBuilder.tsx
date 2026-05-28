@@ -1156,6 +1156,8 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     const isEx = 카드타입Types.includes("ex");
     const isUltraBeast = 카드타입Types.includes("울트라비스트");
     const isBaby = 카드타입Types.includes("베이비");
+    const isAncient = 카드타입Types.includes("고대");
+    const isFuture = 카드타입Types.includes("미래");
     const nameText = card.이름.replace(/\s+ex$/i, "").trim();
     const isTrainer = !POKEMON_TYPES.includes(card.타입);
     return (
@@ -1209,6 +1211,8 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
           {!isMegaEx && isEx && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white leading-none ring-1 ring-amber-600">ex</span>}
           {isUltraBeast && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white leading-none ring-1 ring-teal-600">UB</span>}
           {isBaby && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-sky-400 text-white leading-none ring-1 ring-sky-500">baby</span>}
+          {isAncient && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-lime-500 text-white leading-none ring-1 ring-lime-600">{t.cardTypeLabel.ancient}</span>}
+          {isFuture && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-cyan-500 text-white leading-none ring-1 ring-cyan-600">{t.cardTypeLabel.future}</span>}
           <span className="ml-auto flex items-center gap-1.5 shrink-0">
             {card.확장팩 && (
               <span className="text-[10px] text-slate-400 dark:text-slate-300">{card.확장팩}</span>
@@ -1856,6 +1860,22 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                         >{ct === "베이비" ? t.cardTypeLabel.baby : t.cardTypeLabel.ultraBeast}</button>
                       );
                     })}
+                    <button
+                      onClick={() => setFilterCardTypes((prev) => prev.includes("고대") ? prev.filter((v) => v !== "고대") : [...prev, "고대"])}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                        filterCardTypes.includes("고대")
+                          ? "bg-lime-100 dark:bg-lime-900/50 text-lime-700 dark:text-lime-300 border-lime-300 dark:border-lime-700"
+                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+                      }`}
+                    >{t.cardTypeLabel.ancient}</button>
+                    <button
+                      onClick={() => setFilterCardTypes((prev) => prev.includes("미래") ? prev.filter((v) => v !== "미래") : [...prev, "미래"])}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                        filterCardTypes.includes("미래")
+                          ? "bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 border-cyan-300 dark:border-cyan-700"
+                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+                      }`}
+                    >{t.cardTypeLabel.future}</button>
                     <button onClick={() => setFilterSpecial((v) => !v)}
                       className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${filterSpecial ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border-purple-300 dark:border-purple-700" : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
                     >{t.filter.hasAbility}</button>

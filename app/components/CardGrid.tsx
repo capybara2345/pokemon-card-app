@@ -479,6 +479,22 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                 }`}
               >{t.cardTypeLabel.ultraBeast}</button>
               <button
+                onClick={() => { setFilterCardTypes((prev) => prev.includes("고대") ? prev.filter((v) => v !== "고대") : [...prev, "고대"]); resetPage(); }}
+                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                  filterCardTypes.includes("고대")
+                    ? "bg-lime-100 dark:bg-lime-900/50 text-lime-700 dark:text-lime-300 border-lime-300 dark:border-lime-700"
+                    : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+                }`}
+              >{t.cardTypeLabel.ancient}</button>
+              <button
+                onClick={() => { setFilterCardTypes((prev) => prev.includes("미래") ? prev.filter((v) => v !== "미래") : [...prev, "미래"]); resetPage(); }}
+                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
+                  filterCardTypes.includes("미래")
+                    ? "bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 border-cyan-300 dark:border-cyan-700"
+                    : "bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"
+                }`}
+              >{t.cardTypeLabel.future}</button>
+              <button
                 onClick={() => { setFilterSpecial((v) => !v); resetPage(); }}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${
                   filterSpecial

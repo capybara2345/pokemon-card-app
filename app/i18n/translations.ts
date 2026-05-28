@@ -74,6 +74,8 @@ export type Translations = {
     megaEx: string;
     baby: string;
     ultraBeast: string;
+    ancient: string;
+    future: string;
   };
   keywords: Record<string, string>;
   card: {
@@ -323,6 +325,8 @@ export const ko: Translations = {
     megaEx: "메가ex",
     baby: "베이비",
     ultraBeast: "울트라비스트",
+    ancient: "고대",
+    future: "미래",
   },
   keywords: {
     'HP 강제 감소': 'HP 강제 감소',
@@ -699,6 +703,8 @@ export const en: Translations = {
     megaEx: "Mega ex",
     baby: "Baby",
     ultraBeast: "Ultra Beast",
+    ancient: "Ancient",
+    future: "Future",
   },
   keywords: {
     'HP 강제 감소': 'Forced HP Reduction',
