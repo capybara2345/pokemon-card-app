@@ -1,4 +1,14 @@
 const XLSX = require('xlsx');
+const {
+  translateCardName,
+  translateMove,
+  translateAbility,
+  translateKeywords,
+  translateAttribute,
+  translateEnergy,
+  translateEffect,
+  lookupPokemonName,
+} = require('./translation_helpers');
 
 // ── Pokemon name map (Korean → English) ──────────────────────────────────────
 const POKEMON_NAMES = {
@@ -559,7 +569,7 @@ const POKEMON_NAMES = {
   '달막화':'Darmanitan',
   '트리미앙':'Meowstic',
   '트리토돈':'Gastrodon',
-  '떨구새':'Ducklett','스완나':'Swannaでしょ',
+  '떨구새':'Swanna','스완나':'Swannaでしょ',
   '엥엥':'Wooper',
   '람블링':'Rellor',
   '램펄드':'Cranidos',
@@ -619,7 +629,7 @@ const CARD_TYPES = {
 // Sheet names
 const SHEET_NAMES = {
   '풀포켓몬':'Grass','불포켓몬':'Fire','물포켓몬':'Water',
-  '전기포켓몬':'Lightning','초능력포켓몬':'Psychic','격투포켓몬':'Fighting',
+  '전기포켓몬':'Lightning','번개포켓몬':'Lightning','초능력포켓몬':'Psychic','격투포켓몬':'Fighting',
   '악포켓몬':'Darkness','강철포켓몬':'Metal','드래곤포켓몬':'Dragon',
   '일반포켓몬':'Colorless','트레이너스':'Trainers','프로모':'Promo',
 };
@@ -627,18 +637,7 @@ const SHEET_NAMES = {
 const POKEMON_TYPE_SET = new Set(['풀','불','물','번개','초','격투','악','강철','드래곤','무색']);
 
 function translateName(raw, cardType) {
-  if (!raw) return raw;
-  const name = String(raw).trim();
-  if (cardType && !POKEMON_TYPE_SET.has(cardType)) return name; // trainer card names stay KO
-  if (NAME_OVERRIDES[name]) return NAME_OVERRIDES[name];
-  const direct = POKEMON_NAMES[name];
-  if (direct) return direct;
-  if (name.endsWith(' ex')) {
-    const base = name.slice(0, -3);
-    const engBase = POKEMON_NAMES[base];
-    if (engBase) return engBase + ' ex';
-  }
-  return name;
+  return translateCardName(raw, cardType, POKEMON_NAMES, NAME_OVERRIDES);
 }
 
 const ENERGY = {
@@ -646,13 +645,6 @@ const ENERGY = {
   '초':'Psychic','격투':'Fighting','악':'Darkness',
   '강철':'Metal','드래곤':'Dragon','무색':'Colorless',
 };
-
-function translateEnergy(val) {
-  if (!val) return val;
-  let s = String(val);
-  for (const [ko, en] of Object.entries(ENERGY)) s = s.split(ko).join(en);
-  return s;
-}
 
 const EXPANSIONS = {
   '최강의 유전자':'Genetic Apex','환상이 있는 섬':'Mythical Island',
@@ -663,12 +655,15 @@ const EXPANSIONS = {
   '메가라이징':'Mega Rising','홍련 블레이즈':'Crimson Blaze',
   '몽환퍼레이드':'Fantastical Parade','팔데아원더':'Paldean Wonders',
   '샤이닝 메가':'Mega Shine',
+  '파동 비트':'Pulsing Aura',
+  '진격 패러독스':'Paradox Drive',
+  '프로모':'Promo-A',
 };
 
 const EVOLUTION = { '기본':'Basic','1진화':'Stage 1','2진화':'Stage 2' };
 
 const HEADER_MAP = {
-  '타입':'Type','ID':'ID','속성':'Attribute','이름':'Name',
+  '타입':'Type','ID':'ID','Serial':'Serial','속성':'Attribute','이름':'Name','이전이름':'BeforeName',
   '진화':'Stage','HP':'HP',
   '기술명':'Move 1','기술명2':'Move 2',
   '기술추가효과':'Move 1 Effect',' 기술추가효과2':'Move 2 Effect','기술추가효과2':'Move 2 Effect',
@@ -688,6 +683,22 @@ const allUntranslated = [];
 
 for (const sheetName of wb.SheetNames) {
   const ws = wb.Sheets[sheetName];
+
+  if (sheetName === '추천덱') {
+    const raw = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+    if (raw.length) {
+      raw[0] = raw[0].map((h) => {
+        const s = String(h).trim();
+        if (s === '생성일') return 'Created';
+        if (s === '타입') return 'Type';
+        if (s === '덱 이름') return 'Deck Name';
+        return h;
+      });
+    }
+    XLSX.utils.book_append_sheet(newWb, XLSX.utils.aoa_to_sheet(raw), 'Recommended Decks');
+    continue;
+  }
+
   const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
 
   const translated = rows.map(row => {
@@ -697,10 +708,18 @@ for (const sheetName of wb.SheetNames) {
       const enHeader = HEADER_MAP[ko] || ko;
       let newVal = val;
       if (enHeader === 'Name')                  newVal = translateName(val, cardType);
+      else if (enHeader === 'BeforeName')       newVal = lookupPokemonName(val, POKEMON_NAMES, NAME_OVERRIDES);
       else if (enHeader === 'Type')             newVal = ENERGY[val] ?? CARD_TYPES[val] ?? val;
+      else if (enHeader === 'Attribute')        newVal = translateAttribute(val);
       else if (enHeader === 'Weakness')         newVal = ENERGY[val] || val;
       else if (enHeader === 'Stage')            newVal = EVOLUTION[val] || val;
       else if (enHeader === 'Expansion')        newVal = EXPANSIONS[val] || val;
+      else if (enHeader === 'Move 1' || enHeader === 'Move 2')
+                                                newVal = translateMove(val);
+      else if (enHeader === 'Ability')          newVal = translateAbility(val);
+      else if (enHeader === 'Keywords')         newVal = translateKeywords(val);
+      else if (enHeader === 'Move 1 Effect' || enHeader === 'Move 2 Effect' || enHeader === 'Ability Effect')
+                                                newVal = translateEffect(val, POKEMON_NAMES, NAME_OVERRIDES);
       else if (enHeader === 'Move 1 Energy' || enHeader === 'Move 2 Energy')
                                                 newVal = translateEnergy(val);
       newRow[enHeader] = newVal;
@@ -710,9 +729,7 @@ for (const sheetName of wb.SheetNames) {
 
   translated.forEach(r => {
     if (/[가-힣]/.test(String(r['Name']))) {
-      const t = String(r['Type'] || '');
-      const isPokemon = ['Grass','Fire','Water','Lightning','Psychic','Fighting','Darkness','Metal','Dragon','Colorless'].includes(t);
-      if (isPokemon) allUntranslated.push({ name: r['Name'], sheet: sheetName, expansion: r['Expansion'] || '' });
+      allUntranslated.push({ name: r['Name'], sheet: sheetName, expansion: r['Expansion'] || '' });
     }
   });
 
@@ -722,11 +739,22 @@ for (const sheetName of wb.SheetNames) {
 }
 
 if (allUntranslated.length) {
-  console.log('⚠  Untranslated Pokemon names (' + allUntranslated.length + '):');
+  console.log('⚠  Untranslated names (' + allUntranslated.length + '):');
   allUntranslated.forEach(r => console.log('  ' + r.name + '  [' + r.sheet + ']'));
 } else {
-  console.log('✓ All Pokemon names translated');
+  console.log('✓ All names translated');
 }
+
+let koRemain = 0;
+for (const sn of newWb.SheetNames) {
+  const rows = XLSX.utils.sheet_to_json(newWb.Sheets[sn], { defval: '' });
+  for (const r of rows) {
+    for (const v of Object.values(r)) {
+      if (/[가-힣]/.test(String(v || ''))) koRemain++;
+    }
+  }
+}
+console.log('Korean text cells remaining in EN file:', koRemain);
 
 XLSX.writeFile(newWb, 'app/data/card_list_en.xlsx');
 console.log('Saved: app/data/card_list_en.xlsx  (' + wb.SheetNames.length + ' sheets, ' + totalRows + ' rows)');
