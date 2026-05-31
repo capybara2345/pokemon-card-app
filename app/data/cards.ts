@@ -37,6 +37,9 @@ export type PokemonCard = {
   특성효과: string;
   약점: string;
   관련서포터?: string;
+  관련아이템?: string;
+  관련도구?: string;
+  관련스타디움?: string;
   이전이름?: string;
   키워드: string;
   확장팩: string;

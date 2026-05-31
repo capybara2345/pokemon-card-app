@@ -6,6 +6,15 @@ import type { Session } from "next-auth";
 import type { RecommendedDeck } from "@/app/lib/fetchCards";
 import { useLanguage } from "../i18n/context";
 import {
+  deckHasCardType,
+  formatRelatedSupporters,
+  getRelatedSupporters,
+  isAncientSupporterCard,
+  isFutureSupporterCard,
+} from "../lib/relatedSupporters";
+import { cardMatchesCardTypeFilter, parseCardTypeFlags } from "../lib/cardTypeFlags";
+import { CardNameBadges } from "./CardNameBadges";
+import {
   saveDeckToFirestore,
   updateDeckInFirestore,
   updateDeckMemoInFirestore,
@@ -481,9 +490,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     });
     if (filterCardTypes.length)
       result = result.filter((c) =>
-        filterCardTypes.some((ct) =>
-          c.카드타입?.split(",").map((v) => v.trim().toLowerCase()).includes(ct.toLowerCase())
-        )
+        filterCardTypes.some((ct) => cardMatchesCardTypeFilter(c.카드타입, ct)),
       );
     if (filterSpecial) result = result.filter((c) => c.특성효과 && c.특성효과 !== "-");
     if (filterColorless) {
@@ -558,6 +565,8 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     const hasUltraBeast = deck.some(({ card }) =>
       card.카드타입?.split(",").map((v) => v.trim().toLowerCase()).includes("울트라비스트")
     );
+    const hasAncient = deckHasCardType(deck, "고대");
+    const hasFuture = deckHasCardType(deck, "미래");
 
     // 덱에 있는 포켓몬 타입 목록 (예: "불", "물")
     const deckPokemonTypes = [...new Set(
@@ -644,6 +653,12 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
 
       // 2) 울트라비스트 보유 시 트레이너스 중 "울트라비스트" 효과 포함 카드
       if (hasUltraBeast && isTrainerCard && effectTexts.includes("울트라비스트")) return true;
+
+      // 2b) 고대 / 미래 카드타입 덱 시 해당 서포트 추천
+      if (isTrainerCard && hasAncient && effectTexts.includes("「고대」")) return true;
+      if (isTrainerCard && hasFuture && effectTexts.includes("「미래」")) return true;
+      if (hasAncient && isAncientSupporterCard(card.이름)) return true;
+      if (hasFuture && isFutureSupporterCard(card.이름)) return true;
 
       // 3) 덱 타입 기반 트레이너스 추천 ("불포켓몬", "물포켓몬" 등)
       if (isTrainerCard) {
@@ -1151,13 +1166,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     const nameCount = deckNameMap.get(card.이름) ?? 0;
     const deckCount = deck.find((e) => e.card.ID === card.ID)?.count ?? 0;
     const maxed = totalCards >= MAX_DECK || nameCount >= MAX_SAME_NAME;
-    const 카드타입Types = card.카드타입?.split(",").map((v) => v.trim().toLowerCase()) ?? [];
-    const isMegaEx = 카드타입Types.includes("메가ex");
-    const isEx = 카드타입Types.includes("ex");
-    const isUltraBeast = 카드타입Types.includes("울트라비스트");
-    const isBaby = 카드타입Types.includes("베이비");
-    const isAncient = 카드타입Types.includes("고대");
-    const isFuture = 카드타입Types.includes("미래");
+    const typeFlags = parseCardTypeFlags(card.카드타입);
     const nameText = card.이름.replace(/\s+ex$/i, "").trim();
     const isTrainer = !POKEMON_TYPES.includes(card.타입);
     return (
@@ -1207,12 +1216,12 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
           <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
           {!isTrainer && <span className={`shrink-0 px-1.5 py-0.5 rounded text-xs font-medium ${EVOLUTION_COLORS[card.진화] ?? "bg-gray-100 text-gray-600"}`}>{card.진화}</span>}
           <span className="font-semibold text-sm text-slate-800 dark:text-slate-100">{nameText}</span>
-          {isMegaEx && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-rose-500 text-white leading-none ring-1 ring-rose-600">메가ex</span>}
-          {!isMegaEx && isEx && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white leading-none ring-1 ring-amber-600">ex</span>}
-          {isUltraBeast && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white leading-none ring-1 ring-teal-600">UB</span>}
-          {isBaby && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-sky-400 text-white leading-none ring-1 ring-sky-500">baby</span>}
-          {isAncient && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-lime-500 text-white leading-none ring-1 ring-lime-600">{t.cardTypeLabel.ancient}</span>}
-          {isFuture && <span className="px-1 py-0.5 rounded text-[10px] font-bold bg-cyan-500 text-white leading-none ring-1 ring-cyan-600">{t.cardTypeLabel.future}</span>}
+          <CardNameBadges
+            flags={typeFlags}
+            megaExLabel={t.cardTypeLabel.megaEx}
+            ancientLabel={t.cardTypeLabel.ancient}
+            futureLabel={t.cardTypeLabel.future}
+          />
           <span className="ml-auto flex items-center gap-1.5 shrink-0">
             {card.확장팩 && (
               <span className="text-[10px] text-slate-400 dark:text-slate-300">{card.확장팩}</span>
@@ -1317,6 +1326,12 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                     ))}
                   </div>
                 )}
+                {!isTrainer && getRelatedSupporters(card).length > 0 && (
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">
+                    <span className="font-semibold text-teal-600 dark:text-teal-400">{t.card.relatedSupporters}: </span>
+                    {formatRelatedSupporters(card)}
+                  </div>
+                )}
             </div>
           </>
         )}
@@ -1343,7 +1358,15 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
               onClick={() => setPressedCardId(null)}
               className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none px-1"
             >✕</button>
-            <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{previewCard.이름}</p>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 inline-flex items-center justify-center gap-1.5 flex-wrap">
+              {previewCard.이름.replace(/\s+ex$/i, "").trim()}
+              <CardNameBadges
+                flags={parseCardTypeFlags(previewCard.카드타입)}
+                megaExLabel={t.cardTypeLabel.megaEx}
+                ancientLabel={t.cardTypeLabel.ancient}
+                futureLabel={t.cardTypeLabel.future}
+              />
+            </p>
             <img
               src={getCardImageSrc(previewCard.ID)}
               alt={previewCard.이름}

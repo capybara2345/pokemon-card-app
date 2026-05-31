@@ -95,6 +95,9 @@ export type Translations = {
     effect: string;
     damage: string;
     relatedSupporters: string;
+    relatedItems: string;
+    relatedTools: string;
+    relatedStadium: string;
     preparing: string;
     viewKeywords: string;
   };
@@ -478,6 +481,9 @@ export const ko: Translations = {
     effect: "효과",
     damage: "피해",
     relatedSupporters: "관련서포터",
+    relatedItems: "관련아이템",
+    relatedTools: "관련도구",
+    relatedStadium: "관련스타디움",
     preparing: "준비중입니다",
     viewKeywords: "보기",
   },
@@ -856,6 +862,9 @@ export const en: Translations = {
     effect: "Effect",
     damage: "DMG",
     relatedSupporters: "Supporters",
+    relatedItems: "Items",
+    relatedTools: "Tools",
+    relatedStadium: "Stadium",
     preparing: "Coming soon",
     viewKeywords: "View",
   },

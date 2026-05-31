@@ -3,6 +3,17 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { type PokemonCard, getCardImageSrc } from "../data/cards";
+import {
+  getRelatedItems,
+  getRelatedStadium,
+  getRelatedSupporters,
+  getRelatedTools,
+  getRelatedSortValue,
+} from "../lib/relatedTrainers";
+import { buildCardNameLookup } from "../lib/cardNameLookup";
+import { cardMatchesCardTypeFilter, parseCardTypeFlags } from "../lib/cardTypeFlags";
+import { CardNameBadges } from "./CardNameBadges";
+import { RelatedCardNames } from "./RelatedCardNames";
 import { useLanguage } from "../i18n/context";
 
 const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> = {
@@ -59,24 +70,46 @@ function countEnergy(energy: string | undefined): number {
 
 type SortDir = "asc" | "desc" | null;
 
-export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
-  const { t } = useLanguage();
+type GridColumnKey =
+  | keyof PokemonCard
+  | "관련서포터"
+  | "관련아이템"
+  | "관련도구"
+  | "관련스타디움";
 
-  const COLUMNS: { key: keyof PokemonCard; label: string; width: string }[] = [
-    { key: "타입", label: t.card.type, width: "w-16" },
-    { key: "이름", label: t.card.name, width: "w-24" },
-    { key: "진화", label: t.card.evolutionLabel, width: "w-16" },
-    { key: "HP", label: "HP", width: "w-14" },
-    { key: "기술명", label: t.card.skillName, width: "w-28" },
-    { key: "기술추가효과", label: t.card.effect, width: "w-56" },
-    { key: "필요에너지", label: t.filter.skillEnergy, width: "w-24" },
-    { key: "피해량", label: t.card.damage, width: "w-14" },
-    { key: "후퇴에너지", label: t.filter.retreatEnergy, width: "w-14" },
-    { key: "특성", label: t.card.ability, width: "w-24" },
-    { key: "약점", label: t.card.weakness, width: "w-16" },
-    { key: "관련서포터", label: t.card.relatedSupporters, width: "w-28" },
-    { key: "키워드", label: t.card.keyword, width: "w-16" },
-    { key: "확장팩", label: t.card.expansion, width: "w-32" },
+const RELATED_COLUMN_KEYS = new Set<GridColumnKey>([
+  "관련서포터",
+  "관련아이템",
+  "관련도구",
+  "관련스타디움",
+]);
+
+export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
+  const { t, lang } = useLanguage();
+
+  const cardNameLookup = useMemo(
+    () => buildCardNameLookup(cards, lang),
+    [cards, lang],
+  );
+
+  const COLUMNS: { key: GridColumnKey; label: string; width: string }[] = [
+    { key: "타입", label: t.card.type, width: "w-14 min-w-[3.5rem]" },
+    { key: "이름", label: t.card.name, width: "w-28 min-w-[7rem]" },
+    { key: "진화", label: t.card.evolutionLabel, width: "w-14 min-w-[3.5rem]" },
+    { key: "HP", label: "HP", width: "w-12 min-w-[3rem]" },
+    { key: "기술명", label: t.card.skillName, width: "w-24 min-w-[6rem]" },
+    { key: "기술추가효과", label: t.card.effect, width: "w-40 min-w-[10rem]" },
+    { key: "필요에너지", label: t.filter.skillEnergy, width: "w-20 min-w-[5rem]" },
+    { key: "피해량", label: t.card.damage, width: "w-12 min-w-[3rem]" },
+    { key: "후퇴에너지", label: t.filter.retreatEnergy, width: "w-14 min-w-[3.5rem]" },
+    { key: "특성", label: t.card.ability, width: "w-20 min-w-[5rem]" },
+    { key: "약점", label: t.card.weakness, width: "w-14 min-w-[3.5rem]" },
+    { key: "관련서포터", label: t.card.relatedSupporters, width: "w-24 min-w-[6rem]" },
+    { key: "관련아이템", label: t.card.relatedItems, width: "w-24 min-w-[6rem]" },
+    { key: "관련도구", label: t.card.relatedTools, width: "w-24 min-w-[6rem]" },
+    { key: "관련스타디움", label: t.card.relatedStadium, width: "w-24 min-w-[6rem]" },
+    { key: "키워드", label: t.card.keyword, width: "w-16 min-w-[4rem]" },
+    { key: "확장팩", label: t.card.expansion, width: "w-28 min-w-[7rem]" },
   ];
 
   const [search, setSearch] = useState("");
@@ -93,7 +126,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     확장팩: string[];
     후퇴에너지: string[];
   }>({ 타입: [], 진화: [], 키워드: [], 확장팩: [], 후퇴에너지: [] });
-  const [sort, setSort] = useState<{ key: keyof PokemonCard | null; dir: SortDir }>({
+  const [sort, setSort] = useState<{ key: GridColumnKey | null; dir: SortDir }>({
     key: null,
     dir: null,
   });
@@ -133,7 +166,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     });
   };
 
-  const handleSort = (key: keyof PokemonCard) => {
+  const handleSort = (key: GridColumnKey) => {
     setSort((prev) => {
       if (prev.key === key) {
         if (prev.dir === "asc") return { key, dir: "desc" };
@@ -212,7 +245,9 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
         return filters.후퇴에너지.includes(String(c.후퇴에너지));
       });
     if (filterCardTypes.length)
-      result = result.filter((c) => filterCardTypes.some((ct) => c.카드타입?.split(",").map((v) => v.trim().toLowerCase()).includes(ct.toLowerCase())));
+      result = result.filter((c) =>
+        filterCardTypes.some((ct) => cardMatchesCardTypeFilter(c.카드타입, ct)),
+      );
     if (filterSpecial)
       result = result.filter((c) => c.특성효과 && c.특성효과 !== "-");
     if (filterColorless) {
@@ -236,8 +271,12 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     if (sort.key && sort.dir) {
       const { key, dir } = sort;
       result = [...result].sort((a, b) => {
-        const av = a[key];
-        const bv = b[key];
+        const av = RELATED_COLUMN_KEYS.has(key)
+          ? getRelatedSortValue(a, key as "관련서포터" | "관련아이템" | "관련도구" | "관련스타디움")
+          : a[key as keyof PokemonCard];
+        const bv = RELATED_COLUMN_KEYS.has(key)
+          ? getRelatedSortValue(b, key as "관련서포터" | "관련아이템" | "관련도구" | "관련스타디움")
+          : b[key as keyof PokemonCard];
         if (typeof av === "number" && typeof bv === "number") {
           return dir === "asc" ? av - bv : bv - av;
         }
@@ -601,22 +640,20 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
         {paginated.map((card) => {
           const tc = typeColor(card.타입);
           const nameText = card.이름.replace(/\s+ex$/i, "").trim();
-          const 카드타입Types = card.카드타입?.split(",").map((v) => v.trim().toLowerCase()) ?? [];
-          const isMegaEx = 카드타입Types.includes("메가ex");
-          const isEx = 카드타입Types.includes("ex");
-          const isUltraBeast = 카드타입Types.includes("울트라비스트");
-          const isBaby = 카드타입Types.includes("베이비");
+          const typeFlags = parseCardTypeFlags(card.카드타입);
           return (
             <div key={card.ID} className="flex items-center gap-2 px-3 py-2.5">
               <span className={`shrink-0 inline-block px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>
                 {card.타입}
               </span>
-              <span className="flex-1 text-sm font-semibold text-slate-800 dark:text-slate-100 min-w-0 truncate">
-                {nameText}
-                {isMegaEx && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-rose-500 text-white leading-none ring-1 ring-rose-600">메가ex</span>}
-                {!isMegaEx && isEx && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white leading-none ring-1 ring-amber-600">ex</span>}
-                {isUltraBeast && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white leading-none ring-1 ring-teal-600">UB</span>}
-                {isBaby && <span className="ml-1 inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-sky-400 text-white leading-none ring-1 ring-sky-500">baby</span>}
+              <span className="flex-1 text-sm font-semibold text-slate-800 dark:text-slate-100 min-w-0 truncate inline-flex items-center gap-1 flex-wrap">
+                <span className="truncate">{nameText}</span>
+                <CardNameBadges
+                  flags={typeFlags}
+                  megaExLabel={t.cardTypeLabel.megaEx}
+                  ancientLabel={t.cardTypeLabel.ancient}
+                  futureLabel={t.cardTypeLabel.future}
+                />
               </span>
               <span className={`shrink-0 inline-block px-2 py-0.5 rounded text-xs font-medium ${EVOLUTION_COLORS[card.진화] ?? "bg-gray-100 text-gray-600"}`}>
                 {card.진화}
@@ -635,7 +672,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
 
       {/* Table */}
       <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800">
-        <table className="text-sm w-full border-collapse">
+        <table className="text-sm w-full border-collapse table-fixed min-w-[88rem]">
           <thead>
             <tr className="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs uppercase tracking-wide">
               {COLUMNS.map(({ key, label, width }) => (
@@ -665,20 +702,20 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             )}
             {paginated.flatMap((card, idx) => {
               const tc = typeColor(card.타입);
-              const 카드타입Types = card.카드타입?.split(",").map((v) => v.trim().toLowerCase()) ?? [];
-              const isMegaEx = 카드타입Types.includes("메가ex");
-              const isEx = 카드타입Types.includes("ex");
-              const isUltraBeast = 카드타입Types.includes("울트라비스트");
-              const isBaby = 카드타입Types.includes("베이비");
-              const rowBg = isMegaEx
+              const typeFlags = parseCardTypeFlags(card.카드타입);
+              const rowBg = typeFlags.megaEx
                 ? "bg-rose-50/60 dark:bg-rose-900/10 hover:bg-rose-100/60 dark:hover:bg-rose-900/20"
-                : isUltraBeast
+                : typeFlags.ultraBeast
                   ? "bg-teal-50/60 dark:bg-teal-900/10 hover:bg-teal-100/60 dark:hover:bg-teal-900/20"
-                  : isEx
+                  : typeFlags.ex
                     ? "bg-amber-50/60 dark:bg-amber-900/10 hover:bg-amber-100/60 dark:hover:bg-amber-900/20"
-                    : isBaby
+                    : typeFlags.baby
                       ? "bg-sky-50/60 dark:bg-sky-900/10 hover:bg-sky-100/60 dark:hover:bg-sky-900/20"
-                      : "hover:bg-indigo-50/40 dark:hover:bg-indigo-900/20";
+                      : typeFlags.ancient
+                        ? "bg-lime-50/60 dark:bg-lime-900/10 hover:bg-lime-100/60 dark:hover:bg-lime-900/20"
+                        : typeFlags.future
+                          ? "bg-cyan-50/60 dark:bg-cyan-900/10 hover:bg-cyan-100/60 dark:hover:bg-cyan-900/20"
+                          : "hover:bg-indigo-50/40 dark:hover:bg-indigo-900/20";
               const py = "py-2.5";
               const rs = card.기술명2 ? 2 : 1;
               const nameText = card.이름.replace(/\s+ex$/i, "").trim();
@@ -701,37 +738,15 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                     <button
                       type="button"
                       onClick={() => setSelectedCard(card)}
-                      className="hover:underline decoration-dotted underline-offset-2 cursor-pointer transition-opacity hover:opacity-75"
+                      className="hover:underline decoration-dotted underline-offset-2 cursor-pointer transition-opacity hover:opacity-75 inline-flex items-center justify-center gap-1 flex-wrap"
                     >
-                      {isMegaEx ? (
-                        <span className="inline-flex items-center gap-1">
-                          <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
-                          <span className="inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-rose-500 text-white leading-none ring-1 ring-rose-600">메가ex</span>
-                        </span>
-                      ) : isEx && isUltraBeast ? (
-                        <span className="inline-flex items-center gap-1">
-                          <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
-                          <span className="inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white leading-none ring-1 ring-amber-600">ex</span>
-                          <span className="inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white leading-none ring-1 ring-teal-600">UB</span>
-                        </span>
-                      ) : isUltraBeast ? (
-                        <span className="inline-flex items-center gap-1">
-                          <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
-                          <span className="inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-teal-500 text-white leading-none ring-1 ring-teal-600">UB</span>
-                        </span>
-                      ) : isEx ? (
-                        <span className="inline-flex items-center gap-1">
-                          <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
-                          <span className="inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white leading-none ring-1 ring-amber-600">ex</span>
-                        </span>
-                      ) : isBaby ? (
-                        <span className="inline-flex items-center gap-1">
-                          <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
-                          <span className="inline-block px-1 py-0.5 rounded text-[10px] font-bold bg-sky-400 text-white leading-none ring-1 ring-sky-500">baby</span>
-                        </span>
-                      ) : (
-                        <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
-                      )}
+                      <span className="text-slate-800 dark:text-slate-100">{nameText}</span>
+                      <CardNameBadges
+                        flags={typeFlags}
+                        megaExLabel={t.cardTypeLabel.megaEx}
+                        ancientLabel={t.cardTypeLabel.ancient}
+                        futureLabel={t.cardTypeLabel.future}
+                      />
                     </button>
                   </td>
 
@@ -808,56 +823,39 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                   </td>
 
                   {/* 관련서포터 */}
-                  <td rowSpan={rs} className={`px-3 ${py} text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap align-middle`}>
-                    {(() => {
-                      const supporters: string[] = [];
-                      if (card.진화 === "1진화") supporters.push("관광객");
-                      if (card.진화 === "2진화") supporters.push("릴리에");
-                      if (card.타입 === "풀") supporters.push("민화");
-                      if (card.타입 === "물") supporters.push("이슬");
-                      if (card.타입 === "물") supporters.push("낚시꾼");
-                      if (card.타입 === "물" && !card.카드타입?.includes("메가ex")) supporters.push("파라솔 아가씨");
-                      if (card.타입 === "초") supporters.push("유빈");
-                      if (card.타입 === "초") supporters.push("카르네");
-                      if (card.타입 === "격투") supporters.push("등산가");
-                      if (card.타입 === "격투") supporters.push("코르니");
-                      if (card.타입 === "강철") supporters.push("찬석");
-                      if (card.타입 === "무색") supporters.push("일리마");
-                      if (card.이름 === "딱구리" || card.이름 === "롱스톤") supporters.push("웅");
-                      if (card.이름 === "나인테일" || card.이름 === "날쌩마") supporters.push("강연");
-                      if (card.이름 === "질뻐기" || card.이름 === "또도가스") supporters.push("독수");
-                      if (card.이름 === "라이츄" || card.이름 === "붐볼" || card.이름 === "에레브") supporters.push("마티스");
-                      if (card.이름 === "뮤 ex") supporters.push("신출내기 조사원");
-                      if (card.이름 === "나옹마" || card.이름 === "스컹뿡" || card.이름 === "삐딱구리") supporters.push("갤럭시단의 조무래기");
-                      if (card.이름 === "한카리아스" || card.이름 === "토게키스") supporters.push("난천");
-                      if (card.이름 === "에레키블" || card.이름 === "렌트라") supporters.push("전진");
-                      if (card.이름 === "잠만보" || card.이름 === "헤라크로스" || card.이름 === "찌르호크") supporters.push("용식");
-                      if (card.이름 === "모래성이당" || card.이름 === "따라큐") supporters.push("아세로라");
-                      if (card.이름 === "알로라 텅구리" || card.이름 === "폭거북스") supporters.push("키아웨");
-                      if (card.이름 === "깨비물거미") supporters.push("수련");
-                      if (card.이름 === "알로라 딱구리" || card.이름 === "투구뿌논" || card.이름 === "토게데마루") supporters.push("마마네");
-                      if (card.이름 === "마셰이드" || card.이름 === "달코퀸") supporters.push("마오");
-                      if (card.이름 === "타입:널" || card.이름 === "실버디") supporters.push("글라디오");
-                      if (card.이름 === "모크나이퍼 ex" || card.이름 === "어흥염 ex" || card.이름 === "누리레느 ex") supporters.push("하우");
-                      if (card.이름 === "강철톤" || card.이름 === "무장조 ex") supporters.push("규리");
-                      if (card.이름 === "밀탱크") supporters.push("꼭두");
-                      if (card.이름 === "늑골라" || card.이름 === "탱탱겔") supporters.push("시즈");
-                      if (card.이름 === "하리뭉" || card.이름 === "모단단게") supporters.push("할라");
-                      if (card.이름 === "둥실라이드" || card.이름 === "무우마직") supporters.push("멜리사");
-                      if (card.이름 === "레어코일" || card.이름 === "일레도리자드") supporters.push("시트론");
-                      if (card.이름 === "가라르 가로막구리") supporters.push("두송");
-                      if (card.이름 === "빠르모트") supporters.push("네모");
-                      if (card.이름 === "엑스라이즈") supporters.push("아이리스");
-                      if (card.이름 === "보르그" || card.이름 === "바랜드") supporters.push("체렌");
-                      if (card.카드타입?.includes("울트라비스트")) supporters.push("루자미네");
-                      if (card.카드타입?.includes("메가ex")) supporters.push("세레나");
-                      if (card.카드타입?.includes("메가ex")) supporters.push("칼름");
-                      if (card.키워드?.includes("동전 기반") || card.키워드?.includes("동전 상태이상") || card.키워드?.includes("동전 기술 실패") || card.키워드?.includes("동전 피격")) supporters.push("일목");
-                      if ((typeof card.HP === "number" ? card.HP : parseInt(String(card.HP), 10)) <= 50 && card.진화 === "기본") supporters.push("루티아");
-                      return supporters.length > 0
-                        ? supporters.join(", ")
-                        : <span className="text-slate-300 dark:text-slate-600">—</span>;
-                    })()}
+                  <td rowSpan={rs} className={`px-2 ${py} text-xs text-slate-500 dark:text-slate-400 align-middle break-words`}>
+                    <RelatedCardNames
+                      names={getRelatedSupporters(card)}
+                      lookup={cardNameLookup}
+                      onSelect={setSelectedCard}
+                    />
+                  </td>
+
+                  {/* 관련아이템 */}
+                  <td rowSpan={rs} className={`px-2 ${py} text-xs text-slate-500 dark:text-slate-400 align-middle break-words`}>
+                    <RelatedCardNames
+                      names={getRelatedItems(card)}
+                      lookup={cardNameLookup}
+                      onSelect={setSelectedCard}
+                    />
+                  </td>
+
+                  {/* 관련도구 */}
+                  <td rowSpan={rs} className={`px-2 ${py} text-xs text-slate-500 dark:text-slate-400 align-middle break-words`}>
+                    <RelatedCardNames
+                      names={getRelatedTools(card)}
+                      lookup={cardNameLookup}
+                      onSelect={setSelectedCard}
+                    />
+                  </td>
+
+                  {/* 관련스타디움 */}
+                  <td rowSpan={rs} className={`px-2 ${py} text-xs text-slate-500 dark:text-slate-400 align-middle break-words`}>
+                    <RelatedCardNames
+                      names={getRelatedStadium(card)}
+                      lookup={cardNameLookup}
+                      onSelect={setSelectedCard}
+                    />
                   </td>
 
                   {/* 키워드 */}
@@ -941,8 +939,16 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
             onClick={() => setMobileDetail(null)}
           />
           <div className="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] flex flex-col rounded-t-2xl bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-slate-700 shrink-0">
-              <span className="text-base font-bold text-slate-800 dark:text-slate-100">{mobileDetail.이름}</span>
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-slate-700 shrink-0 gap-2">
+              <span className="text-base font-bold text-slate-800 dark:text-slate-100 inline-flex items-center gap-1.5 flex-wrap min-w-0">
+                {mobileDetail.이름.replace(/\s+ex$/i, "").trim()}
+                <CardNameBadges
+                  flags={parseCardTypeFlags(mobileDetail.카드타입)}
+                  megaExLabel={t.cardTypeLabel.megaEx}
+                  ancientLabel={t.cardTypeLabel.ancient}
+                  futureLabel={t.cardTypeLabel.future}
+                />
+              </span>
               <button
                 type="button"
                 onClick={() => setMobileDetail(null)}
@@ -1028,6 +1034,50 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                 <span className="text-xs text-slate-400">{t.card.expansion}: </span>
                 <span className="text-xs text-slate-600 dark:text-slate-300">{mobileDetail.확장팩}</span>
               </div>
+              {getRelatedSupporters(mobileDetail).length > 0 && (
+                <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-3 flex flex-col gap-1">
+                  <span className="text-xs font-semibold text-teal-600 dark:text-teal-400">{t.card.relatedSupporters}</span>
+                  <RelatedCardNames
+                    names={getRelatedSupporters(mobileDetail)}
+                    lookup={cardNameLookup}
+                    onSelect={setSelectedCard}
+                    className="text-xs text-slate-600 dark:text-slate-300"
+                  />
+                </div>
+              )}
+              {getRelatedItems(mobileDetail).length > 0 && (
+                <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 flex flex-col gap-1">
+                  <span className="text-xs font-semibold text-amber-700 dark:text-amber-400">{t.card.relatedItems}</span>
+                  <RelatedCardNames
+                    names={getRelatedItems(mobileDetail)}
+                    lookup={cardNameLookup}
+                    onSelect={setSelectedCard}
+                    className="text-xs text-slate-600 dark:text-slate-300"
+                  />
+                </div>
+              )}
+              {getRelatedTools(mobileDetail).length > 0 && (
+                <div className="bg-violet-50 dark:bg-violet-900/20 rounded-lg p-3 flex flex-col gap-1">
+                  <span className="text-xs font-semibold text-violet-700 dark:text-violet-400">{t.card.relatedTools}</span>
+                  <RelatedCardNames
+                    names={getRelatedTools(mobileDetail)}
+                    lookup={cardNameLookup}
+                    onSelect={setSelectedCard}
+                    className="text-xs text-slate-600 dark:text-slate-300"
+                  />
+                </div>
+              )}
+              {getRelatedStadium(mobileDetail).length > 0 && (
+                <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 flex flex-col gap-1">
+                  <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400">{t.card.relatedStadium}</span>
+                  <RelatedCardNames
+                    names={getRelatedStadium(mobileDetail)}
+                    lookup={cardNameLookup}
+                    onSelect={setSelectedCard}
+                    className="text-xs text-slate-600 dark:text-slate-300"
+                  />
+                </div>
+              )}
               {mobileDetail.키워드 && (
                 <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 flex flex-col gap-2">
                   <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">{t.card.keyword}</span>
@@ -1134,8 +1184,8 @@ function SortIcon({
   currentKey,
   sort,
 }: {
-  currentKey: keyof PokemonCard;
-  sort: { key: keyof PokemonCard | null; dir: SortDir };
+  currentKey: GridColumnKey;
+  sort: { key: GridColumnKey | null; dir: SortDir };
 }) {
   if (sort.key !== currentKey) {
     return <span className="text-slate-300 dark:text-slate-600 text-[10px]">⇅</span>;

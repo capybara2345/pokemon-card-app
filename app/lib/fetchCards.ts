@@ -27,6 +27,10 @@ const HEADER_ALIAS: Record<string, string> = {
   Keywords: "키워드",
   Expansion: "확장팩",
   BeforeName: "이전이름",
+  "Related Supporters": "관련서포터",
+  "Related Items": "관련아이템",
+  "Related Tools": "관련도구",
+  "Related Stadium": "관련스타디움",
 };
 
 function toNumber(v: string | number): number {
@@ -90,6 +94,13 @@ function parseSheetCards(ws: XLSX.WorkSheet): PokemonCard[] {
 
     const 이전이름 = get(values, "이전이름");
     if (이전이름) card.이전이름 = 이전이름;
+
+    const 관련아이템 = get(values, "관련아이템");
+    if (관련아이템) card.관련아이템 = 관련아이템;
+    const 관련도구 = get(values, "관련도구");
+    if (관련도구) card.관련도구 = 관련도구;
+    const 관련스타디움 = get(values, "관련스타디움");
+    if (관련스타디움) card.관련스타디움 = 관련스타디움;
 
     cards.push(card);
   }
