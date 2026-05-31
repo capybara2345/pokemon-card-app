@@ -113,6 +113,7 @@ export type Translations = {
     sortWinRate: string;
     sortTotalGames: string;
     sortPopularity: string;
+    sortRecentRegistered: string;
     allGames: string;
     gamesAbove: (n: number) => string;
     lastUpdated: string;
@@ -499,6 +500,7 @@ export const ko: Translations = {
     sortWinRate: "승률 높은 순",
     sortTotalGames: "경기 수 많은 순",
     sortPopularity: "인기도 높은 순",
+    sortRecentRegistered: "최근 등록 순",
     allGames: "모든 경기",
     gamesAbove: (n) => `${n}경기 이상`,
     lastUpdated: "최신 업데이트:",
@@ -880,6 +882,7 @@ export const en: Translations = {
     sortWinRate: "Win Rate (High to Low)",
     sortTotalGames: "Games Played (High to Low)",
     sortPopularity: "Popularity (High to Low)",
+    sortRecentRegistered: "Recently Added",
     allGames: "All Games",
     gamesAbove: (n) => `${n}+ Games`,
     lastUpdated: "Last updated:",

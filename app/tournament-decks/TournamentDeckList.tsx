@@ -10,7 +10,7 @@ import {
   type DeckCard,
 } from "../lib/deckFirestore";
 
-type SortKey = "score" | "winRate" | "totalGames" | "popularity";
+type SortKey = "score" | "winRate" | "totalGames" | "popularity" | "recentRegistered";
 
 interface Props {
   decks: EnrichedDeck[];
@@ -211,6 +211,11 @@ export default function TournamentDeckList({ decks, session }: Props) {
           return (b.totalGames ?? 0) - (a.totalGames ?? 0);
         case "popularity":
           return b.popularity - a.popularity;
+        case "recentRegistered": {
+          const aTime = a.firstSeenAt ? new Date(a.firstSeenAt).getTime() : 0;
+          const bTime = b.firstSeenAt ? new Date(b.firstSeenAt).getTime() : 0;
+          return bTime - aTime;
+        }
         default:
           return 0;
       }
@@ -312,6 +317,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
             <option value="winRate">{t.tournament.sortWinRate}</option>
             <option value="totalGames">{t.tournament.sortTotalGames}</option>
             <option value="popularity">{t.tournament.sortPopularity}</option>
+            <option value="recentRegistered">{t.tournament.sortRecentRegistered}</option>
           </select>
 
           <select

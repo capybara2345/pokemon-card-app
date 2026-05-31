@@ -65,6 +65,8 @@ export interface EnrichedDeck {
   bestStrength: number;
   popularity: number;
   percentOfGames: number;
+  /** 토너먼트 데이터에서 해당 아키타입이 처음 관측된 시각 (ISO) */
+  firstSeenAt?: string | null;
   cards: CardItem[];
   energyTypes: string[];
 }

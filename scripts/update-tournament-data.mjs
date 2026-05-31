@@ -341,9 +341,14 @@ async function main() {
     pairings: data,
   }));
 
+  const tournamentDateById = new Map(
+    tournaments.map((t) => [t.id, new Date(t.date).toISOString()])
+  );
+
   const archetypeMap = new Map();
 
-  for (const { standings } of allStandings) {
+  for (const { tournamentId, standings } of allStandings) {
+    const seenAt = tournamentDateById.get(tournamentId);
     for (const s of standings) {
       if (!s.decklist) continue;
 
@@ -360,10 +365,14 @@ async function main() {
           totalPlayers: 0,
           totalWins: 0,
           totalGames: 0,
+          firstSeenAt: seenAt ?? null,
         });
       }
 
       const entry = archetypeMap.get(deckId);
+      if (seenAt && (!entry.firstSeenAt || seenAt < entry.firstSeenAt)) {
+        entry.firstSeenAt = seenAt;
+      }
       entry.totalPlayers++;
 
       if (s.record) {
@@ -428,6 +437,7 @@ async function main() {
       lists,
       popularity,
       percentOfGames,
+      firstSeenAt: data.firstSeenAt ?? null,
     });
   }
 
@@ -579,6 +589,7 @@ async function main() {
       bestStrength: bestList.strength,
       popularity: deck.popularity,
       percentOfGames: deck.percentOfGames,
+      firstSeenAt: deck.firstSeenAt ?? null,
       cards,
       energyTypes: uniqueEnergyTypes,
     };
