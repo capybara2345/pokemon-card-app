@@ -5,6 +5,11 @@ on:
     - cron: '0 13 * * *' # 매일 13:00 UTC → 한국 시간 22:00
   workflow_dispatch:
 
+# 동시 실행 방지: 겹치는 실행은 대기 (이전 실행이 push 완료 후 시작)
+concurrency:
+  group: update-tournament-data
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -14,6 +19,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,12 +39,35 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
+
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+
           git add public/data/
           if git diff --cached --quiet; then
             echo "No changes to commit."
-          else
-            git commit -m "feat: 토너먼트 덱 업데이트 (자동)"
-            git push
+            exit 0
           fi
+
+          git commit -m "feat: 토너먼트 덱 업데이트 (자동)"
+
+          BRANCH="${GITHUB_REF_NAME:-main}"
+          MAX_RETRIES=5
+
+          for attempt in $(seq 1 "$MAX_RETRIES"); do
+            echo "Push attempt ${attempt}/${MAX_RETRIES}..."
+
+            git pull --rebase origin "$BRANCH"
+
+            if git push origin "HEAD:${BRANCH}"; then
+              echo "Push succeeded."
+              exit 0
+            fi
+
+            echo "Push rejected; remote may have new commits. Retrying after backoff..."
+            sleep $((attempt * 10))
+          done
+
+          echo "Failed to push after ${MAX_RETRIES} attempts."
+          exit 1
