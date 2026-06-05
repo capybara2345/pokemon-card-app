@@ -1,3 +1,5 @@
+import type { Lang } from "../i18n/translations";
+
 // 프로모 카드(Z 시리즈)는 내부적으로 900001+ 범위의 숫자 ID를 사용.
 // Z00001 → 900001, Z00002 → 900002, ...
 const PROMO_BASE = 900000;
@@ -8,6 +10,37 @@ export function getCardImageSrc(id: number): string {
     return `/cards/Z/Z${n}.webp`;
   }
   return `/cards/${Math.floor(id / 1000)}/${id}.webp`;
+}
+
+/**
+ * 언어별 카드 이미지 URL
+ * - ko: public/cards/{ID/1000}/{ID}.webp (한글 카드)
+ * - en: cards.json GitHub URL 우선, 없으면 로컬 webp
+ */
+export function resolveCardImageSrc(
+  id: number,
+  image: string | undefined,
+  lang: Lang
+): string {
+  if (lang === "ko") return getCardImageSrc(id);
+  const remote = image?.trim();
+  if (remote) return remote;
+  return getCardImageSrc(id);
+}
+
+/** 이미지 로드 실패 시 대체 URL (영어만 remote ↔ local 전환) */
+export function getCardImageAlternateSrc(
+  id: number,
+  image: string | undefined,
+  failedSrc: string,
+  lang: Lang
+): string | null {
+  if (lang !== "en") return null;
+  const remote = image?.trim() ?? "";
+  const local = getCardImageSrc(id);
+  if (failedSrc === remote && local !== remote) return local;
+  if (failedSrc === local && remote) return remote;
+  return null;
 }
 
 export function parseCardId(rawId: string): number {

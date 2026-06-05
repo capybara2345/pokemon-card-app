@@ -2,7 +2,11 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { type PokemonCard, getCardImageSrc } from "../data/cards";
+import {
+  type PokemonCard,
+  resolveCardImageSrc,
+  getCardImageAlternateSrc,
+} from "../data/cards";
 import {
   getRelatedItems,
   getRelatedStadium,
@@ -1297,7 +1301,19 @@ function EnergyPips({ energy }: { energy: string }) {
 function CardImage({ id, name, image }: { id: number; name: string; image?: string }) {
   const [missing, setMissing] = useState(false);
   const { t, lang } = useLanguage();
-  const src = image && lang === "en" ? image : getCardImageSrc(id);
+  const [src, setSrc] = useState(() => resolveCardImageSrc(id, image, lang));
+
+  useEffect(() => {
+    setSrc(resolveCardImageSrc(id, image, lang));
+    setMissing(false);
+  }, [id, image, lang]);
+
+  const handleError = () => {
+    const alt = getCardImageAlternateSrc(id, image, src, lang);
+    if (alt) setSrc(alt);
+    else setMissing(true);
+  };
+
   return missing ? (
     <div className="w-full aspect-[3/4] flex items-center justify-center rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50">
       <span className="text-sm text-slate-400 dark:text-slate-500">{t.card.preparing}</span>
@@ -1307,7 +1323,7 @@ function CardImage({ id, name, image }: { id: number; name: string; image?: stri
     <img
       src={src}
       alt={name}
-      onError={() => setMissing(true)}
+      onError={handleError}
       className="w-full rounded-lg shadow-md object-contain"
     />
   );

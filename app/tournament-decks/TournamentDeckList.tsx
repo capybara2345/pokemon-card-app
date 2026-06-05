@@ -9,6 +9,7 @@ import {
   saveDeckToFirestore,
   type DeckCard,
 } from "../lib/deckFirestore";
+import { resolveCardImageSrc } from "../data/cards";
 
 type SortKey = "score" | "winRate" | "totalGames" | "popularity" | "recentRegistered";
 
@@ -16,8 +17,6 @@ interface Props {
   decks: EnrichedDeck[];
   session: Session | null;
 }
-
-const PROMO_BASE = 900000;
 
 const ENERGY_IMAGE_MAP: Record<string, string> = {
   풀: "/energy/grass.png",
@@ -30,14 +29,6 @@ const ENERGY_IMAGE_MAP: Record<string, string> = {
   강철: "/energy/steel.png",
   드래곤: "/energy/dragon.png",
 };
-
-function getCardImageSrc(id: number): string {
-  if (id > PROMO_BASE && id < 1000000) {
-    const n = String(id - PROMO_BASE).padStart(5, "0");
-    return `/cards/Z/Z${n}.webp`;
-  }
-  return `/cards/${Math.floor(id / 1000)}/${id}.webp`;
-}
 
 function getTierColor(index: number, total: number): string {
   const ratio = index / total;
@@ -63,7 +54,7 @@ function formatDateTime(iso: string): string {
 
 async function downloadDeckImage(
   deckCards: { count: number; image: string; name: string; numericId: number | null }[],
-  lang: string,
+  lang: "ko" | "en",
   t: Translations
 ) {
   const COLS = 4;
@@ -97,7 +88,7 @@ async function downloadDeckImage(
     });
 
   const imageUrls = cells.map((c) =>
-    lang === "ko" && c.numericId ? getCardImageSrc(c.numericId) : c.image
+    c.numericId ? resolveCardImageSrc(c.numericId, c.image, lang) : c.image
   );
   const images = await Promise.all(
     Array.from({ length: 20 }, (_, i) =>
@@ -287,8 +278,8 @@ export default function TournamentDeckList({ decks, session }: Props) {
   };
 
   const getImageUrl = (card: EnrichedDeck["cards"][0]) => {
-    if (lang === "ko" && card.numericId) {
-      return getCardImageSrc(card.numericId);
+    if (card.numericId) {
+      return resolveCardImageSrc(card.numericId, card.image, lang);
     }
     return card.image;
   };

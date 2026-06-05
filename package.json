@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:cards": "node scripts/sync-cards-json.mjs"
   },
   "dependencies": {
     "firebase": "^12.11.0",

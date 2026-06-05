@@ -221,7 +221,7 @@ export async function fetchCards(lang?: string): Promise<PokemonCard[]> {
       allCards.push(...cards);
     }
 
-    if (lang === "en" && allCards.length > 0) {
+    if (allCards.length > 0) {
       const apiImageMap = loadApiImageMap();
       const serialToId = loadSerialToIdMap();
       const numericIdToSerial = new Map<number, string>();

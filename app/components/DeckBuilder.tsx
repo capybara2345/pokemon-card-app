@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
-import { type PokemonCard, getCardImageSrc, parseCardId } from "../data/cards";
+import {
+  type PokemonCard,
+  resolveCardImageSrc,
+  getCardImageAlternateSrc,
+  parseCardId,
+} from "../data/cards";
 import type { Session } from "next-auth";
 import type { RecommendedDeck } from "@/app/lib/fetchCards";
 import { useLanguage } from "../i18n/context";
@@ -193,15 +198,30 @@ function EnergyPips({ energy }: { energy: string }) {
 
 function DeckImageCell({ card }: { card: PokemonCard }) {
   const [imgError, setImgError] = useState(false);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const [src, setSrc] = useState(() =>
+    resolveCardImageSrc(card.ID, card.image, lang)
+  );
+
+  useEffect(() => {
+    setSrc(resolveCardImageSrc(card.ID, card.image, lang));
+    setImgError(false);
+  }, [card.ID, card.image, lang]);
+
+  const handleError = () => {
+    const alt = getCardImageAlternateSrc(card.ID, card.image, src, lang);
+    if (alt) setSrc(alt);
+    else setImgError(true);
+  };
+
   return (
     <div className="aspect-[2/3] rounded-md overflow-hidden bg-slate-100 dark:bg-slate-700 flex items-center justify-center relative">
       {!imgError ? (
         <img
-          src={getCardImageSrc(card.ID)}
+          src={src}
           alt={card.이름}
           className="w-full h-full object-contain"
-          onError={() => setImgError(true)}
+          onError={handleError}
         />
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center gap-1 p-1 text-center">
@@ -253,7 +273,10 @@ function downloadCSV(deck: DeckEntry[]) {
   URL.revokeObjectURL(url);
 }
 
-async function downloadDeckImage(deck: DeckEntry[]) {
+async function downloadDeckImage(
+  deck: DeckEntry[],
+  lang: Parameters<typeof resolveCardImageSrc>[2]
+) {
   const COLS = 4;
   const ROWS = 5;
   const CARD_W = 150;
@@ -286,7 +309,9 @@ async function downloadDeckImage(deck: DeckEntry[]) {
 
   const images = await Promise.all(
     Array.from({ length: 20 }, (_, i) =>
-      cells[i] ? loadImg(getCardImageSrc(cells[i].ID)) : Promise.resolve(null)
+      cells[i]
+        ? loadImg(resolveCardImageSrc(cells[i].ID, cells[i].image, lang))
+        : Promise.resolve(null)
     )
   );
 
@@ -351,7 +376,7 @@ async function downloadDeckImage(deck: DeckEntry[]) {
 }
 
 export default function DeckBuilder({ cards, session, recommendedDecks = [] }: { cards: PokemonCard[]; session: Session | null; recommendedDecks?: RecommendedDeck[] }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<{
     타입: string[];
@@ -1368,10 +1393,20 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
               />
             </p>
             <img
-              src={getCardImageSrc(previewCard.ID)}
+              src={resolveCardImageSrc(previewCard.ID, previewCard.image, lang)}
               alt={previewCard.이름}
               className="w-full rounded-lg shadow-md object-contain"
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+              onError={(e) => {
+                const img = e.currentTarget as HTMLImageElement;
+                const alt = getCardImageAlternateSrc(
+                  previewCard.ID,
+                  previewCard.image,
+                  img.src,
+                  lang
+                );
+                if (alt) img.src = alt;
+                else img.style.display = "none";
+              }}
             />
           </div>
         </div>
@@ -2377,7 +2412,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
               </span>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => downloadDeckImage(deck)}
+                  onClick={() => downloadDeckImage(deck, lang)}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors"
                 >{t.deck.imageDownload}</button>
                 <button
