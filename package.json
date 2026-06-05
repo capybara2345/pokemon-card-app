@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync:cards": "node scripts/sync-cards-json.mjs"
+    "sync:cards": "node scripts/sync-cards-json.mjs",
+    "sync:tournament": "node scripts/update-tournament-data.mjs"
   },
   "dependencies": {
     "firebase": "^12.11.0",

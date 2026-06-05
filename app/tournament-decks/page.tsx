@@ -84,7 +84,12 @@ interface TournamentDecksJson {
 function loadJson<T>(filename: string): T {
   const path = join(process.cwd(), "public", "data", filename);
   const content = readFileSync(path, "utf-8");
-  return JSON.parse(content) as T;
+  try {
+    return JSON.parse(content) as T;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    throw new Error(`Failed to parse ${filename}: ${message}`);
+  }
 }
 
 export default async function TournamentDecksPage() {
@@ -93,7 +98,26 @@ export default async function TournamentDecksPage() {
   const t = translations[lang].tournament;
 
   const session = await auth();
-  const data = loadJson<TournamentDecksJson>("tournament-decks.json");
+
+  let data: TournamentDecksJson;
+  try {
+    data = loadJson<TournamentDecksJson>("tournament-decks.json");
+  } catch {
+    return (
+      <main className="min-h-screen flex items-center justify-center p-6 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-md text-center space-y-3">
+          <h1 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+            {t.pageTitle}
+          </h1>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            {lang === "en"
+              ? "Tournament data is temporarily unavailable. Please try again later."
+              : "토너먼트 데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요."}
+          </p>
+        </div>
+      </main>
+    );
+  }
 
   const enriched: EnrichedDeck[] = data.decks.map((deck) => ({
     ...deck,
