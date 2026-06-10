@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "sync:cards": "node scripts/sync-cards-json.mjs",
-    "sync:tournament": "node scripts/update-tournament-data.mjs"
+    "sync:tournament": "node scripts/update-tournament-data.mjs",
+    "sync:events": "node scripts/sync-ptcgpocket-events.mjs",
+    "sync:events:pz": "node scripts/sync-pokemon-zone-events.mjs"
   },
   "dependencies": {
     "firebase": "^12.11.0",
@@ -24,8 +26,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cheerio": "^1.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "playwright": "^1.60.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

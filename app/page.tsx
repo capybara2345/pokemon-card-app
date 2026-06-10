@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import Link from "next/link";
+import EventCalendar from "./components/EventCalendar";
+import { loadEventsData } from "./lib/loadEventsData";
 import { translations, Lang } from "./i18n/translations";
 import { SITE_URL } from "./lib/constants";
 
@@ -91,59 +92,11 @@ const OFFICIAL_LINKS: Record<
   ],
 };
 
-const FEATURES = [
-  {
-    href: "/cards",
-    titleKey: "cardList" as const,
-    descKey: "cardListDesc" as const,
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="7" height="7" />
-        <rect x="14" y="3" width="7" height="7" />
-        <rect x="14" y="14" width="7" height="7" />
-        <rect x="3" y="14" width="7" height="7" />
-      </svg>
-    ),
-    color:
-      "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-300 border-indigo-100 dark:border-indigo-800",
-  },
-  {
-    href: "/deck-builder",
-    titleKey: "deckBuilder" as const,
-    descKey: "deckBuilderDesc" as const,
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-        <polyline points="2 17 12 22 22 17" />
-        <polyline points="2 12 12 17 22 12" />
-      </svg>
-    ),
-    color:
-      "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-300 border-emerald-100 dark:border-emerald-800",
-  },
-  {
-    href: "/tournament-decks",
-    titleKey: "tournamentDecks" as const,
-    descKey: "tournamentDesc" as const,
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-        <path d="M4 22h16" />
-        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
-        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
-        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-      </svg>
-    ),
-    color:
-      "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-300 border-amber-100 dark:border-amber-800",
-  },
-];
-
 export default async function HomePage() {
   const cookieStore = await cookies();
   const lang = (cookieStore.get("lang")?.value ?? "ko") as Lang;
   const t = translations[lang];
+  const eventsData = loadEventsData();
 
   return (
     <main className="min-h-screen">
@@ -161,8 +114,28 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* Event Calendar */}
       <section className="w-full px-4 md:px-6 py-10 md:py-14">
+        <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 md:mb-8">
+          {t.home.eventCalendar}
+        </h2>
+        <EventCalendar
+          lang={lang}
+          events={eventsData.events}
+          labels={{
+            title: t.home.eventCalendar,
+            upcoming: t.home.upcomingEvents,
+            noEvents: t.home.noEvents,
+            ongoing: t.home.ongoing,
+            scheduleDisclaimer: t.home.scheduleDisclaimer,
+            weekdays: t.home.weekdays,
+            months: t.home.months,
+          }}
+        />
+      </section>
+
+      {/* Latest News */}
+      <section className="w-full px-4 md:px-6 py-10 md:py-14 bg-slate-50 dark:bg-slate-900/50">
         <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 md:mb-8">
           {t.home.latestNews}
         </h2>
@@ -200,28 +173,6 @@ export default async function HomePage() {
                 </svg>
               </span>
             </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="w-full px-4 md:px-6 py-10 md:py-14 bg-slate-50 dark:bg-slate-900/50">
-        <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 md:mb-8">
-          {t.home.features}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {FEATURES.map((f) => (
-            <Link
-              key={f.href}
-              href={f.href}
-              className={`group flex flex-col rounded-xl border p-6 hover:shadow-md transition-all ${f.color}`}
-            >
-              <div className="mb-4">{f.icon}</div>
-              <h3 className="text-sm md:text-base font-semibold mb-1">
-                {t.nav[f.titleKey]}
-              </h3>
-              <p className="text-xs opacity-80">{t.home[f.descKey]}</p>
-            </Link>
           ))}
         </div>
       </section>

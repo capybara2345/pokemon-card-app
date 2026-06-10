@@ -29,6 +29,13 @@ export type Translations = {
     cardListDesc: string;
     deckBuilderDesc: string;
     tournamentDesc: string;
+    eventCalendar: string;
+    upcomingEvents: string;
+    noEvents: string;
+    ongoing: string;
+    scheduleDisclaimer: string;
+    weekdays: string[];
+    months: string[];
   };
   search: {
     placeholder: string;
@@ -269,6 +276,17 @@ export const ko: Translations = {
     cardListDesc: "전체 카드 검색 및 필터",
     deckBuilderDesc: "덱 구성 및 저장",
     tournamentDesc: "최신 메타 덱 확인",
+    eventCalendar: "이벤트 캘린더",
+    upcomingEvents: "다가오는 이벤트",
+    noEvents: "예정된 이벤트가 없습니다.",
+    ongoing: "진행 중",
+    scheduleDisclaimer:
+      "일정은 ptcgpocket.gg(비공식 가이드)에서 수집한 정보이며, 공식 일정이 아닙니다. 언제든 변경될 수 있습니다.",
+    weekdays: ["일", "월", "화", "수", "목", "금", "토"],
+    months: [
+      "1월", "2월", "3월", "4월", "5월", "6월",
+      "7월", "8월", "9월", "10월", "11월", "12월",
+    ],
   },
   search: {
     placeholder: "이름, 기술명, 키워드 등으로 검색...",
@@ -651,6 +669,17 @@ export const en: Translations = {
     cardListDesc: "Search and filter all cards",
     deckBuilderDesc: "Build and save decks",
     tournamentDesc: "Check latest meta decks",
+    eventCalendar: "Event Calendar",
+    upcomingEvents: "Upcoming Events",
+    noEvents: "No upcoming events.",
+    ongoing: "Ongoing",
+    scheduleDisclaimer:
+      "Schedule is collected from ptcgpocket.gg (unofficial guide), not an official source, and may change at any time.",
+    weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    months: [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December",
+    ],
   },
   search: {
     placeholder: "Search by name, skill, keyword...",

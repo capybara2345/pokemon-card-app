@@ -1,0 +1,1196 @@
+{
+  "source": "ptcgpocket.gg",
+  "sourceUrl": "https://ptcgpocket.gg/events/",
+  "disclaimer": "Schedule data is collected from ptcgpocket.gg (unofficial guide) and may change without notice. Not an official Pokémon Company schedule.",
+  "updatedAt": "2026-06-10T12:06:28.070Z",
+  "events": [
+    {
+      "id": "advance-ticket",
+      "startDate": "2024-10-30",
+      "endDate": "2025-01-30",
+      "title": {
+        "en": "Advance Ticket – Special Release Celebration Gift",
+        "ko": "Advance Ticket – Special Release Celebration Gift"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/advance-ticket/"
+    },
+    {
+      "id": "wonder-pick-event-part-2",
+      "startDate": "2024-10-31",
+      "endDate": "2024-11-14",
+      "title": {
+        "en": "Wonder Pick Event Part 2 (Chansey + Meowth)",
+        "ko": "Wonder Pick Event Part 2 (Chansey + Meowth)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-2/"
+    },
+    {
+      "id": "wonder-pick-event-part-1",
+      "startDate": "2024-10-31",
+      "endDate": "2024-11-14",
+      "title": {
+        "en": "Wonder Pick Event Part 1 (Chansey + Meowth)",
+        "ko": "Wonder Pick Event Part 1 (Chansey + Meowth)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-1/"
+    },
+    {
+      "id": "lapras-ex-drop-event",
+      "startDate": "2024-11-05",
+      "endDate": "2024-11-18",
+      "title": {
+        "en": "Lapras ex Drop Event",
+        "ko": "Lapras ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/lapras-ex-drop-event/"
+    },
+    {
+      "id": "genetic-apex-emblem-event-1",
+      "startDate": "2024-11-07",
+      "endDate": "2024-11-28",
+      "title": {
+        "en": "Genetic Apex Emblem Event 1",
+        "ko": "Genetic Apex Emblem Event 1"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/genetic-apex-emblem-event-1/"
+    },
+    {
+      "id": "fire-pokemon-mass-outbreak-event",
+      "startDate": "2024-11-22",
+      "endDate": "2024-11-28",
+      "title": {
+        "en": "Fire Pokémon Mass Outbreak Event (Arcanine ex)",
+        "ko": "Fire Pokémon Mass Outbreak Event (Arcanine ex)"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/fire-pokemon-mass-outbreak-event/"
+    },
+    {
+      "id": "magikarp-gyarados-event",
+      "startDate": "2024-11-22",
+      "endDate": "2024-11-28",
+      "title": {
+        "en": "Magikarp + Gyarados Event",
+        "ko": "Magikarp + Gyarados Event"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/magikarp-gyarados-event/"
+    },
+    {
+      "id": "venusaur-drop-event",
+      "startDate": "2024-11-29",
+      "endDate": "2024-12-13",
+      "title": {
+        "en": "Venusaur Drop Event",
+        "ko": "Venusaur Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/venusaur-drop-event/"
+    },
+    {
+      "id": "wonder-pick-event-part-1-bulbasaur-magnemite",
+      "startDate": "2024-12-06",
+      "endDate": "2024-12-20",
+      "title": {
+        "en": "Wonder Pick Event Part 1 (Bulbasaur + Magnemite)",
+        "ko": "Wonder Pick Event Part 1 (Bulbasaur + Magnemite)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-1-bulbasaur-magnemite/"
+    },
+    {
+      "id": "genetic-apex-sp-emblem-event-1",
+      "startDate": "2024-12-09",
+      "endDate": "2024-12-16",
+      "title": {
+        "en": "Genetic Apex SP Emblem Event 1",
+        "ko": "Genetic Apex SP Emblem Event 1"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/genetic-apex-sp-emblem-event-1/"
+    },
+    {
+      "id": "wonder-pick-event-part-2-bulbasaur-magnemite",
+      "startDate": "2024-12-13",
+      "endDate": "2024-12-20",
+      "title": {
+        "en": "Wonder Pick Event Part 2 (Bulbasaur + Magnemite)",
+        "ko": "Wonder Pick Event Part 2 (Bulbasaur + Magnemite)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-2-bulbasaur-magnemite/"
+    },
+    {
+      "id": "holiday-countdown-campaign",
+      "startDate": "2024-12-17",
+      "endDate": "2024-12-20",
+      "title": {
+        "en": "Holiday Countdown Campaign",
+        "ko": "Holiday Countdown Campaign"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/holiday-countdown-campaign/"
+    },
+    {
+      "id": "mythical-island-emblem-event",
+      "startDate": "2024-12-20",
+      "endDate": "2025-01-10",
+      "title": {
+        "en": "Mythical Island Emblem Event",
+        "ko": "Mythical Island Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/mythical-island-emblem-event/"
+    },
+    {
+      "id": "holiday-event-missions",
+      "startDate": "2024-12-25",
+      "endDate": "2025-01-01",
+      "title": {
+        "en": "Holiday Event Missions",
+        "ko": "Holiday Event Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/holiday-event-missions/"
+    },
+    {
+      "id": "lightning-pokemon-mass-outbreak-event-zapdos-ex",
+      "startDate": "2024-12-26",
+      "endDate": "2025-01-01",
+      "title": {
+        "en": "Lightning-type Pokémon Mass Outbreak Event (Zapdos ex)",
+        "ko": "Lightning-type Pokémon Mass Outbreak Event (Zapdos ex)"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/lightning-pokemon-mass-outbreak-event-zapdos-ex/"
+    },
+    {
+      "id": "blastoise-drop-event",
+      "startDate": "2025-01-01",
+      "endDate": "2025-01-15",
+      "title": {
+        "en": "Blastoise Drop Event",
+        "ko": "Blastoise Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/blastoise-drop-event/"
+    },
+    {
+      "id": "new-year-event-missions",
+      "startDate": "2025-01-01",
+      "endDate": "2025-01-08",
+      "title": {
+        "en": "New Year Event Missions",
+        "ko": "New Year Event Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/new-year-event-missions/"
+    },
+    {
+      "id": "wonder-pick-event-part-1-charmander-squirtle",
+      "startDate": "2025-01-08",
+      "endDate": "2025-01-21",
+      "title": {
+        "en": "Wonder Pick Event Part 1 (Charmander + Squirtle)",
+        "ko": "Wonder Pick Event Part 1 (Charmander + Squirtle)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-1-charmander-squirtle/"
+    },
+    {
+      "id": "wonder-pick-event-part-2-charmander-squirtle",
+      "startDate": "2025-01-15",
+      "endDate": "2025-01-22",
+      "title": {
+        "en": "Wonder Pick Event Part 2 (Charmander + Squirtle)",
+        "ko": "Wonder Pick Event Part 2 (Charmander + Squirtle)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-2-charmander-squirtle/"
+    },
+    {
+      "id": "mythical-island-sp-emblem-event",
+      "startDate": "2025-01-20",
+      "endDate": "2025-01-27",
+      "title": {
+        "en": "Mythical Island SP Emblem Event",
+        "ko": "Mythical Island SP Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/mythical-island-sp-emblem-event/"
+    },
+    {
+      "id": "promo-pokedex",
+      "startDate": "2025-01-20",
+      "endDate": "2025-04-30",
+      "title": {
+        "en": "Promo Pokédex – 40 Billion Card Celebration",
+        "ko": "Promo Pokédex – 40 Billion Card Celebration"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/promo-pokedex/"
+    },
+    {
+      "id": "psychic-pokemon-mass-outbreak-event-mew-ex",
+      "startDate": "2025-01-23",
+      "endDate": "2025-01-29",
+      "title": {
+        "en": "Psychic-type Pokémon Mass Outbreak Event (Mew ex)",
+        "ko": "Psychic-type Pokémon Mass Outbreak Event (Mew ex)"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/psychic-pokemon-mass-outbreak-event-mew-ex/"
+    },
+    {
+      "id": "trade-feature-celebration-gift",
+      "startDate": "2025-01-30",
+      "endDate": "2025-03-27",
+      "title": {
+        "en": "Trade Feature Celebration Gift",
+        "ko": "Trade Feature Celebration Gift"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/trade-feature-celebration-gift/"
+    },
+    {
+      "id": "cresselia-ex-drop-event",
+      "startDate": "2025-02-03",
+      "endDate": "2025-02-17",
+      "title": {
+        "en": "Cresselia ex Drop Event",
+        "ko": "Cresselia ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/cresselia-ex-drop-event/"
+    },
+    {
+      "id": "space-time-smackdown-emblem-event",
+      "startDate": "2025-02-04",
+      "endDate": "2025-02-25",
+      "title": {
+        "en": "Space-Time Smackdown Emblem Event",
+        "ko": "Space-Time Smackdown Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/space-time-smackdown-emblem-event/"
+    },
+    {
+      "id": "wonder-pick-event-part-1-chimchar-togepi",
+      "startDate": "2025-02-07",
+      "endDate": "2025-02-21",
+      "title": {
+        "en": "Wonder Pick Event Part 1 (Chimchar + Togepi)",
+        "ko": "Wonder Pick Event Part 1 (Chimchar + Togepi)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-1-chimchar-togepi/"
+    },
+    {
+      "id": "wonder-pick-event-part-2-chimchar-togepi",
+      "startDate": "2025-02-14",
+      "endDate": "2025-02-21",
+      "title": {
+        "en": "Wonder Pick Event Part 2 (Chimchar + Togepi)",
+        "ko": "Wonder Pick Event Part 2 (Chimchar + Togepi)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-2-chimchar-togepi/"
+    },
+    {
+      "id": "darkness-type-pokemon-mass-outbreak-event-weavile-ex",
+      "startDate": "2025-02-21",
+      "endDate": "2025-02-27",
+      "title": {
+        "en": "Darkness-type Pokémon Mass Outbreak Event (Weavile ex)",
+        "ko": "Darkness-type Pokémon Mass Outbreak Event (Weavile ex)"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/darkness-type-pokemon-mass-outbreak-event-weavile-ex/"
+    },
+    {
+      "id": "special-booster-pack-gift",
+      "startDate": "2025-02-27",
+      "endDate": "2025-04-30",
+      "title": {
+        "en": "Pokémon Day Celebration Gift – 1 ◆◆◆◆ or Higher Card Guaranteed Genetic Apex Booster Packs",
+        "ko": "Pokémon Day Celebration Gift – 1 ◆◆◆◆ or Higher Card Guaranteed Genetic Apex Booster Packs"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/special-booster-pack-gift/"
+    },
+    {
+      "id": "pokemon-day-special-missions",
+      "startDate": "2025-02-28",
+      "endDate": "2025-03-27",
+      "title": {
+        "en": "Pokémon Day Special Missions",
+        "ko": "Pokémon Day Special Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/pokemon-day-special-missions/"
+    },
+    {
+      "id": "gible-drop-event",
+      "startDate": "2025-03-03",
+      "endDate": "2025-03-17",
+      "title": {
+        "en": "Gible Drop Event Guide & Decklists",
+        "ko": "Gible Drop Event Guide & Decklists"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/gible-drop-event/"
+    },
+    {
+      "id": "triumphant-light-sp-emblem-event",
+      "startDate": "2025-03-06",
+      "endDate": "2025-03-13",
+      "title": {
+        "en": "Triumphant Light SP Emblem Event Guide & Decklists",
+        "ko": "Triumphant Light SP Emblem Event Guide & Decklists"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/triumphant-light-sp-emblem-event/"
+    },
+    {
+      "id": "wonder-pick-event-part-1-manaphy-snorlax",
+      "startDate": "2025-03-10",
+      "endDate": "2025-03-24",
+      "title": {
+        "en": "Wonder Pick Event Part 1 (Manaphy + Snorlax)",
+        "ko": "Wonder Pick Event Part 1 (Manaphy + Snorlax)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-1-manaphy-snorlax/"
+    },
+    {
+      "id": "wonder-pick-event-part-2-manaphy-snorlax",
+      "startDate": "2025-03-17",
+      "endDate": "2025-03-24",
+      "title": {
+        "en": "Wonder Pick Event Part 2 (Manaphy + Snorlax)",
+        "ko": "Wonder Pick Event Part 2 (Manaphy + Snorlax)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-part-2-manaphy-snorlax/"
+    },
+    {
+      "id": "grass-type-pokemon-mass-outbreak-event-leafeon-ex",
+      "startDate": "2025-03-24",
+      "endDate": "2025-03-30",
+      "title": {
+        "en": "Grass-type Pokémon Mass Outbreak Event (Leafeon ex)",
+        "ko": "Grass-type Pokémon Mass Outbreak Event (Leafeon ex)"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/grass-type-pokemon-mass-outbreak-event-leafeon-ex/"
+    },
+    {
+      "id": "ranked-match-season-a2b",
+      "startDate": "2025-03-28",
+      "endDate": "2025-04-27",
+      "title": {
+        "en": "Ranked Match Season A2b",
+        "ko": "Ranked Match Season A2b"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a2b/"
+    },
+    {
+      "id": "ex-starter-decks",
+      "startDate": "2025-03-28",
+      "endDate": "2025-04-27",
+      "title": {
+        "en": "ex Starter Deck Missions",
+        "ko": "ex Starter Deck Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/ex-starter-decks/"
+    },
+    {
+      "id": "pawmot-drop-event",
+      "startDate": "2025-04-07",
+      "endDate": "2025-04-17",
+      "title": {
+        "en": "Pawmot Drop Event Guide & Best Farming Decks",
+        "ko": "Pawmot Drop Event Guide & Best Farming Decks"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/pawmot-drop-event/"
+    },
+    {
+      "id": "wonder-pick-event-pachirisu-riolu",
+      "startDate": "2025-04-16",
+      "endDate": "2025-04-26",
+      "title": {
+        "en": "Wonder Pick Event (Pachirisu + Riolu)",
+        "ko": "Wonder Pick Event (Pachirisu + Riolu)"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-pachirisu-riolu/"
+    },
+    {
+      "id": "fighting-type-pokemon-mass-outbreak-event-lucario-ex",
+      "startDate": "2025-04-28",
+      "endDate": "2025-05-04",
+      "title": {
+        "en": "Fighting-type Pokémon Mass Outbreak Event (Lucario ex)",
+        "ko": "Fighting-type Pokémon Mass Outbreak Event (Lucario ex)"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/fighting-type-pokemon-mass-outbreak-event-lucario-ex/"
+    },
+    {
+      "id": "rayquaza-ex-drop-event",
+      "startDate": "2025-04-30",
+      "endDate": "2025-05-13",
+      "title": {
+        "en": "Rayquaza ex Drop Event – Free Promo Pack A Vol. 7 Cards",
+        "ko": "Rayquaza ex Drop Event – Free Promo Pack A Vol. 7 Cards"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/rayquaza-ex-drop-event/"
+    },
+    {
+      "id": "special-missions-2025",
+      "startDate": "2025-04-30",
+      "endDate": "2025-05-29",
+      "title": {
+        "en": "Special Missions 2025 – Free Promo Rayquaza ex Half Year Special Event",
+        "ko": "Special Missions 2025 – Free Promo Rayquaza ex Half Year Special Event"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/special-missions-2025/"
+    },
+    {
+      "id": "ranked-match-season-a3",
+      "startDate": "2025-05-01",
+      "endDate": "2025-05-26",
+      "title": {
+        "en": "Ranked Match Season A3 – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season A3 – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a3/"
+    },
+    {
+      "id": "premium-pass-may-2025",
+      "startDate": "2025-05-01",
+      "endDate": "2025-07-01",
+      "title": {
+        "en": "May 2025 Premium Pass – New Promo Mimikyu, Missions & All Rewards",
+        "ko": "May 2025 Premium Pass – New Promo Mimikyu, Missions & All Rewards"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/premium-pass-may-2025/"
+    },
+    {
+      "id": "wonder-pick-event-cosmog-lycanroc",
+      "startDate": "2025-05-09",
+      "endDate": "2025-05-19",
+      "title": {
+        "en": "Cosmog & Lycanroc Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Cosmog & Lycanroc Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/wonder-pick-event-cosmog-lycanroc/"
+    },
+    {
+      "id": "alolan-ninetales-drop-event",
+      "startDate": "2025-05-16",
+      "endDate": "2025-05-26",
+      "title": {
+        "en": "Alolan Ninetales Drop Event Guide – How to Farm Free Promo Pack A Vol. 8 Cards",
+        "ko": "Alolan Ninetales Drop Event Guide – How to Farm Free Promo Pack A Vol. 8 Cards"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/alolan-ninetales-drop-event/"
+    },
+    {
+      "id": "metal-type-pokemon-mass-outbreak-event-solgaleo-ex",
+      "startDate": "2025-05-27",
+      "endDate": "2025-06-02",
+      "title": {
+        "en": "Metal-type Pokémon Mass Outbreak Event – Solgaleo ex Wonder Pick & Flair",
+        "ko": "Metal-type Pokémon Mass Outbreak Event – Solgaleo ex Wonder Pick & Flair"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/metal-type-pokemon-mass-outbreak-event-solgaleo-ex/"
+    },
+    {
+      "id": "ranked-match-season-a3a",
+      "startDate": "2025-05-30",
+      "endDate": "2025-06-23",
+      "title": {
+        "en": "Ranked Match Season A3a – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season A3a – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a3a/"
+    },
+    {
+      "id": "ultra-necrozma-ex-drop-event-guide",
+      "startDate": "2025-06-04",
+      "endDate": "2025-06-14",
+      "title": {
+        "en": "Ultra Beast Drop Event – Promo Pack A Vol. 9 Cards",
+        "ko": "Ultra Beast Drop Event – Promo Pack A Vol. 9 Cards"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/ultra-necrozma-ex-drop-event-guide/"
+    },
+    {
+      "id": "poipole-stufful-wonder-pick-event",
+      "startDate": "2025-06-12",
+      "endDate": "2025-06-22",
+      "title": {
+        "en": "Poipole and Stufful Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Poipole and Stufful Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/poipole-stufful-wonder-pick-event/"
+    },
+    {
+      "id": "ultra-beast-mass-outbreak-event",
+      "startDate": "2025-06-23",
+      "endDate": "2025-06-29",
+      "title": {
+        "en": "Ultra Beast Mass Outbreak Event – Guzzlord ex & Buzzwole ex Wonder Pick & Flair",
+        "ko": "Ultra Beast Mass Outbreak Event – Guzzlord ex & Buzzwole ex Wonder Pick & Flair"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/ultra-beast-mass-outbreak-event/"
+    },
+    {
+      "id": "ranked-match-season-a3b",
+      "startDate": "2025-06-27",
+      "endDate": "2025-07-27",
+      "title": {
+        "en": "Ranked Match Season A3b – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season A3b – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a3b/"
+    },
+    {
+      "id": "alcremie-drop-event",
+      "startDate": "2025-07-02",
+      "endDate": "2025-07-12",
+      "title": {
+        "en": "Alcremie Drop Event – Promo Pack A Vol. 10 Cards",
+        "ko": "Alcremie Drop Event – Promo Pack A Vol. 10 Cards"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/alcremie-drop-event/"
+    },
+    {
+      "id": "togedemaru-greedent-wonder-pick-event",
+      "startDate": "2025-07-11",
+      "endDate": "2025-07-28",
+      "title": {
+        "en": "Togedemaru & Greedent Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Togedemaru & Greedent Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/togedemaru-greedent-wonder-pick-event/"
+    },
+    {
+      "id": "summer-event-missions-2025",
+      "startDate": "2025-07-17",
+      "endDate": "2025-07-30",
+      "title": {
+        "en": "Summer Event Missions 2025",
+        "ko": "Summer Event Missions 2025"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/summer-event-missions-2025/"
+    },
+    {
+      "id": "eevee-mass-outbreak-event",
+      "startDate": "2025-07-21",
+      "endDate": "2025-07-30",
+      "title": {
+        "en": "Eevee Mass Outbreak Event – Eevee ex Wonder Pick & Flair",
+        "ko": "Eevee Mass Outbreak Event – Eevee ex Wonder Pick & Flair"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/eevee-mass-outbreak-event/"
+    },
+    {
+      "id": "ranked-match-season-a4",
+      "startDate": "2025-07-31",
+      "endDate": "2025-08-25",
+      "title": {
+        "en": "Ranked Match Season A4 – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season A4 – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a4/"
+    },
+    {
+      "id": "blissey-ex-drop-event",
+      "startDate": "2025-08-06",
+      "endDate": "2025-08-16",
+      "title": {
+        "en": "Blissey ex Drop Event",
+        "ko": "Blissey ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/blissey-ex-drop-event/"
+    },
+    {
+      "id": "marill-and-weavile-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2025-08-14",
+      "endDate": "2025-08-24",
+      "title": {
+        "en": "Marill and Weavile Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Marill and Weavile Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/marill-and-weavile-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "lightning-mass-outbreak-event-wonder-pick-flair",
+      "startDate": "2025-08-25",
+      "endDate": "2025-08-31",
+      "title": {
+        "en": "Lightning-Type Mass Outbreak Event – Wonder Pick & Flair",
+        "ko": "Lightning-Type Mass Outbreak Event – Wonder Pick & Flair"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/lightning-mass-outbreak-event-wonder-pick-flair/"
+    },
+    {
+      "id": "ranked-match-season-a4a",
+      "startDate": "2025-08-29",
+      "endDate": "2025-09-27",
+      "title": {
+        "en": "Ranked Match Season A4a – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season A4a – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a4a/"
+    },
+    {
+      "id": "zoroark-drop-event",
+      "startDate": "2025-09-03",
+      "endDate": "2025-09-13",
+      "title": {
+        "en": "Zoroark Drop Event",
+        "ko": "Zoroark Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/zoroark-drop-event/"
+    },
+    {
+      "id": "miltank-and-phanpy-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2025-09-14",
+      "endDate": "2025-09-24",
+      "title": {
+        "en": "Miltank and Phanpy – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Miltank and Phanpy – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/miltank-and-phanpy-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "ranked-match-season-a4b-ranking-guide-all-rewards",
+      "startDate": "2025-10-01",
+      "endDate": "2025-10-27",
+      "title": {
+        "en": "Ranked Match Season A4b – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season A4b – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-a4b-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "raichu-ex-drop-event",
+      "startDate": "2025-10-06",
+      "endDate": "2025-10-16",
+      "title": {
+        "en": "Raichu ex Drop Event",
+        "ko": "Raichu ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/raichu-ex-drop-event/"
+    },
+    {
+      "id": "shaymin-and-absol-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2025-10-13",
+      "endDate": "2025-10-23",
+      "title": {
+        "en": "Shaymin and Absol – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Shaymin and Absol – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/shaymin-and-absol-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "parallel-foil-cards-mass-outbreak-event-wonder-pick-flair",
+      "startDate": "2025-10-24",
+      "endDate": "2025-10-30",
+      "title": {
+        "en": "Parallel Foil Cards Mass Outbreak Event – Wonder Pick & Flair",
+        "ko": "Parallel Foil Cards Mass Outbreak Event – Wonder Pick & Flair"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/parallel-foil-cards-mass-outbreak-event-wonder-pick-flair/"
+    },
+    {
+      "id": "first-anniversary-countdown-missions",
+      "startDate": "2025-10-25",
+      "endDate": "2025-11-08",
+      "title": {
+        "en": "First Anniversary Countdown Missions",
+        "ko": "First Anniversary Countdown Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/first-anniversary-countdown-missions/"
+    },
+    {
+      "id": "first-anniversary-celebration-campaign-special-missions",
+      "startDate": "2025-10-30",
+      "endDate": "2025-12-17",
+      "title": {
+        "en": "First Anniversary Celebration Campaign & Special Missions",
+        "ko": "First Anniversary Celebration Campaign & Special Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/first-anniversary-celebration-campaign-special-missions/"
+    },
+    {
+      "id": "promo-reissue-wonder-pick-event-2025",
+      "startDate": "2025-10-30",
+      "endDate": "2025-11-21",
+      "title": {
+        "en": "PROMO Reissue Wonder Pick Event 2025",
+        "ko": "PROMO Reissue Wonder Pick Event 2025"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/promo-reissue-wonder-pick-event-2025/"
+    },
+    {
+      "id": "promo-reissue-drop-event-2025",
+      "startDate": "2025-10-30",
+      "endDate": "2025-11-16",
+      "title": {
+        "en": "PROMO Reissue Drop Event 2025",
+        "ko": "PROMO Reissue Drop Event 2025"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/promo-reissue-drop-event-2025/"
+    },
+    {
+      "id": "mega-rising-emblem-event",
+      "startDate": "2025-11-07",
+      "endDate": "2025-11-17",
+      "title": {
+        "en": "Mega Rising Emblem Event",
+        "ko": "Mega Rising Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/mega-rising-emblem-event/"
+    },
+    {
+      "id": "bonus-week-missions",
+      "startDate": "2025-11-09",
+      "endDate": "2025-11-16",
+      "title": {
+        "en": "Bonus Week Missions",
+        "ko": "Bonus Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/bonus-week-missions/"
+    },
+    {
+      "id": "sneak-peek-campaign",
+      "startDate": "2025-11-09",
+      "endDate": "2025-11-16",
+      "title": {
+        "en": "Sneak Peek Campaign – How the Special Wonder Pick Event Works",
+        "ko": "Sneak Peek Campaign – How the Special Wonder Pick Event Works"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/sneak-peek-campaign/"
+    },
+    {
+      "id": "mega-pidgeot-ex-drop-event",
+      "startDate": "2025-11-18",
+      "endDate": "2025-12-05",
+      "title": {
+        "en": "Mega Pidgeot ex Drop event",
+        "ko": "Mega Pidgeot ex Drop event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-pidgeot-ex-drop-event/"
+    },
+    {
+      "id": "first-anniversary-celebration-campaign-special-missions-part-2",
+      "startDate": "2025-11-22",
+      "endDate": "2025-12-17",
+      "title": {
+        "en": "First Anniversary Celebration Campaign & Special Missions Part 2",
+        "ko": "First Anniversary Celebration Campaign & Special Missions Part 2"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/first-anniversary-celebration-campaign-special-missions-part-2/"
+    },
+    {
+      "id": "ranked-match-season-b1-ranking-guide-all-rewards",
+      "startDate": "2025-11-27",
+      "endDate": "2025-12-14",
+      "title": {
+        "en": "Ranked Match Season B1 – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B1 – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b1-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "psyduck-and-torchic-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2025-11-27",
+      "endDate": "2025-12-07",
+      "title": {
+        "en": "Psyduck and Torchic – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Psyduck and Torchic – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/psyduck-and-torchic-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "eevee-and-drifblim-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2025-12-07",
+      "endDate": "2025-12-17",
+      "title": {
+        "en": "Eevee and Drifblim – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Eevee and Drifblim – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/eevee-and-drifblim-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "crimson-blaze-emblem-event",
+      "startDate": "2025-12-21",
+      "endDate": "2025-12-31",
+      "title": {
+        "en": "Crimson Blaze Emblem Event",
+        "ko": "Crimson Blaze Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/crimson-blaze-emblem-event/"
+    },
+    {
+      "id": "mareep-drop-event",
+      "startDate": "2026-01-01",
+      "endDate": "2026-01-18",
+      "title": {
+        "en": "Mareep Drop event",
+        "ko": "Mareep Drop event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mareep-drop-event/"
+    },
+    {
+      "id": "heliolisk-and-buneary-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-01-09",
+      "endDate": "2026-01-26",
+      "title": {
+        "en": "Heliolisk and Buneary – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Heliolisk and Buneary – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/heliolisk-and-buneary-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "ranked-match-season-b1a-ranking-guide-all-rewards",
+      "startDate": "2026-01-09",
+      "endDate": "2026-01-26",
+      "title": {
+        "en": "Ranked Match Season B1a – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B1a – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b1a-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "mega-latios-ex-drop-event",
+      "startDate": "2026-01-17",
+      "endDate": "2026-02-03",
+      "title": {
+        "en": "Mega Latios ex Drop event",
+        "ko": "Mega Latios ex Drop event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-latios-ex-drop-event/"
+    },
+    {
+      "id": "fantastical-parade-emblem-event",
+      "startDate": "2026-02-02",
+      "endDate": "2026-02-12",
+      "title": {
+        "en": "Fantastical Parade Emblem Event",
+        "ko": "Fantastical Parade Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/fantastical-parade-emblem-event/"
+    },
+    {
+      "id": "ranked-match-season-b2-ranking-guide-all-rewards",
+      "startDate": "2026-02-11",
+      "endDate": "2026-02-25",
+      "title": {
+        "en": "Ranked Match Season B2 – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B2 – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b2-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "mega-medicham-ex-drop-event",
+      "startDate": "2026-02-12",
+      "endDate": "2026-03-01",
+      "title": {
+        "en": "Mega Medicham ex Drop event",
+        "ko": "Mega Medicham ex Drop event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-medicham-ex-drop-event/"
+    },
+    {
+      "id": "cinderace-and-alolan-vulpix-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-02-15",
+      "endDate": "2026-03-04",
+      "title": {
+        "en": "Cinderace and Alolan Vulpix – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Cinderace and Alolan Vulpix – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/cinderace-and-alolan-vulpix-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "pokemon-30th-celebration",
+      "startDate": "2026-02-27",
+      "endDate": "2026-06-27",
+      "title": {
+        "en": "Pokémon 30th Celebration",
+        "ko": "Pokémon 30th Celebration"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/pokemon-30th-celebration/"
+    },
+    {
+      "id": "paldean-wonders-emblem-event",
+      "startDate": "2026-02-28",
+      "endDate": "2026-03-10",
+      "title": {
+        "en": "Paldean Wonders Emblem Event",
+        "ko": "Paldean Wonders Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/paldean-wonders-emblem-event/"
+    },
+    {
+      "id": "charcadet-drop-event",
+      "startDate": "2026-03-11",
+      "endDate": "2026-03-28",
+      "title": {
+        "en": "Charcadet Drop Event",
+        "ko": "Charcadet Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/charcadet-drop-event/"
+    },
+    {
+      "id": "ranked-match-season-b2a-ranking-guide-all-rewards",
+      "startDate": "2026-03-11",
+      "endDate": "2026-03-25",
+      "title": {
+        "en": "Ranked Match Season B2a – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B2a – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b2a-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "pawmi-and-paldean-clodsire-wonder-pick-event",
+      "startDate": "2026-03-15",
+      "endDate": "2026-04-01",
+      "title": {
+        "en": "Pawmi and Paldean Clodsire Wonder Pick Event",
+        "ko": "Pawmi and Paldean Clodsire Wonder Pick Event"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/pawmi-and-paldean-clodsire-wonder-pick-event/"
+    },
+    {
+      "id": "mega-shining-emblem-event",
+      "startDate": "2026-03-29",
+      "endDate": "2026-04-08",
+      "title": {
+        "en": "Mega Shining Emblem Event",
+        "ko": "Mega Shining Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/mega-shining-emblem-event/"
+    },
+    {
+      "id": "bonus-week-missions-3",
+      "startDate": "2026-04-04",
+      "endDate": "2026-04-11",
+      "title": {
+        "en": "Bonus Week Missions",
+        "ko": "Bonus Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/bonus-week-missions-3/"
+    },
+    {
+      "id": "slowpoke-drop-event",
+      "startDate": "2026-04-09",
+      "endDate": "2026-04-26",
+      "title": {
+        "en": "Slowpoke Drop Event",
+        "ko": "Slowpoke Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/slowpoke-drop-event/"
+    },
+    {
+      "id": "ranked-match-season-b2b-ranking-guide-all-rewards",
+      "startDate": "2026-04-13",
+      "endDate": "2026-04-27",
+      "title": {
+        "en": "Ranked Match Season B2b – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B2b – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b2b-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "special-drop-event-2026",
+      "startDate": "2026-04-29",
+      "endDate": "2026-05-16",
+      "title": {
+        "en": "Special Drop Event 2026",
+        "ko": "Special Drop Event 2026"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/special-drop-event-2026/"
+    },
+    {
+      "id": "pulsing-aura-emblem-event",
+      "startDate": "2026-05-03",
+      "endDate": "2026-05-13",
+      "title": {
+        "en": "Pulsing Aura Emblem Event",
+        "ko": "Pulsing Aura Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/pulsing-aura-emblem-event/"
+    },
+    {
+      "id": "community-week-missions",
+      "startDate": "2026-05-09",
+      "endDate": "2026-05-16",
+      "title": {
+        "en": "Community Week Missions",
+        "ko": "Community Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/community-week-missions/"
+    },
+    {
+      "id": "mega-heracross-ex-drop-event",
+      "startDate": "2026-05-12",
+      "endDate": "2026-05-29",
+      "title": {
+        "en": "Mega Heracross ex Drop Event",
+        "ko": "Mega Heracross ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-heracross-ex-drop-event/"
+    },
+    {
+      "id": "ranked-match-season-b3-ranking-guide-all-rewards",
+      "startDate": "2026-05-13",
+      "endDate": "2026-05-27",
+      "title": {
+        "en": "Ranked Match Season B3 – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B3 – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b3-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "treecko-and-gallade-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-05-17",
+      "endDate": "2026-06-03",
+      "title": {
+        "en": "Treecko and Gallade – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Treecko and Gallade – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/treecko-and-gallade-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "paradox-drive-emblem-event",
+      "startDate": "2026-05-31",
+      "endDate": "2026-06-10",
+      "title": {
+        "en": "Paradox Drive Emblem Event",
+        "ko": "Paradox Drive Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/paradox-drive-emblem-event/"
+    },
+    {
+      "id": "community-week-missions-2",
+      "startDate": "2026-06-06",
+      "endDate": "2026-06-13",
+      "title": {
+        "en": "Community Week Missions",
+        "ko": "Community Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/community-week-missions-2/"
+    },
+    {
+      "id": "ceruledge-ex-drop-event",
+      "startDate": "2026-06-13",
+      "endDate": "2026-06-23",
+      "title": {
+        "en": "Ceruledge ex Drop Event",
+        "ko": "Ceruledge ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/ceruledge-ex-drop-event/"
+    },
+    {
+      "id": "ranked-match-season-b3a-ranking-guide-all-rewards",
+      "startDate": "2026-06-15",
+      "endDate": "2026-06-29",
+      "title": {
+        "en": "Ranked Match Season B3a – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B3a – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b3a-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "sableye-and-floragato-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-06-19",
+      "endDate": "2026-07-06",
+      "title": {
+        "en": "Sableye and Floragato – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Sableye and Floragato – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/sableye-and-floragato-wonder-pick-event-promo-cards-missions-all-rewards/"
+    }
+  ]
+}
