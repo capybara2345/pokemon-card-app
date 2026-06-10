@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { cookies } from "next/headers";
 import EventCalendar from "./components/EventCalendar";
 import { loadEventsData } from "./lib/loadEventsData";
@@ -242,13 +243,25 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-700 dark:from-indigo-900 dark:to-purple-950 text-white">
-        <div className="w-full px-4 md:px-6 py-16 md:py-24 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+      {/* Hero — Mythical Island (A1a) Key Art */}
+      <section className="relative overflow-hidden text-white">
+        <Image
+          src="/images/hero/mythical-island-key-art.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-purple-900/55 to-indigo-900/75 dark:from-indigo-950/85 dark:via-purple-950/65 dark:to-slate-950/80"
+          aria-hidden
+        />
+        <div className="relative z-10 w-full px-4 py-16 text-center md:px-6 md:py-24">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight drop-shadow-sm md:text-5xl">
             Pokemon Pocket CardList
           </h1>
-          <p className="text-base md:text-lg text-indigo-100 dark:text-indigo-200 max-w-xl mx-auto">
+          <p className="mx-auto max-w-xl text-base text-indigo-50/95 drop-shadow-sm md:text-lg">
             {lang === "ko"
               ? "포켓몬 포켓 카드 리스트, 덱 빌더, 토너먼트 덱. 최신 공식 소식과 함께 포켓몬 포켓의 모든 것을 확인하세요."
               : "Pokemon TCG Pocket card list, deck builder, tournament decks. Everything you need with the latest official news."}
