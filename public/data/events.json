@@ -1,8 +1,8 @@
 {
-  "source": "ptcgpocket.gg",
+  "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from ptcgpocket.gg (unofficial guide) and may change without notice. Not an official Pokémon Company schedule.",
-  "updatedAt": "2026-06-10T12:06:28.070Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.",
+  "updatedAt": "2026-06-10T14:03:03.736Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -14,6 +14,16 @@
       },
       "type": "mission",
       "url": "https://ptcgpocket.gg/advance-ticket/"
+    },
+    {
+      "id": "expansion-a1",
+      "startDate": "2024-10-30",
+      "endDate": "2024-10-30",
+      "title": {
+        "en": "Genetic Apex Expansion",
+        "ko": "최강의유전자 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "wonder-pick-event-part-2",
@@ -137,6 +147,16 @@
       "url": "https://ptcgpocket.gg/holiday-countdown-campaign/"
     },
     {
+      "id": "expansion-a1a",
+      "startDate": "2024-12-17",
+      "endDate": "2024-12-17",
+      "title": {
+        "en": "Mythical Island Expansion",
+        "ko": "환상이있는섬 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "mythical-island-emblem-event",
       "startDate": "2024-12-20",
       "endDate": "2025-01-10",
@@ -247,6 +267,16 @@
       "url": "https://ptcgpocket.gg/psychic-pokemon-mass-outbreak-event-mew-ex/"
     },
     {
+      "id": "expansion-a2",
+      "startDate": "2025-01-29",
+      "endDate": "2025-01-29",
+      "title": {
+        "en": "Space-Time Smackdown Expansion",
+        "ko": "시공의 격투 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "trade-feature-celebration-gift",
       "startDate": "2025-01-30",
       "endDate": "2025-03-27",
@@ -335,6 +365,16 @@
       "url": "https://ptcgpocket.gg/pokemon-day-special-missions/"
     },
     {
+      "id": "expansion-a2a",
+      "startDate": "2025-02-28",
+      "endDate": "2025-02-28",
+      "title": {
+        "en": "Triumphant Light Expansion",
+        "ko": "초극의 빛 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "gible-drop-event",
       "startDate": "2025-03-03",
       "endDate": "2025-03-17",
@@ -388,6 +428,16 @@
       },
       "type": "mission",
       "url": "https://ptcgpocket.gg/grass-type-pokemon-mass-outbreak-event-leafeon-ex/"
+    },
+    {
+      "id": "expansion-a2b",
+      "startDate": "2025-03-27",
+      "endDate": "2025-03-27",
+      "title": {
+        "en": "Shining Revelry Expansion",
+        "ko": "샤이닝 하이 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "ranked-match-season-a2b",
@@ -467,6 +517,16 @@
       "url": "https://ptcgpocket.gg/special-missions-2025/"
     },
     {
+      "id": "expansion-a3",
+      "startDate": "2025-04-30",
+      "endDate": "2025-04-30",
+      "title": {
+        "en": "Celestial Guardians Expansion",
+        "ko": "쌍천의 수호자 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "ranked-match-season-a3",
       "startDate": "2025-05-01",
       "endDate": "2025-05-26",
@@ -522,6 +582,16 @@
       "url": "https://ptcgpocket.gg/metal-type-pokemon-mass-outbreak-event-solgaleo-ex/"
     },
     {
+      "id": "expansion-a3a",
+      "startDate": "2025-05-29",
+      "endDate": "2025-05-29",
+      "title": {
+        "en": "Extradimensional Crisis Expansion",
+        "ko": "이차원 크라이시스 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "ranked-match-season-a3a",
       "startDate": "2025-05-30",
       "endDate": "2025-06-23",
@@ -564,6 +634,16 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/ultra-beast-mass-outbreak-event/"
+    },
+    {
+      "id": "expansion-a3b",
+      "startDate": "2025-06-26",
+      "endDate": "2025-06-26",
+      "title": {
+        "en": "Eevee Grove Expansion",
+        "ko": "이브이 가든 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "ranked-match-season-a3b",
@@ -621,6 +701,16 @@
       "url": "https://ptcgpocket.gg/eevee-mass-outbreak-event/"
     },
     {
+      "id": "expansion-a4",
+      "startDate": "2025-07-30",
+      "endDate": "2025-07-30",
+      "title": {
+        "en": "Wisdom of Sea and Sky Expansion",
+        "ko": "하늘과 바다의 인도 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "ranked-match-season-a4",
       "startDate": "2025-07-31",
       "endDate": "2025-08-25",
@@ -665,6 +755,16 @@
       "url": "https://ptcgpocket.gg/lightning-mass-outbreak-event-wonder-pick-flair/"
     },
     {
+      "id": "expansion-a4a",
+      "startDate": "2025-08-28",
+      "endDate": "2025-08-28",
+      "title": {
+        "en": "Secluded Springs Expansion",
+        "ko": "미지의 수역 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "ranked-match-season-a4a",
       "startDate": "2025-08-29",
       "endDate": "2025-09-27",
@@ -696,6 +796,16 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/miltank-and-phanpy-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "expansion-a4b",
+      "startDate": "2025-09-30",
+      "endDate": "2025-09-30",
+      "title": {
+        "en": "Deluxe Pack: ex Expansion",
+        "ko": "Deluxe Pack: ex 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "ranked-match-season-a4b-ranking-guide-all-rewards",
@@ -786,6 +896,16 @@
       "url": "https://ptcgpocket.gg/promo-reissue-drop-event-2025/"
     },
     {
+      "id": "expansion-b1",
+      "startDate": "2025-10-30",
+      "endDate": "2025-10-30",
+      "title": {
+        "en": "Mega Rising Expansion",
+        "ko": "메가라이징 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "mega-rising-emblem-event",
       "startDate": "2025-11-07",
       "endDate": "2025-11-17",
@@ -874,6 +994,16 @@
       "url": "https://ptcgpocket.gg/eevee-and-drifblim-wonder-pick-event-promo-cards-missions-all-rewards/"
     },
     {
+      "id": "expansion-b1a",
+      "startDate": "2025-12-17",
+      "endDate": "2025-12-17",
+      "title": {
+        "en": "Crimson Blaze Expansion",
+        "ko": "홍련 블레이즈 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "crimson-blaze-emblem-event",
       "startDate": "2025-12-21",
       "endDate": "2025-12-31",
@@ -929,6 +1059,16 @@
       "url": "https://ptcgpocket.gg/mega-latios-ex-drop-event/"
     },
     {
+      "id": "expansion-b2",
+      "startDate": "2026-01-29",
+      "endDate": "2026-01-29",
+      "title": {
+        "en": "Fantastical Parade Expansion",
+        "ko": "몽환퍼레이드 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "fantastical-parade-emblem-event",
       "startDate": "2026-02-02",
       "endDate": "2026-02-12",
@@ -971,6 +1111,16 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/cinderace-and-alolan-vulpix-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "expansion-b2a",
+      "startDate": "2026-02-26",
+      "endDate": "2026-02-26",
+      "title": {
+        "en": "Paldean Wonders Expansion",
+        "ko": "팔데아원더 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "pokemon-30th-celebration",
@@ -1028,6 +1178,16 @@
       "url": "https://ptcgpocket.gg/pawmi-and-paldean-clodsire-wonder-pick-event/"
     },
     {
+      "id": "expansion-b2b",
+      "startDate": "2026-03-26",
+      "endDate": "2026-03-26",
+      "title": {
+        "en": "Mega Shine Expansion",
+        "ko": "샤이닝 메가 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "mega-shining-emblem-event",
       "startDate": "2026-03-29",
       "endDate": "2026-04-08",
@@ -1070,6 +1230,16 @@
       },
       "type": "ranked",
       "url": "https://ptcgpocket.gg/ranked-match-season-b2b-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "expansion-b3",
+      "startDate": "2026-04-28",
+      "endDate": "2026-04-28",
+      "title": {
+        "en": "Pulsing Aura Expansion",
+        "ko": "파동 비트 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "special-drop-event-2026",
@@ -1136,6 +1306,16 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/treecko-and-gallade-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "expansion-b3a",
+      "startDate": "2026-05-28",
+      "endDate": "2026-05-28",
+      "title": {
+        "en": "Paradox Drive Expansion",
+        "ko": "진격 패러독스 확장팩"
+      },
+      "type": "expansion"
     },
     {
       "id": "paradox-drive-emblem-event",

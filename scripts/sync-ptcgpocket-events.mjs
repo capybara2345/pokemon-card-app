@@ -7,6 +7,28 @@ const OUTPUT = join(__dirname, "..", "public", "data", "events.json");
 const API_BASE = "https://ptcgpocket.gg/wp-json/wp/v2/posts";
 const EVENTS_CATEGORY_ID = 7;
 const SOURCE_URL = "https://ptcgpocket.gg/events/";
+const SETS_URL =
+  "https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/sets.json";
+
+const EXPANSION_KO_FALLBACK = {
+  "Genetic Apex": "최강의 유전자",
+  "Mythical Island": "환상이 있는 섬",
+  "Space-Time Smackdown": "시공의 격투",
+  "Triumphant Light": "초극의 빛",
+  "Shining Revelry": "샤이닝 하이",
+  "Celestial Guardians": "쌍천의 수호자",
+  "Extradimensional Crisis": "이차원 크라이시스",
+  "Eevee Grove": "이브이 가든",
+  "Wisdom of Sea and Sky": "하늘과 바다의 인도",
+  "Secluded Springs": "미지의 수역",
+  "Mega Rising": "메가라이징",
+  "Crimson Blaze": "홍련 블레이즈",
+  "Fantastical Parade": "몽환퍼레이드",
+  "Paldean Wonders": "팔데아원더",
+  "Mega Shine": "샤이닝 메가",
+  "Pulsing Aura": "파동 비트",
+  "Paradox Drive": "진격 패러독스",
+};
 
 const MONTHS = {
   january: 1,
@@ -136,14 +158,59 @@ function buildEvents(posts) {
     });
   }
 
-  return events.sort((a, b) => a.startDate.localeCompare(b.startDate));
+  return events;
+}
+
+function buildExpansionEvents(setsBySeries) {
+  const events = [];
+
+  for (const sets of Object.values(setsBySeries ?? {})) {
+    if (!Array.isArray(sets)) continue;
+
+    for (const set of sets) {
+      if (!set?.releaseDate || /^PROMO/i.test(set.code ?? "")) continue;
+
+      const enName = set.name?.en?.trim() || set.code;
+      const koName =
+        set.name?.ko?.trim() || EXPANSION_KO_FALLBACK[enName] || enName;
+
+      events.push({
+        id: `expansion-${String(set.code).toLowerCase()}`,
+        startDate: set.releaseDate,
+        endDate: set.releaseDate,
+        title: {
+          en: `${enName} Expansion`,
+          ko: `${koName} 확장팩`,
+        },
+        type: "expansion",
+      });
+    }
+  }
+
+  return events;
+}
+
+function mergeEvents(...groups) {
+  const merged = new Map();
+  for (const group of groups) {
+    for (const event of group) {
+      merged.set(event.id, event);
+    }
+  }
+  return [...merged.values()].sort((a, b) => a.startDate.localeCompare(b.startDate));
 }
 
 async function main() {
   const posts = await fetchAllEventPosts();
   console.log(`Fetched ${posts.length} posts`);
 
-  const events = buildEvents(posts);
+  console.log(`Fetching ${SETS_URL} ...`);
+  const setsBySeries = await fetchJson(SETS_URL);
+  const blogEvents = buildEvents(posts);
+  const expansionEvents = buildExpansionEvents(setsBySeries);
+  console.log(`Parsed ${blogEvents.length} events, ${expansionEvents.length} expansions`);
+
+  const events = mergeEvents(blogEvents, expansionEvents);
   if (events.length === 0) {
     if (existsSync(OUTPUT)) {
       console.error("No events parsed. Keeping existing events.json");
@@ -164,10 +231,10 @@ async function main() {
   }
 
   const payload = {
-    source: "ptcgpocket.gg",
+    source: "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
     sourceUrl: SOURCE_URL,
     disclaimer:
-      "Schedule data is collected from ptcgpocket.gg (unofficial guide) and may change without notice. Not an official Pokémon Company schedule.",
+      "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.",
     updatedAt: new Date().toISOString(),
     events,
   };

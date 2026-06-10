@@ -187,6 +187,14 @@ export function localizeEventTitleKo(enTitle: string): string {
     return "핸디 카드 컬렉션 미션";
   }
 
+  const expansion = title.match(/^(.+?)\s+Expansion$/i);
+  if (expansion) {
+    const nameKo = replaceExpansions(expansion[1].trim());
+    return nameKo === expansion[1].trim()
+      ? `${expansion[1].trim()} 확장팩`
+      : `${nameKo} 확장팩`;
+  }
+
   if (/^Special Drop Event/i.test(title)) return "스페셜 드롭 이벤트";
 
   if (/^New Year(?: Event)?(?: Missions)?/i.test(title)) return "새해 이벤트 미션";

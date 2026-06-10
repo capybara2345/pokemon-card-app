@@ -5,6 +5,7 @@ import { Lang } from "../i18n/translations";
 import {
   EVENT_TYPE_COLORS,
   CalendarEvent,
+  EventType,
   formatDateKey,
   getEventsOnDate,
   getUpcomingEvents,
@@ -35,6 +36,129 @@ function isSameDay(a: Date, b: Date) {
 
 function isToday(date: Date) {
   return isSameDay(date, new Date());
+}
+
+function StarIcon({
+  className,
+  size = "sm",
+}: {
+  className?: string;
+  size?: "sm" | "md";
+}) {
+  const dim = size === "md" ? "h-3 w-3" : "h-2.5 w-2.5";
+  return (
+    <svg
+      className={`${dim} shrink-0 ${className ?? ""}`}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function ExpansionStar({ selected = false }: { selected?: boolean }) {
+  return (
+    <StarIcon
+      size="sm"
+      className={
+        selected
+          ? "text-amber-200"
+          : "text-amber-500 dark:text-amber-400"
+      }
+    />
+  );
+}
+
+function EventMarker({
+  type,
+  selected = false,
+  size = "sm",
+}: {
+  type: EventType;
+  selected?: boolean;
+  size?: "sm" | "md";
+}) {
+  const color = selected ? "bg-white/90" : EVENT_TYPE_COLORS[type].dot;
+  const box = size === "md" ? "h-2.5 w-2.5" : "h-2 w-2";
+
+  if (type === "expansion") {
+    return (
+      <span className={`inline-flex shrink-0 items-center justify-center ${box}`}>
+        <StarIcon
+          size={size}
+          className={
+            selected
+              ? "text-amber-200"
+              : "text-amber-500 dark:text-amber-400"
+          }
+        />
+      </span>
+    );
+  }
+
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center justify-center ${box}`}
+      aria-hidden
+    >
+      <span
+        className={`rounded-full ${size === "md" ? "h-2 w-2" : "h-1.5 w-1.5"} ${color}`}
+      />
+    </span>
+  );
+}
+
+function hasRankedOnDate(date: Date, events: CalendarEvent[]) {
+  return getEventsOnDate(date, events).some((e) => e.type === "ranked");
+}
+
+function getDayButtonClass(
+  selected: boolean,
+  todayMark: boolean,
+  rankedSeason: boolean
+) {
+  if (selected) {
+    return "bg-indigo-600 text-white shadow-sm";
+  }
+  if (rankedSeason && todayMark) {
+    return "bg-rose-100 font-semibold text-rose-800 ring-1 ring-indigo-300 dark:bg-rose-900/40 dark:text-rose-200 dark:ring-indigo-600";
+  }
+  if (rankedSeason) {
+    return "bg-rose-50 text-rose-800 hover:bg-rose-100 dark:bg-rose-900/30 dark:text-rose-200 dark:hover:bg-rose-900/45";
+  }
+  if (todayMark) {
+    return "bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300";
+  }
+  return "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-700/50";
+}
+
+const DAY_MARKER_LIMIT = 6;
+
+function pickDayMarkers(events: CalendarEvent[]) {
+  if (events.length <= DAY_MARKER_LIMIT) {
+    return { visible: events, overflow: 0 };
+  }
+
+  const priority: Record<EventType, number> = {
+    drop: 0,
+    emblem: 1,
+    wonder: 2,
+    community: 3,
+    mission: 4,
+    ranked: 9,
+    expansion: 9,
+  };
+
+  const sorted = [...events].sort(
+    (a, b) => (priority[a.type] ?? 9) - (priority[b.type] ?? 9)
+  );
+
+  return {
+    visible: sorted.slice(0, DAY_MARKER_LIMIT),
+    overflow: events.length - DAY_MARKER_LIMIT,
+  };
 }
 
 function formatEventRange(event: CalendarEvent, lang: Lang) {
@@ -163,6 +287,12 @@ export default function EventCalendar({ lang, events, labels }: Props) {
             }
 
             const dayEvents = getEventsOnDate(date, events);
+            const hasExpansion = dayEvents.some((e) => e.type === "expansion");
+            const rankedSeason = hasRankedOnDate(date, events);
+            const markerSource = dayEvents.filter(
+              (e) => e.type !== "expansion" && e.type !== "ranked"
+            );
+            const { visible: markerEvents, overflow } = pickDayMarkers(markerSource);
             const selected = isSameDay(date, selectedDate);
             const todayMark = isToday(date);
 
@@ -171,30 +301,54 @@ export default function EventCalendar({ lang, events, labels }: Props) {
                 key={formatDateKey(date)}
                 type="button"
                 onClick={() => setSelectedDate(date)}
-                className={`aspect-square lg:aspect-auto lg:h-14 rounded-lg flex flex-col items-center justify-center gap-0.5 text-xs lg:text-sm transition-all relative ${
-                  selected
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : todayMark
-                      ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
-                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50"
-                }`}
+                className={`aspect-square lg:aspect-auto lg:h-14 rounded-lg flex flex-col items-center justify-center gap-0.5 text-xs lg:text-sm transition-all relative ${getDayButtonClass(
+                  selected,
+                  todayMark,
+                  rankedSeason
+                )}`}
               >
+                {hasExpansion && (
+                  <span className="pointer-events-none absolute right-0.5 top-0.5 lg:right-1 lg:top-1">
+                    <ExpansionStar selected={selected} />
+                  </span>
+                )}
                 <span>{date.getDate()}</span>
-                {dayEvents.length > 0 && (
-                  <span className="flex gap-0.5">
-                    {dayEvents.slice(0, 3).map((e) => (
-                      <span
-                        key={e.id}
-                        className={`w-1 h-1 rounded-full ${
-                          selected ? "bg-white/80" : EVENT_TYPE_COLORS[e.type].dot
-                        }`}
-                      />
+                {(markerEvents.length > 0 || overflow > 0) && (
+                  <span className="flex max-w-full flex-wrap items-center justify-center gap-0.5 px-0.5">
+                    {markerEvents.map((e) => (
+                      <EventMarker key={e.id} type={e.type} selected={selected} />
                     ))}
+                    {overflow > 0 && (
+                      <span
+                        className={`text-[9px] font-semibold leading-none ${
+                          selected
+                            ? "text-white/85"
+                            : "text-slate-400 dark:text-slate-500"
+                        }`}
+                      >
+                        +{overflow}
+                      </span>
+                    )}
                   </span>
                 )}
               </button>
             );
           })}
+        </div>
+
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-400 dark:text-slate-500">
+          <span className="inline-flex items-center gap-1">
+            <EventMarker type="mission" />
+            {lang === "ko" ? "이벤트" : "Event"}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <StarIcon className="text-amber-500 dark:text-amber-400" />
+            {lang === "ko" ? "확장팩" : "Expansion"}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <span className="h-2.5 w-4 rounded-sm border border-rose-200 bg-rose-100 dark:border-rose-800 dark:bg-rose-900/40" />
+            {lang === "ko" ? "랭크 시즌" : "Ranked season"}
+          </span>
         </div>
 
         {selectedEvents.length > 0 && (
@@ -239,9 +393,18 @@ export default function EventCalendar({ lang, events, labels }: Props) {
                     className="w-full text-left group"
                   >
                     <div className="flex items-start gap-2">
-                      <span
-                        className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${EVENT_TYPE_COLORS[event.type].dot}`}
-                      />
+                      <span className="mt-1.5 flex shrink-0 items-center justify-center">
+                        {event.type === "ranked" ? (
+                          <span className="h-2 w-2 rounded-sm bg-rose-500" />
+                        ) : event.type === "expansion" ? (
+                          <StarIcon
+                            size="md"
+                            className="text-amber-500 dark:text-amber-400"
+                          />
+                        ) : (
+                          <EventMarker type={event.type} size="md" />
+                        )}
+                      </span>
                       <div className="min-w-0">
                         <p className="text-sm font-medium text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors truncate">
                           {event.title[lang]}
@@ -279,7 +442,13 @@ function EventItem({ event, lang }: { event: CalendarEvent; lang: Lang }) {
     <li
       className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${colors.bg} ${colors.text}`}
     >
-      <span className={`w-2 h-2 rounded-full shrink-0 ${colors.dot}`} />
+      {event.type === "expansion" ? (
+        <StarIcon size="md" className="text-amber-500 dark:text-amber-400" />
+      ) : event.type === "ranked" ? (
+        <span className="h-2 w-2 shrink-0 rounded-sm bg-rose-500" />
+      ) : (
+        <EventMarker type={event.type} size="md" />
+      )}
       <span className="font-medium">{event.title[lang]}</span>
     </li>
   );
