@@ -46,10 +46,105 @@ export const metadata: Metadata = {
   },
 };
 
-const OFFICIAL_LINKS: Record<
-  Lang,
-  { title: string; desc: string; url: string; domain: string }[]
-> = {
+type ExternalLink = {
+  title: string;
+  desc: string;
+  url: string;
+  domain: string;
+};
+
+const BOOKMARK_LINKS: Record<Lang, ExternalLink[]> = {
+  ko: [
+    {
+      title: "포켓몬TCG포켓 갤러리",
+      desc: "디시인사이드 포켓몬 포켓 마이너 갤러리",
+      url: "https://gall.dcinside.com/mgallery/board/lists/?id=pokemontcgpocket",
+      domain: "dcinside.com",
+    },
+    {
+      title: "Limitless TCG 덱",
+      desc: "글로벌 포켓몬 포켓 덱 리스트",
+      url: "https://play.limitlesstcg.com/decks",
+      domain: "limitlesstcg.com",
+    },
+    {
+      title: "Serebii 포켓몬 포켓",
+      desc: "카드·이벤트·뉴스 종합 정보",
+      url: "https://serebii.net/tcgpocket/",
+      domain: "serebii.net",
+    },
+    {
+      title: "Pokemon Zone",
+      desc: "일정·카드 DB·이벤트 데이터",
+      url: "https://www.pokemon-zone.com/",
+      domain: "pokemon-zone.com",
+    },
+    {
+      title: "PTCGP Timeline",
+      desc: "이벤트·확장팩 타임라인 (한국어 지원)",
+      url: "https://ptcgp-timeline.github.io/",
+      domain: "ptcgp-timeline.github.io",
+    },
+    {
+      title: "ptcgpocket.gg",
+      desc: "이벤트 가이드·미션·보상 정리",
+      url: "https://ptcgpocket.gg/",
+      domain: "ptcgpocket.gg",
+    },
+    {
+      title: "r/PTCGPocket",
+      desc: "Reddit 글로벌 커뮤니티",
+      url: "https://www.reddit.com/r/PTCGPocket/",
+      domain: "reddit.com",
+    },
+  ],
+  en: [
+    {
+      title: "Pokémon TCG Pocket Gallery",
+      desc: "DC Inside community gallery",
+      url: "https://gall.dcinside.com/mgallery/board/lists/?id=pokemontcgpocket",
+      domain: "dcinside.com",
+    },
+    {
+      title: "Limitless TCG Decks",
+      desc: "Browse global Pokémon TCG Pocket decks",
+      url: "https://play.limitlesstcg.com/decks",
+      domain: "limitlesstcg.com",
+    },
+    {
+      title: "Serebii Pokémon TCG Pocket",
+      desc: "Cards, events, and news hub",
+      url: "https://serebii.net/tcgpocket/",
+      domain: "serebii.net",
+    },
+    {
+      title: "Pokemon Zone",
+      desc: "Schedule, card database, and event data",
+      url: "https://www.pokemon-zone.com/",
+      domain: "pokemon-zone.com",
+    },
+    {
+      title: "PTCGP Timeline",
+      desc: "Visual event and expansion timeline",
+      url: "https://ptcgp-timeline.github.io/",
+      domain: "ptcgp-timeline.github.io",
+    },
+    {
+      title: "ptcgpocket.gg",
+      desc: "Event guides, missions, and rewards",
+      url: "https://ptcgpocket.gg/",
+      domain: "ptcgpocket.gg",
+    },
+    {
+      title: "r/PTCGPocket",
+      desc: "Global Reddit community",
+      url: "https://www.reddit.com/r/PTCGPocket/",
+      domain: "reddit.com",
+    },
+  ],
+};
+
+const OFFICIAL_LINKS: Record<Lang, ExternalLink[]> = {
   ko: [
     {
       title: "공식 포켓몬 포켓 사이트",
@@ -92,6 +187,53 @@ const OFFICIAL_LINKS: Record<
   ],
 };
 
+function ExternalLinkGrid({
+  items,
+  viewMoreLabel,
+}: {
+  items: ExternalLink[];
+  viewMoreLabel: string;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
+      {items.map((item) => (
+        <a
+          key={item.url}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex flex-col rounded-xl border border-slate-200 bg-white p-5 transition-all hover:border-indigo-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:hover:border-indigo-700"
+        >
+          <div className="mb-3 flex items-center gap-2">
+            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+              {item.domain}
+            </span>
+          </div>
+          <h3 className="mb-1 text-sm font-semibold text-slate-800 transition-colors group-hover:text-indigo-600 dark:text-slate-100 dark:group-hover:text-indigo-400 md:text-base">
+            {item.title}
+          </h3>
+          <p className="mb-4 flex-1 text-xs text-slate-500 dark:text-slate-400">
+            {item.desc}
+          </p>
+          <span className="inline-flex items-center text-xs font-medium text-indigo-600 group-hover:underline dark:text-indigo-400">
+            {viewMoreLabel}
+            <svg
+              className="ml-1 h-3.5 w-3.5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export default async function HomePage() {
   const cookieStore = await cookies();
   const lang = (cookieStore.get("lang")?.value ?? "ko") as Lang;
@@ -115,8 +257,8 @@ export default async function HomePage() {
       </section>
 
       {/* Event Calendar */}
-      <section className="w-full px-4 md:px-6 py-10 md:py-14">
-        <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 md:mb-8">
+      <section className="w-full px-4 py-10 md:px-6 md:py-12">
+        <h2 className="mx-auto mb-5 max-w-[1200px] text-xl font-bold text-slate-800 dark:text-slate-100 md:mb-6 md:text-2xl">
           {t.home.eventCalendar}
         </h2>
         <EventCalendar
@@ -134,47 +276,15 @@ export default async function HomePage() {
         />
       </section>
 
-      {/* Latest News */}
-      <section className="w-full px-4 md:px-6 py-10 md:py-14 bg-slate-50 dark:bg-slate-900/50">
-        <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 md:mb-8">
-          {t.home.latestNews}
+      {/* Bookmarks */}
+      <section className="w-full bg-slate-50 px-4 py-10 dark:bg-slate-900/50 md:px-6 md:py-14">
+        <h2 className="mb-6 text-xl font-bold text-slate-800 dark:text-slate-100 md:mb-8 md:text-2xl">
+          {t.home.bookmarks}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {OFFICIAL_LINKS[lang].map((item) => (
-            <a
-              key={item.url}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all p-5"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
-                  {item.domain}
-                </span>
-              </div>
-              <h3 className="text-sm md:text-base font-semibold text-slate-800 dark:text-slate-100 mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-1">
-                {item.desc}
-              </p>
-              <span className="inline-flex items-center text-xs font-medium text-indigo-600 dark:text-indigo-400 group-hover:underline">
-                {t.home.viewMore}
-                <svg
-                  className="ml-1 w-3.5 h-3.5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path d="M7 17L17 7M17 7H7M17 7v10" />
-                </svg>
-              </span>
-            </a>
-          ))}
-        </div>
+        <ExternalLinkGrid
+          items={[...OFFICIAL_LINKS[lang], ...BOOKMARK_LINKS[lang]]}
+          viewMoreLabel={t.home.viewMore}
+        />
       </section>
     </main>
   );

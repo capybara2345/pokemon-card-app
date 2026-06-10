@@ -103,10 +103,10 @@ export default function EventCalendar({ lang, events, labels }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="lg:col-span-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 md:p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-100">
+    <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-5">
+      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 lg:p-4">
+        <div className="mb-3 flex items-center justify-between">
+          <h3 className="text-base font-semibold text-slate-800 dark:text-slate-100">
             {labels.months[viewMonth]} {viewYear}
           </h3>
           <div className="flex items-center gap-1">
@@ -140,21 +140,26 @@ export default function EventCalendar({ lang, events, labels }: Props) {
           </div>
         </div>
 
-        <div className="grid grid-cols-7 gap-1 mb-1">
+        <div className="mb-1 grid grid-cols-7 gap-0.5 lg:gap-1">
           {labels.weekdays.map((day) => (
             <div
               key={day}
-              className="text-center text-[10px] md:text-xs font-medium text-slate-400 dark:text-slate-500 py-1"
+              className="py-0.5 text-center text-[10px] font-medium text-slate-400 dark:text-slate-500 lg:text-[11px]"
             >
               {day}
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-0.5 lg:gap-1">
           {calendarCells.map((date, i) => {
             if (!date) {
-              return <div key={`empty-${i}`} className="aspect-square" />;
+              return (
+                <div
+                  key={`empty-${i}`}
+                  className="aspect-square lg:aspect-auto lg:h-14"
+                />
+              );
             }
 
             const dayEvents = getEventsOnDate(date, events);
@@ -166,7 +171,7 @@ export default function EventCalendar({ lang, events, labels }: Props) {
                 key={formatDateKey(date)}
                 type="button"
                 onClick={() => setSelectedDate(date)}
-                className={`aspect-square rounded-lg flex flex-col items-center justify-center gap-0.5 text-xs md:text-sm transition-all relative ${
+                className={`aspect-square lg:aspect-auto lg:h-14 rounded-lg flex flex-col items-center justify-center gap-0.5 text-xs lg:text-sm transition-all relative ${
                   selected
                     ? "bg-indigo-600 text-white shadow-sm"
                     : todayMark
@@ -193,7 +198,7 @@ export default function EventCalendar({ lang, events, labels }: Props) {
         </div>
 
         {selectedEvents.length > 0 && (
-          <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+          <div className="mt-3 border-t border-slate-100 pt-3 dark:border-slate-700">
             <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2">
               {selectedDate.toLocaleDateString(lang === "ko" ? "ko-KR" : "en-US", {
                 month: "long",
@@ -210,14 +215,14 @@ export default function EventCalendar({ lang, events, labels }: Props) {
         )}
       </div>
 
-      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 md:p-6">
-        <h3 className="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 lg:p-4">
+        <h3 className="mb-3 text-base font-semibold text-slate-800 dark:text-slate-100">
           {labels.upcoming}
         </h3>
         {upcomingEvents.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">{labels.noEvents}</p>
         ) : (
-          <ul className="space-y-3">
+          <ul className="space-y-2.5">
             {upcomingEvents.map((event) => {
               const ongoing =
                 event.startDate <= todayKey && event.endDate >= todayKey;
@@ -258,7 +263,7 @@ export default function EventCalendar({ lang, events, labels }: Props) {
           </ul>
         )}
 
-        <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-700">
+        <div className="mt-4 border-t border-slate-100 pt-3 dark:border-slate-700">
           <p className="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">
             {labels.scheduleDisclaimer}
           </p>

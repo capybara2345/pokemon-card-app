@@ -23,6 +23,7 @@ export type Translations = {
   };
   home: {
     latestNews: string;
+    bookmarks: string;
     officialSite: string;
     viewMore: string;
     features: string;
@@ -270,6 +271,7 @@ export const ko: Translations = {
   },
   home: {
     latestNews: "최신 소식",
+    bookmarks: "즐겨찾기",
     officialSite: "공식 사이트",
     viewMore: "더 보기",
     features: "주요 기능",
@@ -663,6 +665,7 @@ export const en: Translations = {
   },
   home: {
     latestNews: "Latest News",
+    bookmarks: "Bookmarks",
     officialSite: "Official Site",
     viewMore: "Learn more",
     features: "Features",
