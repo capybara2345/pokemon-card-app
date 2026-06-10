@@ -50,6 +50,19 @@ const SKIP_SLUGS = new Set([
   "mcdonalds-x-pokemon-happy-meals-collaboration",
 ]);
 
+const FETCH_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  Accept: "application/json, text/plain, */*",
+  "Accept-Language": "en-US,en;q=0.9",
+  Referer: "https://ptcgpocket.gg/events/",
+  Origin: "https://ptcgpocket.gg",
+};
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function decodeHtml(text) {
   return text
     .replace(/&#8211;/g, "–")
@@ -108,12 +121,26 @@ function classifyEvent(title) {
   return "mission";
 }
 
-async function fetchJson(url) {
-  const res = await fetch(url, {
-    headers: { "User-Agent": "PPCardList/1.0 (event sync)" },
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-  return res.json();
+async function fetchJson(url, { retries = 3 } = {}) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    try {
+      const res = await fetch(url, { headers: FETCH_HEADERS });
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} for ${url}`);
+      }
+      return res.json();
+    } catch (err) {
+      lastError = err;
+      if (attempt < retries) {
+        console.warn(`Attempt ${attempt} failed: ${err.message}. Retrying...`);
+        await sleep(1500 * attempt);
+      }
+    }
+  }
+
+  throw lastError;
 }
 
 async function fetchAllEventPosts() {
@@ -131,6 +158,15 @@ async function fetchAllEventPosts() {
   }
 
   return posts;
+}
+
+function loadCachedBlogEvents() {
+  if (!existsSync(OUTPUT)) return [];
+
+  const existing = JSON.parse(readFileSync(OUTPUT, "utf8"));
+  return (existing.events ?? []).filter(
+    (event) => event.type !== "expansion" && !String(event.id ?? "").startsWith("expansion-")
+  );
 }
 
 function buildEvents(posts) {
@@ -201,12 +237,29 @@ function mergeEvents(...groups) {
 }
 
 async function main() {
-  const posts = await fetchAllEventPosts();
-  console.log(`Fetched ${posts.length} posts`);
+  let blogEvents = [];
+  let blogEventsFromCache = false;
+
+  try {
+    const posts = await fetchAllEventPosts();
+    console.log(`Fetched ${posts.length} posts`);
+    blogEvents = buildEvents(posts);
+  } catch (err) {
+    console.warn(`ptcgpocket.gg API unavailable (${err.message}).`);
+    blogEvents = loadCachedBlogEvents();
+    blogEventsFromCache = true;
+
+    if (blogEvents.length === 0) {
+      throw new Error(
+        "Could not fetch ptcgpocket.gg events and no cached blog events are available"
+      );
+    }
+
+    console.warn(`Using ${blogEvents.length} cached blog events from ${OUTPUT}`);
+  }
 
   console.log(`Fetching ${SETS_URL} ...`);
   const setsBySeries = await fetchJson(SETS_URL);
-  const blogEvents = buildEvents(posts);
   const expansionEvents = buildExpansionEvents(setsBySeries);
   console.log(`Parsed ${blogEvents.length} events, ${expansionEvents.length} expansions`);
 
@@ -219,7 +272,7 @@ async function main() {
     throw new Error("No events parsed and no existing events.json fallback");
   }
 
-  if (existsSync(OUTPUT)) {
+  if (!blogEventsFromCache && existsSync(OUTPUT)) {
     const existing = JSON.parse(readFileSync(OUTPUT, "utf8"));
     const prevCount = existing.events?.length ?? 0;
     if (prevCount > 0 && events.length < Math.max(10, Math.floor(prevCount * 0.5))) {
@@ -230,11 +283,14 @@ async function main() {
     }
   }
 
+  const disclaimer = blogEventsFromCache
+    ? "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Blog events were kept from the last successful sync because ptcgpocket.gg blocked automated access."
+    : "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.";
+
   const payload = {
     source: "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
     sourceUrl: SOURCE_URL,
-    disclaimer:
-      "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.",
+    disclaimer,
     updatedAt: new Date().toISOString(),
     events,
   };
