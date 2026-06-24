@@ -306,6 +306,23 @@ function loadCachedBlogEvents() {
   );
 }
 
+function loadCachedExpansionEvents() {
+  if (!existsSync(OUTPUT)) return [];
+
+  const existing = JSON.parse(readFileSync(OUTPUT, "utf8"));
+  return (existing.events ?? []).filter(
+    (event) =>
+      event.type === "expansion" || String(event.id ?? "").startsWith("expansion-")
+  );
+}
+
+function expansionIdToCode(id) {
+  const match = String(id).match(/^expansion-(.+)$/i);
+  if (!match) return null;
+  const raw = match[1];
+  return raw.charAt(0).toUpperCase() + raw.slice(1);
+}
+
 function buildEvents(posts) {
   const events = [];
 
@@ -334,7 +351,11 @@ function buildEvents(posts) {
   return events;
 }
 
-function buildExpansionEvents(setsBySeries, dotggSets) {
+function buildExpansionEvents(
+  setsBySeries,
+  dotggSets,
+  { cachedExpansionEvents = [], useCachedFallback = false } = {}
+) {
   const byCode = new Map();
 
   for (const sets of Object.values(setsBySeries ?? {})) {
@@ -374,6 +395,15 @@ function buildExpansionEvents(setsBySeries, dotggSets) {
         url: set.url,
       })
     );
+  }
+
+  if (useCachedFallback) {
+    for (const event of cachedExpansionEvents) {
+      const code = expansionIdToCode(event.id);
+      if (!code || byCode.has(code)) continue;
+      console.warn(`Using cached expansion: ${code} from ${OUTPUT}`);
+      byCode.set(code, event);
+    }
   }
 
   for (const set of MANUAL_EXPANSIONS) {
@@ -433,16 +463,28 @@ async function main() {
   const setsBySeries = await fetchJson(SETS_URL);
 
   let dotggSets = [];
+  let dotggFetchFailed = false;
+  const cachedExpansionEvents = loadCachedExpansionEvents();
+
   try {
     const expansionPosts = await fetchAllExpansionPosts();
     console.log(`Fetched ${expansionPosts.length} expansion posts`);
     dotggSets = buildDotggExpansionSets(expansionPosts);
     console.log(`Parsed ${dotggSets.length} expansions from dotgg`);
   } catch (err) {
+    dotggFetchFailed = true;
     console.warn(`ptcgpocket.gg expansions API unavailable (${err.message}).`);
+    if (cachedExpansionEvents.length > 0) {
+      console.warn(
+        `Will reuse ${cachedExpansionEvents.length} cached expansions from ${OUTPUT}`
+      );
+    }
   }
 
-  const expansionEvents = buildExpansionEvents(setsBySeries, dotggSets);
+  const expansionEvents = buildExpansionEvents(setsBySeries, dotggSets, {
+    cachedExpansionEvents,
+    useCachedFallback: dotggFetchFailed,
+  });
   console.log(`Parsed ${blogEvents.length} events, ${expansionEvents.length} expansions`);
 
   const events = mergeEvents(blogEvents, expansionEvents);
@@ -454,7 +496,7 @@ async function main() {
     throw new Error("No events parsed and no existing events.json fallback");
   }
 
-  if (!blogEventsFromCache && existsSync(OUTPUT)) {
+  if (!blogEventsFromCache && !dotggFetchFailed && existsSync(OUTPUT)) {
     const existing = JSON.parse(readFileSync(OUTPUT, "utf8"));
     const prevCount = existing.events?.length ?? 0;
     if (prevCount > 0 && events.length < Math.max(10, Math.floor(prevCount * 0.5))) {
@@ -465,9 +507,22 @@ async function main() {
     }
   }
 
-  const disclaimer = blogEventsFromCache
-    ? "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Blog events were kept from the last successful sync because ptcgpocket.gg blocked automated access."
-    : "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.";
+  const disclaimerNotes = [];
+  if (blogEventsFromCache) {
+    disclaimerNotes.push(
+      "Blog events were kept from the last successful sync because ptcgpocket.gg blocked automated access."
+    );
+  }
+  if (dotggFetchFailed) {
+    disclaimerNotes.push(
+      "Some expansion dates were kept from the last successful sync because ptcgpocket.gg blocked automated access."
+    );
+  }
+
+  const disclaimer =
+    disclaimerNotes.length > 0
+      ? `Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. ${disclaimerNotes.join(" ")}`
+      : "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.";
 
   const payload = {
     source: "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
