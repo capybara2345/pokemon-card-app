@@ -19,6 +19,9 @@ const EXPANSION_EN_TO_KO: Record<string, string> = {
   "Mega Shining": "샤이닝 메가",
   "Pulsing Aura": "파동 비트",
   "Paradox Drive": "진격 패러독스",
+  "Everyday Wonders": "미라클 데이즈",
+  "Ruler of the Skies": "천공의 지배자",
+  "Ruler of Skies": "천공의 지배자",
 };
 
 const POKEMON_OVERRIDES: Record<string, string> = {

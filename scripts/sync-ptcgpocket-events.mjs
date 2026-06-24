@@ -6,6 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT = join(__dirname, "..", "public", "data", "events.json");
 const API_BASE = "https://ptcgpocket.gg/wp-json/wp/v2/posts";
 const EVENTS_CATEGORY_ID = 7;
+const EXPANSIONS_CATEGORY_ID = 8;
 const SOURCE_URL = "https://ptcgpocket.gg/events/";
 const SETS_URL =
   "https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/sets.json";
@@ -28,7 +29,19 @@ const EXPANSION_KO_FALLBACK = {
   "Mega Shine": "샤이닝 메가",
   "Pulsing Aura": "파동 비트",
   "Paradox Drive": "진격 패러독스",
+  "Everyday Wonders": "미라클 데이즈",
+  "Ruler of the Skies": "천공의 지배자",
+  "Ruler of Skies": "천공의 지배자",
 };
+
+// 공식 한국 출시일·명칭 보정 (code 기준, dotgg/flibustier 위에 덮어씀)
+const MANUAL_EXPANSIONS = [
+  {
+    code: "B3b",
+    releaseDate: "2026-06-30",
+    name: { en: "Everyday Wonders", ko: "미라클 데이즈" },
+  },
+];
 
 const MONTHS = {
   january: 1,
@@ -49,6 +62,8 @@ const SKIP_SLUGS = new Set([
   "eevee-grove-twitch-drops",
   "mcdonalds-x-pokemon-happy-meals-collaboration",
 ]);
+
+const SET_CODE_RE = /^[AB]\d[a-z]?$/i;
 
 const FETCH_HEADERS = {
   "User-Agent":
@@ -79,6 +94,7 @@ function toDateKeyFromDotgg(text) {
   if (!text) return null;
   const cleaned = text
     .trim()
+    .replace(/\u00a0/g, " ")
     .replace(/\s+/g, " ")
     .replace(/,\s*(\d{4}),\s*\1/g, ", $1")
     .replace(/(\d{4})\s+\1/g, "$1");
@@ -93,6 +109,82 @@ function toDateKeyFromDotgg(text) {
   const day = String(match[2]).padStart(2, "0");
   const monthStr = String(month).padStart(2, "0");
   return `${year}-${monthStr}-${day}`;
+}
+
+function toDateKeyFromExpansionRelease(text) {
+  if (!text) return null;
+  const cleaned = text.replace(/\u00a0/g, " ").trim();
+
+  const utcMatch = cleaned.match(
+    /([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})\s+at\s+(\d{1,2}):(\d{2})\s*(AM|PM)\s*UTC/i
+  );
+  if (utcMatch) {
+    const month = MONTHS[utcMatch[1].toLowerCase()];
+    if (!month) return null;
+
+    const year = Number(utcMatch[3]);
+    const day = Number(utcMatch[2]);
+    let hour = Number(utcMatch[4]);
+    const minute = Number(utcMatch[5]);
+    const ampm = utcMatch[6].toUpperCase();
+    if (ampm === "PM" && hour !== 12) hour += 12;
+    if (ampm === "AM" && hour === 12) hour = 0;
+
+    // UTC → KST(+9) 기준 캘린더 날짜
+    const utcMs = Date.UTC(year, month - 1, day, hour, minute);
+    const kst = new Date(utcMs + 9 * 60 * 60 * 1000);
+    return kst.toISOString().slice(0, 10);
+  }
+
+  return toDateKeyFromDotgg(cleaned);
+}
+
+function extractExpansionEnName(title, code) {
+  let name = decodeHtml(title)
+    .replace(/\s*&#8211;.*$/i, "")
+    .replace(/\s*[–—-]\s*Card List.*$/i, "")
+    .replace(/\s+Expansion Card List.*$/i, "")
+    .replace(/\s+Mini Set Card List.*$/i, "")
+    .replace(/\s+Card List.*$/i, "")
+    .trim();
+
+  if (code) {
+    name = name
+      .replace(new RegExp(`\\s*\\(?${code}\\)?\\s*$`, "i"), "")
+      .replace(new RegExp(`\\s+${code}\\b`, "ig"), " ")
+      .trim();
+  }
+
+  return name;
+}
+
+function parseExpansionPost(post) {
+  const html = post.content?.rendered ?? "";
+  const code =
+    html.match(/Set Code:<\/strong>\s*([A-Za-z0-9]+)/i)?.[1] ??
+    html.match(/Set Code:\s*([A-Za-z0-9]+)/i)?.[1] ??
+    null;
+  if (!code || !SET_CODE_RE.test(code)) return null;
+
+  const releaseRaw =
+    html.match(/Release Date:<\/strong>\s*([^<]+)/i)?.[1]?.trim() ??
+    html.match(/Start:<\/strong>\s*([^<]+)/i)?.[1]?.trim() ??
+    null;
+  const releaseDate = toDateKeyFromExpansionRelease(releaseRaw);
+  if (!releaseDate) {
+    console.warn(`Skipping expansion ${post.slug}: no release date`);
+    return null;
+  }
+
+  const enName = extractExpansionEnName(post.title?.rendered ?? "", code);
+  if (!enName) return null;
+
+  return {
+    code,
+    releaseDate,
+    enName,
+    url: post.link,
+  };
 }
 
 function parseEventPeriod(html) {
@@ -160,6 +252,51 @@ async function fetchAllEventPosts() {
   return posts;
 }
 
+async function fetchAllExpansionPosts() {
+  const posts = [];
+  let page = 1;
+
+  while (true) {
+    const url = `${API_BASE}?categories=${EXPANSIONS_CATEGORY_ID}&per_page=100&page=${page}&_fields=id,slug,title,link,content`;
+    console.log(`Fetching ${url} ...`);
+    const batch = await fetchJson(url);
+    if (!Array.isArray(batch) || batch.length === 0) break;
+    posts.push(...batch);
+    if (batch.length < 100) break;
+    page += 1;
+  }
+
+  return posts;
+}
+
+function buildDotggExpansionSets(posts) {
+  const byCode = new Map();
+
+  for (const post of posts) {
+    const parsed = parseExpansionPost(post);
+    if (!parsed) continue;
+    byCode.set(parsed.code, parsed);
+  }
+
+  return [...byCode.values()];
+}
+
+function expansionEventFromSet({ code, releaseDate, enName, koName, url }) {
+  const ko = koName || EXPANSION_KO_FALLBACK[enName] || enName;
+  const event = {
+    id: `expansion-${code.toLowerCase()}`,
+    startDate: releaseDate,
+    endDate: releaseDate,
+    title: {
+      en: `${enName} Expansion`,
+      ko: `${ko} 확장팩`,
+    },
+    type: "expansion",
+  };
+  if (url) event.url = url;
+  return event;
+}
+
 function loadCachedBlogEvents() {
   if (!existsSync(OUTPUT)) return [];
 
@@ -197,8 +334,8 @@ function buildEvents(posts) {
   return events;
 }
 
-function buildExpansionEvents(setsBySeries) {
-  const events = [];
+function buildExpansionEvents(setsBySeries, dotggSets) {
+  const byCode = new Map();
 
   for (const sets of Object.values(setsBySeries ?? {})) {
     if (!Array.isArray(sets)) continue;
@@ -206,24 +343,58 @@ function buildExpansionEvents(setsBySeries) {
     for (const set of sets) {
       if (!set?.releaseDate || /^PROMO/i.test(set.code ?? "")) continue;
 
+      const code = String(set.code);
       const enName = set.name?.en?.trim() || set.code;
       const koName =
         set.name?.ko?.trim() || EXPANSION_KO_FALLBACK[enName] || enName;
 
-      events.push({
-        id: `expansion-${String(set.code).toLowerCase()}`,
-        startDate: set.releaseDate,
-        endDate: set.releaseDate,
-        title: {
-          en: `${enName} Expansion`,
-          ko: `${koName} 확장팩`,
-        },
-        type: "expansion",
-      });
+      byCode.set(
+        code,
+        expansionEventFromSet({
+          code,
+          releaseDate: set.releaseDate,
+          enName,
+          koName,
+        })
+      );
     }
   }
 
-  return events;
+  for (const set of dotggSets) {
+    if (byCode.has(set.code)) continue;
+    console.log(
+      `Added expansion from dotgg: ${set.code} ${set.releaseDate} ${set.enName}`
+    );
+    byCode.set(
+      set.code,
+      expansionEventFromSet({
+        code: set.code,
+        releaseDate: set.releaseDate,
+        enName: set.enName,
+        url: set.url,
+      })
+    );
+  }
+
+  for (const set of MANUAL_EXPANSIONS) {
+    const existing = byCode.get(set.code);
+    const enName = set.name.en;
+    const koName = set.name.ko || EXPANSION_KO_FALLBACK[enName] || enName;
+    byCode.set(
+      set.code,
+      expansionEventFromSet({
+        code: set.code,
+        releaseDate: set.releaseDate,
+        enName,
+        koName,
+        url: existing?.url ?? set.url,
+      })
+    );
+  }
+
+  return [...byCode.values()].sort((a, b) =>
+    a.startDate.localeCompare(b.startDate)
+  );
 }
 
 function mergeEvents(...groups) {
@@ -260,7 +431,18 @@ async function main() {
 
   console.log(`Fetching ${SETS_URL} ...`);
   const setsBySeries = await fetchJson(SETS_URL);
-  const expansionEvents = buildExpansionEvents(setsBySeries);
+
+  let dotggSets = [];
+  try {
+    const expansionPosts = await fetchAllExpansionPosts();
+    console.log(`Fetched ${expansionPosts.length} expansion posts`);
+    dotggSets = buildDotggExpansionSets(expansionPosts);
+    console.log(`Parsed ${dotggSets.length} expansions from dotgg`);
+  } catch (err) {
+    console.warn(`ptcgpocket.gg expansions API unavailable (${err.message}).`);
+  }
+
+  const expansionEvents = buildExpansionEvents(setsBySeries, dotggSets);
   console.log(`Parsed ${blogEvents.length} events, ${expansionEvents.length} expansions`);
 
   const events = mergeEvents(blogEvents, expansionEvents);

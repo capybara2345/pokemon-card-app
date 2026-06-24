@@ -1,20 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Lang } from "../i18n/translations";
 import {
   EVENT_TYPE_COLORS,
   CalendarEvent,
   EventType,
+  EventsData,
   formatDateKey,
   getEventsOnDate,
   getUpcomingEvents,
   parseDate,
 } from "../data/events";
+import { normalizeEventsData } from "../lib/normalizeEventsData";
 
 type Props = {
   lang: Lang;
-  events: CalendarEvent[];
+  initialEvents: CalendarEvent[];
   labels: {
     title: string;
     upcoming: string;
@@ -172,11 +174,34 @@ function formatEventRange(event: CalendarEvent, lang: Lang) {
   return `${startStr} – ${endStr}`;
 }
 
-export default function EventCalendar({ lang, events, labels }: Props) {
+export default function EventCalendar({ lang, initialEvents, labels }: Props) {
   const today = new Date();
+  const [events, setEvents] = useState(initialEvents);
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [selectedDate, setSelectedDate] = useState<Date>(today);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refreshEvents() {
+      try {
+        const res = await fetch("/data/events.json", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = (await res.json()) as EventsData;
+        if (!cancelled) {
+          setEvents(normalizeEventsData(data).events);
+        }
+      } catch {
+        // 서버에서 전달한 initialEvents 유지
+      }
+    }
+
+    void refreshEvents();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
   const firstWeekday = new Date(viewYear, viewMonth, 1).getDay();

@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Blog events were kept from the last successful sync because ptcgpocket.gg blocked automated access.",
-  "updatedAt": "2026-06-24T16:23:43.669Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.",
+  "updatedAt": "2026-06-24T22:14:36.230Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1371,6 +1371,28 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/sableye-and-floragato-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "expansion-b3b",
+      "startDate": "2026-06-30",
+      "endDate": "2026-06-30",
+      "title": {
+        "en": "Everyday Wonders Expansion",
+        "ko": "미라클 데이즈 확장팩"
+      },
+      "type": "expansion",
+      "url": "https://ptcgpocket.gg/b3b-2/"
+    },
+    {
+      "id": "expansion-b4",
+      "startDate": "2026-07-30",
+      "endDate": "2026-07-30",
+      "title": {
+        "en": "Ruler of Skies Expansion",
+        "ko": "천공의 지배자 확장팩"
+      },
+      "type": "expansion",
+      "url": "https://ptcgpocket.gg/b4/"
     }
   ]
 }

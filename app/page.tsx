@@ -6,6 +6,9 @@ import { loadEventsData } from "./lib/loadEventsData";
 import { translations, Lang } from "./i18n/translations";
 import { SITE_URL } from "./lib/constants";
 
+// events.json 변경이 배포 후 바로 반영되도록 동적 렌더링
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "PPCardList — Pokémon TCG Pocket Tools",
   description:
@@ -276,7 +279,7 @@ export default async function HomePage() {
         </h2>
         <EventCalendar
           lang={lang}
-          events={eventsData.events}
+          initialEvents={eventsData.events}
           labels={{
             title: t.home.eventCalendar,
             upcoming: t.home.upcomingEvents,
