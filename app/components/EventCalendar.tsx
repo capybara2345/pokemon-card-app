@@ -7,9 +7,11 @@ import {
   CalendarEvent,
   EventType,
   EventsData,
+  TentativeEvent,
   formatDateKey,
   getEventsOnDate,
   getUpcomingEvents,
+  getVisibleTentativeEvents,
   parseDate,
 } from "../data/events";
 import { normalizeEventsData } from "../lib/normalizeEventsData";
@@ -17,9 +19,12 @@ import { normalizeEventsData } from "../lib/normalizeEventsData";
 type Props = {
   lang: Lang;
   initialEvents: CalendarEvent[];
+  initialTentativeEvents?: TentativeEvent[];
   labels: {
     title: string;
     upcoming: string;
+    tentative: string;
+    estimated: string;
     noEvents: string;
     ongoing: string;
     scheduleDisclaimer: string;
@@ -174,9 +179,29 @@ function formatEventRange(event: CalendarEvent, lang: Lang) {
   return `${startStr} – ${endStr}`;
 }
 
-export default function EventCalendar({ lang, initialEvents, labels }: Props) {
+function formatEstimatedRange(event: TentativeEvent, lang: Lang) {
+  const start = parseDate(event.estimatedStart);
+  const end = parseDate(event.estimatedEnd);
+  const opts: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" };
+  const locale = lang === "ko" ? "ko-KR" : "en-US";
+  const startStr = start.toLocaleDateString(locale, opts);
+  const endStr = end.toLocaleDateString(locale, opts);
+  const range =
+    event.estimatedStart === event.estimatedEnd
+      ? startStr
+      : `${startStr} – ${endStr}`;
+  return range;
+}
+
+export default function EventCalendar({
+  lang,
+  initialEvents,
+  initialTentativeEvents = [],
+  labels,
+}: Props) {
   const today = new Date();
   const [events, setEvents] = useState(initialEvents);
+  const [tentativeEvents, setTentativeEvents] = useState(initialTentativeEvents);
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [selectedDate, setSelectedDate] = useState<Date>(today);
@@ -190,7 +215,9 @@ export default function EventCalendar({ lang, initialEvents, labels }: Props) {
         if (!res.ok) return;
         const data = (await res.json()) as EventsData;
         if (!cancelled) {
-          setEvents(normalizeEventsData(data).events);
+          const normalized = normalizeEventsData(data);
+          setEvents(normalized.events);
+          setTentativeEvents(normalized.tentativeEvents ?? []);
         }
       } catch {
         // 서버에서 전달한 initialEvents 유지
@@ -223,6 +250,11 @@ export default function EventCalendar({ lang, initialEvents, labels }: Props) {
   const upcomingEvents = useMemo(
     () => getUpcomingEvents(today, events),
     [events, today]
+  );
+
+  const visibleTentativeEvents = useMemo(
+    () => getVisibleTentativeEvents(today, events, tentativeEvents),
+    [events, tentativeEvents, today]
   );
 
   const todayKey = formatDateKey(today);
@@ -398,7 +430,7 @@ export default function EventCalendar({ lang, initialEvents, labels }: Props) {
         <h3 className="mb-3 text-base font-semibold text-slate-800 dark:text-slate-100">
           {labels.upcoming}
         </h3>
-        {upcomingEvents.length === 0 ? (
+        {upcomingEvents.length === 0 && visibleTentativeEvents.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">{labels.noEvents}</p>
         ) : (
           <ul className="space-y-2.5">
@@ -449,6 +481,60 @@ export default function EventCalendar({ lang, initialEvents, labels }: Props) {
               );
             })}
           </ul>
+        )}
+
+        {visibleTentativeEvents.length > 0 && (
+          <div
+            className={
+              upcomingEvents.length > 0
+                ? "mt-4 border-t border-slate-100 pt-4 dark:border-slate-700"
+                : ""
+            }
+          >
+            <h4 className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              {labels.tentative}
+            </h4>
+            <ul className="space-y-2.5">
+              {visibleTentativeEvents.map((event) => (
+                <li key={event.id}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const d = parseDate(event.estimatedStart);
+                      setViewYear(d.getFullYear());
+                      setViewMonth(d.getMonth());
+                      setSelectedDate(d);
+                    }}
+                    className="w-full rounded-lg border border-dashed border-slate-200 bg-slate-50/80 px-2.5 py-2 text-left transition-colors hover:border-indigo-200 hover:bg-indigo-50/50 dark:border-slate-600 dark:bg-slate-800/50 dark:hover:border-indigo-800 dark:hover:bg-indigo-950/30"
+                  >
+                    <div className="flex items-start gap-2">
+                      <span className="mt-1 flex shrink-0 items-center justify-center opacity-70">
+                        {event.type === "expansion" ? (
+                          <StarIcon
+                            size="md"
+                            className="text-amber-500 dark:text-amber-400"
+                          />
+                        ) : (
+                          <EventMarker type={event.type} size="md" />
+                        )}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-medium text-slate-700 dark:text-slate-200">
+                          {event.title[lang]}
+                        </p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                          {formatEstimatedRange(event, lang)}
+                          <span className="ml-1.5 font-medium text-amber-600 dark:text-amber-400">
+                            · {labels.estimated}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
         <div className="mt-4 border-t border-slate-100 pt-3 dark:border-slate-700">

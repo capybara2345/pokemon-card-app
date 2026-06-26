@@ -280,9 +280,12 @@ export default async function HomePage() {
         <EventCalendar
           lang={lang}
           initialEvents={eventsData.events}
+          initialTentativeEvents={eventsData.tentativeEvents ?? []}
           labels={{
             title: t.home.eventCalendar,
             upcoming: t.home.upcomingEvents,
+            tentative: t.home.tentativeEvents,
+            estimated: t.home.estimatedDate,
             noEvents: t.home.noEvents,
             ongoing: t.home.ongoing,
             scheduleDisclaimer: t.home.scheduleDisclaimer,

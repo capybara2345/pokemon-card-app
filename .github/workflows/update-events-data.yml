@@ -31,8 +31,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright browser for Pokemon Zone
+        run: npx playwright install firefox --with-deps
+
       - name: Run sync script
         run: npm run sync:events
+        env:
+          PZ_BROWSER: firefox
 
       - name: Commit and push changes
         env:

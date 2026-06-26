@@ -11,5 +11,7 @@ export function normalizeEventsData(data: EventsData): EventsData {
         ko: localizeEventTitleKo(event.title.en),
       },
     })),
+    tentativeEvents: data.tentativeEvents,
+    tentativeMeta: data.tentativeMeta,
   };
 }

@@ -1,6 +1,9 @@
 import { writeFileSync, readFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { TENTATIVE_LOCALIZATIONS, MANUAL_TENTATIVE_EVENTS } from "./tentative-events-data.mjs";
+import { buildTentativeEvents } from "./lib/build-tentative-events.mjs";
+import { fetchPokemonZoneUpcoming } from "./lib/pokemon-zone-schedule.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT = join(__dirname, "..", "public", "data", "events.json");
@@ -437,6 +440,70 @@ function mergeEvents(...groups) {
   return [...merged.values()].sort((a, b) => a.startDate.localeCompare(b.startDate));
 }
 
+function loadCachedTentativeEvents() {
+  if (!existsSync(OUTPUT)) return [];
+
+  const existing = JSON.parse(readFileSync(OUTPUT, "utf8"));
+  return existing.tentativeEvents ?? [];
+}
+
+async function fetchTentativeEvents(confirmedEvents) {
+  const cachedTentativeEvents = loadCachedTentativeEvents();
+  const buildOptions = {
+    confirmedEvents,
+    cachedTentativeEvents,
+    manualEvents: MANUAL_TENTATIVE_EVENTS,
+    localizations: TENTATIVE_LOCALIZATIONS,
+  };
+
+  if (process.env.SKIP_PZ_TENTATIVE === "1") {
+    console.warn("SKIP_PZ_TENTATIVE=1 — using manual/cache tentative events only");
+    const built = buildTentativeEvents({
+      ...buildOptions,
+      pzFetchFailed: true,
+    });
+
+    return {
+      tentativeEvents: built.events,
+      tentativeMeta: {
+        source: "manual + cache",
+        pzStatus: "skipped",
+        pzRawCount: 0,
+        ...built.meta,
+      },
+    };
+  }
+
+  let pzUpcomingEvents = [];
+  let pzFetchFailed = false;
+
+  try {
+    pzUpcomingEvents = await fetchPokemonZoneUpcoming();
+    console.log(`Fetched ${pzUpcomingEvents.length} upcoming events from Pokemon Zone`);
+  } catch (err) {
+    pzFetchFailed = true;
+    console.warn(`Pokemon Zone upcoming fetch failed (${err.message}).`);
+  }
+
+  const built = buildTentativeEvents({
+    ...buildOptions,
+    pzUpcomingEvents,
+    pzFetchFailed,
+  });
+
+  const pzStatus = pzFetchFailed ? "failed" : pzUpcomingEvents.length === 0 ? "empty" : "ok";
+
+  return {
+    tentativeEvents: built.events,
+    tentativeMeta: {
+      source: "pokemon-zone.com/schedule/upcoming/ + manual",
+      pzStatus,
+      pzRawCount: pzUpcomingEvents.length,
+      ...built.meta,
+    },
+  };
+}
+
 async function main() {
   let blogEvents = [];
   let blogEventsFromCache = false;
@@ -519,21 +586,44 @@ async function main() {
     );
   }
 
+  const { tentativeEvents, tentativeMeta } = await fetchTentativeEvents(events);
+
+  if (tentativeMeta.pzStatus === "failed") {
+    disclaimerNotes.push(
+      "Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched."
+    );
+  } else if (tentativeMeta.pzStatus === "empty") {
+    disclaimerNotes.push(
+      "Estimated schedule used manual or cached entries because Pokemon Zone upcoming returned no parseable events."
+    );
+  } else if (tentativeMeta.pzStatus === "ok") {
+    disclaimerNotes.push(
+      `Estimated schedule merged ${tentativeMeta.autoCount} Pokemon Zone item(s) with manual/cache entries (datamined, may change).`
+    );
+  }
+
   const disclaimer =
     disclaimerNotes.length > 0
       ? `Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. ${disclaimerNotes.join(" ")}`
       : "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.";
 
   const payload = {
-    source: "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
+    source: "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
     sourceUrl: SOURCE_URL,
     disclaimer,
     updatedAt: new Date().toISOString(),
     events,
+    tentativeEvents,
+    tentativeMeta: {
+      ...tentativeMeta,
+      updatedAt: new Date().toISOString(),
+    },
   };
 
   writeFileSync(OUTPUT, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
-  console.log(`Wrote ${events.length} events to ${OUTPUT}`);
+  console.log(
+    `Wrote ${events.length} events and ${tentativeEvents.length} tentative events to ${OUTPUT} (pz: ${tentativeMeta.pzStatus}, auto: ${tentativeMeta.autoCount}, manual: ${tentativeMeta.manualCount}, cache: ${tentativeMeta.cacheCount})`
+  );
 }
 
 main().catch((err) => {

@@ -1,8 +1,8 @@
 {
-  "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database",
+  "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Blog events were kept from the last successful sync because ptcgpocket.gg blocked automated access. Some expansion dates were kept from the last successful sync because ptcgpocket.gg blocked automated access.",
-  "updatedAt": "2026-06-25T16:27:23.884Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule.",
+  "updatedAt": "2026-06-26T15:30:30.844Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1380,7 +1380,83 @@
         "en": "Everyday Wonders Expansion",
         "ko": "미라클 데이즈 확장팩"
       },
-      "type": "expansion"
+      "type": "expansion",
+      "url": "https://ptcgpocket.gg/b3b-2/"
+    },
+    {
+      "id": "expansion-b4",
+      "startDate": "2026-07-30",
+      "endDate": "2026-07-30",
+      "title": {
+        "en": "Ruler of Skies Expansion",
+        "ko": "천공의 지배자 확장팩"
+      },
+      "type": "expansion",
+      "url": "https://ptcgpocket.gg/b4/"
     }
-  ]
+  ],
+  "tentativeEvents": [
+    {
+      "id": "tentative-everyday-wonders-emblem",
+      "type": "emblem",
+      "estimatedStart": "2026-07-01",
+      "estimatedEnd": "2026-07-15",
+      "title": {
+        "en": "Everyday Wonders Emblem",
+        "ko": "미라클 데이즈 엠블럼"
+      },
+      "source": "manual"
+    },
+    {
+      "id": "tentative-july-community-week",
+      "type": "community",
+      "estimatedStart": "2026-07-10",
+      "estimatedEnd": "2026-07-20",
+      "title": {
+        "en": "Community Week",
+        "ko": "커뮤니티 위크"
+      },
+      "source": "manual"
+    },
+    {
+      "id": "tentative-hisuian-zorua-drop",
+      "type": "drop",
+      "estimatedStart": "2026-07-15",
+      "estimatedEnd": "2026-07-28",
+      "title": {
+        "en": "Hisuian Zorua Drop",
+        "ko": "히스이 조로아 드롭"
+      },
+      "source": "manual"
+    },
+    {
+      "id": "tentative-growlithe-emolga-wonder",
+      "type": "wonder",
+      "estimatedStart": "2026-07-15",
+      "estimatedEnd": "2026-07-28",
+      "title": {
+        "en": "Growlithe & Emolga Wonder Pick",
+        "ko": "가디·에몽가 원더픽"
+      },
+      "source": "manual"
+    }
+  ],
+  "tentativeMeta": {
+    "source": "manual + cache",
+    "pzStatus": "skipped",
+    "pzRawCount": 0,
+    "autoCount": 0,
+    "manualCount": 4,
+    "cacheCount": 4,
+    "mergedCount": 4,
+    "visibleCount": 4,
+    "usedCache": true,
+    "sources": {
+      "pokemon-zone": 0,
+      "manual": 4,
+      "cache": 0,
+      "unknown": 0
+    },
+    "updatedAt": "2026-06-26T15:30:30.844Z"
+  }
 }

@@ -32,6 +32,8 @@ export type Translations = {
     tournamentDesc: string;
     eventCalendar: string;
     upcomingEvents: string;
+    tentativeEvents: string;
+    estimatedDate: string;
     noEvents: string;
     ongoing: string;
     scheduleDisclaimer: string;
@@ -280,6 +282,8 @@ export const ko: Translations = {
     tournamentDesc: "최신 메타 덱 확인",
     eventCalendar: "이벤트 캘린더",
     upcomingEvents: "다가오는 이벤트",
+    tentativeEvents: "예상 일정",
+    estimatedDate: "예상 기간",
     noEvents: "예정된 이벤트가 없습니다.",
     ongoing: "진행 중",
     scheduleDisclaimer:
@@ -674,6 +678,8 @@ export const en: Translations = {
     tournamentDesc: "Check latest meta decks",
     eventCalendar: "Event Calendar",
     upcomingEvents: "Upcoming Events",
+    tentativeEvents: "Estimated Schedule",
+    estimatedDate: "Est. period",
     noEvents: "No upcoming events.",
     ongoing: "Ongoing",
     scheduleDisclaimer:
