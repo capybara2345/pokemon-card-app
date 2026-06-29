@@ -109,6 +109,16 @@ export function getEventsOnDate(date: Date, events: CalendarEvent[]): CalendarEv
   return events.filter((e) => key >= e.startDate && key <= e.endDate);
 }
 
+export function getTentativeEventsOnDate(
+  date: Date,
+  tentativeEvents: TentativeEvent[]
+): TentativeEvent[] {
+  const key = formatDateKey(date);
+  return tentativeEvents.filter(
+    (e) => key >= e.estimatedStart && key <= e.estimatedEnd
+  );
+}
+
 export function getUpcomingEvents(
   from: Date,
   events: CalendarEvent[],

@@ -10,6 +10,7 @@ import {
   TentativeEvent,
   formatDateKey,
   getEventsOnDate,
+  getTentativeEventsOnDate,
   getUpcomingEvents,
   getVisibleTentativeEvents,
   parseDate,
@@ -168,6 +169,29 @@ function pickDayMarkers(events: CalendarEvent[]) {
   };
 }
 
+function TentativeMarker({
+  type,
+  selected = false,
+  size = "sm",
+}: {
+  type: EventType;
+  selected?: boolean;
+  size?: "sm" | "md";
+}) {
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center justify-center rounded-full ring-1 ring-dashed ${
+        selected
+          ? "opacity-90 ring-white/70"
+          : "opacity-65 ring-slate-400 dark:ring-slate-500"
+      } ${size === "md" ? "p-0.5" : "p-px"}`}
+      title="estimated"
+    >
+      <EventMarker type={type} selected={selected} size={size} />
+    </span>
+  );
+}
+
 function formatEventRange(event: CalendarEvent, lang: Lang) {
   const start = parseDate(event.startDate);
   const end = parseDate(event.endDate);
@@ -247,14 +271,19 @@ export default function EventCalendar({
     [selectedDate, events]
   );
 
-  const upcomingEvents = useMemo(
-    () => getUpcomingEvents(today, events),
-    [events, today]
-  );
-
   const visibleTentativeEvents = useMemo(
     () => getVisibleTentativeEvents(today, events, tentativeEvents),
     [events, tentativeEvents, today]
+  );
+
+  const selectedTentativeEvents = useMemo(
+    () => getTentativeEventsOnDate(selectedDate, visibleTentativeEvents),
+    [selectedDate, visibleTentativeEvents]
+  );
+
+  const upcomingEvents = useMemo(
+    () => getUpcomingEvents(today, events),
+    [events, today]
   );
 
   const todayKey = formatDateKey(today);
@@ -344,14 +373,23 @@ export default function EventCalendar({
             }
 
             const dayEvents = getEventsOnDate(date, events);
+            const dayTentative = getTentativeEventsOnDate(date, visibleTentativeEvents);
             const hasExpansion = dayEvents.some((e) => e.type === "expansion");
+            const hasTentativeExpansion = dayTentative.some((e) => e.type === "expansion");
             const rankedSeason = hasRankedOnDate(date, events);
             const markerSource = dayEvents.filter(
               (e) => e.type !== "expansion" && e.type !== "ranked"
             );
             const { visible: markerEvents, overflow } = pickDayMarkers(markerSource);
+            const tentativeMarkers = dayTentative.filter(
+              (e) => e.type !== "expansion" && e.type !== "ranked"
+            );
+            const tentativeOverflow =
+              tentativeMarkers.length > 2 ? tentativeMarkers.length - 2 : 0;
+            const visibleTentativeMarkers = tentativeMarkers.slice(0, 2);
             const selected = isSameDay(date, selectedDate);
             const todayMark = isToday(date);
+            const hasTentativeOnDay = dayTentative.length > 0;
 
             return (
               <button
@@ -362,15 +400,30 @@ export default function EventCalendar({
                   selected,
                   todayMark,
                   rankedSeason
-                )}`}
+                )}${hasTentativeOnDay && !selected ? " ring-1 ring-dashed ring-amber-300/80 dark:ring-amber-600/50" : ""}`}
               >
-                {hasExpansion && (
+                {(hasExpansion || hasTentativeExpansion) && (
                   <span className="pointer-events-none absolute right-0.5 top-0.5 lg:right-1 lg:top-1">
-                    <ExpansionStar selected={selected} />
+                    {hasExpansion ? (
+                      <ExpansionStar selected={selected} />
+                    ) : (
+                      <span
+                        className={`inline-flex rounded-full ring-1 ring-dashed ${
+                          selected
+                            ? "ring-white/70 opacity-90"
+                            : "ring-amber-400/80 opacity-65 dark:ring-amber-500/70"
+                        }`}
+                      >
+                        <ExpansionStar selected={selected} />
+                      </span>
+                    )}
                   </span>
                 )}
                 <span>{date.getDate()}</span>
-                {(markerEvents.length > 0 || overflow > 0) && (
+                {(markerEvents.length > 0 ||
+                  overflow > 0 ||
+                  visibleTentativeMarkers.length > 0 ||
+                  tentativeOverflow > 0) && (
                   <span className="flex max-w-full flex-wrap items-center justify-center gap-0.5 px-0.5">
                     {markerEvents.map((e) => (
                       <EventMarker key={e.id} type={e.type} selected={selected} />
@@ -384,6 +437,20 @@ export default function EventCalendar({
                         }`}
                       >
                         +{overflow}
+                      </span>
+                    )}
+                    {visibleTentativeMarkers.map((e) => (
+                      <TentativeMarker key={e.id} type={e.type} selected={selected} />
+                    ))}
+                    {tentativeOverflow > 0 && (
+                      <span
+                        className={`text-[9px] font-semibold leading-none ${
+                          selected
+                            ? "text-white/70"
+                            : "text-amber-500/80 dark:text-amber-400/80"
+                        }`}
+                      >
+                        +{tentativeOverflow}
                       </span>
                     )}
                   </span>
@@ -406,9 +473,13 @@ export default function EventCalendar({
             <span className="h-2.5 w-4 rounded-sm border border-rose-200 bg-rose-100 dark:border-rose-800 dark:bg-rose-900/40" />
             {lang === "ko" ? "랭크 시즌" : "Ranked season"}
           </span>
+          <span className="inline-flex items-center gap-1">
+            <TentativeMarker type="mission" />
+            {lang === "ko" ? "예상 일정" : "Estimated"}
+          </span>
         </div>
 
-        {selectedEvents.length > 0 && (
+        {(selectedEvents.length > 0 || selectedTentativeEvents.length > 0) && (
           <div className="mt-3 border-t border-slate-100 pt-3 dark:border-slate-700">
             <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2">
               {selectedDate.toLocaleDateString(lang === "ko" ? "ko-KR" : "en-US", {
@@ -420,6 +491,14 @@ export default function EventCalendar({
             <ul className="space-y-2">
               {selectedEvents.map((event) => (
                 <EventItem key={event.id} event={event} lang={lang} />
+              ))}
+              {selectedTentativeEvents.map((event) => (
+                <TentativeEventItem
+                  key={event.id}
+                  event={event}
+                  lang={lang}
+                  estimatedLabel={labels.estimated}
+                />
               ))}
             </ul>
           </div>
@@ -544,6 +623,38 @@ export default function EventCalendar({
         </div>
       </div>
     </div>
+  );
+}
+
+function TentativeEventItem({
+  event,
+  lang,
+  estimatedLabel,
+}: {
+  event: TentativeEvent;
+  lang: Lang;
+  estimatedLabel: string;
+}) {
+  const colors = EVENT_TYPE_COLORS[event.type];
+  return (
+    <li
+      className={`flex items-center gap-2 rounded-lg border border-dashed px-3 py-2 text-sm ${colors.bg} ${colors.text} border-slate-300/80 dark:border-slate-600`}
+    >
+      {event.type === "expansion" ? (
+        <StarIcon size="md" className="text-amber-500 dark:text-amber-400 opacity-70" />
+      ) : (
+        <TentativeMarker type={event.type} size="md" />
+      )}
+      <div className="min-w-0">
+        <span className="font-medium">{event.title[lang]}</span>
+        <p className="text-xs opacity-80">
+          {formatEstimatedRange(event, lang)}
+          <span className="ml-1.5 font-medium text-amber-700 dark:text-amber-300">
+            · {estimatedLabel}
+          </span>
+        </p>
+      </div>
+    </li>
   );
 }
 
