@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming returned no parseable events.",
-  "updatedAt": "2026-06-29T16:58:16.406Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 12 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-06-30T16:28:51.215Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1380,8 +1380,7 @@
         "en": "Everyday Wonders Expansion",
         "ko": "미라클 데이즈 확장팩"
       },
-      "type": "expansion",
-      "url": "https://ptcgpocket.gg/b3b-2/"
+      "type": "expansion"
     },
     {
       "id": "expansion-b4",
@@ -1397,6 +1396,17 @@
   ],
   "tentativeEvents": [
     {
+      "id": "pz-july-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-07-01",
+      "estimatedEnd": "2026-08-01",
+      "title": {
+        "en": "July 2026 Premium Missions",
+        "ko": "July 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
       "id": "tentative-everyday-wonders-emblem",
       "type": "emblem",
       "estimatedStart": "2026-07-01",
@@ -1408,6 +1418,17 @@
       "source": "manual"
     },
     {
+      "id": "pz-pvp-emblem-battles",
+      "type": "emblem",
+      "estimatedStart": "2026-07-03",
+      "estimatedEnd": "2026-07-13",
+      "title": {
+        "en": "PVP Emblem Battles",
+        "ko": "PVP Emblem Battles"
+      },
+      "source": "pokemon-zone"
+    },
+    {
       "id": "tentative-july-community-week",
       "type": "community",
       "estimatedStart": "2026-07-10",
@@ -1415,6 +1436,17 @@
       "title": {
         "en": "Community Week",
         "ko": "커뮤니티 위크"
+      },
+      "source": "manual"
+    },
+    {
+      "id": "tentative-growlithe-emolga-wonder",
+      "type": "wonder",
+      "estimatedStart": "2026-07-15",
+      "estimatedEnd": "2026-07-28",
+      "title": {
+        "en": "Growlithe & Emolga Wonder Pick",
+        "ko": "가디·에몽가 원더픽"
       },
       "source": "manual"
     },
@@ -1430,33 +1462,33 @@
       "source": "manual"
     },
     {
-      "id": "tentative-growlithe-emolga-wonder",
-      "type": "wonder",
-      "estimatedStart": "2026-07-15",
-      "estimatedEnd": "2026-07-28",
+      "id": "pz-hisuian-zoroa-drop-event",
+      "type": "drop",
+      "estimatedStart": "2026-07-16",
+      "estimatedEnd": "2026-07-26",
       "title": {
-        "en": "Growlithe & Emolga Wonder Pick",
-        "ko": "가디·에몽가 원더픽"
+        "en": "Hisuian Zoroa Drop event",
+        "ko": "Hisuian Zoroa Drop event"
       },
-      "source": "manual"
+      "source": "pokemon-zone"
     }
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "empty",
-    "pzRawCount": 0,
-    "autoCount": 0,
+    "pzStatus": "ok",
+    "pzRawCount": 12,
+    "autoCount": 12,
     "manualCount": 4,
-    "cacheCount": 4,
-    "mergedCount": 4,
-    "visibleCount": 4,
-    "usedCache": true,
+    "cacheCount": 0,
+    "mergedCount": 7,
+    "visibleCount": 7,
+    "usedCache": false,
     "sources": {
-      "pokemon-zone": 0,
+      "pokemon-zone": 3,
       "manual": 4,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-06-29T16:58:16.406Z"
+    "updatedAt": "2026-06-30T16:28:51.215Z"
   }
 }
