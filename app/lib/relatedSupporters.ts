@@ -18,6 +18,7 @@ export function getRelatedSupporters(card: PokemonCard): string[] {
   if (card.타입 === "물") supporters.push("이슬");
   if (card.타입 === "물") supporters.push("낚시꾼");
   if (card.타입 === "물" && !card.카드타입?.includes("메가ex")) supporters.push("파라솔 아가씨");
+  if (card.타입 === "물" && card.HP <= 50) supporters.push("윤진");
   if (card.타입 === "초") supporters.push("유빈");
   if (card.타입 === "초") supporters.push("카르네");
   if (card.타입 === "격투") supporters.push("등산가");
@@ -52,6 +53,7 @@ export function getRelatedSupporters(card: PokemonCard): string[] {
   if (card.이름 === "빠르모트") supporters.push("네모");
   if (card.이름 === "엑스라이즈") supporters.push("아이리스");
   if (card.이름 === "보르그" || card.이름 === "바랜드") supporters.push("체렌");
+  if (card.기술명 === "강아지투성이") supporters.push("퍼피 러빙걸");
   const typeFlags = parseCardTypeFlags(card.카드타입);
   if (typeFlags.ultraBeast) supporters.push("루자미네");
   if (typeFlags.megaEx) {

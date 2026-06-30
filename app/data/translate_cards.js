@@ -657,6 +657,7 @@ const EXPANSIONS = {
   '샤이닝 메가':'Mega Shine',
   '파동 비트':'Pulsing Aura',
   '진격 패러독스':'Paradox Drive',
+  '미라클 데이즈':'Everyday Wonders',
   '프로모':'Promo-A',
 };
 

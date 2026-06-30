@@ -6,6 +6,10 @@ const ABILITIES_API = require('./pokeapi_abilities_ko_en.json');
 const MOVES_LOCAL = require('./final_move_map.json');
 const TRAINER_MAP = require('./trainer_map.json');
 const KEYWORD_MAP = require('./keyword_map.json');
+const B3B_SUPPLEMENT = require('./b3b_en_supplement.json');
+
+Object.assign(TRAINER_MAP, B3B_SUPPLEMENT.trainers || {});
+Object.assign(KEYWORD_MAP, B3B_SUPPLEMENT.keywords || {});
 
 Object.assign(TRAINER_MAP, {
   '부스트에너지 고대': 'Ancient Booster Energy Capsule',
@@ -49,6 +53,7 @@ const ADDON_POKEMON = {
   '테라파고스': 'Terapagos', '테라파고스 ex': 'Terapagos ex',
   '지가르데': 'Zygarde', '지가르데 ex': 'Zygarde ex',
   '메가헤라크로스': 'Mega Heracross', '메가헤라크로스 ex': 'Mega Heracross ex',
+  ...(B3B_SUPPLEMENT.pokemon || {}),
 };
 
 const TCG_ABILITIES = {
@@ -224,12 +229,12 @@ function loadJson(name) {
 }
 
 function loadTcgMoveMap() {
-  return loadJson('./tcg_move_map.json');
+  return { ...loadJson('./tcg_move_map.json'), ...(B3B_SUPPLEMENT.moves || {}) };
 }
 
-const TCG_ABILITIES_EXTRA = loadJson('./tcg_ability_map.json');
-const MOVE_EFFECT_MAP = loadJson('./tcg_move_effect_map.json');
-const ABILITY_EFFECT_MAP = loadJson('./tcg_ability_effect_map.json');
+const TCG_ABILITIES_EXTRA = { ...loadJson('./tcg_ability_map.json'), ...(B3B_SUPPLEMENT.abilities || {}) };
+const MOVE_EFFECT_MAP = { ...loadJson('./tcg_move_effect_map.json'), ...(B3B_SUPPLEMENT.moveEffects || {}) };
+const ABILITY_EFFECT_MAP = { ...loadJson('./tcg_ability_effect_map.json'), ...(B3B_SUPPLEMENT.abilityEffects || {}) };
 
 let _nameReplacements = null;
 

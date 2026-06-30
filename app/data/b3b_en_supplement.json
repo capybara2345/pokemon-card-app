@@ -1,0 +1,100 @@
+{
+  "expansions": {
+    "미라클 데이즈": "Everyday Wonders"
+  },
+  "pokemon": {
+    "히스이 드레디어": "Hisuian Lilligant",
+    "메가디안시 ex": "Mega Diancie ex",
+    "메가깜까미 ex": "Mega Sableye ex",
+    "히스이 미끄네일": "Hisuian Sliggoo",
+    "히스이 미끄래곤": "Hisuian Goodra",
+    "히스이 조로아": "Hisuian Zorua",
+    "히스이 조로아크 ex": "Hisuian Zoroark ex",
+    "쫀도기": "Fidough",
+    "멜리시": "Carbink",
+    "러브로스": "Enamorus",
+    "탐리스": "Skwovet",
+    "요씽리스": "Greedent",
+    "트리미앙": "Furfrou"
+  },
+  "trainers": {
+    "작은 풍선": "Small Balloon",
+    "우아한 망토": "Elegant Cape",
+    "카밀레": "Elesa",
+    "퍼피 러빙걸": "Puppy-Loving Girl",
+    "윤진": "Wallace",
+    "아이 방": "Kid's Room"
+  },
+  "moves": {
+    "해님윈드": "Sunny Wind",
+    "가만히있기": "Rest",
+    "불꽃세례춤": "Fire Dance",
+    "괴상한염력파": "Bizarre Force",
+    "드레스업": "Dress Up",
+    "아쿠아불릿": "Aqua Bullet",
+    "번들펌프": "Bundle Pump",
+    "기계장치썬더": "Gadget Thunder",
+    "데데서클": "Dede Circle",
+    "반짝이는소포": "Sparkling Sap",
+    "브릴리언트 스톰": "Brilliant Storm",
+    "사랑의일격": "Love Strike",
+    "비상하는재앙": "Soaring Disaster",
+    "커스주얼": "Curse Jewel",
+    "마무리하기": "Finish Off",
+    "배드포이즌": "Bad Poison",
+    "더욱더욱드로": "Draw Even More",
+    "꾸욱꾸욱": "Squishy Squishy",
+    "원한의환영": "Grudge Mirage",
+    "두번박치기": "Double Headbutt",
+    "들뜸": "Frolic",
+    "진검승부": "Blade Bout",
+    "메가톤펀치": "Mega Punch",
+    "몸통박치기": "Body Slam",
+    "쓰러지기": "Tumble Down"
+  },
+  "abilities": {
+    "자라는 시기": "Quick Growth",
+    "아쿠아 차지": "Aqua Charge",
+    "치유의 리본": "Healing Ribbon",
+    "둥지 숨기 가드": "Nest Hide Guard",
+    "근성": "Guts"
+  },
+  "moveEffects": {
+    "동전을 9번 던져서 앞면이 나온 수 × 20데미지를 준다.": "Flip 9 coins. This attack does 20 damage for each heads.",
+    "이 포켓몬에게 「포켓몬의 도구」가 붙어 있다면 20데미지를 추가한다.": "If this Pokémon has a Pokémon Tool attached, this attack does 20 more damage.",
+    "동전을 1번 던져서 앞면이 나오면 50데미지를 추가한다. 뒷면이 나오면 이 포켓몬에게도 50데미지를 준다.": "Flip a coin. If heads, this attack does 50 more damage. If tails, this Pokémon also does 50 damage to itself.",
+    "상대의 다음 차례에 이 기술을 받은 포켓몬이 사용하는 기술의 데미지를 -20한다.": "During your opponent's next turn, attacks used by the Defending Pokémon do 20 less damage.",
+    "상대의 다음 차례에 이 포켓몬이 기술의 데미지를 받았을 때 기술을 사용한 포켓몬에게 40데미지를 준다.": "During your opponent's next turn, if this Pokémon is damaged by an attack, do 40 damage to the Attacking Pokémon.",
+    "상대의 배틀 포켓몬이 가진 기술에서 랜덤으로 1개가 선택되어 상대의 다음 차례에 이 기술을 받은 포켓몬은 선택된 기술을 사용할 수 없다.": "1 of the Defending Pokémon's attacks is chosen at random. During your opponent's next turn, that Pokémon can't use the chosen attack.",
+    "상대의 배틀 포켓몬이 데미지를 받고 있다면 60데미지를 추가한다.": "If your opponent's Active Pokémon has damage on it, this attack does 60 more damage.",
+    "상대의 배틀 포켓몬이 독이라면 60데미지를 추가한다.": "If your opponent's Active Pokémon is Poisoned, this attack does 60 more damage.",
+    "상대의 차례 마지막에 이 포켓몬이 배틀필드에 있다면 이 포켓몬에서 진화하는 카드를 자신의 덱에서 랜덤으로 1장 이 포켓몬에게 올려서 진화시킨다.": "At the end of your opponent's turn, if this Pokémon is in the Active Spot, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
+    "서로의 포켓몬 전원으로부터 「포켓몬의 도구」를 모두 주인의 패로 되돌린다.": "Put all Pokémon Tools attached to each player's Pokémon into their owner's hand.",
+    "서로의 플레이어는 자신의 차례에 1번 사용할 수 있다. 자신의 패를 1장 선택해서 랜덤하게 「포켓몬의 도구」 1장과 교체한다.": "Once during their turn, each player may choose 1 card from their hand and swap it with a random Pokémon Tool card.",
+    "이 차례에 이 포켓몬이 벤치에서 배틀필드로 나오지 않았다면 이 기술은 실패한다.": "If this Pokémon didn't move from the Bench to the Active Spot this turn, this attack fails.",
+    "이 카드를 붙이고 있는 1진화 포켓몬의 최대 HP를 +30한다.": "The Stage 1 Pokémon this card is attached to gets +30 HP.",
+    "이 카드를 붙이고 있는 기본 포켓몬의 후퇴에 필요한 에너지를 1개 적게 만든다.": "The Basic Pokémon this card is attached to has a Retreat Cost of 1 less.",
+    "이 포켓몬에게 「포켓몬의 도구」가 붙어 있다면 자신의 차례에 1번 사용할 수 있다. 자신의 포켓몬 1마리의 HP를 30회복.": "If this Pokémon has a Pokémon Tool attached, once during your turn, you may heal 30 HP from 1 of your Pokémon.",
+    "이 포켓몬의 에너지의 타입과 상대 배틀 포켓몬의 에너지의 타입이 1종류 이상 같으면 60데미지를 추가한다.": "If this Pokémon and your opponent's Active Pokémon share at least 1 Energy type, this attack does 60 more damage.",
+    "이 포켓몬이 기술의 데미지를 받을 때 자신의 동전을 1번 던진다. 앞면이 나오면 이 포켓몬이 받는 기술의 데미지를 -80한다.": "If this Pokémon is damaged by an attack, flip a coin. If heads, this Pokémon takes 80 less damage from that attack.",
+    "자신의 덱을 위에서부터 4장 보고 그 중에서 기술 「강아지투성이」를 가진 포켓몬을 모두 패로 가져온다. 남은 카드는 덱으로 되돌린다.": "Look at the top 4 cards of your deck, put all Pokémon you find there that have the Puppy Pile attack into your hand, and shuffle the other cards back into your deck.",
+    "자신의 트래쉬에 있는 포켓몬의 장수 × 20데미지를 추가한다.": "This attack does 20 more damage for each Pokémon in your discard pile.",
+    "자신의 포켓몬 전원의 「포켓몬의 도구」의 수 × 30데미지를 준다.": "This attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+    "자신의 포켓몬 전원의 「포켓몬의 도구」의 수 × 40데미지를 준다.": "This attack does 40 damage for each Pokémon Tool attached to all of your Pokémon.",
+    "자신의 포켓몬 전원의 초에너지의 개수 × 20데미지를 추가한다.": "This attack does 20 more damage for each Psychic Energy attached to all of your Pokémon.",
+    "자신의 필드의 최대 HP가 50이하인 물포켓몬을 1마리 선택해서 그 포켓몬에서 진화하는 물포켓몬을 자신의 덱에서 랜덤으로 1장 그 포켓몬에게 올려서 진화시킨다.": "Choose 1 of your Water Pokémon in play with 50 HP or less remaining. Put a random Water Pokémon from your deck that evolves from that Pokémon onto it to evolve it.",
+    "상대의 배틀 포켓몬을 독으로 만든다. 이 독의 데미지는 40이 된다.": "Your opponent's Active Pokémon is now Poisoned. Do 40 damage to this Pokémon instead of the usual amount for this Special Condition.",
+    "자신의 벤치 포켓몬을 2마리 선택해서 에너지존에서 초에너지를 내보내 1개씩 붙인다.": "Choose 2 of your Benched Pokémon. For each of them, take a Psychic Energy from your Energy Zone and attach it to that Pokémon."
+  },
+  "abilityEffects": {
+    "상대의 차례 마지막에 이 포켓몬이 배틀필드에 있다면 이 포켓몬에서 진화하는 카드를 자신의 덱에서 랜덤으로 1장 이 포켓몬에게 올려서 진화시킨다.": "At the end of your opponent's turn, if this Pokémon is in the Active Spot, put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.",
+    "이 포켓몬에게 「포켓몬의 도구」가 붙어 있다면 자신의 차례에 1번 사용할 수 있다. 자신의 포켓몬 1마리의 HP를 30회복.": "If this Pokémon has a Pokémon Tool attached, once during your turn, you may heal 30 HP from 1 of your Pokémon.",
+    "이 포켓몬이 기술의 데미지를 받을 때 자신의 동전을 1번 던진다. 앞면이 나오면 이 포켓몬이 받는 기술의 데미지를 -80한다.": "If this Pokémon is damaged by an attack, flip a coin. If heads, this Pokémon takes 80 less damage from that attack.",
+    "자신의 차례에 1번 사용할 수 있다. 자신의 에너지존에서 물에너지를 1개 내보내 이 포켓몬에게 붙인다.": "Once during your turn, you may take 1 Water Energy from your Energy Zone and attach it to this Pokémon."
+  },
+  "keywords": {
+    "도구 회수": "Tool Recovery",
+    "등장 조건 실패": "Entry Condition Fail",
+    "패-도구 교체": "Hand-Tool Swap"
+  }
+}

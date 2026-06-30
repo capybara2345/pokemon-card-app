@@ -108,6 +108,12 @@ export function getRelatedTools(card: PokemonCard): string[] {
   if (card.후퇴에너지 >= 3) {
     pushUnique(tools, "헤비멧");
   }
+  if (BASIC_STAGE.has(card.진화)) {
+    pushUnique(tools, "작은 풍선");
+  }
+  if (STAGE_1.has(card.진화)) {
+    pushUnique(tools, "우아한 망토");
+  }
   if (STAGE_2.has(card.진화)) {
     pushUnique(tools, "커다란풍선");
   }
