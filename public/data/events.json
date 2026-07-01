@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 12 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-06-30T16:28:51.215Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 10 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-01T16:32:57.527Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1396,17 +1396,6 @@
   ],
   "tentativeEvents": [
     {
-      "id": "pz-july-2026-premium-missions",
-      "type": "mission",
-      "estimatedStart": "2026-07-01",
-      "estimatedEnd": "2026-08-01",
-      "title": {
-        "en": "July 2026 Premium Missions",
-        "ko": "July 2026 Premium Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
       "id": "tentative-everyday-wonders-emblem",
       "type": "emblem",
       "estimatedStart": "2026-07-01",
@@ -1476,19 +1465,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 12,
-    "autoCount": 12,
+    "pzRawCount": 10,
+    "autoCount": 10,
     "manualCount": 4,
     "cacheCount": 0,
-    "mergedCount": 7,
-    "visibleCount": 7,
+    "mergedCount": 6,
+    "visibleCount": 6,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 2,
       "manual": 4,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-06-30T16:28:51.215Z"
+    "updatedAt": "2026-07-01T16:32:57.527Z"
   }
 }
