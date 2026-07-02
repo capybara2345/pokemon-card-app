@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 10 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-07-01T16:32:57.527Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 6 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-02T16:10:59.623Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1383,6 +1383,61 @@
       "type": "expansion"
     },
     {
+      "id": "everyday-wonders-emblem-event",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-13",
+      "title": {
+        "en": "Everyday Wonders Emblem Event",
+        "ko": "Everyday Wonders Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/everyday-wonders-emblem-event/"
+    },
+    {
+      "id": "community-week-missions-3",
+      "startDate": "2026-07-11",
+      "endDate": "2026-07-18",
+      "title": {
+        "en": "Community Week Missions",
+        "ko": "Community Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/community-week-missions-3/"
+    },
+    {
+      "id": "ranked-match-season-b3b-ranking-guide-all-rewards",
+      "startDate": "2026-07-15",
+      "endDate": "2026-07-29",
+      "title": {
+        "en": "Ranked Match Season B3b – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B3b – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b3b-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "hisuian-zorua-drop-event",
+      "startDate": "2026-07-16",
+      "endDate": "2026-08-02",
+      "title": {
+        "en": "Hisuian Zorua Drop Event",
+        "ko": "Hisuian Zorua Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/hisuian-zorua-drop-event/"
+    },
+    {
+      "id": "growlithe-and-emolga-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-07-19",
+      "endDate": "2026-08-05",
+      "title": {
+        "en": "Growlithe  and Emolga – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Growlithe  and Emolga – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/growlithe-and-emolga-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
       "id": "expansion-b4",
       "startDate": "2026-07-30",
       "endDate": "2026-07-30",
@@ -1396,17 +1451,6 @@
   ],
   "tentativeEvents": [
     {
-      "id": "tentative-everyday-wonders-emblem",
-      "type": "emblem",
-      "estimatedStart": "2026-07-01",
-      "estimatedEnd": "2026-07-15",
-      "title": {
-        "en": "Everyday Wonders Emblem",
-        "ko": "미라클 데이즈 엠블럼"
-      },
-      "source": "manual"
-    },
-    {
       "id": "pz-pvp-emblem-battles",
       "type": "emblem",
       "estimatedStart": "2026-07-03",
@@ -1416,39 +1460,6 @@
         "ko": "PVP Emblem Battles"
       },
       "source": "pokemon-zone"
-    },
-    {
-      "id": "tentative-july-community-week",
-      "type": "community",
-      "estimatedStart": "2026-07-10",
-      "estimatedEnd": "2026-07-20",
-      "title": {
-        "en": "Community Week",
-        "ko": "커뮤니티 위크"
-      },
-      "source": "manual"
-    },
-    {
-      "id": "tentative-growlithe-emolga-wonder",
-      "type": "wonder",
-      "estimatedStart": "2026-07-15",
-      "estimatedEnd": "2026-07-28",
-      "title": {
-        "en": "Growlithe & Emolga Wonder Pick",
-        "ko": "가디·에몽가 원더픽"
-      },
-      "source": "manual"
-    },
-    {
-      "id": "tentative-hisuian-zorua-drop",
-      "type": "drop",
-      "estimatedStart": "2026-07-15",
-      "estimatedEnd": "2026-07-28",
-      "title": {
-        "en": "Hisuian Zorua Drop",
-        "ko": "히스이 조로아 드롭"
-      },
-      "source": "manual"
     },
     {
       "id": "pz-hisuian-zoroa-drop-event",
@@ -1466,18 +1477,18 @@
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
     "pzRawCount": 10,
-    "autoCount": 10,
-    "manualCount": 4,
+    "autoCount": 6,
+    "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 6,
-    "visibleCount": 6,
+    "mergedCount": 3,
+    "visibleCount": 2,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 2,
-      "manual": 4,
+      "pokemon-zone": 3,
+      "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-07-01T16:32:57.527Z"
+    "updatedAt": "2026-07-02T16:10:59.623Z"
   }
 }
