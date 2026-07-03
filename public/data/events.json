@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 6 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-07-02T16:10:59.623Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 5 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-03T15:57:50.591Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1451,17 +1451,6 @@
   ],
   "tentativeEvents": [
     {
-      "id": "pz-pvp-emblem-battles",
-      "type": "emblem",
-      "estimatedStart": "2026-07-03",
-      "estimatedEnd": "2026-07-13",
-      "title": {
-        "en": "PVP Emblem Battles",
-        "ko": "PVP Emblem Battles"
-      },
-      "source": "pokemon-zone"
-    },
-    {
       "id": "pz-hisuian-zoroa-drop-event",
       "type": "drop",
       "estimatedStart": "2026-07-16",
@@ -1476,19 +1465,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 10,
-    "autoCount": 6,
+    "pzRawCount": 7,
+    "autoCount": 5,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 3,
-    "visibleCount": 2,
+    "mergedCount": 2,
+    "visibleCount": 1,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 2,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-07-02T16:10:59.623Z"
+    "updatedAt": "2026-07-03T15:57:50.591Z"
   }
 }
