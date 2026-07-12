@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 3 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-07-11T15:00:33.816Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 9 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-12T14:58:45.165Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1451,6 +1451,40 @@
   ],
   "tentativeEvents": [
     {
+      "id": "pz-july-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-07-01",
+      "estimatedEnd": "2026-08-01",
+      "title": {
+        "en": "July 2026 Premium Missions",
+        "ko": "July 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pvp-emblem-battles",
+      "type": "emblem",
+      "estimatedStart": "2026-07-03",
+      "estimatedEnd": "2026-07-13",
+      "title": {
+        "en": "PVP Emblem Battles",
+        "ko": "PVP Emblem Battles"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-bonus-week-missions",
+      "type": "community",
+      "estimatedStart": "2026-07-11",
+      "estimatedEnd": "2026-07-18",
+      "title": {
+        "en": "Bonus Week Missions",
+        "ko": "Bonus Week Missions"
+      },
+      "url": "https://www.pokemon-zone.com/events/bonus-week-missions/",
+      "source": "pokemon-zone"
+    },
+    {
       "id": "pz-hisuian-zoroa-drop-event",
       "type": "drop",
       "estimatedStart": "2026-07-16",
@@ -1465,19 +1499,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 5,
-    "autoCount": 3,
+    "pzRawCount": 16,
+    "autoCount": 9,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 1,
-    "visibleCount": 1,
+    "mergedCount": 5,
+    "visibleCount": 4,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 1,
+      "pokemon-zone": 5,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-07-11T15:00:33.816Z"
+    "updatedAt": "2026-07-12T14:58:45.165Z"
   }
 }
