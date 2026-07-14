@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 9 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-07-13T16:36:18.134Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 8 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-14T15:25:27.068Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1462,17 +1462,6 @@
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-pvp-emblem-battles",
-      "type": "emblem",
-      "estimatedStart": "2026-07-03",
-      "estimatedEnd": "2026-07-13",
-      "title": {
-        "en": "PVP Emblem Battles",
-        "ko": "PVP Emblem Battles"
-      },
-      "source": "pokemon-zone"
-    },
-    {
       "id": "pz-bonus-week-missions",
       "type": "community",
       "estimatedStart": "2026-07-11",
@@ -1499,19 +1488,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 16,
-    "autoCount": 9,
+    "pzRawCount": 13,
+    "autoCount": 8,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 5,
-    "visibleCount": 4,
+    "mergedCount": 4,
+    "visibleCount": 3,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 5,
+      "pokemon-zone": 4,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-07-13T16:36:18.134Z"
+    "updatedAt": "2026-07-14T15:25:27.068Z"
   }
 }
