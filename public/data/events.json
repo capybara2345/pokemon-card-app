@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 8 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-07-14T15:25:27.068Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 3 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-15T15:31:58.236Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1451,29 +1451,6 @@
   ],
   "tentativeEvents": [
     {
-      "id": "pz-july-2026-premium-missions",
-      "type": "mission",
-      "estimatedStart": "2026-07-01",
-      "estimatedEnd": "2026-08-01",
-      "title": {
-        "en": "July 2026 Premium Missions",
-        "ko": "July 2026 Premium Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-bonus-week-missions",
-      "type": "community",
-      "estimatedStart": "2026-07-11",
-      "estimatedEnd": "2026-07-18",
-      "title": {
-        "en": "Bonus Week Missions",
-        "ko": "Bonus Week Missions"
-      },
-      "url": "https://www.pokemon-zone.com/events/bonus-week-missions/",
-      "source": "pokemon-zone"
-    },
-    {
       "id": "pz-hisuian-zoroa-drop-event",
       "type": "drop",
       "estimatedStart": "2026-07-16",
@@ -1488,19 +1465,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 13,
-    "autoCount": 8,
+    "pzRawCount": 5,
+    "autoCount": 3,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 4,
-    "visibleCount": 3,
+    "mergedCount": 1,
+    "visibleCount": 1,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 4,
+      "pokemon-zone": 1,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-07-14T15:25:27.068Z"
+    "updatedAt": "2026-07-15T15:31:58.236Z"
   }
 }
