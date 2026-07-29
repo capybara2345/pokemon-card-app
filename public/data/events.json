@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming returned no parseable events.",
-  "updatedAt": "2026-07-28T16:10:36.085Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 16 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-07-29T15:54:58.386Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1449,23 +1449,101 @@
       "url": "https://ptcgpocket.gg/b4/"
     }
   ],
-  "tentativeEvents": [],
+  "tentativeEvents": [
+    {
+      "id": "pz-summer-event-missions-2026",
+      "type": "mission",
+      "estimatedStart": "2026-07-31",
+      "estimatedEnd": "2026-08-09",
+      "title": {
+        "en": "Summer Event Missions 2026",
+        "ko": "Summer Event Missions 2026"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-elite-deck-gift-missions-3",
+      "type": "mission",
+      "estimatedStart": "2026-07-31",
+      "estimatedEnd": "2026-10-28",
+      "title": {
+        "en": "Elite Deck Gift Missions 3",
+        "ko": "Elite Deck Gift Missions 3"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-august-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-08-01",
+      "estimatedEnd": "2026-09-01",
+      "title": {
+        "en": "August 2026 Premium Missions",
+        "ko": "August 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pvp-emblem-battles",
+      "type": "emblem",
+      "estimatedStart": "2026-08-03",
+      "estimatedEnd": "2026-08-13",
+      "title": {
+        "en": "PVP Emblem Battles",
+        "ko": "PVP Emblem Battles"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "tentative-july-community-week",
+      "type": "community",
+      "estimatedStart": "2026-08-09",
+      "estimatedEnd": "2026-08-16",
+      "title": {
+        "en": "Community Week",
+        "ko": "커뮤니티 위크"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-mega-houndoom-ex-drop-event-missions",
+      "type": "drop",
+      "estimatedStart": "2026-08-12",
+      "estimatedEnd": "2026-08-22",
+      "title": {
+        "en": "Mega Houndoom ex Drop event Missions",
+        "ko": "Mega Houndoom ex Drop event Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pachirisu-and-beldum-wonder-pick-event",
+      "type": "wonder",
+      "estimatedStart": "2026-08-16",
+      "estimatedEnd": "2026-08-26",
+      "title": {
+        "en": "Pachirisu and Beldum Wonder Pick event",
+        "ko": "Pachirisu and Beldum Wonder Pick event"
+      },
+      "source": "pokemon-zone"
+    }
+  ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "empty",
-    "pzRawCount": 0,
-    "autoCount": 0,
+    "pzStatus": "ok",
+    "pzRawCount": 16,
+    "autoCount": 16,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 0,
-    "visibleCount": 0,
+    "mergedCount": 8,
+    "visibleCount": 7,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 0,
+      "pokemon-zone": 8,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-07-28T16:10:36.085Z"
+    "updatedAt": "2026-07-29T15:54:58.386Z"
   }
 }
