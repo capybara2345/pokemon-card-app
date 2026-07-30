@@ -1960,7 +1960,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                   const 덱패조작 = take((k) => /드로우|덱 서치|덱 조작|덱 확인|트래쉬 회수|패 조작|패 확인|자신 덱 트래쉬/.test(k));
                   const 방해차단 = take((k) => /차단|금지|덱 파괴|스태디움 제거|도구 트래쉬/.test(k) || ["상대 패 트래쉬","포인트 차단"].includes(k));
                   const 진화 = take((k) => /진화|퇴화|화석/.test(k));
-                  const 기술동전 = take((k) => /기술 계승|기술 복사|서포트 복사|연속 기술|차례 종료|동전 확정|HP 조건 실패|추가 포인트/.test(k));
+                  const 기술동전 = take((k) => /기술 계승|기술 복사|기술 사용 조건|서포트 복사|연속 기술|차례 종료|동전 확정|HP 조건 실패|추가 포인트/.test(k));
                   const 기타 = take(() => true);
                   const sortByDeck = (opts: string[]) => [
                     ...opts.filter((k) => deckKeywords.has(k)),

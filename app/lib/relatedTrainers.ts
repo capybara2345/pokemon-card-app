@@ -100,7 +100,7 @@ export function getRelatedTools(card: PokemonCard): string[] {
     pushUnique(tools, "강철 앞치마", "메탈코어 배리어");
   }
   if (DARK_TYPES.has(card.타입)) {
-    pushUnique(tools, "다크펜던트");
+    pushUnique(tools, "다크펜던트", "속임수바늘");
   }
   if (WATER_TYPES.has(card.타입)) {
     pushUnique(tools, "워터 보트");
@@ -137,6 +137,9 @@ export function getRelatedStadium(card: PokemonCard): string[] {
   }
   if (BASIC_STAGE.has(card.진화)) {
     pushUnique(stadiums, "시작의 평원");
+  }
+  if (WATER_TYPES.has(card.타입)) {
+    pushUnique(stadiums, "다독이는 해변");
   }
   if (PSYCHIC_TYPES.has(card.타입)) {
     pushUnique(stadiums, "이상한 광장");

@@ -658,6 +658,7 @@ const EXPANSIONS = {
   '파동 비트':'Pulsing Aura',
   '진격 패러독스':'Paradox Drive',
   '미라클 데이즈':'Everyday Wonders',
+  '천공의 지배자':'Ruler of the Skies',
   '프로모':'Promo-A',
 };
 

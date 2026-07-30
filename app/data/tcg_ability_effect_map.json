@@ -123,5 +123,13 @@
   "이 포켓몬이 받는 기술의 데미지를 -20한다.": "This Pokémon takes −20 damage from attacks.",
   "이 포켓몬이 받는 기술의 데미지를 -30한다.": "This Pokémon takes −30 damage from attacks.",
   "이 포켓몬이 받는 기술의 데미지를 -10한다.": "This Pokémon takes -10 damage from attacks.",
-  "자신의 차례에 1번 사용할 수 있다. 상대의 포켓몬 1마리에게 20데미지를 준다.": "Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon."
+  "자신의 차례에 1번 사용할 수 있다. 상대의 포켓몬 1마리에게 20데미지를 준다.": "Once during your turn, you may do 20 damage to 1 of your opponent's Pokémon.",
+  "자신의 차례에 1번 사용할 수 있다. 화상·혼란·독 중에서 랜덤으로 1개가 선택되어 상대의 배틀 포켓몬을 그 상태로 만든다. 이미 받고 있는 특수 상태는 선택되지 않는다.": "Once during your turn, you may use this Ability. 1 Special Condition from among Burned, Confused, and Poisoned is chosen at random, and your opponent's Active Pokémon is now affected by that Special Condition. Any Special Conditions already affecting that Pokémon will not be chosen.",
+  "자신의 차례에 이 포켓몬을 패에서 벤치로 내보냈을 때 1번 사용할 수 있다. 자신의 배틀필드의 풀포켓몬의 HP를 20회복.": "Once during your turn, when you put this Pokémon from your hand onto your Bench, you may heal 20 damage from your Active [ G ] Pokémon.",
+  "자신의 차례에 이 포켓몬을 패에서 꺼내서 진화시켰을 때 1번 사용할 수 있다. 상대의 다음 차례 끝까지 이 포켓몬은 상대의 포켓몬이 사용하는 기술의 데미지와 효과를 받지 않는다.": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may prevent all damage from—and effects of—attacks from your opponent's Pokémon done to this Pokémon until the end of your opponent's next turn.",
+  "자신의 차례에 이 포켓몬을 패에서 꺼내서 진화시켰을 때 1번 사용할 수 있다. 동전을 1번 던져서 앞면이 나오면 상대의 배틀 포켓몬을 마비로 만든다.": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+  "이 포켓몬이 벤치에 있다면 자신의 차례에 1번 사용할 수 있다. 자신의 트래쉬에서 에너지를 1개 선택해서 배틀필드의 드래곤포켓몬에게 붙인다.": "Once during your turn, if this Pokémon is on your Bench, you may attach an Energy from your discard pile to your Active [ N ] Pokémon.",
+  "자신의 필드에 다른 메탕이 있다면 이 포켓몬의 후퇴에 필요한 에너지가 2개 적어진다.": "If you have another Beldum in play, this Pokémon's Retreat Cost is 2 less.",
+  "이 포켓몬에는 「포켓몬의 도구」를 2장까지 붙일 수 있다.": "This Pokémon may have up to 2 Pokémon Tool cards attached to it.",
+  "자신의 차례에 이 포켓몬을 패에서 꺼내서 진화시켰을 때 1번 사용할 수 있다. 자신의 덱을 위에서부터 4장 보고 그 중에서 아이템을 모두 패로 가져온다. 남은 카드는 덱으로 되돌리고 섞는다.": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may look at the top 4 cards of your deck and put all Item cards you find there into your hand. Shuffle the other cards back into your deck."
 }

@@ -14,6 +14,12 @@ export function getRelatedSupporters(card: PokemonCard): string[] {
 
   if (card.진화 === "1진화") supporters.push("관광객");
   if (card.진화 === "2진화") supporters.push("릴리에");
+  if (
+    card.진화 === "2진화" &&
+    (card.필요에너지?.includes("무색") || card.필요에너지2?.includes("무색"))
+  ) {
+    supporters.push("민진");
+  }
   if (card.타입 === "풀") supporters.push("민화");
   if (card.타입 === "물") supporters.push("이슬");
   if (card.타입 === "물") supporters.push("낚시꾼");
@@ -54,6 +60,10 @@ export function getRelatedSupporters(card: PokemonCard): string[] {
   if (card.이름 === "엑스라이즈") supporters.push("아이리스");
   if (card.이름 === "보르그" || card.이름 === "바랜드") supporters.push("체렌");
   if (card.기술명 === "강아지투성이") supporters.push("퍼피 러빙걸");
+  if (card.기술명 === "용성군" || card.기술명2 === "용성군") supporters.push("사간");
+  if (card.기술명 === "사이코키네시스" || card.기술명2 === "사이코키네시스") {
+    supporters.push("초능력자");
+  }
   const typeFlags = parseCardTypeFlags(card.카드타입);
   if (typeFlags.ultraBeast) supporters.push("루자미네");
   if (typeFlags.megaEx) {
