@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/export-cards-json.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "export:cards": "node scripts/export-cards-json.mjs",
     "sync:cards": "node scripts/sync-cards-json.mjs",
     "sync:tournament": "node scripts/update-tournament-data.mjs",
     "sync:events": "node scripts/sync-ptcgpocket-events.mjs",

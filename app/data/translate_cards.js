@@ -760,3 +760,4 @@ console.log('Korean text cells remaining in EN file:', koRemain);
 
 XLSX.writeFile(newWb, 'app/data/card_list_en.xlsx');
 console.log('Saved: app/data/card_list_en.xlsx  (' + wb.SheetNames.length + ' sheets, ' + totalRows + ' rows)');
+console.log('Tip: run npm run export:cards to refresh public/data cards_*.json');
