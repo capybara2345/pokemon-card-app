@@ -171,6 +171,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
   const [minGames, setMinGames] = useState(0);
   const [selectedEnergy, setSelectedEnergy] = useState("");
   const [selectedDeck, setSelectedDeck] = useState<EnrichedDeck | null>(null);
+  const [previewCard, setPreviewCard] = useState<EnrichedDeck["cards"][0] | null>(null);
   const [showTextView, setShowTextView] = useState(false);
   const [brokenImages, setBrokenImages] = useState<Set<string>>(new Set());
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -226,11 +227,16 @@ export default function TournamentDeckList({ decks, session }: Props) {
   const paginatedDecks = filtered.slice(startIdx, endIdx);
 
   const closeModal = useCallback(() => {
+    setPreviewCard(null);
     setSelectedDeck(null);
     setShowTextView(false);
     setShowSaveModal(false);
     setSaveName("");
     setSaveMsg(null);
+  }, []);
+
+  const closePreview = useCallback(() => {
+    setPreviewCard(null);
   }, []);
 
   const handleSaveDeck = useCallback(async () => {
@@ -261,7 +267,12 @@ export default function TournamentDeckList({ decks, session }: Props) {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") closeModal();
+      if (e.key !== "Escape") return;
+      if (previewCard) {
+        closePreview();
+        return;
+      }
+      closeModal();
     }
     if (selectedDeck) {
       document.addEventListener("keydown", onKey);
@@ -271,7 +282,7 @@ export default function TournamentDeckList({ decks, session }: Props) {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [selectedDeck, closeModal]);
+  }, [selectedDeck, previewCard, closeModal, closePreview]);
 
   const handleImageError = (id: string) => {
     setBrokenImages((prev) => new Set(prev).add(id));
@@ -634,15 +645,18 @@ export default function TournamentDeckList({ decks, session }: Props) {
                     const isBroken = brokenImages.has(card.id);
 
                     return (
-                      <div
+                      <button
+                        type="button"
                         key={`${card.id}-${i}`}
-                        className="aspect-[2/3] rounded-md overflow-hidden bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 flex items-center justify-center"
+                        onClick={() => setPreviewCard(card)}
+                        className="aspect-[2/3] rounded-md overflow-hidden bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 flex items-center justify-center cursor-zoom-in hover:ring-2 hover:ring-indigo-400 dark:hover:ring-indigo-500 transition-shadow"
+                        title={lang === "ko" && card.koName ? card.koName : card.name}
                       >
                         {src && !isBroken ? (
                           <img
                             src={src}
                             alt={card.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover pointer-events-none"
                             loading="lazy"
                             onError={() => handleImageError(card.id)}
                           />
@@ -653,11 +667,50 @@ export default function TournamentDeckList({ decks, session }: Props) {
                             </span>
                           </div>
                         )}
-                      </div>
+                      </button>
                     );
                   });
                 })()}
               </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* 카드 이미지 확대 미리보기 */}
+      {previewCard && (
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          onClick={closePreview}
+        >
+          <div
+            className="relative pointer-events-auto bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col items-center gap-3 w-[min(24rem,90vw)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={closePreview}
+              className="absolute top-2 right-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none px-1"
+            >
+              ✕
+            </button>
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 text-center px-6">
+              {lang === "ko" && previewCard.koName ? previewCard.koName : previewCard.name}
+            </p>
+            {getImageUrl(previewCard) && !brokenImages.has(previewCard.id) ? (
+              <img
+                src={getImageUrl(previewCard)}
+                alt={previewCard.name}
+                className="w-full rounded-lg shadow-md object-contain"
+                onError={() => handleImageError(previewCard.id)}
+              />
+            ) : (
+              <div className="w-full aspect-[2/3] rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-sm text-slate-500">
+                {previewCard.name}
+              </div>
+            )}
+            {previewCard.expansion && (
+              <p className="text-xs text-slate-400 dark:text-slate-500">{previewCard.expansion}</p>
             )}
           </div>
         </div>
