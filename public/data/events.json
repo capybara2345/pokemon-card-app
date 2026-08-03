@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 8 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-08-02T15:08:03.071Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 7 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-08-03T16:32:02.198Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1483,17 +1483,6 @@
   ],
   "tentativeEvents": [
     {
-      "id": "pz-pvp-emblem-battles",
-      "type": "emblem",
-      "estimatedStart": "2026-08-03",
-      "estimatedEnd": "2026-08-13",
-      "title": {
-        "en": "PVP Emblem Battles",
-        "ko": "PVP Emblem Battles"
-      },
-      "source": "pokemon-zone"
-    },
-    {
       "id": "pz-mega-houndoom-ex-drop-event-missions",
       "type": "drop",
       "estimatedStart": "2026-08-12",
@@ -1519,19 +1508,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 10,
-    "autoCount": 8,
+    "pzRawCount": 7,
+    "autoCount": 7,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 4,
-    "visibleCount": 3,
+    "mergedCount": 3,
+    "visibleCount": 2,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 4,
+      "pokemon-zone": 3,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-02T15:08:03.071Z"
+    "updatedAt": "2026-08-03T16:32:02.198Z"
   }
 }
