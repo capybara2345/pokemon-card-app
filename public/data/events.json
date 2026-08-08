@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 7 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-08-07T14:59:10.593Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 2 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-08-08T14:37:40.551Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1479,48 +1479,47 @@
       },
       "type": "community",
       "url": "https://ptcgpocket.gg/community-week-missions-4/"
-    }
-  ],
-  "tentativeEvents": [
-    {
-      "id": "pz-mega-houndoom-ex-drop-event-missions",
-      "type": "drop",
-      "estimatedStart": "2026-08-12",
-      "estimatedEnd": "2026-08-22",
-      "title": {
-        "en": "Mega Houndoom ex Drop event Missions",
-        "ko": "Mega Houndoom ex Drop event Missions"
-      },
-      "source": "pokemon-zone"
     },
     {
-      "id": "pz-pachirisu-and-beldum-wonder-pick-event",
-      "type": "wonder",
-      "estimatedStart": "2026-08-16",
-      "estimatedEnd": "2026-08-26",
+      "id": "mega-houndoom-ex-drop-event",
+      "startDate": "2026-08-12",
+      "endDate": "2026-08-29",
       "title": {
-        "en": "Pachirisu and Beldum Wonder Pick event",
-        "ko": "Pachirisu and Beldum Wonder Pick event"
+        "en": "Mega Houndoom ex Drop Event",
+        "ko": "Mega Houndoom ex Drop Event"
       },
-      "source": "pokemon-zone"
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-houndoom-ex-drop-event/"
+    },
+    {
+      "id": "pachirisu-and-beldum-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-08-16",
+      "endDate": "2026-09-02",
+      "title": {
+        "en": "Pachirisu and Beldum – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Pachirisu and Beldum – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/pachirisu-and-beldum-wonder-pick-event-promo-cards-missions-all-rewards/"
     }
   ],
+  "tentativeEvents": [],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
     "pzRawCount": 7,
-    "autoCount": 7,
+    "autoCount": 2,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 3,
-    "visibleCount": 2,
+    "mergedCount": 1,
+    "visibleCount": 0,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 1,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-07T14:59:10.593Z"
+    "updatedAt": "2026-08-08T14:37:40.551Z"
   }
 }
