@@ -2,7 +2,7 @@
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
   "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 0 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-08-10T15:04:27.527Z",
+  "updatedAt": "2026-08-11T13:54:00.000Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1479,6 +1479,17 @@
       },
       "type": "community",
       "url": "https://ptcgpocket.gg/community-week-missions-4/"
+    },
+    {
+      "id": "ranked-match-season-b4-ranking-guide-all-rewards",
+      "startDate": "2026-08-12",
+      "endDate": "2026-08-26",
+      "title": {
+        "en": "Ranked Match Season B4 – Ranking Guide & All Rewards",
+        "ko": "랭크 매치 시즌 B4"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b4-ranking-guide-all-rewards/"
     },
     {
       "id": "mega-houndoom-ex-drop-event",
