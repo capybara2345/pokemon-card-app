@@ -46,6 +46,21 @@ const MANUAL_EXPANSIONS = [
   },
 ];
 
+/** 블로그 sync에서 누락돼도 유지할 확정 일정 (랭크 시즌 등) */
+const MANUAL_CONFIRMED_EVENTS = [
+  {
+    id: "ranked-match-season-b4-ranking-guide-all-rewards",
+    startDate: "2026-08-12",
+    endDate: "2026-08-26",
+    title: {
+      en: "Ranked Match Season B4 – Ranking Guide & All Rewards",
+      ko: "랭크 매치 시즌 B4",
+    },
+    type: "ranked",
+    url: "https://ptcgpocket.gg/ranked-match-season-b4-ranking-guide-all-rewards/",
+  },
+];
+
 const MONTHS = {
   january: 1,
   february: 2,
@@ -554,7 +569,10 @@ async function main() {
   });
   console.log(`Parsed ${blogEvents.length} events, ${expansionEvents.length} expansions`);
 
-  const events = mergeEvents(blogEvents, expansionEvents);
+  const events = mergeEvents(blogEvents, expansionEvents, MANUAL_CONFIRMED_EVENTS);
+  if (MANUAL_CONFIRMED_EVENTS.length > 0) {
+    console.log(`Merged ${MANUAL_CONFIRMED_EVENTS.length} manual confirmed event(s)`);
+  }
   if (events.length === 0) {
     if (existsSync(OUTPUT)) {
       console.error("No events parsed. Keeping existing events.json");
