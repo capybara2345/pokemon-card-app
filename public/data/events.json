@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 0 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-08-15T14:28:38.736Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming returned no parseable events.",
+  "updatedAt": "2026-08-16T14:28:42.392Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1481,17 +1481,6 @@
       "url": "https://ptcgpocket.gg/community-week-missions-4/"
     },
     {
-      "id": "ranked-match-season-b4-ranking-guide-all-rewards",
-      "startDate": "2026-08-12",
-      "endDate": "2026-08-26",
-      "title": {
-        "en": "Ranked Match Season B4 – Ranking Guide & All Rewards",
-        "ko": "랭크 매치 시즌 B4"
-      },
-      "type": "ranked",
-      "url": "https://ptcgpocket.gg/ranked-match-season-b4-ranking-guide-all-rewards/"
-    },
-    {
       "id": "mega-houndoom-ex-drop-event",
       "startDate": "2026-08-12",
       "endDate": "2026-08-29",
@@ -1501,6 +1490,17 @@
       },
       "type": "drop",
       "url": "https://ptcgpocket.gg/mega-houndoom-ex-drop-event/"
+    },
+    {
+      "id": "ranked-match-season-b4-ranking-guide-all-rewards",
+      "startDate": "2026-08-12",
+      "endDate": "2026-08-26",
+      "title": {
+        "en": "Ranked Match Season B4 – Ranking Guide & All Rewards",
+        "ko": "랭크 매치 시즌 B4"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b4-ranking-guide-all-rewards/"
     },
     {
       "id": "pachirisu-and-beldum-wonder-pick-event-promo-cards-missions-all-rewards",
@@ -1529,8 +1529,8 @@
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "ok",
-    "pzRawCount": 2,
+    "pzStatus": "empty",
+    "pzRawCount": 0,
     "autoCount": 0,
     "manualCount": 0,
     "cacheCount": 1,
@@ -1543,6 +1543,6 @@
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-15T14:28:38.736Z"
+    "updatedAt": "2026-08-16T14:28:42.392Z"
   }
 }
