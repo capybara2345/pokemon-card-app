@@ -2,7 +2,7 @@
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
   "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming returned no parseable events.",
-  "updatedAt": "2026-08-21T14:40:50.725Z",
+  "updatedAt": "2026-08-22T14:26:55.749Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1525,35 +1525,23 @@
       "url": "https://ptcgpocket.gg/b4a/"
     }
   ],
-  "tentativeEvents": [
-    {
-      "id": "pz-pack-reruns",
-      "type": "mission",
-      "estimatedStart": "2026-08-14",
-      "estimatedEnd": "2026-08-21",
-      "title": {
-        "en": "Pack Reruns",
-        "ko": "Pack Reruns"
-      },
-      "source": "pokemon-zone"
-    }
-  ],
+  "tentativeEvents": [],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "empty",
     "pzRawCount": 0,
     "autoCount": 0,
     "manualCount": 0,
-    "cacheCount": 1,
-    "mergedCount": 1,
-    "visibleCount": 1,
-    "usedCache": true,
+    "cacheCount": 0,
+    "mergedCount": 0,
+    "visibleCount": 0,
+    "usedCache": false,
     "sources": {
-      "pokemon-zone": 1,
+      "pokemon-zone": 0,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-21T14:40:50.725Z"
+    "updatedAt": "2026-08-22T14:26:55.749Z"
   }
 }
