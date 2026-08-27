@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming returned no parseable events.",
-  "updatedAt": "2026-08-26T14:50:48.551Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 14 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-08-27T23:43:45.062Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1518,30 +1518,107 @@
       "startDate": "2026-08-27",
       "endDate": "2026-08-27",
       "title": {
-        "en": "Team Rocket&#8217;s Ambition Expansion",
-        "ko": "Team Rocket&#8217;s Ambition 확장팩"
+        "en": "Team Rocket’s Ambition Expansion",
+        "ko": "Team Rocket’s Ambition 확장팩"
       },
-      "type": "expansion",
-      "url": "https://ptcgpocket.gg/b4a/"
+      "type": "expansion"
     }
   ],
-  "tentativeEvents": [],
+  "tentativeEvents": [
+    {
+      "id": "pz-team-rocket-s-special-assignments-missions",
+      "type": "mission",
+      "estimatedStart": "2026-08-28",
+      "estimatedEnd": "2026-09-29",
+      "title": {
+        "en": "Team Rocket’s Special Assignments Missions",
+        "ko": "Team Rocket’s Special Assignments Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-team-rocket-s-ambition-emblem-event",
+      "type": "emblem",
+      "estimatedStart": "2026-08-31",
+      "estimatedEnd": "2026-09-10",
+      "title": {
+        "en": "Team Rocket's Ambition Emblem Event",
+        "ko": "Team Rocket's Ambition Emblem Event"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pvp-emblem-battles",
+      "type": "emblem",
+      "estimatedStart": "2026-08-31",
+      "estimatedEnd": "2026-09-10",
+      "title": {
+        "en": "PVP Emblem Battles",
+        "ko": "PVP Emblem Battles"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-september-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-09-01",
+      "estimatedEnd": "2026-10-01",
+      "title": {
+        "en": "September 2026 Premium Missions",
+        "ko": "September 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "tentative-july-community-week",
+      "type": "community",
+      "estimatedStart": "2026-09-05",
+      "estimatedEnd": "2026-09-12",
+      "title": {
+        "en": "Community Week",
+        "ko": "커뮤니티 위크"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-team-rocket-lapras-drop-event-missions",
+      "type": "drop",
+      "estimatedStart": "2026-09-10",
+      "estimatedEnd": "2026-09-20",
+      "title": {
+        "en": "Team Rocket Lapras Drop Event Missions",
+        "ko": "Team Rocket Lapras Drop Event Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-fennekin-and-meowstic-wonder-pick-event",
+      "type": "wonder",
+      "estimatedStart": "2026-09-19",
+      "estimatedEnd": "2026-09-29",
+      "title": {
+        "en": "Fennekin and Meowstic Wonder Pick event",
+        "ko": "Fennekin and Meowstic Wonder Pick event"
+      },
+      "source": "pokemon-zone"
+    }
+  ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "empty",
-    "pzRawCount": 0,
-    "autoCount": 0,
+    "pzStatus": "ok",
+    "pzRawCount": 14,
+    "autoCount": 14,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 0,
-    "visibleCount": 0,
+    "mergedCount": 7,
+    "visibleCount": 7,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 0,
+      "pokemon-zone": 7,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-26T14:50:48.551Z"
+    "updatedAt": "2026-08-27T23:43:45.062Z"
   }
 }
