@@ -22,6 +22,7 @@ const EXPANSION_EN_TO_KO: Record<string, string> = {
   "Everyday Wonders": "미라클 데이즈",
   "Ruler of the Skies": "천공의 지배자",
   "Ruler of Skies": "천공의 지배자",
+  "Team Rocket's Ambition": "로켓단의 야망",
 };
 
 const POKEMON_OVERRIDES: Record<string, string> = {

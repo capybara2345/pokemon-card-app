@@ -1,0 +1,2912 @@
+[
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 19201,
+      "Serial": "b4a-001",
+      "속성": "",
+      "이름": "볼비트",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 80,
+      "기술명": "원시의날갯짓",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Volbeat",
+    "en": {
+      "attacks": [
+        {
+          "name": "Tackle",
+          "damage": "30",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 19202,
+      "Serial": "b4a-002",
+      "속성": "",
+      "이름": "네오비트",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "Ire-Fly",
+      "기술명2": "",
+      "기술추가효과": "If Volbeat is in your discard pile, this attack does 60 more damage.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색1",
+      "기술에너지2": "",
+      "피해량": "30+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Illumise",
+    "en": {
+      "attacks": [
+        {
+          "name": "Ire-Fly",
+          "damage": "30+",
+          "effect": "If Volbeat is in your discard pile, this attack does 60 more damage.",
+          "energy": "풀1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 19203,
+      "Serial": "b4a-003",
+      "속성": "",
+      "이름": "주리비얀",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "Leaf Boomerang",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "20x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Snivy",
+    "en": {
+      "attacks": [
+        {
+          "name": "Leaf Boomerang",
+          "damage": "20x",
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads.",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 19204,
+      "Serial": "b4a-004",
+      "속성": "",
+      "이름": "샤비",
+      "이전이름": "주리비얀",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "리프스텝",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Servine",
+    "en": {
+      "attacks": [
+        {
+          "name": "Leaf Step",
+          "damage": "30",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Snivy"
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 19205,
+      "Serial": "b4a-005",
+      "속성": "",
+      "이름": "샤로다",
+      "이전이름": "샤비",
+      "진화": "2진화",
+      "HP": 100,
+      "기술명": "휩다운",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 60데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색3",
+      "기술에너지2": "",
+      "피해량": "60+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "Regal Bloom",
+      "특성효과": "This Pokémon gets +30 HP for each [ G ] Energy attached to it.",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Serperior",
+    "en": {
+      "attacks": [
+        {
+          "name": "Flog",
+          "damage": "60+",
+          "effect": "Flip a coin. If heads, this attack does 60 more damage.",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "Ability: Regal Bloom",
+      "abilityEffect": "This Pokémon gets +30 HP for each [ G ] Energy attached to it.",
+      "trainerEffect": "",
+      "evolvesFrom": "Servine"
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19206,
+      "Serial": "b4a-006",
+      "속성": "",
+      "이름": "로켓단의 마그마",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "Derisive Roasting",
+      "기술명2": "",
+      "기술추가효과": "This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "10+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Magmar",
+    "en": {
+      "attacks": [
+        {
+          "name": "Derisive Roasting",
+          "damage": "10+",
+          "effect": "This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19207,
+      "Serial": "b4a-007",
+      "속성": "ex",
+      "이름": "로켓단의 파이어 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 130,
+      "기술명": "Heat Charged",
+      "기술명2": "Netherwing",
+      "기술추가효과": "Flip 3 coins. For each heads, produce a [ R ] Energy from your Energy Zone and attach it to this Pokémon.",
+      "기술추가효과2": "Discard a [ R ] Energy from this Pokémon.",
+      "기술에너지": "불1",
+      "기술에너지2": "불3/무색1",
+      "피해량": "",
+      "피해량2": "130",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Moltres ex",
+    "en": {
+      "attacks": [
+        {
+          "name": "Heat Charged",
+          "damage": "",
+          "effect": "Flip 3 coins. For each heads, produce a [ R ] Energy from your Energy Zone and attach it to this Pokémon.",
+          "energy": "불1"
+        },
+        {
+          "name": "Netherwing",
+          "damage": "130",
+          "effect": "Discard a [ R ] Energy from this Pokémon.",
+          "energy": "불3/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19208,
+      "Serial": "b4a-008",
+      "속성": "",
+      "이름": "로켓단의 델빌",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "불씨",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "불1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Houndour",
+    "en": {
+      "attacks": [
+        {
+          "name": "Live Coal",
+          "damage": "20",
+          "effect": "",
+          "energy": "불1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19209,
+      "Serial": "b4a-009",
+      "속성": "",
+      "이름": "로켓단의 헬가",
+      "이전이름": "Team Rocket’s Houndour",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "Toxfire Fang",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 독과 화상으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "불1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Houndoom",
+    "en": {
+      "attacks": [
+        {
+          "name": "Toxfire Fang",
+          "damage": "20",
+          "effect": "Your opponent's Active Pokémon is now Poisoned and Burned.",
+          "energy": "불1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Houndour"
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19210,
+      "Serial": "b4a-010",
+      "속성": "",
+      "이름": "푸호꼬",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "할퀴기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Fennekin",
+    "en": {
+      "attacks": [
+        {
+          "name": "Scratch",
+          "damage": "10",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19211,
+      "Serial": "b4a-011",
+      "속성": "",
+      "이름": "테르나",
+      "이전이름": "푸호꼬",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "사이코숏",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Braixen",
+    "en": {
+      "attacks": [
+        {
+          "name": "Psyshot",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Fennekin"
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 19212,
+      "Serial": "b4a-012",
+      "속성": "",
+      "이름": "마폭시",
+      "이전이름": "테르나",
+      "진화": "2진화",
+      "HP": 130,
+      "기술명": "사이코키네시스",
+      "기술명2": "",
+      "기술추가효과": "상대 배틀 포켓몬의 에너지의 개수 × 30데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색3",
+      "기술에너지2": "",
+      "피해량": "60+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Delphox",
+    "en": {
+      "attacks": [
+        {
+          "name": "Psychic",
+          "damage": "60+",
+          "effect": "This attack does 30 more damage for each Energy attached to your opponent's Active Pokémon.",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Braixen"
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 19213,
+      "Serial": "b4a-013",
+      "속성": "",
+      "이름": "로켓단의 라프라스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 90,
+      "기술명": "Ruthless Whirlpool",
+      "기술명2": "",
+      "기술추가효과": "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage.",
+      "기술추가효과2": "",
+      "기술에너지": "물1/무색1",
+      "기술에너지2": "",
+      "피해량": "40+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Lapras",
+    "en": {
+      "attacks": [
+        {
+          "name": "Ruthless Whirlpool",
+          "damage": "40+",
+          "effect": "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage.",
+          "energy": "물1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 19214,
+      "Serial": "b4a-014",
+      "속성": "ex",
+      "이름": "로켓단의 프리져 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 130,
+      "기술명": "아이스윙",
+      "기술명2": "Hailstorm",
+      "기술추가효과": "",
+      "기술추가효과2": "자신의 벤치 포켓몬 전원에게도 20데미지를 준다.",
+      "기술에너지": "물1/무색1",
+      "기술에너지2": "물2/무색1",
+      "피해량": "40",
+      "피해량2": "130",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Articuno ex",
+    "en": {
+      "attacks": [
+        {
+          "name": "Ice Wing",
+          "damage": "40",
+          "effect": "",
+          "energy": "물1/무색1"
+        },
+        {
+          "name": "Hailstorm",
+          "damage": "130",
+          "effect": "This attack also does 20 damage to each of your Benched Pokémon.",
+          "energy": "물2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 19215,
+      "Serial": "b4a-015",
+      "속성": "",
+      "이름": "갈모매",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "홰치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Wingull",
+    "en": {
+      "attacks": [
+        {
+          "name": "Flap",
+          "damage": "10",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 19216,
+      "Serial": "b4a-016",
+      "속성": "",
+      "이름": "패리퍼",
+      "이전이름": "갈모매",
+      "진화": "1진화",
+      "HP": 110,
+      "기술명": "날개치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "60",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Pelipper",
+    "en": {
+      "attacks": [
+        {
+          "name": "Wing Attack",
+          "damage": "60",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Wingull"
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 19217,
+      "Serial": "b4a-017",
+      "속성": "",
+      "이름": "히스이 배쓰나이",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "물기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Hisuian Basculin",
+    "en": {
+      "attacks": [
+        {
+          "name": "Bite",
+          "damage": "20",
+          "effect": "",
+          "energy": "물1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 19218,
+      "Serial": "b4a-018",
+      "속성": "",
+      "이름": "히스이 대쓰바스",
+      "이전이름": "히스이 배쓰나이",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "Soul Counter",
+      "기술명2": "",
+      "기술추가효과": "This attack does 50 more damage for each point your opponent got during their last turn.",
+      "기술추가효과2": "",
+      "기술에너지": "물2",
+      "기술에너지2": "",
+      "피해량": "50+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Hisuian Basculegion",
+    "en": {
+      "attacks": [
+        {
+          "name": "Soul Counter",
+          "damage": "50+",
+          "effect": "This attack does 50 more damage for each point your opponent got during their last turn.",
+          "energy": "물2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Hisuian Basculin"
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 19219,
+      "Serial": "b4a-019",
+      "속성": "",
+      "이름": "로켓단의 찌리리공",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "볼어택",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Voltorb",
+    "en": {
+      "attacks": [
+        {
+          "name": "Rolling Attack",
+          "damage": "20",
+          "effect": "",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 19220,
+      "Serial": "b4a-020",
+      "속성": "",
+      "이름": "로켓단의 붐볼",
+      "이전이름": "Team Rocket’s Voltorb",
+      "진화": "1진화",
+      "HP": 70,
+      "기술명": "전자 스파크",
+      "기술명2": "",
+      "기술추가효과": "상대의 포켓몬 1마리에게 30데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "Destiny Burst",
+      "특성효과": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Electrode",
+    "en": {
+      "attacks": [
+        {
+          "name": "Random Spark",
+          "damage": "",
+          "effect": "This attack does 30 damage to 1 of your opponent's Pokémon.",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "Ability: Destiny Burst",
+      "abilityEffect": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Voltorb"
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 19221,
+      "Serial": "b4a-021",
+      "속성": "ex",
+      "이름": "로켓단의 썬더 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 120,
+      "기술명": "일렉트릭볼",
+      "기술명2": "Thunderclaw",
+      "기술추가효과": "",
+      "기술추가효과2": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.",
+      "기술에너지": "번개1/무색1",
+      "기술에너지2": "번개2/무색1",
+      "피해량": "40",
+      "피해량2": "90",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Zapdos ex",
+    "en": {
+      "attacks": [
+        {
+          "name": "Electro Ball",
+          "damage": "40",
+          "effect": "",
+          "energy": "번개1/무색1"
+        },
+        {
+          "name": "Thunderclaw",
+          "damage": "90",
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.",
+          "energy": "번개2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 19222,
+      "Serial": "b4a-022",
+      "속성": "",
+      "이름": "줄뮤마",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "Double Headbutt",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "20x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Blitzle",
+    "en": {
+      "attacks": [
+        {
+          "name": "Double Headbutt",
+          "damage": "20x",
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads.",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 19223,
+      "Serial": "b4a-023",
+      "속성": "",
+      "이름": "제브라이카",
+      "이전이름": "줄뮤마",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "일렉트릭킥",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Zebstrika",
+    "en": {
+      "attacks": [
+        {
+          "name": "Zap Kick",
+          "damage": "50",
+          "effect": "",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Blitzle"
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 19224,
+      "Serial": "b4a-024",
+      "속성": "",
+      "이름": "로켓단의 찌르성게",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "독찌르기",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 독으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Pincurchin",
+    "en": {
+      "attacks": [
+        {
+          "name": "Poison Jab",
+          "damage": "20",
+          "effect": "Your opponent's Active Pokémon is now Poisoned.",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19225,
+      "Serial": "b4a-025",
+      "속성": "",
+      "이름": "로켓단의 야돈",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 80,
+      "기술명": "Scavenge",
+      "기술명2": "",
+      "기술추가효과": "Put a random Item card from your discard pile into your hand.",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Slowpoke",
+    "en": {
+      "attacks": [
+        {
+          "name": "Scavenge",
+          "damage": "",
+          "effect": "Put a random Item card from your discard pile into your hand.",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19226,
+      "Serial": "b4a-026",
+      "속성": "ex",
+      "이름": "로켓단의 야도킹 ex",
+      "이전이름": "Team Rocket’s Slowpoke",
+      "진화": "1진화",
+      "HP": 130,
+      "기술명": "Hand Kinesis",
+      "기술명2": "",
+      "기술추가효과": "This attack does 20 damage for each card in your hand.",
+      "기술추가효과2": "",
+      "기술에너지": "초1/무색1",
+      "기술에너지2": "",
+      "피해량": "20x",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "Evil Inspiration",
+      "특성효과": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Slowking ex",
+    "en": {
+      "attacks": [
+        {
+          "name": "Hand Kinesis",
+          "damage": "20x",
+          "effect": "This attack does 20 damage for each card in your hand.",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "Ability: Evil Inspiration",
+      "abilityEffect": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Slowpoke"
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19227,
+      "Serial": "b4a-027",
+      "속성": "",
+      "이름": "로켓단의 슬리프",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "중얼거리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Drowzee",
+    "en": {
+      "attacks": [
+        {
+          "name": "Mumble",
+          "damage": "40",
+          "effect": "",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19228,
+      "Serial": "b4a-028",
+      "속성": "",
+      "이름": "로켓단의 슬리퍼",
+      "이전이름": "Team Rocket’s Drowzee",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "Entrap",
+      "기술명2": "",
+      "기술추가효과": "상대의 벤치 포켓몬을 1마리 선택해서 배틀 포켓몬과 교체한다. 그 뒤, 새로 나온 포켓몬에게 50데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Hypno",
+    "en": {
+      "attacks": [
+        {
+          "name": "Entrap",
+          "damage": "",
+          "effect": "Switch in 1 of your opponent's Benched Pokémon to the Active Spot. If you do, this attack does 50 damage to the new Active Pokémon.",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Drowzee"
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19229,
+      "Serial": "b4a-029",
+      "속성": "",
+      "이름": "로켓단의 마임맨",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "뺨때리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Mr. Mime",
+    "en": {
+      "attacks": [
+        {
+          "name": "Slap Push",
+          "damage": "40",
+          "effect": "",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19230,
+      "Serial": "b4a-030",
+      "속성": "",
+      "이름": "로켓단의 뮤츠",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "Psychic Explosion",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에게도 70데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2/무색1",
+      "기술에너지2": "",
+      "피해량": "130",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Mewtwo",
+    "en": {
+      "attacks": [
+        {
+          "name": "Psychic Explosion",
+          "damage": "130",
+          "effect": "This Pokémon also does 70 damage to itself.",
+          "energy": "초2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19231,
+      "Serial": "b4a-031",
+      "속성": "",
+      "이름": "냐스퍼",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "빔",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Espurr",
+    "en": {
+      "attacks": [
+        {
+          "name": "Beam",
+          "damage": "40",
+          "effect": "",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19232,
+      "Serial": "b4a-032",
+      "속성": "",
+      "이름": "냐오닉스",
+      "이전이름": "냐스퍼",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "초염동력",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초2",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Meowstic",
+    "en": {
+      "attacks": [
+        {
+          "name": "Super Psy Bolt",
+          "damage": "70",
+          "effect": "",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Espurr"
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19233,
+      "Serial": "b4a-033",
+      "속성": "",
+      "이름": "하랑우탄",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "Punch and Draw",
+      "기술명2": "",
+      "기술추가효과": "자신의 덱을 1장 뽑는다.",
+      "기술추가효과2": "",
+      "기술에너지": "초1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Oranguru",
+    "en": {
+      "attacks": [
+        {
+          "name": "Punch and Draw",
+          "damage": "40",
+          "effect": "Draw a card.",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 19234,
+      "Serial": "b4a-034",
+      "속성": "",
+      "이름": "모으령",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "원시의날갯짓",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Gimmighoul",
+    "en": {
+      "attacks": [
+        {
+          "name": "Tackle",
+          "damage": "20",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 19235,
+      "Serial": "b4a-035",
+      "속성": "",
+      "이름": "탕구리",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "뼈때리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Cubone",
+    "en": {
+      "attacks": [
+        {
+          "name": "Bone Beatdown",
+          "damage": "20",
+          "effect": "",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 19236,
+      "Serial": "b4a-036",
+      "속성": "",
+      "이름": "텅구리",
+      "이전이름": "탕구리",
+      "진화": "1진화",
+      "HP": 110,
+      "기술명": "Punish",
+      "기술명2": "",
+      "기술추가효과": "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage.",
+      "기술추가효과2": "",
+      "기술에너지": "격투1/무색1",
+      "기술에너지2": "",
+      "피해량": "50+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Marowak",
+    "en": {
+      "attacks": [
+        {
+          "name": "Punish",
+          "damage": "50+",
+          "effect": "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage.",
+          "energy": "격투1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Cubone"
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 19237,
+      "Serial": "b4a-037",
+      "속성": "",
+      "이름": "랜드로스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "Gaia Impact",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 에너지를 모두 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투2/무색1",
+      "기술에너지2": "",
+      "피해량": "130",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Landorus",
+    "en": {
+      "attacks": [
+        {
+          "name": "Gaia Impact",
+          "damage": "130",
+          "effect": "Discard all Energy from this Pokémon.",
+          "energy": "격투2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19238,
+      "Serial": "b4a-038",
+      "속성": "",
+      "이름": "로켓단의 아보",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "어둠엄니",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "악1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Ekans",
+    "en": {
+      "attacks": [
+        {
+          "name": "Darkness Fang",
+          "damage": "40",
+          "effect": "",
+          "energy": "악1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19239,
+      "Serial": "b4a-039",
+      "속성": "",
+      "이름": "로켓단의 아보크",
+      "이전이름": "Team Rocket’s Ekans",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "Shadow Seeker",
+      "기술명2": "",
+      "기술추가효과": "This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.",
+      "기술추가효과2": "",
+      "기술에너지": "악2/무색1",
+      "기술에너지2": "",
+      "피해량": "70+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Arbok",
+    "en": {
+      "attacks": [
+        {
+          "name": "Shadow Seeker",
+          "damage": "70+",
+          "effect": "This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.",
+          "energy": "악2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Ekans"
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19240,
+      "Serial": "b4a-040",
+      "속성": "",
+      "이름": "로켓단의 질퍽이",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "오물공격",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 독으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Grimer",
+    "en": {
+      "attacks": [
+        {
+          "name": "Sludge",
+          "damage": "20",
+          "effect": "Your opponent's Active Pokémon is now Poisoned.",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19241,
+      "Serial": "b4a-041",
+      "속성": "",
+      "이름": "로켓단의 질뻐기",
+      "이전이름": "Team Rocket’s Grimer",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "Poison Absorption",
+      "기술명2": "",
+      "기술추가효과": "If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon.",
+      "기술추가효과2": "",
+      "기술에너지": "악2/무색1",
+      "기술에너지2": "",
+      "피해량": "80",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Muk",
+    "en": {
+      "attacks": [
+        {
+          "name": "Poison Absorption",
+          "damage": "80",
+          "effect": "If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon.",
+          "energy": "악2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Grimer"
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19242,
+      "Serial": "b4a-042",
+      "속성": "",
+      "이름": "로켓단의 또가스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "Reverse Thrust",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬을 벤치 포켓몬과 교체한다.",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Koffing",
+    "en": {
+      "attacks": [
+        {
+          "name": "Reverse Thrust",
+          "damage": "10",
+          "effect": "Switch this Pokémon with 1 of your Benched Pokémon.",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19243,
+      "Serial": "b4a-043",
+      "속성": "ex",
+      "이름": "로켓단의 또도가스 ex",
+      "이전이름": "Team Rocket’s Koffing",
+      "진화": "1진화",
+      "HP": 140,
+      "기술명": "Confusion Gas",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 혼란으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "악2",
+      "기술에너지2": "",
+      "피해량": "60",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "Boiler Smog",
+      "특성효과": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Weezing ex",
+    "en": {
+      "attacks": [
+        {
+          "name": "Confusion Gas",
+          "damage": "60",
+          "effect": "Your opponent's Active Pokémon is now Confused.",
+          "energy": "악2"
+        }
+      ],
+      "abilityName": "Ability: Boiler Smog",
+      "abilityEffect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Koffing"
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 19244,
+      "Serial": "b4a-044",
+      "속성": "",
+      "이름": "로켓단의 포푸니",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "다함께 때려잡기",
+      "기술명2": "",
+      "기술추가효과": "Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads.",
+      "기술추가효과2": "",
+      "기술에너지": "악1/무색1",
+      "기술에너지2": "",
+      "피해량": "30x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Sneasel",
+    "en": {
+      "attacks": [
+        {
+          "name": "Group Beatdown",
+          "damage": "30x",
+          "effect": "Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads.",
+          "energy": "악1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19245,
+      "Serial": "b4a-045",
+      "속성": "",
+      "이름": "토게데마루",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "롤링어택",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 30데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "강철1",
+      "기술에너지2": "",
+      "피해량": "20+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Togedemaru",
+    "en": {
+      "attacks": [
+        {
+          "name": "Tumbling Attack",
+          "damage": "20+",
+          "effect": "Flip a coin. If heads, this attack does 30 more damage.",
+          "energy": "강철1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19246,
+      "Serial": "b4a-046",
+      "속성": "",
+      "이름": "끼리동",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 90,
+      "기술명": "친구사이",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Cufant",
+    "en": {
+      "attacks": [
+        {
+          "name": "Rollout",
+          "damage": "40",
+          "effect": "",
+          "energy": "강철1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19247,
+      "Serial": "b4a-047",
+      "속성": "",
+      "이름": "대왕끼리동",
+      "이전이름": "끼리동",
+      "진화": "1진화",
+      "HP": 160,
+      "기술명": "헤비임팩트",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철2/무색1",
+      "기술에너지2": "",
+      "피해량": "80",
+      "피해량2": "",
+      "후퇴에너지": 4,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Copperajah",
+    "en": {
+      "attacks": [
+        {
+          "name": "Heavy Impact",
+          "damage": "80",
+          "effect": "",
+          "energy": "강철2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Cufant"
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19248,
+      "Serial": "b4a-048",
+      "속성": "",
+      "이름": "로켓단의 어리짱",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "넘어뜨리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Tinkatink",
+    "en": {
+      "attacks": [
+        {
+          "name": "Lunge Out",
+          "damage": "20",
+          "effect": "",
+          "energy": "강철1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19249,
+      "Serial": "b4a-049",
+      "속성": "",
+      "이름": "로켓단의 벼리짱",
+      "이전이름": "Team Rocket’s Tinkatink",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "쥐어박기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철1/무색1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Tinkatuff",
+    "en": {
+      "attacks": [
+        {
+          "name": "Corkscrew Punch",
+          "damage": "50",
+          "effect": "",
+          "energy": "강철1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Tinkatink"
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19250,
+      "Serial": "b4a-050",
+      "속성": "",
+      "이름": "로켓단의 두드리짱",
+      "이전이름": "Team Rocket’s Tinkatuff",
+      "진화": "2진화",
+      "HP": 140,
+      "기술명": "Pile-Driving Hammer",
+      "기술명2": "",
+      "기술추가효과": "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [ C ] more, and its Retreat Cost is 2 [ C ] more.",
+      "기술추가효과2": "",
+      "기술에너지": "강철2/무색1",
+      "기술에너지2": "",
+      "피해량": "80",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Tinkaton",
+    "en": {
+      "attacks": [
+        {
+          "name": "Pile-Driving Hammer",
+          "damage": "80",
+          "effect": "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [ C ] more, and its Retreat Cost is 2 [ C ] more.",
+          "energy": "강철2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Tinkatuff"
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 19251,
+      "Serial": "b4a-051",
+      "속성": "",
+      "이름": "타부자고",
+      "이전이름": "모으령",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "파워젬",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색3",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "Luxury Coin",
+      "특성효과": "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn.",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Gholdengo",
+    "en": {
+      "attacks": [
+        {
+          "name": "Power Gem",
+          "damage": "50",
+          "effect": "",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "Ability: Luxury Coin",
+      "abilityEffect": "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn.",
+      "trainerEffect": "",
+      "evolvesFrom": "Gimmighoul"
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 19252,
+      "Serial": "b4a-052",
+      "속성": "",
+      "이름": "딥상어동",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "돌진",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에게도 10데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Gible",
+    "en": {
+      "attacks": [
+        {
+          "name": "Take Down",
+          "damage": "30",
+          "effect": "This Pokémon also does 10 damage to itself.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 19253,
+      "Serial": "b4a-053",
+      "속성": "",
+      "이름": "한바이트",
+      "이전이름": "딥상어동",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "직격탄",
+      "기술명2": "",
+      "기술추가효과": "상대의 포켓몬 1마리에게 50데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "물1/격투1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Gabite",
+    "en": {
+      "attacks": [
+        {
+          "name": "Linear Attack",
+          "damage": "",
+          "effect": "This attack does 50 damage to 1 of your opponent's Pokémon.",
+          "energy": "물1/격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Gible"
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 19254,
+      "Serial": "b4a-054",
+      "속성": "",
+      "이름": "한카리아스",
+      "이전이름": "한바이트",
+      "진화": "2진화",
+      "HP": 150,
+      "기술명": "랜드크래시",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물1/격투1/무색1",
+      "기술에너지2": "",
+      "피해량": "120",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "Mach Stealth",
+      "특성효과": "이 포켓몬의 기술의 데미지로 상대의 포켓몬이 기절했다면 상대의 다음 차례에 이 포켓몬은 기술의 데미지나 효과를 받지 않는다.",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Garchomp",
+    "en": {
+      "attacks": [
+        {
+          "name": "Land Crush",
+          "damage": "120",
+          "effect": "",
+          "energy": "물1/격투1/무색1"
+        }
+      ],
+      "abilityName": "Ability: Mach Stealth",
+      "abilityEffect": "If your opponent's Pokémon is Knocked Out by damage from this Pokémon's attacks, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Gabite"
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 19255,
+      "Serial": "b4a-055",
+      "속성": "",
+      "이름": "두랄루돈",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "파워빔",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1/강철1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Duraludon",
+    "en": {
+      "attacks": [
+        {
+          "name": "Power Beam",
+          "damage": "50",
+          "effect": "",
+          "energy": "격투1/강철1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 19256,
+      "Serial": "b4a-056",
+      "속성": "",
+      "이름": "브리두라스",
+      "이전이름": "두랄루돈",
+      "진화": "1진화",
+      "HP": 140,
+      "기술명": "프로텍트차지",
+      "기술명2": "",
+      "기술추가효과": "상대의 다음 차례에 이 포켓몬이 받는 기술의 데미지를 -30한다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투1/강철1/무색2",
+      "기술에너지2": "",
+      "피해량": "110",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Archaludon",
+    "en": {
+      "attacks": [
+        {
+          "name": "Protect Charge",
+          "damage": "110",
+          "effect": "During your opponent's next turn, this Pokémon takes −30 damage from attacks.",
+          "energy": "격투1/강철1/무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Duraludon"
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 19257,
+      "Serial": "b4a-057",
+      "속성": "",
+      "이름": "레지드래고",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 110,
+      "기술명": "Draconic Slam 140-",
+      "기술명2": "",
+      "기술추가효과": "If this Pokémon has damage on it, this attack does −100 damage.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/불1/무색1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Regidrago",
+    "en": {
+      "attacks": [
+        {
+          "name": "Draconic Slam 140-",
+          "damage": "",
+          "effect": "If this Pokémon has damage on it, this attack does −100 damage.",
+          "energy": "풀1/불1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19258,
+      "Serial": "b4a-058",
+      "속성": "",
+      "이름": "로켓단의 꼬렛",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 40,
+      "기술명": "덮치기",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 20데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Rattata",
+    "en": {
+      "attacks": [
+        {
+          "name": "Ambush",
+          "damage": "20+",
+          "effect": "Flip a coin. If heads, this attack does 20 more damage.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19259,
+      "Serial": "b4a-059",
+      "속성": "ex",
+      "이름": "로켓단의 레트라 ex",
+      "이전이름": "Team Rocket’s Rattata",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "Boost Dash",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 0,
+      "특성": "Thieving Incisors",
+      "특성효과": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Raticate ex",
+    "en": {
+      "attacks": [
+        {
+          "name": "Boost Dash",
+          "damage": "70",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "Ability: Thieving Incisors",
+      "abilityEffect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Rattata"
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19260,
+      "Serial": "b4a-060",
+      "속성": "",
+      "이름": "로켓단의 나옹",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "할퀴기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Meowth",
+    "en": {
+      "attacks": [
+        {
+          "name": "Scratch",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19261,
+      "Serial": "b4a-061",
+      "속성": "",
+      "이름": "로켓단의 페르시온",
+      "이전이름": "Team Rocket’s Meowth",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "Dangerous Rogue",
+      "기술명2": "",
+      "기술추가효과": "This attack does 40 more damage for each of your opponent's Benched Pokémon.",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "10+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Persian",
+    "en": {
+      "attacks": [
+        {
+          "name": "Dangerous Rogue",
+          "damage": "10+",
+          "effect": "This attack does 40 more damage for each of your opponent's Benched Pokémon.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Meowth"
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19262,
+      "Serial": "b4a-062",
+      "속성": "",
+      "이름": "로켓단의 켈리몬",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "Hit and Hide",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 상대의 다음 차례에 이 포켓몬은 기술의 데미지나 효과를 받지 않는다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "Spy Ops",
+      "특성효과": "Once during your turn, you may look at a random card from your opponent's hand.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Kecleon",
+    "en": {
+      "attacks": [
+        {
+          "name": "Hit and Hide",
+          "damage": "40",
+          "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "Ability: Spy Ops",
+      "abilityEffect": "Once during your turn, you may look at a random card from your opponent's hand.",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19263,
+      "Serial": "b4a-063",
+      "속성": "",
+      "이름": "핑복",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 30,
+      "기술명": "0 Chubby Cheer",
+      "기술명2": "",
+      "기술추가효과": "자신의 다음 차례에 자신의 포켓몬이 사용하는 기술이 상대의 배틀 포켓몬에게 주는 데미지를 +20한다.",
+      "기술추가효과2": "",
+      "기술에너지": "",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 0,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Happiny",
+    "en": {
+      "attacks": [
+        {
+          "name": "0 Chubby Cheer",
+          "damage": "10",
+          "effect": "During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon.",
+          "energy": ""
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19264,
+      "Serial": "b4a-064",
+      "속성": "",
+      "이름": "트리미앙",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "연속스텝",
+      "기술명2": "",
+      "기술추가효과": "Flip a coin until you get tails. This attack does 30 damage for each heads.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "퍼코트",
+      "특성효과": "이 포켓몬이 받는 기술의 데미지를 -20한다.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Furfrou",
+    "en": {
+      "attacks": [
+        {
+          "name": "Continuous Steps",
+          "damage": "30x",
+          "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "Ability: Fur Coat",
+      "abilityEffect": "This Pokémon takes −20 damage from attacks.",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19265,
+      "Serial": "b4a-065",
+      "속성": "",
+      "이름": "맛보돈",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "박치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Lechonk",
+    "en": {
+      "attacks": [
+        {
+          "name": "Headbutt",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 19266,
+      "Serial": "b4a-066",
+      "속성": "",
+      "이름": "퍼퓨돈",
+      "이전이름": "맛보돈",
+      "진화": "1진화",
+      "HP": 110,
+      "기술명": "Sitdown Splash",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 60데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "40+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Oinkologne",
+    "en": {
+      "attacks": [
+        {
+          "name": "Sitdown Splash",
+          "damage": "40+",
+          "effect": "Flip a coin. If heads, this attack does 60 more damage.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Lechonk"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "아이템",
+      "ID": 19267,
+      "Serial": "b4a-067",
+      "이름": "로켓단의 도둑질 머신",
+      "기술추가효과": "",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Thieving Machine",
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "아이템",
+      "ID": 19268,
+      "Serial": "b4a-068",
+      "이름": "로켓단의 구즈카",
+      "기술추가효과": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Goo-zooka",
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 19269,
+      "Serial": "b4a-069",
+      "이름": "로켓단의 연구원",
+      "기술추가효과": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Researcher",
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 19270,
+      "Serial": "b4a-070",
+      "이름": "로켓단의 대작전",
+      "기술추가효과": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Master Plan",
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 19271,
+      "Serial": "b4a-071",
+      "이름": "로켓단의 보스",
+      "기술추가효과": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Team Rocket's Boss",
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "스타디움",
+      "ID": 19272,
+      "Serial": "b4a-072",
+      "이름": "아케이드",
+      "기술추가효과": "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand.",
+      "키워드": "",
+      "확장팩": "로켓단의 야망"
+    },
+    "enName": "Arcade",
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand.",
+      "evolvesFrom": ""
+    }
+  }
+]

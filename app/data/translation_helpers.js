@@ -269,9 +269,18 @@ function lookupPokemonName(name, pokemonNames, nameOverrides) {
   if (pokemonNames[n]) return pokemonNames[n];
   if (SPECIES_API[n]) return SPECIES_API[n];
   if (FOSSIL_NAMES[n]) return FOSSIL_NAMES[n];
+  if (TRAINER_MAP[n]) return TRAINER_MAP[n];
   if (n.endsWith(' ex')) {
     const base = lookupPokemonName(n.slice(0, -3), pokemonNames, nameOverrides);
     if (base && base !== n.slice(0, -3)) return base + ' ex';
+  }
+  if (n.startsWith('로켓단의 ')) {
+    const inner = lookupPokemonName(n.slice('로켓단의 '.length), pokemonNames, nameOverrides);
+    if (inner && inner !== n.slice('로켓단의 '.length)) return "Team Rocket's " + inner;
+  }
+  if (n.startsWith('히스이 ')) {
+    const inner = lookupPokemonName(n.slice('히스이 '.length), pokemonNames, nameOverrides);
+    if (inner && inner !== n.slice('히스이 '.length)) return 'Hisuian ' + inner;
   }
   return n;
 }

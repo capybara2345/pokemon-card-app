@@ -1,0 +1,862 @@
+[
+  {
+    "serial": "b4a-002",
+    "name": "네오비트",
+    "hit": {
+      "기술명": "Ire-Fly",
+      "기술추가효과": "If Volbeat is in your discard pile, this attack does 60 more damage."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Ire-Fly",
+          "damage": "30+",
+          "effect": "If Volbeat is in your discard pile, this attack does 60 more damage.",
+          "energy": "풀1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-003",
+    "name": "주리비얀",
+    "hit": {
+      "기술명": "Leaf Boomerang"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Leaf Boomerang",
+          "damage": "20x",
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads.",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-005",
+    "name": "샤로다",
+    "hit": {
+      "특성": "Regal Bloom",
+      "특성효과": "This Pokémon gets +30 HP for each [ G ] Energy attached to it."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Flog",
+          "damage": "60+",
+          "effect": "Flip a coin. If heads, this attack does 60 more damage.",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "Ability: Regal Bloom",
+      "abilityEffect": "This Pokémon gets +30 HP for each [ G ] Energy attached to it.",
+      "trainerEffect": "",
+      "evolvesFrom": "Servine"
+    }
+  },
+  {
+    "serial": "b4a-006",
+    "name": "로켓단의 마그마",
+    "hit": {
+      "기술명": "Derisive Roasting",
+      "기술추가효과": "This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Derisive Roasting",
+          "damage": "10+",
+          "effect": "This attack does 50 more damage for each Special Condition affecting your opponent's Active Pokémon.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-007",
+    "name": "로켓단의 파이어 ex",
+    "hit": {
+      "기술명": "Heat Charged",
+      "기술명2": "Netherwing",
+      "기술추가효과": "Flip 3 coins. For each heads, produce a [ R ] Energy from your Energy Zone and attach it to this Pokémon.",
+      "기술추가효과2": "Discard a [ R ] Energy from this Pokémon."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Heat Charged",
+          "damage": "",
+          "effect": "Flip 3 coins. For each heads, produce a [ R ] Energy from your Energy Zone and attach it to this Pokémon.",
+          "energy": "불1"
+        },
+        {
+          "name": "Netherwing",
+          "damage": "130",
+          "effect": "Discard a [ R ] Energy from this Pokémon.",
+          "energy": "불3/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-009",
+    "name": "로켓단의 헬가",
+    "hit": {
+      "이전이름": "Team Rocket’s Houndour",
+      "기술명": "Toxfire Fang"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Toxfire Fang",
+          "damage": "20",
+          "effect": "Your opponent's Active Pokémon is now Poisoned and Burned.",
+          "energy": "불1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Houndour"
+    }
+  },
+  {
+    "serial": "b4a-013",
+    "name": "로켓단의 라프라스",
+    "hit": {
+      "기술명": "Ruthless Whirlpool",
+      "기술추가효과": "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Ruthless Whirlpool",
+          "damage": "40+",
+          "effect": "If this Pokémon has more Energy attached than your opponent's Active Pokémon, this attack does 40 more damage.",
+          "energy": "물1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-014",
+    "name": "로켓단의 프리져 ex",
+    "hit": {
+      "기술명2": "Hailstorm"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Ice Wing",
+          "damage": "40",
+          "effect": "",
+          "energy": "물1/무색1"
+        },
+        {
+          "name": "Hailstorm",
+          "damage": "130",
+          "effect": "This attack also does 20 damage to each of your Benched Pokémon.",
+          "energy": "물2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-018",
+    "name": "히스이 대쓰바스",
+    "hit": {
+      "기술명": "Soul Counter",
+      "기술추가효과": "This attack does 50 more damage for each point your opponent got during their last turn."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Soul Counter",
+          "damage": "50+",
+          "effect": "This attack does 50 more damage for each point your opponent got during their last turn.",
+          "energy": "물2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Hisuian Basculin"
+    }
+  },
+  {
+    "serial": "b4a-020",
+    "name": "로켓단의 붐볼",
+    "hit": {
+      "이전이름": "Team Rocket’s Voltorb",
+      "특성": "Destiny Burst",
+      "특성효과": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Random Spark",
+          "damage": "",
+          "effect": "This attack does 30 damage to 1 of your opponent's Pokémon.",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "Ability: Destiny Burst",
+      "abilityEffect": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, do 70 damage to the Attacking Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Voltorb"
+    }
+  },
+  {
+    "serial": "b4a-021",
+    "name": "로켓단의 썬더 ex",
+    "hit": {
+      "기술명2": "Thunderclaw",
+      "기술추가효과2": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Electro Ball",
+          "damage": "40",
+          "effect": "",
+          "energy": "번개1/무색1"
+        },
+        {
+          "name": "Thunderclaw",
+          "damage": "90",
+          "effect": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon that has damage on it.",
+          "energy": "번개2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-022",
+    "name": "줄뮤마",
+    "hit": {
+      "기술명": "Double Headbutt"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Double Headbutt",
+          "damage": "20x",
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads.",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-025",
+    "name": "로켓단의 야돈",
+    "hit": {
+      "기술명": "Scavenge",
+      "기술추가효과": "Put a random Item card from your discard pile into your hand."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Scavenge",
+          "damage": "",
+          "effect": "Put a random Item card from your discard pile into your hand.",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-026",
+    "name": "로켓단의 야도킹 ex",
+    "hit": {
+      "이전이름": "Team Rocket’s Slowpoke",
+      "기술명": "Hand Kinesis",
+      "기술추가효과": "This attack does 20 damage for each card in your hand.",
+      "특성": "Evil Inspiration",
+      "특성효과": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Hand Kinesis",
+          "damage": "20x",
+          "effect": "This attack does 20 damage for each card in your hand.",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "Ability: Evil Inspiration",
+      "abilityEffect": "Once during your turn, if this Pokémon is in the Active Spot, you may draw a card.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Slowpoke"
+    }
+  },
+  {
+    "serial": "b4a-028",
+    "name": "로켓단의 슬리퍼",
+    "hit": {
+      "이전이름": "Team Rocket’s Drowzee",
+      "기술명": "Entrap"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Entrap",
+          "damage": "",
+          "effect": "Switch in 1 of your opponent's Benched Pokémon to the Active Spot. If you do, this attack does 50 damage to the new Active Pokémon.",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Drowzee"
+    }
+  },
+  {
+    "serial": "b4a-030",
+    "name": "로켓단의 뮤츠",
+    "hit": {
+      "기술명": "Psychic Explosion"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Psychic Explosion",
+          "damage": "130",
+          "effect": "This Pokémon also does 70 damage to itself.",
+          "energy": "초2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-033",
+    "name": "하랑우탄",
+    "hit": {
+      "기술명": "Punch and Draw"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Punch and Draw",
+          "damage": "40",
+          "effect": "Draw a card.",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-036",
+    "name": "텅구리",
+    "hit": {
+      "기술명": "Punish",
+      "기술추가효과": "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Punish",
+          "damage": "50+",
+          "effect": "If your opponent's Active Pokémon has “Team Rocket” in its name, this attack does 70 more damage.",
+          "energy": "격투1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Cubone"
+    }
+  },
+  {
+    "serial": "b4a-037",
+    "name": "랜드로스",
+    "hit": {
+      "기술명": "Gaia Impact"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Gaia Impact",
+          "damage": "130",
+          "effect": "Discard all Energy from this Pokémon.",
+          "energy": "격투2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-039",
+    "name": "로켓단의 아보크",
+    "hit": {
+      "이전이름": "Team Rocket’s Ekans",
+      "기술명": "Shadow Seeker",
+      "기술추가효과": "This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Shadow Seeker",
+          "damage": "70+",
+          "effect": "This attack does 10 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.",
+          "energy": "악2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Ekans"
+    }
+  },
+  {
+    "serial": "b4a-041",
+    "name": "로켓단의 질뻐기",
+    "hit": {
+      "이전이름": "Team Rocket’s Grimer",
+      "기술명": "Poison Absorption",
+      "기술추가효과": "If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Poison Absorption",
+          "damage": "80",
+          "effect": "If your opponent's Active Pokémon is Poisoned, heal 60 damage from this Pokémon.",
+          "energy": "악2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Grimer"
+    }
+  },
+  {
+    "serial": "b4a-042",
+    "name": "로켓단의 또가스",
+    "hit": {
+      "기술명": "Reverse Thrust"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Reverse Thrust",
+          "damage": "10",
+          "effect": "Switch this Pokémon with 1 of your Benched Pokémon.",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-043",
+    "name": "로켓단의 또도가스 ex",
+    "hit": {
+      "이전이름": "Team Rocket’s Koffing",
+      "기술명": "Confusion Gas",
+      "특성": "Boiler Smog",
+      "특성효과": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Confusion Gas",
+          "damage": "60",
+          "effect": "Your opponent's Active Pokémon is now Confused.",
+          "energy": "악2"
+        }
+      ],
+      "abilityName": "Ability: Boiler Smog",
+      "abilityEffect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may make your opponent's Active Pokémon Poisoned and Burned.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Koffing"
+    }
+  },
+  {
+    "serial": "b4a-044",
+    "name": "로켓단의 포푸니",
+    "hit": {
+      "기술추가효과": "Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Group Beatdown",
+          "damage": "30x",
+          "effect": "Flip a coin for each Pokémon you have in play. This attack does 30 damage for each heads.",
+          "energy": "악1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-049",
+    "name": "로켓단의 벼리짱",
+    "hit": {
+      "이전이름": "Team Rocket’s Tinkatink"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Corkscrew Punch",
+          "damage": "50",
+          "effect": "",
+          "energy": "강철1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Tinkatink"
+    }
+  },
+  {
+    "serial": "b4a-050",
+    "name": "로켓단의 두드리짱",
+    "hit": {
+      "이전이름": "Team Rocket’s Tinkatuff",
+      "기술명": "Pile-Driving Hammer",
+      "기술추가효과": "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [ C ] more, and its Retreat Cost is 2 [ C ] more."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Pile-Driving Hammer",
+          "damage": "80",
+          "effect": "During your opponent's next turn, attacks used by the Defending Pokémon cost 2 [ C ] more, and its Retreat Cost is 2 [ C ] more.",
+          "energy": "강철2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Tinkatuff"
+    }
+  },
+  {
+    "serial": "b4a-051",
+    "name": "타부자고",
+    "hit": {
+      "특성": "Luxury Coin",
+      "특성효과": "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Power Gem",
+          "damage": "50",
+          "effect": "",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "Ability: Luxury Coin",
+      "abilityEffect": "Once during your turn, when you flip any coins for an effect of your Trainer cards, you may ignore all results of those coin flips and begin flipping those coins again. You can't use more than 1 Luxury Coin Ability each turn.",
+      "trainerEffect": "",
+      "evolvesFrom": "Gimmighoul"
+    }
+  },
+  {
+    "serial": "b4a-054",
+    "name": "한카리아스",
+    "hit": {
+      "특성": "Mach Stealth"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Land Crush",
+          "damage": "120",
+          "effect": "",
+          "energy": "물1/격투1/무색1"
+        }
+      ],
+      "abilityName": "Ability: Mach Stealth",
+      "abilityEffect": "If your opponent's Pokémon is Knocked Out by damage from this Pokémon's attacks, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Gabite"
+    }
+  },
+  {
+    "serial": "b4a-057",
+    "name": "레지드래고",
+    "hit": {
+      "기술명": "Draconic Slam 140-",
+      "기술추가효과": "If this Pokémon has damage on it, this attack does −100 damage."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Draconic Slam 140-",
+          "damage": "",
+          "effect": "If this Pokémon has damage on it, this attack does −100 damage.",
+          "energy": "풀1/불1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-059",
+    "name": "로켓단의 레트라 ex",
+    "hit": {
+      "이전이름": "Team Rocket’s Rattata",
+      "기술명": "Boost Dash",
+      "특성": "Thieving Incisors",
+      "특성효과": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Boost Dash",
+          "damage": "70",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "Ability: Thieving Incisors",
+      "abilityEffect": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, you may move a random Energy from your opponent's Active Pokémon to this Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Rattata"
+    }
+  },
+  {
+    "serial": "b4a-061",
+    "name": "로켓단의 페르시온",
+    "hit": {
+      "이전이름": "Team Rocket’s Meowth",
+      "기술명": "Dangerous Rogue",
+      "기술추가효과": "This attack does 40 more damage for each of your opponent's Benched Pokémon."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Dangerous Rogue",
+          "damage": "10+",
+          "effect": "This attack does 40 more damage for each of your opponent's Benched Pokémon.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Team Rocket’s Meowth"
+    }
+  },
+  {
+    "serial": "b4a-062",
+    "name": "로켓단의 켈리몬",
+    "hit": {
+      "기술명": "Hit and Hide",
+      "특성": "Spy Ops",
+      "특성효과": "Once during your turn, you may look at a random card from your opponent's hand."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Hit and Hide",
+          "damage": "40",
+          "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "Ability: Spy Ops",
+      "abilityEffect": "Once during your turn, you may look at a random card from your opponent's hand.",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-063",
+    "name": "핑복",
+    "hit": {
+      "기술명": "0 Chubby Cheer"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "0 Chubby Cheer",
+          "damage": "10",
+          "effect": "During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon.",
+          "energy": ""
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-064",
+    "name": "트리미앙",
+    "hit": {
+      "기술추가효과": "Flip a coin until you get tails. This attack does 30 damage for each heads."
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Continuous Steps",
+          "damage": "30x",
+          "effect": "Flip a coin until you get tails. This attack does 30 damage for each heads.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "Ability: Fur Coat",
+      "abilityEffect": "This Pokémon takes −20 damage from attacks.",
+      "trainerEffect": "",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-066",
+    "name": "퍼퓨돈",
+    "hit": {
+      "기술명": "Sitdown Splash"
+    },
+    "en": {
+      "attacks": [
+        {
+          "name": "Sitdown Splash",
+          "damage": "40+",
+          "effect": "Flip a coin. If heads, this attack does 60 more damage.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Lechonk"
+    }
+  },
+  {
+    "serial": "b4a-068",
+    "name": "로켓단의 구즈카",
+    "hit": {
+      "기술추가효과": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more."
+    },
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Until the end of your opponent's next turn, your opponent's Active Pokémon's Retreat Cost is 1 more.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-069",
+    "name": "로켓단의 연구원",
+    "hit": {
+      "기술추가효과": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand."
+    },
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Flip a coin until you get tails. For each heads, put a random Pokémon that has “Team Rocket” in its name from your deck into your hand.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-070",
+    "name": "로켓단의 대작전",
+    "hit": {
+      "기술추가효과": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused."
+    },
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Your opponent's Active Pokémon is now Confused. Flip a coin. If tails, your Active Pokémon is now also Confused.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-071",
+    "name": "로켓단의 보스",
+    "hit": {
+      "기술추가효과": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench."
+    },
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Look at your opponent's hand and put any number of Basic Pokémon you find there onto your opponent's Bench.",
+      "evolvesFrom": ""
+    }
+  },
+  {
+    "serial": "b4a-072",
+    "name": "아케이드",
+    "hit": {
+      "기술추가효과": "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand."
+    },
+    "en": {
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Once during each player's turn, that player may flip 3 coins. If all of them are heads, that player draws cards until they have 7 cards in their hand.",
+      "evolvesFrom": ""
+    }
+  }
+]

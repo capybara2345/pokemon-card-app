@@ -1,0 +1,650 @@
+[
+  {
+    "set": "B4a",
+    "number": 1,
+    "rarity": "C",
+    "name": "Volbeat",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 2,
+    "rarity": "C",
+    "name": "Illumise",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 3,
+    "rarity": "C",
+    "name": "Snivy",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 4,
+    "rarity": "U",
+    "name": "Servine",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 5,
+    "rarity": "R",
+    "name": "Serperior",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 6,
+    "rarity": "C",
+    "name": "Team Rocket's Magmar",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 7,
+    "rarity": "RR",
+    "name": "Team Rocket's Moltres ex",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 8,
+    "rarity": "C",
+    "name": "Team Rocket's Houndour",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 9,
+    "rarity": "C",
+    "name": "Team Rocket's Houndoom",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 10,
+    "rarity": "C",
+    "name": "Fennekin",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 11,
+    "rarity": "U",
+    "name": "Braixen",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 12,
+    "rarity": "R",
+    "name": "Delphox",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 13,
+    "rarity": "U",
+    "name": "Team Rocket's Lapras",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 14,
+    "rarity": "RR",
+    "name": "Team Rocket's Articuno ex",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 15,
+    "rarity": "C",
+    "name": "Wingull",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 16,
+    "rarity": "U",
+    "name": "Pelipper",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 17,
+    "rarity": "C",
+    "name": "Hisuian Basculin",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 18,
+    "rarity": "U",
+    "name": "Hisuian Basculegion",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 19,
+    "rarity": "C",
+    "name": "Team Rocket's Voltorb",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 20,
+    "rarity": "U",
+    "name": "Team Rocket's Electrode",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 21,
+    "rarity": "RR",
+    "name": "Team Rocket's Zapdos ex",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 22,
+    "rarity": "C",
+    "name": "Blitzle",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 23,
+    "rarity": "U",
+    "name": "Zebstrika",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 24,
+    "rarity": "C",
+    "name": "Team Rocket's Pincurchin",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 25,
+    "rarity": "C",
+    "name": "Team Rocket's Slowpoke",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 26,
+    "rarity": "RR",
+    "name": "Team Rocket's Slowking ex",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 27,
+    "rarity": "C",
+    "name": "Team Rocket's Drowzee",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 28,
+    "rarity": "U",
+    "name": "Team Rocket's Hypno",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 29,
+    "rarity": "C",
+    "name": "Team Rocket's Mr. Mime",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 30,
+    "rarity": "R",
+    "name": "Team Rocket's Mewtwo",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 31,
+    "rarity": "C",
+    "name": "Espurr",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 32,
+    "rarity": "U",
+    "name": "Meowstic",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 33,
+    "rarity": "U",
+    "name": "Oranguru",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 34,
+    "rarity": "C",
+    "name": "Gimmighoul",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 35,
+    "rarity": "C",
+    "name": "Cubone",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 36,
+    "rarity": "U",
+    "name": "Marowak",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 37,
+    "rarity": "R",
+    "name": "Landorus",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 38,
+    "rarity": "C",
+    "name": "Team Rocket's Ekans",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 39,
+    "rarity": "U",
+    "name": "Team Rocket's Arbok",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 40,
+    "rarity": "C",
+    "name": "Team Rocket's Grimer",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 41,
+    "rarity": "U",
+    "name": "Team Rocket's Muk",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 42,
+    "rarity": "C",
+    "name": "Team Rocket's Koffing",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 43,
+    "rarity": "RR",
+    "name": "Team Rocket's Weezing ex",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 44,
+    "rarity": "C",
+    "name": "Team Rocket's Sneasel",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 45,
+    "rarity": "C",
+    "name": "Togedemaru",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 46,
+    "rarity": "C",
+    "name": "Cufant",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 47,
+    "rarity": "U",
+    "name": "Copperajah",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 48,
+    "rarity": "C",
+    "name": "Team Rocket's Tinkatink",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 49,
+    "rarity": "U",
+    "name": "Team Rocket's Tinkatuff",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 50,
+    "rarity": "R",
+    "name": "Team Rocket's Tinkaton",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 51,
+    "rarity": "U",
+    "name": "Gholdengo",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 52,
+    "rarity": "C",
+    "name": "Gible",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 53,
+    "rarity": "U",
+    "name": "Gabite",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 54,
+    "rarity": "R",
+    "name": "Garchomp",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 55,
+    "rarity": "U",
+    "name": "Duraludon",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 56,
+    "rarity": "R",
+    "name": "Archaludon",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 57,
+    "rarity": "U",
+    "name": "Regidrago",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 58,
+    "rarity": "C",
+    "name": "Team Rocket's Rattata",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 59,
+    "rarity": "RR",
+    "name": "Team Rocket's Raticate ex",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 60,
+    "rarity": "C",
+    "name": "Team Rocket's Meowth",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 61,
+    "rarity": "U",
+    "name": "Team Rocket's Persian",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 62,
+    "rarity": "C",
+    "name": "Team Rocket's Kecleon",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 63,
+    "rarity": "R",
+    "name": "Happiny",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 64,
+    "rarity": "C",
+    "name": "Furfrou",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 65,
+    "rarity": "C",
+    "name": "Lechonk",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 66,
+    "rarity": "C",
+    "name": "Oinkologne",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 67,
+    "rarity": "U",
+    "name": "Team Rocket's Thieving Machine",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 68,
+    "rarity": "U",
+    "name": "Team Rocket's Goo-zooka",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 69,
+    "rarity": "U",
+    "name": "Team Rocket's Researcher",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 70,
+    "rarity": "U",
+    "name": "Team Rocket's Master Plan",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 71,
+    "rarity": "U",
+    "name": "Team Rocket's Boss",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  },
+  {
+    "set": "B4a",
+    "number": 72,
+    "rarity": "U",
+    "name": "Arcade",
+    "packs": [
+      "Team Rocket's Ambition"
+    ]
+  }
+]

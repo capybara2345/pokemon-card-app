@@ -659,6 +659,7 @@ const EXPANSIONS = {
   '진격 패러독스':'Paradox Drive',
   '미라클 데이즈':'Everyday Wonders',
   '천공의 지배자':'Ruler of the Skies',
+  '로켓단의 야망':"Team Rocket's Ambition",
   '프로모':'Promo-A',
 };
 
