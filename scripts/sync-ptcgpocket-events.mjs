@@ -98,14 +98,96 @@ function sleep(ms) {
 
 function decodeHtml(text) {
   return text
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8216;/g, "'")
     .replace(/&#8211;/g, "–")
     .replace(/&#8212;/g, "—")
     .replace(/&#038;/g, "&")
     .replace(/&amp;/g, "&")
+    .replace(/&apos;/g, "'")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'");
+    .replace(/&#039;/g, "'")
+    .replace(/[\u2018\u2019\u201A\u2032]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"');
+}
+
+/** Sync가 덮어쓰지 않도록 유지할 제목/일정 보정 (id 기준) */
+const MANUAL_EVENT_OVERRIDES = {
+  "expansion-b4a": {
+    title: {
+      en: "Team Rocket's Ambition Expansion",
+      ko: "로켓단의 야망 확장팩",
+    },
+  },
+  "team-rockets-special-assignments": {
+    title: {
+      en: "Team Rocket's Special Assignments",
+      ko: "로켓단의 특별 임무",
+    },
+  },
+  "team-rockets-ambition-emblem-event": {
+    title: {
+      en: "Team Rocket's Ambition Emblem Event",
+      ko: "로켓단의 야망 엠블럼 이벤트",
+    },
+  },
+  "team-rockets-lapras-drop-event": {
+    title: {
+      en: "Team Rocket's Lapras Drop Event",
+      ko: "로켓단의 라프라스 드롭 이벤트",
+    },
+  },
+};
+
+function hasHangul(text) {
+  return /[\uAC00-\uD7A3]/.test(String(text ?? ""));
+}
+
+function applyManualEventOverrides(events) {
+  const existingById = new Map();
+  if (existsSync(OUTPUT)) {
+    try {
+      const existing = JSON.parse(readFileSync(OUTPUT, "utf8"));
+      for (const event of existing.events ?? []) {
+        if (event?.id) existingById.set(event.id, event);
+      }
+    } catch {
+      /* ignore corrupt cache */
+    }
+  }
+
+  return events.map((event) => {
+    const override = MANUAL_EVENT_OVERRIDES[event.id];
+    if (override) {
+      return {
+        ...event,
+        ...override,
+        title: { ...event.title, ...(override.title ?? {}) },
+      };
+    }
+
+    // 이미 한글로 손본 제목은 자동 sync가 영어로 되돌리지 않음
+    const prev = existingById.get(event.id);
+    if (
+      prev?.title?.ko &&
+      hasHangul(prev.title.ko) &&
+      prev.title.ko !== prev.title.en
+    ) {
+      const en =
+        String(event.title?.en ?? "").includes("&#") &&
+        !String(prev.title.en ?? "").includes("&#")
+          ? prev.title.en
+          : event.title.en;
+      return {
+        ...event,
+        title: { en, ko: prev.title.ko },
+      };
+    }
+
+    return event;
+  });
 }
 
 function toDateKeyFromDotgg(text) {
@@ -569,9 +651,15 @@ async function main() {
   });
   console.log(`Parsed ${blogEvents.length} events, ${expansionEvents.length} expansions`);
 
-  const events = mergeEvents(blogEvents, expansionEvents, MANUAL_CONFIRMED_EVENTS);
+  const events = applyManualEventOverrides(
+    mergeEvents(blogEvents, expansionEvents, MANUAL_CONFIRMED_EVENTS)
+  );
   if (MANUAL_CONFIRMED_EVENTS.length > 0) {
     console.log(`Merged ${MANUAL_CONFIRMED_EVENTS.length} manual confirmed event(s)`);
+  }
+  const overrideCount = Object.keys(MANUAL_EVENT_OVERRIDES).length;
+  if (overrideCount > 0) {
+    console.log(`Applied ${overrideCount} manual event title override(s)`);
   }
   if (events.length === 0) {
     if (existsSync(OUTPUT)) {

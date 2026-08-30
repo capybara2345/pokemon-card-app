@@ -105,6 +105,12 @@ function translatePokemonPhrase(text: string): string {
   const trimmed = text.trim();
   if (!trimmed) return trimmed;
 
+  const rocket = trimmed.match(/^Team Rocket'?s\s+(.+)$/i);
+  if (rocket) {
+    const inner = translatePokemonPhrase(rocket[1]);
+    return `로켓단의 ${inner}`;
+  }
+
   const direct = lookupPokemon(trimmed);
   if (direct) return direct;
 
@@ -157,11 +163,29 @@ function replaceMonths(title: string): string {
   return result;
 }
 
+function decodeHtmlEntities(title: string): string {
+  return title
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8216;/g, "'")
+    .replace(/&#8211;/g, "–")
+    .replace(/&#8212;/g, "—")
+    .replace(/&#038;/g, "&")
+    .replace(/&amp;/g, "&")
+    .replace(/&apos;/g, "'")
+    .replace(/&#039;/g, "'")
+    .replace(/[\u2018\u2019\u201A\u2032]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"');
+}
+
 export function localizeEventTitleKo(enTitle: string): string {
-  let title = stripBoilerplate(enTitle);
+  let title = stripBoilerplate(decodeHtmlEntities(enTitle));
 
   const ranked = title.match(/^Ranked Match Season\s+([A-Za-z0-9]+)/i);
   if (ranked) return `랭크 매치 시즌 ${ranked[1].toUpperCase()}`;
+
+  if (/^Team Rocket'?s\s+Special Assignments/i.test(title)) {
+    return "로켓단의 특별 임무";
+  }
 
   if (/^Community Week Missions/i.test(title)) {
     const month = title.match(
