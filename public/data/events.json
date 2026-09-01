@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 4 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-08-31T19:56:55.822Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 2 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-09-01T17:44:50.919Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1590,35 +1590,23 @@
       "url": "https://ptcgpocket.gg/fennekin-and-meowstic-wonder-pick-event-promo-cards-missions-all-rewards/"
     }
   ],
-  "tentativeEvents": [
-    {
-      "id": "pz-september-2026-premium-missions",
-      "type": "mission",
-      "estimatedStart": "2026-09-01",
-      "estimatedEnd": "2026-10-01",
-      "title": {
-        "en": "September 2026 Premium Missions",
-        "ko": "September 2026 Premium Missions"
-      },
-      "source": "pokemon-zone"
-    }
-  ],
+  "tentativeEvents": [],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 9,
-    "autoCount": 4,
+    "pzRawCount": 7,
+    "autoCount": 2,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 2,
-    "visibleCount": 1,
+    "mergedCount": 1,
+    "visibleCount": 0,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 2,
+      "pokemon-zone": 1,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-31T19:56:55.822Z"
+    "updatedAt": "2026-09-01T17:44:50.919Z"
   }
 }
