@@ -2,7 +2,7 @@
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
   "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 0 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-09-08T17:52:30.891Z",
+  "updatedAt": "2026-09-10T17:35:45.935Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1594,7 +1594,7 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 5,
+    "pzRawCount": 2,
     "autoCount": 0,
     "manualCount": 0,
     "cacheCount": 0,
@@ -1607,6 +1607,6 @@
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-09-08T17:52:30.891Z"
+    "updatedAt": "2026-09-10T17:35:45.935Z"
   }
 }
