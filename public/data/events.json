@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 0 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-09-28T20:29:23.388Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 17 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-09-29T19:15:22.419Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1590,23 +1590,124 @@
       "url": "https://ptcgpocket.gg/fennekin-and-meowstic-wonder-pick-event-promo-cards-missions-all-rewards/"
     }
   ],
-  "tentativeEvents": [],
+  "tentativeEvents": [
+    {
+      "id": "pz-parallel-foil-mass-outbreak-wonder-pick-event-deluxe-pack-mega",
+      "type": "wonder",
+      "estimatedStart": "2026-09-30",
+      "estimatedEnd": "2026-10-09",
+      "title": {
+        "en": "Parallel Foil Mass Outbreak Wonder Pick Event (Deluxe Pack: Mega)",
+        "ko": "Parallel Foil Mass Outbreak Wonder Pick Event (Deluxe Pack: Mega)"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-deluxe-pack-mega-release",
+      "type": "expansion",
+      "estimatedStart": "2026-09-30",
+      "estimatedEnd": "2026-10-29",
+      "title": {
+        "en": "Deluxe Pack: Mega release",
+        "ko": "Deluxe Pack: Mega release"
+      },
+      "url": "https://www.pokemon-zone.com/events/deluxe-pack-mega-release/",
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-october-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-10-01",
+      "estimatedEnd": "2026-11-01",
+      "title": {
+        "en": "October 2026 Premium Missions",
+        "ko": "October 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-deluxe-pack-mega-emblem-event",
+      "type": "emblem",
+      "estimatedStart": "2026-10-03",
+      "estimatedEnd": "2026-10-13",
+      "title": {
+        "en": "Deluxe Pack: Mega Emblem Event",
+        "ko": "Deluxe Pack: Mega Emblem Event"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pvp-emblem-battles",
+      "type": "emblem",
+      "estimatedStart": "2026-10-03",
+      "estimatedEnd": "2026-10-13",
+      "title": {
+        "en": "PVP Emblem Battles",
+        "ko": "PVP Emblem Battles"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-mega-garchomp-ex-drop-event-missions",
+      "type": "drop",
+      "estimatedStart": "2026-10-15",
+      "estimatedEnd": "2026-10-25",
+      "title": {
+        "en": "Mega Garchomp ex Drop event Missions",
+        "ko": "Mega Garchomp ex Drop event Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-charmander-and-drampa-wonder-pick-event",
+      "type": "wonder",
+      "estimatedStart": "2026-10-18",
+      "estimatedEnd": "2026-10-28",
+      "title": {
+        "en": "Charmander and Drampa Wonder Pick event",
+        "ko": "Charmander and Drampa Wonder Pick event"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pika-pika-pikachu-missions",
+      "type": "mission",
+      "estimatedStart": "2026-10-20",
+      "estimatedEnd": "2027-10-20",
+      "title": {
+        "en": "Pika Pika! Pikachu missions",
+        "ko": "Pika Pika! Pikachu missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "tentative-july-community-week",
+      "type": "community",
+      "estimatedStart": "2026-10-21",
+      "estimatedEnd": "2026-10-28",
+      "title": {
+        "en": "Community Week",
+        "ko": "커뮤니티 위크"
+      },
+      "source": "pokemon-zone"
+    }
+  ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 4,
-    "autoCount": 0,
+    "pzRawCount": 20,
+    "autoCount": 17,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 0,
-    "visibleCount": 0,
+    "mergedCount": 9,
+    "visibleCount": 9,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 0,
+      "pokemon-zone": 9,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-09-28T20:29:23.388Z"
+    "updatedAt": "2026-09-29T19:15:22.419Z"
   }
 }
