@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 4 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-09-30T18:56:37.132Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
+  "updatedAt": "2026-10-01T19:25:49.112Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1620,6 +1620,39 @@
       },
       "type": "emblem",
       "url": "https://ptcgpocket.gg/deluxe-pack-mega-emblem-event/"
+    },
+    {
+      "id": "ranked-match-season-b4b-ranking-guide-all-rewards",
+      "startDate": "2026-10-14",
+      "endDate": "2026-10-28",
+      "title": {
+        "en": "Ranked Match Season B4b – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B4b – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b4b-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "mega-garchomp-ex-drop-event",
+      "startDate": "2026-10-15",
+      "endDate": "2026-10-25",
+      "title": {
+        "en": "Mega Garchomp ex Drop Event",
+        "ko": "Mega Garchomp ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-garchomp-ex-drop-event/"
+    },
+    {
+      "id": "charmander-and-drampa-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-28",
+      "title": {
+        "en": "Charmander and Drampa – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Charmander and Drampa – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/charmander-and-drampa-wonder-pick-event-promo-cards-missions-all-rewards/"
     }
   ],
   "tentativeEvents": [
@@ -1632,18 +1665,6 @@
         "en": "September 2026 Premium Missions",
         "ko": "September 2026 Premium Missions"
       },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-ranked-match-season-18-b4b",
-      "type": "ranked",
-      "estimatedStart": "2026-10-14",
-      "estimatedEnd": "2026-10-28",
-      "title": {
-        "en": "Ranked Match Season 18 (B4b)",
-        "ko": "Ranked Match Season 18 (B4b)"
-      },
-      "url": "https://www.pokemon-zone.com/events/ranked-match-season-18-b4b/",
       "source": "pokemon-zone"
     },
     {
@@ -1661,20 +1682,20 @@
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "ok",
-    "pzRawCount": 8,
-    "autoCount": 4,
+    "pzStatus": "failed",
+    "pzRawCount": 0,
+    "autoCount": 0,
     "manualCount": 0,
-    "cacheCount": 0,
-    "mergedCount": 3,
-    "visibleCount": 3,
-    "usedCache": false,
+    "cacheCount": 2,
+    "mergedCount": 2,
+    "visibleCount": 2,
+    "usedCache": true,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 2,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-09-30T18:56:37.132Z"
+    "updatedAt": "2026-10-01T19:25:49.112Z"
   }
 }
