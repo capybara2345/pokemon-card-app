@@ -2,7 +2,7 @@
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
   "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
-  "updatedAt": "2026-10-01T19:25:49.112Z",
+  "updatedAt": "2026-10-02T19:06:51.494Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1653,20 +1653,31 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/charmander-and-drampa-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "pika-pika-pikachu-missions",
+      "startDate": "2026-10-20",
+      "endDate": "2026-10-30",
+      "title": {
+        "en": "Pika Pika! Pikachu Missions",
+        "ko": "Pika Pika! Pikachu Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/pika-pika-pikachu-missions/"
+    },
+    {
+      "id": "community-week-missions-6",
+      "startDate": "2026-10-21",
+      "endDate": "2026-10-28",
+      "title": {
+        "en": "Community Week Missions",
+        "ko": "Community Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/community-week-missions-6/"
     }
   ],
   "tentativeEvents": [
-    {
-      "id": "pz-september-2026-premium-missions",
-      "type": "mission",
-      "estimatedStart": "2026-09-01",
-      "estimatedEnd": "2026-10-01",
-      "title": {
-        "en": "September 2026 Premium Missions",
-        "ko": "September 2026 Premium Missions"
-      },
-      "source": "pokemon-zone"
-    },
     {
       "id": "pz-deluxe-pack-mega-release",
       "type": "expansion",
@@ -1686,16 +1697,16 @@
     "pzRawCount": 0,
     "autoCount": 0,
     "manualCount": 0,
-    "cacheCount": 2,
-    "mergedCount": 2,
-    "visibleCount": 2,
+    "cacheCount": 1,
+    "mergedCount": 1,
+    "visibleCount": 1,
     "usedCache": true,
     "sources": {
-      "pokemon-zone": 2,
+      "pokemon-zone": 1,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-01T19:25:49.112Z"
+    "updatedAt": "2026-10-02T19:06:51.494Z"
   }
 }
