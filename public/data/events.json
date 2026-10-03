@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
-  "updatedAt": "2026-10-02T19:06:51.494Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 4 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-10-03T17:54:47.751Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1679,6 +1679,28 @@
   ],
   "tentativeEvents": [
     {
+      "id": "pz-october-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-10-01",
+      "estimatedEnd": "2026-11-01",
+      "title": {
+        "en": "October 2026 Premium Missions",
+        "ko": "October 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-pvp-emblem-battles",
+      "type": "emblem",
+      "estimatedStart": "2026-10-03",
+      "estimatedEnd": "2026-10-13",
+      "title": {
+        "en": "PVP Emblem Battles",
+        "ko": "PVP Emblem Battles"
+      },
+      "source": "pokemon-zone"
+    },
+    {
       "id": "pz-deluxe-pack-mega-release",
       "type": "expansion",
       "estimatedStart": "2026-10-29",
@@ -1693,20 +1715,20 @@
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "failed",
-    "pzRawCount": 0,
-    "autoCount": 0,
+    "pzStatus": "ok",
+    "pzRawCount": 11,
+    "autoCount": 4,
     "manualCount": 0,
-    "cacheCount": 1,
-    "mergedCount": 1,
-    "visibleCount": 1,
-    "usedCache": true,
+    "cacheCount": 0,
+    "mergedCount": 3,
+    "visibleCount": 3,
+    "usedCache": false,
     "sources": {
-      "pokemon-zone": 1,
+      "pokemon-zone": 3,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-02T19:06:51.494Z"
+    "updatedAt": "2026-10-03T17:54:47.751Z"
   }
 }
