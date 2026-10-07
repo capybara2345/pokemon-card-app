@@ -2,7 +2,7 @@
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
   "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 4 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-10-06T19:24:59.065Z",
+  "updatedAt": "2026-10-07T19:52:47.757Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1701,15 +1701,15 @@
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-deluxe-pack-mega-release",
-      "type": "expansion",
-      "estimatedStart": "2026-10-29",
-      "estimatedEnd": "2026-10-29",
+      "id": "pz-bonus-week-missions",
+      "type": "community",
+      "estimatedStart": "2026-10-21",
+      "estimatedEnd": "2026-10-28",
       "title": {
-        "en": "Deluxe Pack: Mega release",
-        "ko": "Deluxe Pack: Mega release"
+        "en": "Bonus Week Missions",
+        "ko": "Bonus Week Missions"
       },
-      "url": "https://www.pokemon-zone.com/events/deluxe-pack-mega-release/",
+      "url": "https://www.pokemon-zone.com/events/bonus-week-missions/",
       "source": "pokemon-zone"
     }
   ],
@@ -1729,6 +1729,6 @@
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-06T19:24:59.065Z"
+    "updatedAt": "2026-10-07T19:52:47.757Z"
   }
 }
