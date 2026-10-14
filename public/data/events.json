@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
-  "updatedAt": "2026-10-13T20:13:20.197Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 7 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-10-14T18:26:55.082Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1690,18 +1690,7 @@
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-pvp-emblem-battles",
-      "type": "emblem",
-      "estimatedStart": "2026-10-03",
-      "estimatedEnd": "2026-10-13",
-      "title": {
-        "en": "PVP Emblem Battles",
-        "ko": "PVP Emblem Battles"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-sc-cm-2609000-bns-02",
+      "id": "pz-bonus-week-deluxe-pack-mega",
       "type": "community",
       "estimatedStart": "2026-10-10",
       "estimatedEnd": "2026-10-17",
@@ -1726,20 +1715,20 @@
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "failed",
-    "pzRawCount": 0,
-    "autoCount": 0,
+    "pzStatus": "ok",
+    "pzRawCount": 17,
+    "autoCount": 7,
     "manualCount": 0,
-    "cacheCount": 4,
+    "cacheCount": 0,
     "mergedCount": 4,
-    "visibleCount": 4,
-    "usedCache": true,
+    "visibleCount": 3,
+    "usedCache": false,
     "sources": {
       "pokemon-zone": 4,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-13T20:13:20.197Z"
+    "updatedAt": "2026-10-14T18:26:55.082Z"
   }
 }
