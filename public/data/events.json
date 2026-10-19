@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 5 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-10-18T17:08:10.038Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
+  "updatedAt": "2026-10-19T19:47:41.018Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1704,20 +1704,20 @@
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "ok",
-    "pzRawCount": 15,
-    "autoCount": 5,
+    "pzStatus": "failed",
+    "pzRawCount": 0,
+    "autoCount": 0,
     "manualCount": 0,
-    "cacheCount": 0,
-    "mergedCount": 3,
+    "cacheCount": 2,
+    "mergedCount": 2,
     "visibleCount": 2,
-    "usedCache": false,
+    "usedCache": true,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 2,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-18T17:08:10.038Z"
+    "updatedAt": "2026-10-19T19:47:41.018Z"
   }
 }
