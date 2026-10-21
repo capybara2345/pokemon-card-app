@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 5 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-10-20T18:23:34.806Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 6 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-10-21T18:28:14.442Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1679,6 +1679,18 @@
   ],
   "tentativeEvents": [
     {
+      "id": "pz-elite-deck-gift-missions-3",
+      "type": "mission",
+      "estimatedStart": "2026-07-31",
+      "estimatedEnd": "2026-10-28",
+      "title": {
+        "en": "Elite Deck Gift Missions 3",
+        "ko": "Elite Deck Gift Missions 3"
+      },
+      "url": "https://www.pokemon-zone.com/events/elite-deck-gift-missions-3/",
+      "source": "pokemon-zone"
+    },
+    {
       "id": "pz-october-2026-premium-missions",
       "type": "mission",
       "estimatedStart": "2026-10-01",
@@ -1705,19 +1717,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 15,
-    "autoCount": 5,
+    "pzRawCount": 16,
+    "autoCount": 6,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 3,
-    "visibleCount": 2,
+    "mergedCount": 4,
+    "visibleCount": 3,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 4,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-20T18:23:34.806Z"
+    "updatedAt": "2026-10-21T18:28:14.442Z"
   }
 }
