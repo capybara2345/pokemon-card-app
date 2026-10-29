@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 36 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-10-28T19:26:56.297Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 11 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-10-29T19:28:55.071Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1675,6 +1675,17 @@
       },
       "type": "community",
       "url": "https://ptcgpocket.gg/community-week-missions-6/"
+    },
+    {
+      "id": "promo-reissue-wonder-pick-event-2026",
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-20",
+      "title": {
+        "en": "PROMO Reissue Wonder Pick Event 2026",
+        "ko": "PROMO Reissue Wonder Pick Event 2026"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/promo-reissue-wonder-pick-event-2026/"
     }
   ],
   "tentativeEvents": [
@@ -1682,56 +1693,12 @@
       "id": "pz-dual-fusion-release",
       "type": "expansion",
       "estimatedStart": "2026-10-29",
-      "estimatedEnd": "2026-11-13",
+      "estimatedEnd": "2026-12-16",
       "title": {
         "en": "Dual Fusion Release",
         "ko": "Dual Fusion Release"
       },
       "url": "https://www.pokemon-zone.com/events/dual-fusion-release/",
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-second-anniversary-celebration-campaign-missions",
-      "type": "mission",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2026-12-15",
-      "title": {
-        "en": "Second Anniversary Celebration Campaign Missions",
-        "ko": "Second Anniversary Celebration Campaign Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-promo-reissue-drop-event-2026-missions",
-      "type": "drop",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2026-11-13",
-      "title": {
-        "en": "PROMO Reissue Drop Event 2026 Missions",
-        "ko": "PROMO Reissue Drop Event 2026 Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-promo-reissue-wonder-pick-event-2026-missions",
-      "type": "wonder",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2026-11-13",
-      "title": {
-        "en": "PROMO Reissue Wonder Pick Event 2026 Missions",
-        "ko": "PROMO Reissue Wonder Pick Event 2026 Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-elite-deck-gift-missions-c1",
-      "type": "mission",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2027-01-27",
-      "title": {
-        "en": "Elite Deck Gift Missions C1",
-        "ko": "Elite Deck Gift Missions C1"
-      },
       "source": "pokemon-zone"
     },
     {
@@ -1747,36 +1714,27 @@
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-november-2026-premium-missions",
-      "type": "mission",
-      "estimatedStart": "2026-11-01",
-      "estimatedEnd": "2026-12-01",
+      "id": "pz-promo-reissue-drop-event-2026",
+      "type": "drop",
+      "estimatedStart": "2026-10-30",
+      "estimatedEnd": "2026-11-20",
       "title": {
-        "en": "November 2026 Premium Missions",
-        "ko": "November 2026 Premium Missions"
+        "en": "PROMO Reissue Drop Event 2026",
+        "ko": "PROMO Reissue Drop Event 2026"
       },
+      "url": "https://www.pokemon-zone.com/events/promo-reissue-drop-event-2026/",
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-dual-fusion-battle-rally-missions",
+      "id": "pz-second-anniversary-celebration-campaign",
       "type": "mission",
-      "estimatedStart": "2026-11-06",
-      "estimatedEnd": "2026-11-16",
+      "estimatedStart": "2026-10-30",
+      "estimatedEnd": "2026-12-22",
       "title": {
-        "en": "Dual Fusion Battle Rally (missions)",
-        "ko": "Dual Fusion Battle Rally (missions)"
+        "en": "Second Anniversary Celebration Campaign",
+        "ko": "Second Anniversary Celebration Campaign"
       },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-pvp-emblem-battles",
-      "type": "emblem",
-      "estimatedStart": "2026-11-06",
-      "estimatedEnd": "2026-11-16",
-      "title": {
-        "en": "PVP Emblem Battles",
-        "ko": "PVP Emblem Battles"
-      },
+      "url": "https://www.pokemon-zone.com/events/second-anniversary-celebration-campaign/",
       "source": "pokemon-zone"
     },
     {
@@ -1788,49 +1746,17 @@
         "en": "Dual Fusion Emblem Event",
         "ko": "Dual Fusion Emblem Event"
       },
+      "url": "https://www.pokemon-zone.com/events/dual-fusion-emblem-event/",
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-bonus-week-november-2026",
-      "type": "community",
-      "estimatedStart": "2026-11-14",
-      "estimatedEnd": "2026-11-21",
-      "title": {
-        "en": "Bonus Week November 2026",
-        "ko": "Bonus Week November 2026"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-promo-pack-c-series-vol-1-daily-missions",
+      "id": "pz-december-2026-premium-missions",
       "type": "mission",
-      "estimatedStart": "2026-11-18",
-      "estimatedEnd": "2026-12-02",
+      "estimatedStart": "2026-12-01",
+      "estimatedEnd": "2027-01-01",
       "title": {
-        "en": "Promo Pack C Series Vol. 1 Daily Missions",
-        "ko": "Promo Pack C Series Vol. 1 Daily Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-vee-vee-eevee-event-missions",
-      "type": "mission",
-      "estimatedStart": "2026-11-21",
-      "estimatedEnd": "2026-12-15",
-      "title": {
-        "en": "\"Vee Vee! Eevee\" event Missions",
-        "ko": "\"Vee Vee! Eevee\" event Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-winter-holidays-themed-promo-card-event-week1",
-      "type": "mission",
-      "estimatedStart": "2026-11-26",
-      "estimatedEnd": "2026-12-26",
-      "title": {
-        "en": "Winter Holidays Themed Promo Card Event Week1",
-        "ko": "Winter Holidays Themed Promo Card Event Week1"
+        "en": "December 2026 Premium Missions",
+        "ko": "December 2026 Premium Missions"
       },
       "source": "pokemon-zone"
     },
@@ -1860,19 +1786,19 @@
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
-    "pzRawCount": 39,
-    "autoCount": 36,
+    "pzRawCount": 14,
+    "autoCount": 11,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 16,
-    "visibleCount": 16,
+    "mergedCount": 8,
+    "visibleCount": 8,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 16,
+      "pokemon-zone": 8,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-28T19:26:56.297Z"
+    "updatedAt": "2026-10-29T19:28:55.071Z"
   }
 }
