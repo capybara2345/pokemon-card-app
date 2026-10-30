@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 11 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-10-29T19:28:55.071Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 9 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-10-30T19:15:16.862Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1677,6 +1677,17 @@
       "url": "https://ptcgpocket.gg/community-week-missions-6/"
     },
     {
+      "id": "promo-reissue-drop-event-2026",
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-20",
+      "title": {
+        "en": "Promo Reissue Drop Event 2026",
+        "ko": "Promo Reissue Drop Event 2026"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/promo-reissue-drop-event-2026/"
+    },
+    {
       "id": "promo-reissue-wonder-pick-event-2026",
       "startDate": "2026-10-30",
       "endDate": "2026-11-20",
@@ -1686,6 +1697,17 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/promo-reissue-wonder-pick-event-2026/"
+    },
+    {
+      "id": "dual-fusion-emblem-event",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-16",
+      "title": {
+        "en": "Dual Fusion Emblem Event",
+        "ko": "Dual Fusion Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/dual-fusion-emblem-event/"
     }
   ],
   "tentativeEvents": [
@@ -1702,6 +1724,18 @@
       "source": "pokemon-zone"
     },
     {
+      "id": "pz-second-anniversary-celebration-campaign",
+      "type": "mission",
+      "estimatedStart": "2026-10-30",
+      "estimatedEnd": "2026-12-15",
+      "title": {
+        "en": "Second Anniversary Celebration Campaign",
+        "ko": "Second Anniversary Celebration Campaign"
+      },
+      "url": "https://www.pokemon-zone.com/events/second-anniversary-celebration-campaign/",
+      "source": "pokemon-zone"
+    },
+    {
       "id": "pz-handy-card-collection-missions-c1",
       "type": "mission",
       "estimatedStart": "2026-10-30",
@@ -1711,42 +1745,6 @@
         "ko": "Handy Card Collection Missions C1"
       },
       "url": "https://www.pokemon-zone.com/events/handy-card-collection-missions-c1/",
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-promo-reissue-drop-event-2026",
-      "type": "drop",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2026-11-20",
-      "title": {
-        "en": "PROMO Reissue Drop Event 2026",
-        "ko": "PROMO Reissue Drop Event 2026"
-      },
-      "url": "https://www.pokemon-zone.com/events/promo-reissue-drop-event-2026/",
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-second-anniversary-celebration-campaign",
-      "type": "mission",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2026-12-22",
-      "title": {
-        "en": "Second Anniversary Celebration Campaign",
-        "ko": "Second Anniversary Celebration Campaign"
-      },
-      "url": "https://www.pokemon-zone.com/events/second-anniversary-celebration-campaign/",
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-dual-fusion-emblem-event",
-      "type": "emblem",
-      "estimatedStart": "2026-11-06",
-      "estimatedEnd": "2026-11-16",
-      "title": {
-        "en": "Dual Fusion Emblem Event",
-        "ko": "Dual Fusion Emblem Event"
-      },
-      "url": "https://www.pokemon-zone.com/events/dual-fusion-emblem-event/",
       "source": "pokemon-zone"
     },
     {
@@ -1787,18 +1785,18 @@
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
     "pzStatus": "ok",
     "pzRawCount": 14,
-    "autoCount": 11,
+    "autoCount": 9,
     "manualCount": 0,
     "cacheCount": 0,
-    "mergedCount": 8,
-    "visibleCount": 8,
+    "mergedCount": 6,
+    "visibleCount": 6,
     "usedCache": false,
     "sources": {
-      "pokemon-zone": 8,
+      "pokemon-zone": 6,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-29T19:28:55.071Z"
+    "updatedAt": "2026-10-30T19:15:16.862Z"
   }
 }
