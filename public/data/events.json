@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 9 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-10-30T19:15:16.862Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
+  "updatedAt": "2026-10-31T18:24:39.810Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1677,6 +1677,26 @@
       "url": "https://ptcgpocket.gg/community-week-missions-6/"
     },
     {
+      "id": "expansion-c1",
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-29",
+      "title": {
+        "en": "Dual Fusion Expansion",
+        "ko": "Dual Fusion 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
+      "id": "expansion-sp1",
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-29",
+      "title": {
+        "en": "Special Pack: First Partners Expansion",
+        "ko": "Special Pack: First Partners 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
       "id": "promo-reissue-drop-event-2026",
       "startDate": "2026-10-30",
       "endDate": "2026-11-20",
@@ -1711,18 +1731,6 @@
     }
   ],
   "tentativeEvents": [
-    {
-      "id": "pz-dual-fusion-release",
-      "type": "expansion",
-      "estimatedStart": "2026-10-29",
-      "estimatedEnd": "2026-12-16",
-      "title": {
-        "en": "Dual Fusion Release",
-        "ko": "Dual Fusion Release"
-      },
-      "url": "https://www.pokemon-zone.com/events/dual-fusion-release/",
-      "source": "pokemon-zone"
-    },
     {
       "id": "pz-second-anniversary-celebration-campaign",
       "type": "mission",
@@ -1783,20 +1791,20 @@
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "ok",
-    "pzRawCount": 14,
-    "autoCount": 9,
+    "pzStatus": "failed",
+    "pzRawCount": 0,
+    "autoCount": 0,
     "manualCount": 0,
-    "cacheCount": 0,
-    "mergedCount": 6,
-    "visibleCount": 6,
-    "usedCache": false,
+    "cacheCount": 5,
+    "mergedCount": 5,
+    "visibleCount": 5,
+    "usedCache": true,
     "sources": {
-      "pokemon-zone": 6,
+      "pokemon-zone": 5,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-10-30T19:15:16.862Z"
+    "updatedAt": "2026-10-31T18:24:39.810Z"
   }
 }
