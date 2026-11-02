@@ -4,6 +4,36 @@ import type { Lang } from "../i18n/translations";
 // Z00001 → 900001, Z00002 → 900002, ...
 const PROMO_BASE = 900000;
 
+const POKEMON_TYPE_NAMES = new Set([
+  "풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "무색",
+  "Grass", "Fire", "Water", "Lightning", "Psychic", "Fighting", "Darkness", "Metal", "Dragon", "Colorless",
+]);
+
+export function cardTypeParts(type: string | undefined | null): string[] {
+  return String(type ?? "")
+    .split("/")
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+export function isDualCardType(type: string | undefined | null): boolean {
+  return cardTypeParts(type).length >= 2;
+}
+
+export function isPokemonCardType(type: string | undefined | null): boolean {
+  const parts = cardTypeParts(type);
+  return parts.length > 0 && parts.every((part) => POKEMON_TYPE_NAMES.has(part));
+}
+
+export function cardMatchesTypeFilter(
+  type: string | undefined | null,
+  selected: string[],
+): boolean {
+  if (!selected.length) return true;
+  if (selected.includes(String(type ?? ""))) return true;
+  return cardTypeParts(type).some((part) => selected.includes(part));
+}
+
 export function getCardImageSrc(id: number): string {
   if (id > PROMO_BASE && id < 1000000) {
     const n = String(id - PROMO_BASE).padStart(5, "0");

@@ -59,6 +59,15 @@ export function getRelatedSupporters(card: PokemonCard): string[] {
   if (card.이름 === "빠르모트") supporters.push("네모");
   if (card.이름 === "엑스라이즈") supporters.push("아이리스");
   if (card.이름 === "보르그" || card.이름 === "바랜드") supporters.push("체렌");
+  if (card.이름 === "쥬레곤" || card.이름 === "파르셀" || card.이름 === "라프라스" || card.이름 === "Dragonair" || card.이름 === "Cloyster" || card.이름 === "Lapras") {
+    supporters.push("칸나");
+  }
+  if (card.이름 === "이상해꽃" || card.이름 === "리자몽" || card.이름 === "거북왕" || card.이름 === "피죤투" || card.이름 === "Venusaur" || card.이름 === "Charizard" || card.이름 === "Blastoise" || card.이름 === "Pidgeot") {
+    supporters.push("그린의 도발");
+  }
+  if (card.이름 === "메깅" || card.이름 === "팔데아 토오" || card.이름 === "Hitmonchan" || card.이름 === "Paldean Tauros") {
+    supporters.push("칠리");
+  }
   if (card.기술명 === "강아지투성이") supporters.push("퍼피 러빙걸");
   if (card.기술명 === "용성군" || card.기술명2 === "용성군") supporters.push("사간");
   if (card.기술명 === "사이코키네시스" || card.기술명2 === "사이코키네시스") {

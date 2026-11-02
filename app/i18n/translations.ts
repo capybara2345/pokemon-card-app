@@ -82,6 +82,7 @@ export type Translations = {
   evolution: Record<string, string>;
   cardTypeLabel: {
     megaEx: string;
+    dualType: string;
     baby: string;
     ultraBeast: string;
     ancient: string;
@@ -351,6 +352,7 @@ export const ko: Translations = {
   },
   cardTypeLabel: {
     megaEx: "메가ex",
+    dualType: "듀얼타입",
     baby: "베이비",
     ultraBeast: "울트라비스트",
     ancient: "고대",
@@ -383,6 +385,7 @@ export const ko: Translations = {
     '기절 유발': '기절 유발',
     '다중 타입': '다중 타입',
     '데미지 감소': '데미지 감소',
+    '다음 차례 데미지 감소': '다음 차례 데미지 감소',
     '데미지 강화': '데미지 강화',
     '데미지 반사': '데미지 반사',
     '데미지 이동': '데미지 이동',
@@ -751,6 +754,7 @@ export const en: Translations = {
   },
   cardTypeLabel: {
     megaEx: "Mega ex",
+    dualType: "Dual Type",
     baby: "Baby",
     ultraBeast: "Ultra Beast",
     ancient: "Ancient",
@@ -783,6 +787,7 @@ export const en: Translations = {
     '기절 유발': 'Faint Induce',
     '다중 타입': 'Multi-Type',
     '데미지 감소': 'Damage Reduction',
+    '다음 차례 데미지 감소': 'Next-Turn Damage Reduction',
     '데미지 강화': 'Damage Boost',
     '데미지 반사': 'Damage Reflection',
     '데미지 이동': 'Damage Transfer',

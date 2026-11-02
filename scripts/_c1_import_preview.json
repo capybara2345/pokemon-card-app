@@ -1,0 +1,5504 @@
+[
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20001,
+      "Serial": "c1-001",
+      "속성": "",
+      "이름": "이상해씨",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "씨뿌리기",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬의 HP를 10회복.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Bulbasaur",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Leech Seed",
+          "damage": "30",
+          "effect": "Heal 10 damage from this Pokémon.",
+          "energy": "풀1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20002,
+      "Serial": "c1-002",
+      "속성": "",
+      "이름": "이상해풀",
+      "이전이름": "이상해씨",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "리프드레인",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬의 HP를 20회복.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색2",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Ivysaur",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Leaf Drain",
+          "damage": "50",
+          "effect": "Heal 20 damage from this Pokémon.",
+          "energy": "풀1/무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Bulbasaur",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20003,
+      "Serial": "c1-003",
+      "속성": "",
+      "이름": "이상해꽃",
+      "이전이름": "이상해풀",
+      "진화": "2진화",
+      "HP": 150,
+      "기술명": "솔라빔",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색3",
+      "기술에너지2": "",
+      "피해량": "90",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "서니 힐",
+      "특성효과": "자신의 차례에 1번 사용할 수 있다. 자신의 배틀 포켓몬의 HP를 30회복.",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Venusaur",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Solar Beam",
+          "damage": "90",
+          "effect": "",
+          "energy": "풀1/무색3"
+        }
+      ],
+      "abilityName": "Ability: Sunny Heal",
+      "abilityEffect": "Once during your turn, you may heal 30 damage from your Active Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Ivysaur",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20004,
+      "Serial": "c1-004",
+      "속성": "",
+      "이름": "아라리",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "잠시 쉬기",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬의 HP를 20회복.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Exeggcute",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Nap",
+          "damage": "",
+          "effect": "Heal 20 damage from this Pokémon.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20005,
+      "Serial": "c1-005",
+      "속성": "ex",
+      "이름": "알로라 나시 ex",
+      "이전이름": "아라리",
+      "진화": "1진화",
+      "HP": 180,
+      "기술명": "긴목해머",
+      "기술명2": "",
+      "기술추가효과": "상대의 벤치 포켓몬이 랜덤으로 1번 선택되어 선택된 포켓몬에게도 50데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "풀3",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 4,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Alolan Exeggutor ex",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Long-Neck Hammering",
+          "damage": "100",
+          "effect": "1 of your opponent's Benched Pokémon is chosen at random. This attack also does 50 damage to it.",
+          "energy": "풀3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Exeggcute",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20006,
+      "Serial": "c1-006",
+      "속성": "",
+      "이름": "쁘사이저",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 90,
+      "기술명": "찝기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pinsir",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Vise Grip",
+          "damage": "30",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20007,
+      "Serial": "c1-007",
+      "속성": "",
+      "이름": "세꿀버리",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "홰치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Combee",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Flap",
+          "damage": "20",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20008,
+      "Serial": "c1-008",
+      "속성": "",
+      "이름": "비퀸",
+      "이전이름": "세꿀버리",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "허니러시",
+      "기술명2": "",
+      "기술추가효과": "자신의 패에 있는 「달콤한꿀」을 모두 상대에게 보여주고 보여준 장 수 × 50데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "풀2",
+      "기술에너지2": "",
+      "피해량": "50x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Vespiquen",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Honey Rush",
+          "damage": "50x",
+          "effect": "Reveal all of the Sweet Honey in your hand, and this attack does 50 damage for each card you revealed in this way.",
+          "energy": "풀2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Combee",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20009,
+      "Serial": "c1-009",
+      "속성": "",
+      "이름": "사철록",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "돌아다니며 뛰기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Deerling",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Flop",
+          "damage": "40",
+          "effect": "",
+          "energy": "풀1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20010,
+      "Serial": "c1-010",
+      "속성": "",
+      "이름": "바라철록",
+      "이전이름": "사철록",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "낙엽태클",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 풀에너지를 1개 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색2",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Sawsbuck",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Leaf Litter Tackle",
+          "damage": "100",
+          "effect": "Discard a [ G ] Energy from this Pokémon.",
+          "energy": "풀1/무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Deerling",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20011,
+      "Serial": "c1-011",
+      "속성": "",
+      "이름": "깜놀버슬",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "때리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Foongus",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Beat",
+          "damage": "20",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20012,
+      "Serial": "c1-012",
+      "속성": "",
+      "이름": "뽀록나",
+      "이전이름": "깜놀버슬",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "놀래키기",
+      "기술명2": "",
+      "기술추가효과": "상대의 패에서 랜덤으로 1장 앞면을 보고 덱으로 되돌린다.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Amoonguss",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Astonish",
+          "damage": "50",
+          "effect": "Look at a random card from your opponent's hand and shuffle it into their deck.",
+          "energy": "풀1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Foongus",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20013,
+      "Serial": "c1-013",
+      "속성": "",
+      "이름": "게노세크트",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 110,
+      "기술명": "시그널빔",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 혼란으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "풀1/무색2",
+      "기술에너지2": "",
+      "피해량": "60",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Genesect",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Signal Beam",
+          "damage": "60",
+          "effect": "Your opponent's Active Pokémon is now Confused.",
+          "energy": "풀1/무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20014,
+      "Serial": "c1-014",
+      "속성": "",
+      "이름": "에블리",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 30,
+      "기술명": "벌레먹음",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 0,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Cutiefly",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Bug Bite",
+          "damage": "20",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "풀포켓몬",
+    "row": {
+      "타입": "풀",
+      "ID": 20015,
+      "Serial": "c1-015",
+      "속성": "",
+      "이름": "에리본",
+      "이전이름": "에블리",
+      "진화": "1진화",
+      "HP": 70,
+      "기술명": "벌레의야단법석",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "풀1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "꿀모으기",
+      "특성효과": "자신의 차례에 1번 사용할 수 있다. 렌탈 카드 「달콤한꿀」을 1장 패로 가져온다.",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Ribombee",
+    "en": {
+      "elementEn": "Grass",
+      "attacks": [
+        {
+          "name": "Bug Buzz",
+          "damage": "40",
+          "effect": "",
+          "energy": "풀1"
+        }
+      ],
+      "abilityName": "Ability: Honey Gather",
+      "abilityEffect": "Once during your turn, you may use this Ability. Put a rental card into your hand.",
+      "trainerEffect": "",
+      "evolvesFrom": "Cutiefly",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20016,
+      "Serial": "c1-016",
+      "속성": "",
+      "이름": "파이리",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "불꽃세례",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 불에너지를 1개 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "불1/무색1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Charmander",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Ember",
+          "damage": "50",
+          "effect": "Discard a [ R ] Energy from this Pokémon.",
+          "energy": "불1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20017,
+      "Serial": "c1-017",
+      "속성": "",
+      "이름": "리자드",
+      "이전이름": "파이리",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "불꽃 꼬리",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "불2",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Charmeleon",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Flame Tail",
+          "damage": "50",
+          "effect": "",
+          "energy": "불2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Charmander",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20018,
+      "Serial": "c1-018",
+      "속성": "",
+      "이름": "리자몽",
+      "이전이름": "리자드",
+      "진화": "2진화",
+      "HP": 150,
+      "기술명": "불꽃날개",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "불2/무색1",
+      "기술에너지2": "",
+      "피해량": "90",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "플레임 오라",
+      "특성효과": "자신의 에너지존에서 이 포켓몬에게 불에너지를 붙일 때마다 상대의 배틀 포켓몬에게 30데미지를 준다.",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Charizard",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Fire Wing",
+          "damage": "90",
+          "effect": "",
+          "energy": "불2/무색1"
+        }
+      ],
+      "abilityName": "Ability: Flame Aura",
+      "abilityEffect": "Whenever you attach a [ R ] Energy from your Energy Zone to this Pokémon, do 30 damage to your opponent's Active Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Charmeleon",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20019,
+      "Serial": "c1-019",
+      "속성": "",
+      "이름": "볼케니온",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 120,
+      "기술명": "다이너마이트 스팀",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 110데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "불3/무색1",
+      "기술에너지2": "",
+      "피해량": "110x",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Volcanion",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Dynamite Steam",
+          "damage": "110x",
+          "effect": "Flip 2 coins. This attack does 110 damage for each heads.",
+          "energy": "불3/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20020,
+      "Serial": "c1-020",
+      "속성": "",
+      "이름": "야도뇽",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "불꽃",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "불1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Salandit",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Flare",
+          "damage": "30",
+          "effect": "",
+          "energy": "불1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20021,
+      "Serial": "c1-021",
+      "속성": "",
+      "이름": "염뉴트",
+      "이전이름": "야도뇽",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "히트블라스트",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "불2",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Salazzle",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Heat Blast",
+          "damage": "70",
+          "effect": "",
+          "energy": "불2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Salandit",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20022,
+      "Serial": "c1-022",
+      "속성": "",
+      "이름": "염버니",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "래빗점프",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Scorbunny",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Rabbit Jumping",
+          "damage": "20x",
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20023,
+      "Serial": "c1-023",
+      "속성": "",
+      "이름": "래비풋",
+      "이전이름": "염버니",
+      "진화": "1진화",
+      "HP": 70,
+      "기술명": "박치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "점핑 코치",
+      "특성효과": "이 포켓몬이 있는 한, 자신의 포켓몬이 사용하는 기술 「래빗점프」로 던지는 동전의 수를 3번 많게 한다.",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Raboot",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Headbutt",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "Ability: Jumping Coach",
+      "abilityEffect": "As long as this Pokémon is in play, flip 3 more coins for the Rabbit Jumping attack used by your Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Scorbunny",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20024,
+      "Serial": "c1-024",
+      "속성": "",
+      "이름": "에이스번",
+      "이전이름": "래비풋",
+      "진화": "2진화",
+      "HP": 140,
+      "기술명": "스피닝킥",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에게도 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "불2",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Cinderace",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Spinning Kick",
+          "damage": "100",
+          "effect": "This Pokémon also does 20 damage to itself.",
+          "energy": "불2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Raboot",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20025,
+      "Serial": "c1-025",
+      "속성": "ex",
+      "이름": "뜨아거 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 130,
+      "기술명": "물기",
+      "기술명2": "분통파이어",
+      "기술추가효과": "",
+      "기술추가효과2": "이 포켓몬이 데미지를 받고 있다면 70데미지를 추가한다.",
+      "기술에너지": "불1",
+      "기술에너지2": "불1/무색1",
+      "피해량": "30",
+      "피해량2": "50+",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Fuecoco ex",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Bite",
+          "damage": "30",
+          "effect": "",
+          "energy": "불1"
+        },
+        {
+          "name": "Feisty Flames",
+          "damage": "50+",
+          "effect": "If this Pokémon has damage on it, this attack does 70 more damage.",
+          "energy": "불1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20026,
+      "Serial": "c1-026",
+      "속성": "",
+      "이름": "카르본",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "도깨비불",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "불2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Charcadet",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Will-O-Wisp",
+          "damage": "40",
+          "effect": "",
+          "energy": "불2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20027,
+      "Serial": "c1-027",
+      "속성": "",
+      "이름": "카디나르마",
+      "이전이름": "카르본",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "저력",
+      "기술명2": "",
+      "기술추가효과": "자신의 다음 차례에 이 포켓몬은 기술을 사용할 수 없다.",
+      "기술추가효과2": "",
+      "기술에너지": "불3",
+      "기술에너지2": "",
+      "피해량": "130",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Armarouge",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Boundless Power",
+          "damage": "130",
+          "effect": "During your next turn, this Pokémon can't attack.",
+          "energy": "불3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Charcadet",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "불포켓몬",
+    "row": {
+      "타입": "불",
+      "ID": 20028,
+      "Serial": "c1-028",
+      "속성": "",
+      "이름": "파라블레이즈",
+      "이전이름": "카르본",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "반격하기",
+      "기술명2": "",
+      "기술추가효과": "상대의 이전 차례에 기술의 데미지로 자신의 포켓몬이 기절했다면 70데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "불2/무색1",
+      "기술에너지2": "",
+      "피해량": "70+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "물",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Ceruledge",
+    "en": {
+      "elementEn": "Fire",
+      "attacks": [
+        {
+          "name": "Rally Back",
+          "damage": "70+",
+          "effect": "If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last turn, this attack does 70 more damage.",
+          "energy": "불2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Charcadet",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20029,
+      "Serial": "c1-029",
+      "속성": "",
+      "이름": "꼬부기",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "거품",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 상대의 배틀 포켓몬을 마비로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "물1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Squirtle",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Bubble",
+          "damage": "10",
+          "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+          "energy": "물1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20030,
+      "Serial": "c1-030",
+      "속성": "",
+      "이름": "어니부기",
+      "이전이름": "꼬부기",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "회전어택",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물2",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Wartortle",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Spinning Attack",
+          "damage": "50",
+          "effect": "",
+          "energy": "물2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Squirtle",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20031,
+      "Serial": "c1-031",
+      "속성": "",
+      "이름": "거북왕",
+      "이전이름": "어니부기",
+      "진화": "2진화",
+      "HP": 150,
+      "기술명": "파도타기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물3",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 4,
+      "특성": "아쿠아 차지",
+      "특성효과": "자신의 차례에 1번 사용할 수 있다. 자신의 에너지존에서 물에너지를 1개 내보내 이 포켓몬에게 붙인다.",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Blastoise",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Surf",
+          "damage": "100",
+          "effect": "",
+          "energy": "물3"
+        }
+      ],
+      "abilityName": "Ability: Aqua Charge",
+      "abilityEffect": "Once during your turn, you may take a [ W ] Energy from your Energy Zone and attach it to this Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Wartortle",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20032,
+      "Serial": "c1-032",
+      "속성": "",
+      "이름": "쥬쥬",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "폭포오르기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Seel",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Waterfall",
+          "damage": "40",
+          "effect": "",
+          "energy": "물2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20033,
+      "Serial": "c1-033",
+      "속성": "",
+      "이름": "쥬레곤",
+      "이전이름": "쥬쥬",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "듀얼블리자드",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 물에너지를 2개 트래쉬하고 상대의 포켓몬 2마리에게 60데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "물3",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Dewgong",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Dual Blizzard",
+          "damage": "",
+          "effect": "Discard 2 [ W ] Energy from this Pokémon, and this attack does 60 damage to 2 of your opponent's Pokémon.",
+          "energy": "물3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Seel",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20034,
+      "Serial": "c1-034",
+      "속성": "",
+      "이름": "셀러",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "물대포",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Shellder",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Water Gun",
+          "damage": "40",
+          "effect": "",
+          "energy": "물1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20035,
+      "Serial": "c1-035",
+      "속성": "",
+      "이름": "파르셀",
+      "이전이름": "셀러",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "눈보라",
+      "기술명2": "",
+      "기술추가효과": "상대의 벤치 포켓몬 전원에게도 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "물2/무색1",
+      "기술에너지2": "",
+      "피해량": "60",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Cloyster",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Blizzard",
+          "damage": "60",
+          "effect": "This attack also does 20 damage to each of your opponent's Benched Pokémon.",
+          "energy": "물2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Shellder",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20036,
+      "Serial": "c1-036",
+      "속성": "",
+      "이름": "루주라",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 80,
+      "기술명": "뺨치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Jynx",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Slap",
+          "damage": "30",
+          "effect": "",
+          "energy": "물1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20037,
+      "Serial": "c1-037",
+      "속성": "",
+      "이름": "라프라스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "얼음칼날",
+      "기술명2": "",
+      "기술추가효과": "상대의 포켓몬 1마리에게 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "물1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Lapras",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Ice Blade",
+          "damage": "",
+          "effect": "This attack does 20 damage to 1 of your opponent's Pokémon.",
+          "energy": "물1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20038,
+      "Serial": "c1-038",
+      "속성": "",
+      "이름": "펄기아",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 120,
+      "기술명": "공간절단",
+      "기술명2": "",
+      "기술추가효과": "필드에 나와 있는 상대의 스타디움을 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "물2/무색1",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Palkia",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Spacial Rend",
+          "damage": "70",
+          "effect": "If your opponent has a Stadium in play, discard it.",
+          "energy": "물2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20039,
+      "Serial": "c1-039",
+      "속성": "",
+      "이름": "배쓰나이",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "돌머리",
+      "기술명2": "",
+      "기술추가효과": "상대의 다음 차례에 이 포켓몬이 받는 기술의 데미지를 -30한다.",
+      "기술추가효과2": "",
+      "기술에너지": "물1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Basculin",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Rock Head",
+          "damage": "40",
+          "effect": "During your opponent's next turn, this Pokémon takes −30 damage from attacks.",
+          "energy": "물1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20040,
+      "Serial": "c1-040",
+      "속성": "",
+      "이름": "개구마르",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "막치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Froakie",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Pound",
+          "damage": "20",
+          "effect": "",
+          "energy": "물1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물",
+      "ID": 20041,
+      "Serial": "c1-041",
+      "속성": "",
+      "이름": "개굴반장",
+      "이전이름": "개구마르",
+      "진화": "1진화",
+      "HP": 70,
+      "기술명": "스플래시",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "물2",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "서든 분신",
+      "특성효과": "자신의 차례에 이 카드를 패에서 꺼내서 진화시켰을 때 1번 사용할 수 있다. 자신의 덱에서 「개굴반장」을 랜덤으로 1장 벤치로 내보낸다.",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Frogadier",
+    "en": {
+      "elementEn": "Water",
+      "attacks": [
+        {
+          "name": "Wave Splash",
+          "damage": "30",
+          "effect": "",
+          "energy": "물2"
+        }
+      ],
+      "abilityName": "Ability: Sudden Duplication",
+      "abilityEffect": "Once during your turn, when you play this card from your hand to evolve 1 of your Pokémon, you may use this Ability. Put a random Frogadier from your deck onto your Bench.",
+      "trainerEffect": "",
+      "evolvesFrom": "Froakie",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "물포켓몬",
+    "row": {
+      "타입": "물/악",
+      "ID": 20042,
+      "Serial": "c1-042",
+      "속성": "메가ex",
+      "이름": "메가개굴닌자 ex",
+      "이전이름": "개굴반장",
+      "진화": "2진화",
+      "HP": 200,
+      "기술명": "스플래시다크",
+      "기술명2": "",
+      "기술추가효과": "상대의 다음 차례에 이 기술을 받은 포켓몬은 후퇴할 수 없다.",
+      "기술추가효과2": "",
+      "기술에너지": "물2",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 0,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mega Greninja ex",
+    "en": {
+      "elementEn": "Water/Darkness",
+      "attacks": [
+        {
+          "name": "Splash of Darkness",
+          "damage": "100",
+          "effect": "During your opponent's next turn, the Defending Pokémon can't retreat.",
+          "energy": "물2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Frogadier",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20043,
+      "Serial": "c1-043",
+      "속성": "ex",
+      "이름": "피카츄 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 120,
+      "기술명": "피카펀치",
+      "기술명2": "천둥번개테일",
+      "기술추가효과": "",
+      "기술추가효과2": "이 포켓몬에서 번개에너지를 2개 트래쉬한다.",
+      "기술에너지": "번개1",
+      "기술에너지2": "번개2/무색1",
+      "피해량": "30",
+      "피해량2": "130",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pikachu ex",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Pika Punch",
+          "damage": "30",
+          "effect": "",
+          "energy": "번개1"
+        },
+        {
+          "name": "Thundertail",
+          "damage": "130",
+          "effect": "Discard 2 [ L ] Energy from this Pokémon.",
+          "energy": "번개2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20044,
+      "Serial": "c1-044",
+      "속성": "",
+      "이름": "찌리리공",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "구르기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Voltorb",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Rollout",
+          "damage": "10",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20045,
+      "Serial": "c1-045",
+      "속성": "",
+      "이름": "붐볼",
+      "이전이름": "찌리리공",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "자폭",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에게도 90데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "90",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Electrode",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Self-Destruct",
+          "damage": "90",
+          "effect": "This Pokémon also does 90 damage to itself.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Voltorb",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20046,
+      "Serial": "c1-046",
+      "속성": "",
+      "이름": "메더",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "라이트닝볼",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "번개2/무색1",
+      "기술에너지2": "",
+      "피해량": "80",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Stunfisk",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Electric Ball",
+          "damage": "80",
+          "effect": "",
+          "energy": "번개2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20047,
+      "Serial": "c1-047",
+      "속성": "",
+      "이름": "제라오라",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 90,
+      "기술명": "10만볼트",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 에너지를 모두 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "번개2",
+      "기술에너지2": "",
+      "피해량": "90",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Zeraora",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Thunderbolt",
+          "damage": "90",
+          "effect": "Discard all Energy from this Pokémon.",
+          "energy": "번개2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20048,
+      "Serial": "c1-048",
+      "속성": "",
+      "이름": "빠모",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 40,
+      "기술명": "일렉트릭킥",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 0,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pawmi",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Zap Kick",
+          "damage": "20",
+          "effect": "",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20049,
+      "Serial": "c1-049",
+      "속성": "",
+      "이름": "빠모트",
+      "이전이름": "빠모",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "찌리리펀치",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pawmo",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Electric Punch",
+          "damage": "40",
+          "effect": "",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Pawmi",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "번개포켓몬",
+    "row": {
+      "타입": "번개",
+      "ID": 20050,
+      "Serial": "c1-050",
+      "속성": "",
+      "이름": "빠르모트",
+      "이전이름": "빠모트",
+      "진화": "2진화",
+      "HP": 120,
+      "기술명": "마하볼트",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "번개1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "전기 생산",
+      "특성효과": "자신의 차례에 1번 사용할 수 있다. 자신의 에너지존에서 번개에너지를 1개 내보내 배틀필드의 번개포켓몬에게 붙인다.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pawmot",
+    "en": {
+      "elementEn": "Lightning",
+      "attacks": [
+        {
+          "name": "Mach Bolt",
+          "damage": "50",
+          "effect": "",
+          "energy": "번개1"
+        }
+      ],
+      "abilityName": "Ability: Electrocreation",
+      "abilityEffect": "Once during your turn, you may take a [ L ] Energy from your Energy Zone and attach it to the [ L ] Pokémon in the Active Spot.",
+      "trainerEffect": "",
+      "evolvesFrom": "Pawmo",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20051,
+      "Serial": "c1-051",
+      "속성": "",
+      "이름": "푸린",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "단잠송",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 잠듦으로 만든다. 이 잠듦으로 던지는 동전은 2번이 되며, 모두 앞면이 나오지 않으면 회복되지 않는다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Jigglypuff",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Soothing Lullaby",
+          "damage": "30",
+          "effect": "Your opponent's Active Pokémon is now Asleep. Your opponent flips 2 coins for this Special Condition, and if either of them is tails, that Pokémon is still Asleep.",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20052,
+      "Serial": "c1-052",
+      "속성": "",
+      "이름": "푸크린",
+      "이전이름": "푸린",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "친구사이",
+      "기술명2": "",
+      "기술추가효과": "자신의 벤치 포켓몬의 수 × 30데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2",
+      "기술에너지2": "",
+      "피해량": "30x",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Wigglytuff",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Do the Wave",
+          "damage": "30x",
+          "effect": "This attack does 30 damage for each of your Benched Pokémon.",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Jigglypuff",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20053,
+      "Serial": "c1-053",
+      "속성": "",
+      "이름": "캐이시",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "빔",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Abra",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Beam",
+          "damage": "30",
+          "effect": "",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20054,
+      "Serial": "c1-054",
+      "속성": "",
+      "이름": "윤겔라",
+      "이전이름": "캐이시",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "염동탄",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초1/무색1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Kadabra",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Psychic Sphere",
+          "damage": "50",
+          "effect": "",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Abra",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20055,
+      "Serial": "c1-055",
+      "속성": "",
+      "이름": "후딘",
+      "이전이름": "윤겔라",
+      "진화": "2진화",
+      "HP": 130,
+      "기술명": "마인드잭",
+      "기술명2": "",
+      "기술추가효과": "상대의 벤치 포켓몬의 수 × 30데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "초1/무색1",
+      "기술에너지2": "",
+      "피해량": "50+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Alakazam",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Mind Jack",
+          "damage": "50+",
+          "effect": "This attack does 30 more damage for each of your opponent's Benched Pokémon.",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Kadabra",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초/격투",
+      "ID": 20056,
+      "Serial": "c1-056",
+      "속성": "메가ex",
+      "이름": "메가뮤츠X ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 180,
+      "기술명": "듀얼임팩트",
+      "기술명2": "",
+      "기술추가효과": "필드에 스타디움이 나와 있다면 40데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2/무색1",
+      "기술에너지2": "",
+      "피해량": "100+",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mega Mewtwo X ex",
+    "en": {
+      "elementEn": "Psychic/Fighting",
+      "attacks": [
+        {
+          "name": "Dual Impact",
+          "damage": "100+",
+          "effect": "If a Stadium is in play, this attack does 40 more damage.",
+          "energy": "초2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20057,
+      "Serial": "c1-057",
+      "속성": "ex",
+      "이름": "뮤 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 130,
+      "기술명": "비밀의인도",
+      "기술명2": "사이코번",
+      "기술추가효과": "동전을 3번 던져서 앞면이 나온 수만큼의 초에너지를 자신의 에너지존에서 내보내 벤치의 초포켓몬에게 원하는 대로 붙인다.",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "초1/무색1",
+      "피해량": "",
+      "피해량2": "60",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mew ex",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Secret Guidance",
+          "damage": "",
+          "effect": "Flip 3 coins. Take an amount of [ P ] Energy from your Energy Zone equal to the number of heads and attach it to your Benched [ P ] Pokémon in any way you like.",
+          "energy": "초1"
+        },
+        {
+          "name": "Psyburn",
+          "damage": "60",
+          "effect": "",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20058,
+      "Serial": "c1-058",
+      "속성": "",
+      "이름": "마릴",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "구르기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Marill",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Rollout",
+          "damage": "20",
+          "effect": "",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20059,
+      "Serial": "c1-059",
+      "속성": "",
+      "이름": "마릴리",
+      "이전이름": "마릴",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "래빗점프",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 60데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "초1/무색1",
+      "기술에너지2": "",
+      "피해량": "60x",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "강철",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Azumarill",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Rabbit Jumping",
+          "damage": "60x",
+          "effect": "Flip 2 coins. This attack does 60 damage for each heads.",
+          "energy": "초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Marill",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20060,
+      "Serial": "c1-060",
+      "속성": "",
+      "이름": "에스피온",
+      "이전이름": "이브이",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "브레인웨이브",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬의 초에너지의 개수 × 20데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "10+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Espeon",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Brainwave",
+          "damage": "10+",
+          "effect": "This attack does 20 more damage for each [ P ] Energy attached to this Pokémon.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Eevee",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20061,
+      "Serial": "c1-061",
+      "속성": "",
+      "이름": "마자용",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 90,
+      "기술명": "머리박치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Wobbuffet",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Headbutt Bounce",
+          "damage": "30",
+          "effect": "",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20062,
+      "Serial": "c1-062",
+      "속성": "",
+      "이름": "테오키스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "사이코부스트",
+      "기술명2": "",
+      "기술추가효과": "자신의 다음 차례에 이 포켓몬의 「사이코부스트」의 데미지를 -50한다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2/무색1",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Deoxys",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Psycho Boost",
+          "damage": "100",
+          "effect": "During your next turn, this Pokémon's Psycho Boost does −50 damage.",
+          "energy": "초2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20063,
+      "Serial": "c1-063",
+      "속성": "",
+      "이름": "따라큐",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "드레스업",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에게 「포켓몬의 도구」가 붙어 있다면 30데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "초1",
+      "기술에너지2": "",
+      "피해량": "20+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mimikyu",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Dress Up",
+          "damage": "20+",
+          "effect": "If this Pokémon has a Pokémon Tool attached, this attack does 30 more damage.",
+          "energy": "초1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20064,
+      "Serial": "c1-064",
+      "속성": "",
+      "이름": "코스모그",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "먼지모으기",
+      "기술명2": "",
+      "기술추가효과": "자신의 덱을 1장 뽑는다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Cosmog",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Dust Gathering",
+          "damage": "",
+          "effect": "Draw a card.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20065,
+      "Serial": "c1-065",
+      "속성": "",
+      "이름": "코스모움",
+      "이전이름": "코스모그",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "부딪치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Cosmoem",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Ram",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Cosmog",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "초능력포켓몬",
+    "row": {
+      "타입": "초",
+      "ID": 20066,
+      "Serial": "c1-066",
+      "속성": "",
+      "이름": "루나아라",
+      "이전이름": "코스모움",
+      "진화": "2진화",
+      "HP": 150,
+      "기술명": "월륜의날개",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 에너지를 모두 벤치 포켓몬에게 원하는 대로 바꿔 붙인다.",
+      "기술추가효과2": "",
+      "기술에너지": "초2",
+      "기술에너지2": "",
+      "피해량": "110",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "악",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Lunala",
+    "en": {
+      "elementEn": "Psychic",
+      "attacks": [
+        {
+          "name": "Wings of the Moone",
+          "damage": "110",
+          "effect": "Move all Energy from this Pokémon to your Benched Pokémon in any way you like.",
+          "energy": "초2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Cosmoem",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20067,
+      "Serial": "c1-067",
+      "속성": "",
+      "이름": "디그다",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "구멍파기",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 상대의 다음 차례에 이 포켓몬은 기술의 데미지나 효과를 받지 않는다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Diglett",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Dig",
+          "damage": "10",
+          "effect": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon.",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20068,
+      "Serial": "c1-068",
+      "속성": "",
+      "이름": "닥트리오",
+      "이전이름": "디그다",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "트리플스매시",
+      "기술명2": "",
+      "기술추가효과": "동전을 3번 던져서 앞면이 나온 수 × 30데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "30x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Dugtrio",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Triple Smash",
+          "damage": "30x",
+          "effect": "Flip 3 coins. This attack does 30 damage for each heads.",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Diglett",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20069,
+      "Serial": "c1-069",
+      "속성": "",
+      "이름": "뿔카노",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 80,
+      "기술명": "넘어뜨리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Rhyhorn",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Lunge Out",
+          "damage": "20",
+          "effect": "",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20070,
+      "Serial": "c1-070",
+      "속성": "",
+      "이름": "코뿌리",
+      "이전이름": "뿔카노",
+      "진화": "1진화",
+      "HP": 110,
+      "기술명": "메가폰",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 뒷면이 나오면 이 기술은 실패한다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투2",
+      "기술에너지2": "",
+      "피해량": "100",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Rhydon",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Megahorn",
+          "damage": "100",
+          "effect": "Flip a coin. If tails, this attack does nothing.",
+          "energy": "격투2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Rhyhorn",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20071,
+      "Serial": "c1-071",
+      "속성": "",
+      "이름": "거대코뿌리",
+      "이전이름": "코뿌리",
+      "진화": "2진화",
+      "HP": 160,
+      "기술명": "그라운드 프레스",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투3",
+      "기술에너지2": "",
+      "피해량": "110",
+      "피해량2": "",
+      "후퇴에너지": 4,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Rhyperior",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Earthen Press",
+          "damage": "110",
+          "effect": "",
+          "energy": "격투3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Rhydon",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20072,
+      "Serial": "c1-072",
+      "속성": "",
+      "이름": "꼬지모",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 100,
+      "기술명": "팔꿈치치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Sudowoodo",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Elbow Strike",
+          "damage": "40",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20073,
+      "Serial": "c1-073",
+      "속성": "",
+      "이름": "팔데아 우파",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "진흙뿌리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Paldean Wooper",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Mud-Slap",
+          "damage": "20",
+          "effect": "",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20074,
+      "Serial": "c1-074",
+      "속성": "",
+      "이름": "팔데아 토오",
+      "이전이름": "팔데아 우파",
+      "진화": "1진화",
+      "HP": 130,
+      "기술명": "지진",
+      "기술명2": "",
+      "기술추가효과": "자신의 벤치 포켓몬 전원에게도 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투3",
+      "기술에너지2": "",
+      "피해량": "130",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Paldean Clodsire",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Earthquake",
+          "damage": "130",
+          "effect": "This attack also does 20 damage to each of your Benched Pokémon.",
+          "energy": "격투3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Paldean Wooper",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20075,
+      "Serial": "c1-075",
+      "속성": "",
+      "이름": "애버라스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "물기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Larvitar",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Bite",
+          "damage": "20",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20076,
+      "Serial": "c1-076",
+      "속성": "",
+      "이름": "데기라스",
+      "이전이름": "애버라스",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "저축하기",
+      "기술명2": "",
+      "기술추가효과": "자신의 에너지존에서 격투에너지를 2개 내보내 이 포켓몬에게 붙인다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pupitar",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Amass",
+          "damage": "",
+          "effect": "Take 2 [ F ] Energy from your Energy Zone and attach it to this Pokémon.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Larvitar",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20077,
+      "Serial": "c1-077",
+      "속성": "",
+      "이름": "미꾸리",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "진동",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Barboach",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Vibration",
+          "damage": "20",
+          "effect": "",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20078,
+      "Serial": "c1-078",
+      "속성": "",
+      "이름": "메깅",
+      "이전이름": "미꾸리",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "파워프레스",
+      "기술명2": "",
+      "기술추가효과": "격투에너지 3개가 추가로 붙어 있다면 60데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "40+",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Whiscash",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Power Press",
+          "damage": "40+",
+          "effect": "If this Pokémon has at least 3 extra [ F ] Energy attached, this attack does 60 more damage.",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Barboach",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20079,
+      "Serial": "c1-079",
+      "속성": "",
+      "이름": "암멍이",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "손펀치",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Rockruff",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Paw Shake Punch",
+          "damage": "10",
+          "effect": "",
+          "energy": "격투1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "격투포켓몬",
+    "row": {
+      "타입": "격투",
+      "ID": 20080,
+      "Serial": "c1-080",
+      "속성": "ex",
+      "이름": "루가루암 ex",
+      "이전이름": "암멍이",
+      "진화": "1진화",
+      "HP": 150,
+      "기술명": "슬래시크루",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "격투1/무색1",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "스트라이크 백",
+      "특성효과": "이 포켓몬이 배틀필드에서 상대의 포켓몬으로부터 기술의 데미지를 받았을 때 기술을 사용한 포켓몬에게 30데미지를 준다.",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Lycanroc ex",
+    "en": {
+      "elementEn": "Fighting",
+      "attacks": [
+        {
+          "name": "Slashing Claw",
+          "damage": "70",
+          "effect": "",
+          "energy": "격투1/무색1"
+        }
+      ],
+      "abilityName": "Ability: Reflexive Retaliation",
+      "abilityEffect": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 30 damage to the Attacking Pokémon.",
+      "trainerEffect": "",
+      "evolvesFrom": "Rockruff",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20081,
+      "Serial": "c1-081",
+      "속성": "",
+      "이름": "고오스",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "독한가스",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 독으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Gastly",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Severe Gas",
+          "damage": "",
+          "effect": "Your opponent's Active Pokémon is now Poisoned.",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20082,
+      "Serial": "c1-082",
+      "속성": "",
+      "이름": "고우스트",
+      "이전이름": "고오스",
+      "진화": "1진화",
+      "HP": 80,
+      "기술명": "가스로감싸기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Haunter",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Suffocating Gas",
+          "damage": "30",
+          "effect": "",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Gastly",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20083,
+      "Serial": "c1-083",
+      "속성": "",
+      "이름": "팬텀",
+      "이전이름": "고우스트",
+      "진화": "2진화",
+      "HP": 130,
+      "기술명": "땅거미독",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 독과 잠듦으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Gengar",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Twilight Poison",
+          "damage": "50",
+          "effect": "Your opponent's Active Pokémon is now Poisoned and Asleep.",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Haunter",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20084,
+      "Serial": "c1-084",
+      "속성": "",
+      "이름": "블래키",
+      "이전이름": "이브이",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "문레이드",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬이 기본 포켓몬이라면 50데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "30+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Umbreon",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Moonlit Raid",
+          "damage": "30+",
+          "effect": "If your opponent's Active Pokémon is a Basic Pokémon, this attack does 50 more damage.",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Eevee",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20085,
+      "Serial": "c1-085",
+      "속성": "메가ex",
+      "이름": "메가마기라스 ex",
+      "이전이름": "데기라스",
+      "진화": "2진화",
+      "HP": 240,
+      "기술명": "램페이지 크래시",
+      "기술명2": "",
+      "기술추가효과": "자신의 덱을 위에서부터 2장 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "악2/무색2",
+      "기술에너지2": "",
+      "피해량": "180",
+      "피해량2": "",
+      "후퇴에너지": 4,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mega Tyranitar ex",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Crushing Rampage",
+          "damage": "180",
+          "effect": "Discard the top 2 cards of your deck.",
+          "energy": "악2/무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Pupitar",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20086,
+      "Serial": "c1-086",
+      "속성": "",
+      "이름": "세비퍼",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 80,
+      "기술명": "독이빨",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬을 독으로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "악2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Seviper",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Venomous Fang",
+          "damage": "40",
+          "effect": "Your opponent's Active Pokémon is now Poisoned.",
+          "energy": "악2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20087,
+      "Serial": "c1-087",
+      "속성": "",
+      "이름": "조로아",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "할퀴기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "10",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Zorua",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Scratch",
+          "damage": "10",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20088,
+      "Serial": "c1-088",
+      "속성": "",
+      "이름": "조로아크",
+      "이전이름": "조로아",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "속임수",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬이 가지고 있는 기술을 1개 선택해서 이 기술로써 사용한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Zoroark",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Foul Play",
+          "damage": "",
+          "effect": "Choose 1 of your opponent's Active Pokémon's attacks and use it as this attack.",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Zorua",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20089,
+      "Serial": "c1-089",
+      "속성": "",
+      "이름": "훔처우",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "뒤로차기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "악1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Nickit",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Rear Kick",
+          "damage": "20",
+          "effect": "",
+          "energy": "악1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "악포켓몬",
+    "row": {
+      "타입": "악",
+      "ID": 20090,
+      "Serial": "c1-090",
+      "속성": "",
+      "이름": "폭슬라이",
+      "이전이름": "훔처우",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "발톱 베어가르기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "악2",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "풀",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Thievul",
+    "en": {
+      "elementEn": "Darkness",
+      "attacks": [
+        {
+          "name": "Claw Slash",
+          "damage": "70",
+          "effect": "",
+          "energy": "악2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Nickit",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20091,
+      "Serial": "c1-091",
+      "속성": "메가ex",
+      "이름": "메가무장조 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 170,
+      "기술명": "슈레더클로",
+      "기술명2": "",
+      "기술추가효과": "뒷면이 나올 때까지 동전을 던져서 앞면이 나온 수 × 50데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "강철2/무색1",
+      "기술에너지2": "",
+      "피해량": "90+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mega Skarmory ex",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Shredding Claw",
+          "damage": "90+",
+          "effect": "Flip a coin until you get tails. This attack does 50 more damage for each heads.",
+          "energy": "강철2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20092,
+      "Serial": "c1-092",
+      "속성": "",
+      "이름": "디아루가",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 120,
+      "기술명": "시간의포효",
+      "기술명2": "",
+      "기술추가효과": "상대의 덱을 위에서부터 1장 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "강철2/무색1",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Dialga",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Roar of Time",
+          "damage": "70",
+          "effect": "Discard the top card of your opponent's deck.",
+          "energy": "강철2/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20093,
+      "Serial": "c1-093",
+      "속성": "",
+      "이름": "철시드",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "궤찌르기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철2",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Ferroseed",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Pierce",
+          "damage": "40",
+          "effect": "",
+          "energy": "강철2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20094,
+      "Serial": "c1-094",
+      "속성": "",
+      "이름": "너트령",
+      "이전이름": "철시드",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "한방 먹이기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철3",
+      "기술에너지2": "",
+      "피해량": "90",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Ferrothorn",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Hammer In",
+          "damage": "90",
+          "effect": "",
+          "energy": "강철3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Ferroseed",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20095,
+      "Serial": "c1-095",
+      "속성": "",
+      "이름": "솔가레오",
+      "이전이름": "코스모움",
+      "진화": "2진화",
+      "HP": 160,
+      "기술명": "일륜의발톱",
+      "기술명2": "",
+      "기술추가효과": "자신이 이미 가져간 포인트의 수 × 30데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "강철3",
+      "기술에너지2": "",
+      "피해량": "90+",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Solgaleo",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Claws of the Sunne",
+          "damage": "90+",
+          "effect": "This attack does 30 more damage for each point you have gotten.",
+          "energy": "강철3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Cosmoem",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20096,
+      "Serial": "c1-096",
+      "속성": "",
+      "이름": "멜탄",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "부딪치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철1/무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Meltan",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Ram",
+          "damage": "40",
+          "effect": "",
+          "energy": "강철1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "강철포켓몬",
+    "row": {
+      "타입": "강철",
+      "ID": 20097,
+      "Serial": "c1-097",
+      "속성": "",
+      "이름": "멜메탈",
+      "이전이름": "멜탄",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "진검승부",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "강철2/무색1",
+      "기술에너지2": "",
+      "피해량": "70",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "메탈 스크럼",
+      "특성효과": "이 포켓몬이 있는 한, 자신의 강철포켓몬 전원이 상대의 포켓몬으로부터 받는 기술의 데미지를 -20한다. 이 특성은 중복되지 않는다.",
+      "약점": "불",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Melmetal",
+    "en": {
+      "elementEn": "Metal",
+      "attacks": [
+        {
+          "name": "Confront",
+          "damage": "70",
+          "effect": "",
+          "energy": "강철2/무색1"
+        }
+      ],
+      "abilityName": "Ability: Metal Scrum",
+      "abilityEffect": "As long as this Pokémon is in play, all of your [ M ] Pokémon take −20 damage from attacks from your opponent's Pokémon. This effect doesn't stack.",
+      "trainerEffect": "",
+      "evolvesFrom": "Meltan",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 20098,
+      "Serial": "c1-098",
+      "속성": "",
+      "이름": "미뇽",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "걸기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색2",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Dratini",
+    "en": {
+      "elementEn": "Dragon",
+      "attacks": [
+        {
+          "name": "Hook",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색2"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 20099,
+      "Serial": "c1-099",
+      "속성": "",
+      "이름": "신뇽",
+      "이전이름": "미뇽",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "빔",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색3",
+      "기술에너지2": "",
+      "피해량": "60",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Dragonair",
+    "en": {
+      "elementEn": "Dragon",
+      "attacks": [
+        {
+          "name": "Beam",
+          "damage": "60",
+          "effect": "",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Dratini",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 20100,
+      "Serial": "c1-100",
+      "속성": "메가ex",
+      "이름": "메가망나뇽 ex",
+      "이전이름": "신뇽",
+      "진화": "2진화",
+      "HP": 240,
+      "기술명": "드래고닉 메테오",
+      "기술명2": "",
+      "기술추가효과": "상대의 포켓몬이 랜덤으로 1번 선택되어 선택된 포켓몬에게 250데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "물1/번개1/무색3",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 4,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Mega Dragonite ex",
+    "en": {
+      "elementEn": "Dragon",
+      "attacks": [
+        {
+          "name": "Draconic Meteor",
+          "damage": "",
+          "effect": "1 of your opponent's Pokémon is chosen at random. Do 250 damage to it.",
+          "energy": "물1/번개1/무색3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Dragonair",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "드래곤포켓몬",
+    "row": {
+      "타입": "드래곤",
+      "ID": 20101,
+      "Serial": "c1-101",
+      "속성": "ex",
+      "이름": "기라티나 ex",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 150,
+      "기술명": "베어가르기",
+      "기술명2": "드래곤임팩트",
+      "기술추가효과": "",
+      "기술추가효과2": "이 포켓몬에서 에너지를 랜덤으로 2개 트래쉬한다.",
+      "기술에너지": "무색2",
+      "기술에너지2": "풀1/초1/무색1",
+      "피해량": "50",
+      "피해량2": "140",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Giratina ex",
+    "en": {
+      "elementEn": "Dragon",
+      "attacks": [
+        {
+          "name": "Slash",
+          "damage": "50",
+          "effect": "",
+          "energy": "무색2"
+        },
+        {
+          "name": "Dragon Impact",
+          "damage": "140",
+          "effect": "Discard 2 random Energy from this Pokémon.",
+          "energy": "풀1/초1/무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20102,
+      "Serial": "c1-102",
+      "속성": "",
+      "이름": "구구",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "친구찾기",
+      "기술명2": "",
+      "기술추가효과": "자신의 덱에서 무색포켓몬을 랜덤으로 1장 패로 가져온다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pidgey",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Find a Friend",
+          "damage": "",
+          "effect": "Put 1 random [ C ] Pokémon from your deck into your hand.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20103,
+      "Serial": "c1-103",
+      "속성": "",
+      "이름": "피죤",
+      "이전이름": "구구",
+      "진화": "1진화",
+      "HP": 70,
+      "기술명": "커터윈드",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "40",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pidgeotto",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Cutting Wind",
+          "damage": "40",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Pidgey",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20104,
+      "Serial": "c1-104",
+      "속성": "",
+      "이름": "피죤투",
+      "이전이름": "피죤",
+      "진화": "2진화",
+      "HP": 130,
+      "기술명": "클린히트",
+      "기술명2": "",
+      "기술추가효과": "상대의 배틀 포켓몬이 진화 포켓몬이라면 80데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "40+",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Pidgeot",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Clean Hit",
+          "damage": "40+",
+          "effect": "If your opponent's Active Pokémon is an Evolution Pokémon, this attack does 80 more damage.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Pidgeotto",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20105,
+      "Serial": "c1-105",
+      "속성": "",
+      "이름": "깨비참",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "홰치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Spearow",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Flap",
+          "damage": "20",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20106,
+      "Serial": "c1-106",
+      "속성": "",
+      "이름": "깨비드릴조",
+      "이전이름": "깨비참",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "회전부리",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "번개",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Fearow",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Drill Peck",
+          "damage": "50",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Spearow",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20107,
+      "Serial": "c1-107",
+      "속성": "",
+      "이름": "이브이",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "진화의징조",
+      "기술명2": "",
+      "기술추가효과": "「이브이」에서 진화하는 카드를 자신의 덱에서 랜덤으로 1장 패로 가져온다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Eevee",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Signs of Evolution",
+          "damage": "",
+          "effect": "Put a random card that evolves from Eevee from your deck into your hand.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20108,
+      "Serial": "c1-108",
+      "속성": "",
+      "이름": "폴리곤",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "파워볼",
+      "기술명2": "",
+      "기술추가효과": "이 포켓몬에서 에너지를 랜덤으로 1개 트래쉬한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Porygon",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Powered Ball",
+          "damage": "30",
+          "effect": "Discard a random Energy from this Pokémon.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20109,
+      "Serial": "c1-109",
+      "속성": "",
+      "이름": "폴리곤2",
+      "이전이름": "폴리곤",
+      "진화": "1진화",
+      "HP": 90,
+      "기술명": "몸통박치기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Porygon2",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Tackle",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Porygon",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20110,
+      "Serial": "c1-110",
+      "속성": "",
+      "이름": "폴리곤Z",
+      "이전이름": "폴리곤2",
+      "진화": "2진화",
+      "HP": 130,
+      "기술명": "오버스매시",
+      "기술명2": "",
+      "기술추가효과": "자신의 다음 차례에 이 포켓몬의 「오버스매시」의 데미지를 +50한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "50",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Porygon-Z",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Overdrive Smash",
+          "damage": "50",
+          "effect": "During your next turn, this Pokémon's Overdrive Smash attack does +50 damage.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Porygon2",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20111,
+      "Serial": "c1-111",
+      "속성": "",
+      "이름": "잠만보",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 130,
+      "기술명": "누르기",
+      "기술명2": "",
+      "기술추가효과": "동전을 1번 던져서 앞면이 나오면 상대의 배틀 포켓몬을 마비로 만든다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색4",
+      "기술에너지2": "",
+      "피해량": "80",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Snorlax",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Body Slam",
+          "damage": "80",
+          "effect": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+          "energy": "무색4"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20112,
+      "Serial": "c1-112",
+      "속성": "",
+      "이름": "쟝고",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 80,
+      "기술명": "발톱 베어가르기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "30",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "면역",
+      "특성효과": "이 포켓몬은 특수 상태가 되지 않는다.",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Zangoose",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Claw Slash",
+          "damage": "30",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "Ability: Immunity",
+      "abilityEffect": "This Pokémon can't be affected by any Special Conditions.",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20113,
+      "Serial": "c1-113",
+      "속성": "",
+      "이름": "비버니",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 60,
+      "기술명": "갉기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Bidoof",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Gnaw",
+          "damage": "20",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20114,
+      "Serial": "c1-114",
+      "속성": "",
+      "이름": "비버통",
+      "이전이름": "비버니",
+      "진화": "1진화",
+      "HP": 120,
+      "기술명": "괴력",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색3",
+      "기술에너지2": "",
+      "피해량": "80",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Bibarel",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Strength",
+          "damage": "80",
+          "effect": "",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Bidoof",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20115,
+      "Serial": "c1-115",
+      "속성": "",
+      "이름": "이어롤",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 50,
+      "기술명": "래빗점프",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 20데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Buneary",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Rabbit Jumping",
+          "damage": "20x",
+          "effect": "Flip 2 coins. This attack does 20 damage for each heads.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20116,
+      "Serial": "c1-116",
+      "속성": "",
+      "이름": "이어롭",
+      "이전이름": "이어롤",
+      "진화": "1진화",
+      "HP": 100,
+      "기술명": "래빗점프",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 앞면이 나온 수 × 40데미지를 준다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "40x",
+      "피해량2": "",
+      "후퇴에너지": 1,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Lopunny",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Rabbit Jumping",
+          "damage": "40x",
+          "effect": "Flip 2 coins. This attack does 40 damage for each heads.",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Buneary",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20117,
+      "Serial": "c1-117",
+      "속성": "",
+      "이름": "포곰곰",
+      "이전이름": "",
+      "진화": "기본",
+      "HP": 70,
+      "기술명": "때리기",
+      "기술명2": "",
+      "기술추가효과": "",
+      "기술추가효과2": "",
+      "기술에너지": "무색1",
+      "기술에너지2": "",
+      "피해량": "20",
+      "피해량2": "",
+      "후퇴에너지": 2,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Stufful",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Beat",
+          "damage": "20",
+          "effect": "",
+          "energy": "무색1"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "일반포켓몬",
+    "row": {
+      "타입": "무색",
+      "ID": 20118,
+      "Serial": "c1-118",
+      "속성": "ex",
+      "이름": "이븐곰 ex",
+      "이전이름": "포곰곰",
+      "진화": "1진화",
+      "HP": 160,
+      "기술명": "필살래리어트",
+      "기술명2": "",
+      "기술추가효과": "동전을 2번 던져서 모두 앞면이 나오면 100데미지를 추가한다.",
+      "기술추가효과2": "",
+      "기술에너지": "무색3",
+      "기술에너지2": "",
+      "피해량": "100+",
+      "피해량2": "",
+      "후퇴에너지": 3,
+      "특성": "",
+      "특성효과": "",
+      "약점": "격투",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Bewear ex",
+    "en": {
+      "elementEn": "Colorless",
+      "attacks": [
+        {
+          "name": "Hyper Lariat",
+          "damage": "100+",
+          "effect": "Flip 2 coins. If both of them are heads, this attack does 100 more damage.",
+          "energy": "무색3"
+        }
+      ],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "",
+      "evolvesFrom": "Stufful",
+      "trainerKind": ""
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "아이템",
+      "ID": 20119,
+      "Serial": "c1-119",
+      "이름": "달콤한꿀",
+      "기술추가효과": "자신의 포켓몬을 1마리 선택한다. 뒷면이 나올 때까지 동전을 던져서 앞면이 나온 수 × 20데미지만큼 그 포켓몬의 HP를 회복.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Sweet Honey",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Choose 1 of your Pokémon, and then flip a coin until you get tails. For each heads, heal 20 damage from that Pokémon.",
+      "evolvesFrom": "",
+      "trainerKind": "Item"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "아이템",
+      "ID": 20120,
+      "Serial": "c1-120",
+      "이름": "좋은상처약",
+      "기술추가효과": "에너지가 붙어 있는 자신의 포켓몬 1마리의 HP를 40회복. 그 뒤, 그 포켓몬에서 에너지를 랜덤으로 1개 트래쉬한다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Super Potion",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Heal 40 damage from 1 of your Pokémon that has any Energy attached. If you healed any damage in this way, discard a random Energy from that Pokémon.",
+      "evolvesFrom": "",
+      "trainerKind": "Item"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "아이템",
+      "ID": 20121,
+      "Serial": "c1-121",
+      "이름": "골드스프레이",
+      "기술추가효과": "상대 배틀필드의 2진화 포켓몬을 벤치 포켓몬과 교체한다. (배틀필드로 내보낼 포켓몬은 상대가 선택한다.)",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Max Repel",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Switch out your opponent's Active Stage 2 Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+      "evolvesFrom": "",
+      "trainerKind": "Item"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "아이템",
+      "ID": 20122,
+      "Serial": "c1-122",
+      "이름": "만병통치제",
+      "기술추가효과": "자신의 배틀 포켓몬의 특수 상태를 모두 회복.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Full Heal",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Your Active Pokémon recovers from all Special Conditions.",
+      "evolvesFrom": "",
+      "trainerKind": "Item"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "도구",
+      "ID": 20123,
+      "Serial": "c1-123",
+      "이름": "진화의휘석",
+      "기술추가효과": "이 카드를 붙이고 있는 기본 포켓몬이 상대의 포켓몬으로부터 받는 기술의 데미지를 -20한다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Eviolite",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "The Basic Pokémon this card is attached to takes −20 damage from attacks from your opponent's Pokémon.",
+      "evolvesFrom": "",
+      "trainerKind": "Tool"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "도구",
+      "ID": 20124,
+      "Serial": "c1-124",
+      "이름": "전기구슬",
+      "기술추가효과": "이 카드를 붙이고 있는 「피카츄 ex」가 사용하는 기술이 상대의 배틀 포켓몬에게 주는 데미지를 +30한다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Light Ball",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Attacks used by the Pikachu ex this card is attached to do +30 damage to your opponent's Active Pokémon.",
+      "evolvesFrom": "",
+      "trainerKind": "Tool"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 20125,
+      "Serial": "c1-125",
+      "이름": "칸나",
+      "기술추가효과": "이 차례에 자신의 「쥬레곤」「파르셀」「라프라스」가 사용하는 기술이 상대의 포켓몬 전원에게 주는 데미지를 +30한다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Lorelei",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "During this turn, attacks used by your Dewgong, Cloyster, or Lapras do +30 damage to your opponent's Pokémon.",
+      "evolvesFrom": "",
+      "trainerKind": "Supporter"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 20126,
+      "Serial": "c1-126",
+      "이름": "그린의 도발",
+      "기술추가효과": "이 카드는 자신의 필드에 「이상해꽃」 또는 「리자몽」 또는 「거북왕」 또는 「피죤투」가 있을 때만 사용할 수 있다. 상대의 벤치 포켓몬을 1마리 선택해서 배틀 포켓몬과 교체한다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Blue's Provocation",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "You can use this card only if you have Venusaur, Charizard, Blastoise, or Pidgeot in play. Switch in 1 of your opponent's Benched Pokémon to the Active Spot.",
+      "evolvesFrom": "",
+      "trainerKind": "Supporter"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 20127,
+      "Serial": "c1-127",
+      "이름": "세레나의 선택",
+      "기술추가효과": "자신의 덱을 위에서부터 3장 보고 그 중에서 카드를 1장 선택해서 패로 가져온다. 남은 카드는 덱으로 되돌린다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Serena's Choice",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Look at the top 3 cards of your deck and put 1 of them into your hand. Shuffle back into your deck.",
+      "evolvesFrom": "",
+      "trainerKind": "Supporter"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 20128,
+      "Serial": "c1-128",
+      "이름": "칠리",
+      "기술추가효과": "자신의 에너지존에서 격투에너지를 2개 내보내 「메깅」 또는 「팔데아 토오」 1마리에게 붙인다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Rika",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Produce 2 [ F ] Energy from your Energy Zone, and attach it to 1 of your Whiscash or Paldean Clodsire.",
+      "evolvesFrom": "",
+      "trainerKind": "Supporter"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 20129,
+      "Serial": "c1-129",
+      "이름": "프렌들리숍 직원",
+      "기술추가효과": "자신의 덱에서 「좋은상처약」「골드스프레이」「만병통치제」를 랜덤으로 2장 패로 가져온다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Poké Mart Guy",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Put 2 random cards from among Super Potion, Max Repel, and Full Heal from your deck into your hand.",
+      "evolvesFrom": "",
+      "trainerKind": "Supporter"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "서포트",
+      "ID": 20130,
+      "Serial": "c1-130",
+      "이름": "호프 트레이너",
+      "기술추가효과": "이 카드는 자신의 필드의 포켓몬의 타입이 3종류 이상일 때만 사용할 수 있다. 자신의 배틀 포켓몬을 벤치 포켓몬과 교체한다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Rising Star",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "You can use this card only if you have 3 or more different Pokémon types in play. Switch your Active Pokémon with 1 of your Benched Pokémon.",
+      "evolvesFrom": "",
+      "trainerKind": "Supporter"
+    }
+  },
+  {
+    "sheet": "트레이너스",
+    "row": {
+      "타입": "스타디움",
+      "ID": 20131,
+      "Serial": "c1-131",
+      "이름": "허름한 스탠드",
+      "기술추가효과": "서로의 플레이어는 자신의 차례에 1번 사용할 수 있다. 동전을 1번 던져서 앞면이 나오면 자신의 덱을 1장 뽑는다.",
+      "키워드": "",
+      "확장팩": "듀얼 퓨전"
+    },
+    "enName": "Abandoned Station",
+    "en": {
+      "elementEn": "",
+      "attacks": [],
+      "abilityName": "",
+      "abilityEffect": "",
+      "trainerEffect": "Once during each player's turn, that player may use this effect. Flip a coin. If heads, draw a card.",
+      "evolvesFrom": "",
+      "trainerKind": "Stadium"
+    }
+  }
+]

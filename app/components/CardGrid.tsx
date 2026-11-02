@@ -6,7 +6,12 @@ import {
   type PokemonCard,
   resolveCardImageSrc,
   getCardImageAlternateSrc,
+  cardMatchesTypeFilter,
+  cardTypeParts,
+  isDualCardType,
+  isPokemonCardType,
 } from "../data/cards";
+import { TypePills } from "./TypePills";
 import {
   getRelatedItems,
   getRelatedStadium,
@@ -43,9 +48,6 @@ const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> 
   Metal: { bg: "bg-slate-200", text: "text-slate-700", border: "border-slate-400" },
   Dragon: { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-300" },
 };
-
-const POKEMON_TYPES = ["풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "무색",
-  "Grass", "Fire", "Water", "Lightning", "Psychic", "Fighting", "Darkness", "Metal", "Dragon", "Colorless"];
 
 const EVOLUTION_COLORS: Record<string, string> = {
   기본: "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200",
@@ -97,7 +99,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
   );
 
   const COLUMNS: { key: GridColumnKey; label: string; width: string }[] = [
-    { key: "타입", label: t.card.type, width: "w-14 min-w-[3.5rem]" },
+    { key: "타입", label: t.card.type, width: "w-24 min-w-[6rem]" },
     { key: "이름", label: t.card.name, width: "w-28 min-w-[7rem]" },
     { key: "진화", label: t.card.evolutionLabel, width: "w-14 min-w-[3.5rem]" },
     { key: "HP", label: "HP", width: "w-12 min-w-[3rem]" },
@@ -183,8 +185,8 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
   const filterOptions = useMemo(() => {
     const allTypes = [...new Set(cards.map((c) => c.타입))];
     return {
-      포켓몬타입: allTypes.filter((t) => POKEMON_TYPES.includes(t)),
-      트레이너스타입: allTypes.filter((t) => !POKEMON_TYPES.includes(t)),
+      포켓몬타입: allTypes.filter((t) => isPokemonCardType(t) && !isDualCardType(t)),
+      트레이너스타입: allTypes.filter((t) => !isPokemonCardType(t)),
       진화: EVOLUTION_ORDER.filter((e) => cards.some((c) => c.진화 === e)),
       키워드: [...new Set(
         cards.flatMap((c) =>
@@ -231,7 +233,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     }
 
     if (filters.타입.length)
-      result = result.filter((c) => filters.타입.includes(c.타입));
+      result = result.filter((c) => cardMatchesTypeFilter(c.타입, filters.타입));
     if (filters.진화.length)
       result = result.filter((c) => filters.진화.includes(c.진화));
     if (filters.키워드.length)
@@ -245,12 +247,14 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
       result = result.filter((c) => filters.확장팩.includes(c.확장팩));
     if (filters.후퇴에너지.length)
       result = result.filter((c) => {
-        if (filters.후퇴에너지.includes("0") && !POKEMON_TYPES.includes(c.타입)) return false;
+        if (filters.후퇴에너지.includes("0") && !isPokemonCardType(c.타입)) return false;
         return filters.후퇴에너지.includes(String(c.후퇴에너지));
       });
     if (filterCardTypes.length)
       result = result.filter((c) =>
-        filterCardTypes.some((ct) => cardMatchesCardTypeFilter(c.카드타입, ct)),
+        filterCardTypes.some((ct) =>
+          ct === "듀얼타입" ? isDualCardType(c.타입) : cardMatchesCardTypeFilter(c.카드타입, ct),
+        ),
       );
     if (filterSpecial)
       result = result.filter((c) => c.특성효과 && c.특성효과 !== "-");
@@ -265,7 +269,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
     }
     if (filterSkillEnergy.length) {
       result = result.filter((c) => {
-        if (filterSkillEnergy.includes(0) && !POKEMON_TYPES.includes(c.타입)) return false;
+        if (filterSkillEnergy.includes(0) && !isPokemonCardType(c.타입)) return false;
         const ec = energyCounts.get(c.ID);
         if (!ec) return false;
         return filterSkillEnergy.includes(ec.e1) || (ec.e2 >= 0 && filterSkillEnergy.includes(ec.e2));
@@ -301,8 +305,11 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const paginated = filtered.slice((page - 1) * pageSize, page * pageSize);
 
-  const typeColor = (type: string) =>
-    TYPE_COLORS[type] ?? { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
+  const typeColor = (type: string) => {
+    if (TYPE_COLORS[type]) return TYPE_COLORS[type];
+    const first = cardTypeParts(type)[0];
+    return TYPE_COLORS[first] ?? { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
+  };
 
   return (
     <div className="flex flex-col gap-4 p-4 md:p-6 min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors">
@@ -407,15 +414,17 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.cardType}</span>
             <div className="flex items-center gap-1 flex-wrap">
-              {(["ex", "메가ex"] as const).map((ct) => {
+              {(["ex", "메가ex", "듀얼타입"] as const).map((ct) => {
                 const active = filterCardTypes.includes(ct);
                 const activeCls =
                   ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
-                  : "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700";
+                  : ct === "메가ex" ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
+                  : "bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 border-violet-300 dark:border-violet-700";
+                const label = ct === "메가ex" ? t.cardTypeLabel.megaEx : ct === "듀얼타입" ? t.cardTypeLabel.dualType : ct;
                 return (
                   <button key={ct} onClick={() => { setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct]); resetPage(); }}
                     className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                  >{ct === "메가ex" ? t.cardTypeLabel.megaEx : ct}</button>
+                  >{label}</button>
                 );
               })}
             </div>
@@ -642,14 +651,11 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
           </div>
         )}
         {paginated.map((card) => {
-          const tc = typeColor(card.타입);
           const nameText = card.이름.replace(/\s+ex$/i, "").trim();
           const typeFlags = parseCardTypeFlags(card.카드타입);
           return (
             <div key={card.ID} className="flex items-center gap-2 px-3 py-2.5">
-              <span className={`shrink-0 inline-block px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>
-                {card.타입}
-              </span>
+              <TypePills type={card.타입} className="shrink-0" />
               <span className="flex-1 text-sm font-semibold text-slate-800 dark:text-slate-100 min-w-0 truncate inline-flex items-center gap-1 flex-wrap">
                 <span className="truncate">{nameText}</span>
                 <CardNameBadges
@@ -705,7 +711,6 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               </tr>
             )}
             {paginated.flatMap((card, idx) => {
-              const tc = typeColor(card.타입);
               const typeFlags = parseCardTypeFlags(card.카드타입);
               const rowBg = typeFlags.megaEx
                 ? "bg-rose-50/60 dark:bg-rose-900/10 hover:bg-rose-100/60 dark:hover:bg-rose-900/20"
@@ -730,11 +735,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
                 <tr key={`${card.이름}-${idx}-0`} className={rowCls}>
                   {/* 타입 */}
                   <td rowSpan={rs} className={`px-3 ${py} text-center align-middle`}>
-                    <span
-                      className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}
-                    >
-                      {card.타입}
-                    </span>
+                    <TypePills type={card.타입} />
                   </td>
 
                   {/* 이름 */}
@@ -970,7 +971,7 @@ export default function CardGrid({ cards }: { cards: PokemonCard[] }) {
               <div className="grid grid-cols-3 gap-2">
                 <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
                   <span className="text-xs text-slate-400">{t.card.type}</span>
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium border ${typeColor(mobileDetail.타입).bg} ${typeColor(mobileDetail.타입).text} ${typeColor(mobileDetail.타입).border}`}>{mobileDetail.타입}</span>
+                  <TypePills type={mobileDetail.타입} />
                 </div>
                 <div className="flex flex-col items-center gap-1 bg-slate-50 dark:bg-slate-700/50 rounded-lg p-2">
                   <span className="text-xs text-slate-400">{t.card.evolutionLabel}</span>

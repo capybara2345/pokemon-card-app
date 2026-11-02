@@ -660,6 +660,7 @@ const EXPANSIONS = {
   '미라클 데이즈':'Everyday Wonders',
   '천공의 지배자':'Ruler of the Skies',
   '로켓단의 야망':"Team Rocket's Ambition",
+  '듀얼 퓨전':'Dual Fusion',
   '프로모':'Promo-A',
 };
 
@@ -712,9 +713,17 @@ for (const sheetName of wb.SheetNames) {
       let newVal = val;
       if (enHeader === 'Name')                  newVal = translateName(val, cardType);
       else if (enHeader === 'BeforeName')       newVal = lookupPokemonName(val, POKEMON_NAMES, NAME_OVERRIDES);
-      else if (enHeader === 'Type')             newVal = ENERGY[val] ?? CARD_TYPES[val] ?? val;
+      else if (enHeader === 'Type' || enHeader === 'Weakness') {
+        newVal = String(val ?? '')
+          .split('/')
+          .map((part) => {
+            const token = part.trim();
+            return ENERGY[token] ?? CARD_TYPES[token] ?? token;
+          })
+          .filter(Boolean)
+          .join('/');
+      }
       else if (enHeader === 'Attribute')        newVal = translateAttribute(val);
-      else if (enHeader === 'Weakness')         newVal = ENERGY[val] || val;
       else if (enHeader === 'Stage')            newVal = EVOLUTION[val] || val;
       else if (enHeader === 'Expansion')        newVal = EXPANSIONS[val] || val;
       else if (enHeader === 'Move 1' || enHeader === 'Move 2')

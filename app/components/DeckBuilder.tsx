@@ -6,7 +6,12 @@ import {
   resolveCardImageSrc,
   getCardImageAlternateSrc,
   parseCardId,
+  cardMatchesTypeFilter,
+  cardTypeParts,
+  isDualCardType,
+  isPokemonCardType,
 } from "../data/cards";
+import { TypePills } from "./TypePills";
 import type { Session } from "next-auth";
 import type { RecommendedDeck } from "@/app/lib/fetchCards";
 import { useLanguage } from "../i18n/context";
@@ -62,9 +67,6 @@ const TYPE_COLORS: Record<string, { bg: string; text: string; border: string }> 
   Dragon: { bg: "bg-orange-100", text: "text-orange-800", border: "border-orange-300" },
 };
 
-const POKEMON_TYPES = ["풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "무색",
-  "Grass", "Fire", "Water", "Lightning", "Psychic", "Fighting", "Darkness", "Metal", "Dragon", "Colorless"];
-
 const EVOLUTION_COLORS: Record<string, string> = {
   기본: "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200",
   "1진화": "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300",
@@ -115,7 +117,9 @@ const STRENGTH_CHART: Record<string, string[]> = {
 type DeckEntry = { card: PokemonCard; count: number };
 
 function typeColor(type: string) {
-  return TYPE_COLORS[type] ?? { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
+  if (TYPE_COLORS[type]) return TYPE_COLORS[type];
+  const first = type.split("/")[0]?.trim();
+  return TYPE_COLORS[first] ?? { bg: "bg-gray-100", text: "text-gray-700", border: "border-gray-300" };
 }
 
 function countEnergy(energy: string | undefined): number {
@@ -451,8 +455,8 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
   const filterOptions = useMemo(() => {
     const allTypes = [...new Set(cards.map((c) => c.타입))];
     return {
-      포켓몬타입: allTypes.filter((t) => POKEMON_TYPES.includes(t)),
-      트레이너스타입: allTypes.filter((t) => !POKEMON_TYPES.includes(t)),
+      포켓몬타입: allTypes.filter((t) => isPokemonCardType(t) && !isDualCardType(t)),
+      트레이너스타입: allTypes.filter((t) => !isPokemonCardType(t)),
       진화: EVOLUTION_ORDER.filter((e) => cards.some((c) => c.진화 === e)),
       키워드: [...new Set(
         cards.flatMap((c) =>
@@ -502,7 +506,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
         (c.키워드 && c.키워드.toLowerCase().includes(q))
       );
     }
-    if (filters.타입.length) result = result.filter((c) => filters.타입.includes(c.타입));
+    if (filters.타입.length) result = result.filter((c) => cardMatchesTypeFilter(c.타입, filters.타입));
     if (filters.진화.length) result = result.filter((c) => filters.진화.includes(c.진화));
     if (filters.키워드.length)
       result = result.filter((c) =>
@@ -510,12 +514,14 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       );
     if (filters.확장팩.length) result = result.filter((c) => filters.확장팩.includes(c.확장팩));
     if (filters.후퇴에너지.length) result = result.filter((c) => {
-      if (filters.후퇴에너지.includes("0") && !POKEMON_TYPES.includes(c.타입)) return false;
+      if (filters.후퇴에너지.includes("0") && !isPokemonCardType(c.타입)) return false;
       return filters.후퇴에너지.includes(String(c.후퇴에너지));
     });
     if (filterCardTypes.length)
       result = result.filter((c) =>
-        filterCardTypes.some((ct) => cardMatchesCardTypeFilter(c.카드타입, ct)),
+        filterCardTypes.some((ct) =>
+          ct === "듀얼타입" ? isDualCardType(c.타입) : cardMatchesCardTypeFilter(c.카드타입, ct),
+        ),
       );
     if (filterSpecial) result = result.filter((c) => c.특성효과 && c.특성효과 !== "-");
     if (filterColorless) {
@@ -530,7 +536,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     }
     if (filterSkillEnergy.length) {
       result = result.filter((c) => {
-        if (filterSkillEnergy.includes(0) && !POKEMON_TYPES.includes(c.타입)) return false;
+        if (filterSkillEnergy.includes(0) && !isPokemonCardType(c.타입)) return false;
         const ec = energyCounts.get(c.ID);
         if (!ec) return false;
         return filterSkillEnergy.includes(ec.e1) || (ec.e2 >= 0 && filterSkillEnergy.includes(ec.e2));
@@ -596,26 +602,26 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     // 덱에 있는 포켓몬 타입 목록 (예: "불", "물")
     const deckPokemonTypes = [...new Set(
       deck
-        .filter(({ card }) => POKEMON_TYPES.includes(card.타입))
+        .filter(({ card }) => isPokemonCardType(card.타입))
         .map(({ card }) => card.타입)
     )];
 
     // 덱에 있는 진화단계 목록
     const deckEvolutions = [...new Set(
       deck
-        .filter(({ card }) => POKEMON_TYPES.includes(card.타입) && card.진화)
+        .filter(({ card }) => isPokemonCardType(card.타입) && card.진화)
         .map(({ card }) => card.진화)
     )];
     const hasAnyEvolution = deckEvolutions.some((e) => e === "1진화" || e === "2진화");
     const deckHasStage2 = deckEvolutions.some((e) => e === "2진화" || e === "Stage 2");
 
     // 덱에 HP 50 이하 포켓몬 존재 여부
-    const deckHasLowHp = deck.some(({ card: c }) => POKEMON_TYPES.includes(c.타입) && c.HP <= 50);
+    const deckHasLowHp = deck.some(({ card: c }) => isPokemonCardType(c.타입) && c.HP <= 50);
 
     // 덱에 동전 관련 키워드 포켓몬 존재 여부 (일목 시너지)
     const COIN_KEYWORDS = ["동전 상태이상", "동전 기반 피해", "동전 기술 실패 위험"];
     const deckHasCoinKeyword = deck.some(({ card: c }) =>
-      POKEMON_TYPES.includes(c.타입) &&
+      isPokemonCardType(c.타입) &&
       c.키워드?.split(",").map((v) => v.trim()).some((kw) => COIN_KEYWORDS.includes(kw))
     );
 
@@ -674,7 +680,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       // 1) 포켓몬명 직접 참조 (기존)
       if (deckNames.some((name) => effectTexts.includes(`「${name}」`))) return true;
 
-      const isTrainerCard = !POKEMON_TYPES.includes(card.타입);
+      const isTrainerCard = !isPokemonCardType(card.타입);
 
       // 2) 울트라비스트 보유 시 트레이너스 중 "울트라비스트" 효과 포함 카드
       if (hasUltraBeast && isTrainerCard && effectTexts.includes("울트라비스트")) return true;
@@ -726,8 +732,8 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
   }, [cards, deck, deckNameMap, favoriteIds]);
 
   const deckDiagnosis = useMemo(() => {
-    const pokemonEntries = deck.filter(({ card }) => POKEMON_TYPES.includes(card.타입));
-    const trainerEntries = deck.filter(({ card }) => !POKEMON_TYPES.includes(card.타입));
+    const pokemonEntries = deck.filter(({ card }) => isPokemonCardType(card.타입));
+    const trainerEntries = deck.filter(({ card }) => !isPokemonCardType(card.타입));
     const pokemonCount = pokemonEntries.reduce((s, e) => s + e.count, 0);
     const trainerCount = trainerEntries.reduce((s, e) => s + e.count, 0);
     const evoStages = new Set(pokemonEntries.map(({ card }) => card.진화));
@@ -751,7 +757,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
         .filter((w): w is string => !!w && w.trim() !== "" && w.trim() !== "-")
     )];
     // 덱 강점 집계 (포켓몬 타입 → STRENGTH_CHART)
-    const deckPokemonTypeSet = new Set(pokemonEntries.map(({ card }) => card.타입));
+    const deckPokemonTypeSet = new Set(pokemonEntries.flatMap(({ card }) => cardTypeParts(card.타입)));
     const strengthTypes = [...new Set(
       [...deckPokemonTypeSet].flatMap((type) => STRENGTH_CHART[type] ?? [])
     )];
@@ -896,7 +902,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
         next = [...next, { card, count: 1 }];
       }
     }
-    const isTrainer = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+    const isTrainer = (c: PokemonCard) => !isPokemonCardType(c.타입);
     next.sort((a, b) => {
       const aT = isTrainer(a.card) ? 1 : 0;
       const bT = isTrainer(b.card) ? 1 : 0;
@@ -1012,7 +1018,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       })
       .filter((e): e is DeckEntry => e !== null)
       .sort((a, b) => {
-        const isTrainer = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+        const isTrainer = (c: PokemonCard) => !isPokemonCardType(c.타입);
         const aT = isTrainer(a.card) ? 1 : 0;
         const bT = isTrainer(b.card) ? 1 : 0;
         if (aT !== bT) return aT - bT;
@@ -1036,7 +1042,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       })
       .filter((e): e is DeckEntry => e !== null)
       .sort((a, b) => {
-        const isTrainer = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+        const isTrainer = (c: PokemonCard) => !isPokemonCardType(c.타입);
         const aT = isTrainer(a.card) ? 1 : 0;
         const bT = isTrainer(b.card) ? 1 : 0;
         if (aT !== bT) return aT - bT;
@@ -1138,7 +1144,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       const card = cardMap.get(id);
       if (card) newDeck.push({ card, count: Math.min(count, MAX_SAME_NAME) });
     }
-    const isTrainerFn = (c: PokemonCard) => !POKEMON_TYPES.includes(c.타입);
+    const isTrainerFn = (c: PokemonCard) => !isPokemonCardType(c.타입);
     newDeck.sort((a, b) => {
       const aT = isTrainerFn(a.card) ? 1 : 0;
       const bT = isTrainerFn(b.card) ? 1 : 0;
@@ -1187,13 +1193,12 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
     filterCardTypes.length || filterSpecial || filterColorless || filterSkillEnergy.length;
 
   const renderCard = (card: PokemonCard, keyPrefix = "") => {
-    const tc = typeColor(card.타입);
     const nameCount = deckNameMap.get(card.이름) ?? 0;
     const deckCount = deck.find((e) => e.card.ID === card.ID)?.count ?? 0;
     const maxed = totalCards >= MAX_DECK || nameCount >= MAX_SAME_NAME;
     const typeFlags = parseCardTypeFlags(card.카드타입);
     const nameText = card.이름.replace(/\s+ex$/i, "").trim();
-    const isTrainer = !POKEMON_TYPES.includes(card.타입);
+    const isTrainer = !isPokemonCardType(card.타입);
     return (
       <button
         key={keyPrefix + card.ID}
@@ -1238,7 +1243,7 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
       >
         {/* 1행: 타입 + 진화 + 이름 + 카드타입 뱃지 + 덱 수량 + 확장팩 */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
+          <TypePills type={card.타입} className="shrink-0" />
           {!isTrainer && <span className={`shrink-0 px-1.5 py-0.5 rounded text-xs font-medium ${EVOLUTION_COLORS[card.진화] ?? "bg-gray-100 text-gray-600"}`}>{card.진화}</span>}
           <span className="font-semibold text-sm text-slate-800 dark:text-slate-100">{nameText}</span>
           <CardNameBadges
@@ -1659,8 +1664,8 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
               <div className="flex flex-col gap-2">
                 <h3 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{t.diagnosis.typeTitle}</h3>
                 {(() => {
-                  const pokemonTypeDist = typeDist.filter(([type]) => POKEMON_TYPES.includes(type));
-                  const trainerTypeDist = typeDist.filter(([type]) => !POKEMON_TYPES.includes(type));
+                  const pokemonTypeDist = typeDist.filter(([type]) => isPokemonCardType(type));
+                  const trainerTypeDist = typeDist.filter(([type]) => !isPokemonCardType(type));
                   const maxPct = Math.max(...typeDist.map(([, count]) => Math.round((count / totalCards) * 100)));
                   const renderCol = (type: string, count: number, groupColor: string) => {
                     const barBg = ENERGY_PIP_COLORS[type]?.split(" ")[0] ?? "bg-slate-400";
@@ -1832,15 +1837,17 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide shrink-0">{t.filter.cardType}</span>
                 <div className="flex items-center gap-1 flex-wrap">
-                  {(["ex", "메가ex"] as const).map((ct) => {
+                  {(["ex", "메가ex", "듀얼타입"] as const).map((ct) => {
                     const active = filterCardTypes.includes(ct);
                     const activeCls =
                       ct === "ex" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700"
-                      : "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700";
+                      : ct === "메가ex" ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-700"
+                      : "bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 border-violet-300 dark:border-violet-700";
+                    const label = ct === "메가ex" ? t.cardTypeLabel.megaEx : ct === "듀얼타입" ? t.cardTypeLabel.dualType : ct;
                     return (
                       <button key={ct} onClick={() => setFilterCardTypes((prev) => prev.includes(ct) ? prev.filter((v) => v !== ct) : [...prev, ct])}
                         className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors cursor-pointer ${active ? activeCls : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400"}`}
-                      >{ct === "메가ex" ? t.cardTypeLabel.megaEx : ct}</button>
+                      >{label}</button>
                     );
                   })}
                 </div>
@@ -2229,12 +2236,11 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                 <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">{t.deck.addCards}</div>
               )}
               {deck.map(({ card, count }) => {
-                const tc = typeColor(card.타입);
                 const nameCount = deckNameMap.get(card.이름) ?? 0;
                 const canAdd = totalCards < MAX_DECK && nameCount < MAX_SAME_NAME;
                 return (
                   <div key={card.ID} className="flex items-center gap-1.5 px-3 py-2">
-                    <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
+                    <TypePills type={card.타입} className="shrink-0" />
                     <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
                     <button onClick={() => removeCard(card.ID)} disabled={count <= 0} className="shrink-0 w-6 h-6 flex items-center justify-center rounded border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-red-500 hover:border-red-300 dark:hover:text-red-400 dark:hover:border-red-700 text-xs font-bold transition-colors">−</button>
                     <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>
@@ -2376,12 +2382,11 @@ export default function DeckBuilder({ cards, session, recommendedDecks = [] }: {
                 <div className="text-center py-10 text-slate-400 dark:text-slate-500 text-sm">{t.deck.addCards}</div>
               )}
               {deck.map(({ card, count }) => {
-                const tc = typeColor(card.타입);
                 const nameCount = deckNameMap.get(card.이름) ?? 0;
                 const canAdd = totalCards < MAX_DECK && nameCount < MAX_SAME_NAME;
                 return (
                   <div key={card.ID} className="flex items-center gap-1.5 px-4 py-2.5">
-                    <span className={`shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${tc.bg} ${tc.text} ${tc.border}`}>{card.타입}</span>
+                    <TypePills type={card.타입} className="shrink-0" />
                     <span className="flex-1 min-w-0 text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{card.이름}</span>
                     <button onClick={() => removeCard(card.ID)} disabled={count <= 0} className="shrink-0 w-7 h-7 flex items-center justify-center rounded border border-slate-200 dark:border-slate-600 text-slate-400 hover:text-red-500 hover:border-red-300 dark:hover:text-red-400 dark:hover:border-red-700 text-sm font-bold transition-colors">−</button>
                     <span className="shrink-0 w-5 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400">{count}</span>

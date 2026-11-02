@@ -1,4 +1,4 @@
-import type { PokemonCard } from "../data/cards";
+import { isPokemonCardType, type PokemonCard } from "../data/cards";
 import { parseCardTypeFlags } from "./cardTypeFlags";
 
 import {
@@ -7,11 +7,6 @@ import {
 } from "./relatedSupporters";
 
 export { getRelatedSupporters, formatRelatedSupporters };
-
-const POKEMON_TYPES = new Set([
-  "풀", "불", "물", "번개", "초", "격투", "악", "강철", "드래곤", "땅", "무색",
-  "Grass", "Fire", "Water", "Lightning", "Psychic", "Fighting", "Darkness", "Metal", "Dragon", "Ground", "Colorless",
-]);
 
 const FIRE_TYPES = new Set(["불", "Fire"]);
 const WATER_TYPES = new Set(["물", "Water"]);
@@ -26,7 +21,7 @@ const STAGE_2 = new Set(["2진화", "Stage 2"]);
 const FIGHTING_TYPES = new Set(["격투", "Fighting"]);
 
 function isPokemonCard(card: PokemonCard): boolean {
-  return POKEMON_TYPES.has(card.타입);
+  return isPokemonCardType(card.타입);
 }
 
 function baseName(name: string): string {
@@ -50,6 +45,9 @@ export function getRelatedItems(card: PokemonCard): string[] {
   const items: string[] = [];
   const name = baseName(card.이름);
 
+  if (card.이름 === "메가뮤츠Y ex" || card.이름 === "Mega Mewtwo Y ex") {
+    pushUnique(items, "게놈 컨버터Y");
+  }
   if (name === "레어코일" || name === "Magneton") {
     pushUnique(items, "시트론의 륙색");
   }
@@ -109,7 +107,10 @@ export function getRelatedTools(card: PokemonCard): string[] {
     pushUnique(tools, "헤비멧");
   }
   if (BASIC_STAGE.has(card.진화)) {
-    pushUnique(tools, "작은 풍선");
+    pushUnique(tools, "작은 풍선", "진화의휘석");
+  }
+  if (card.이름 === "피카츄 ex" || card.이름 === "Pikachu ex") {
+    pushUnique(tools, "전기구슬");
   }
   if (STAGE_1.has(card.진화)) {
     pushUnique(tools, "우아한 망토");

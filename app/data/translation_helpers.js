@@ -8,13 +8,16 @@ const TRAINER_MAP = require('./trainer_map.json');
 const KEYWORD_MAP = require('./keyword_map.json');
 const B3B_SUPPLEMENT = require('./b3b_en_supplement.json');
 const B4_SUPPLEMENT = require('./b4_en_supplement.json');
+const C1_SUPPLEMENT = require('./c1_en_supplement.json');
 
 Object.assign(TRAINER_MAP, B3B_SUPPLEMENT.trainers || {});
 Object.assign(KEYWORD_MAP, B3B_SUPPLEMENT.keywords || {});
 Object.assign(TRAINER_MAP, B4_SUPPLEMENT.trainers || {});
+Object.assign(TRAINER_MAP, C1_SUPPLEMENT.trainers || {});
 Object.assign(KEYWORD_MAP, B4_SUPPLEMENT.keywords || {});
 Object.assign(MOVES_LOCAL, B4_SUPPLEMENT.moves || {});
 Object.assign(MOVES_LOCAL, B3B_SUPPLEMENT.moves || {});
+Object.assign(MOVES_LOCAL, C1_SUPPLEMENT.moves || {});
 
 Object.assign(TRAINER_MAP, {
   '부스트에너지 고대': 'Ancient Booster Energy Capsule',
@@ -26,6 +29,8 @@ Object.assign(TRAINER_MAP, {
 });
 
 const ADDON_POKEMON = {
+  '오케이징': 'Inkay',
+  '두파팡': 'Blacephalon',
   '메가나무킹': 'Mega Sceptile', '메가나무킹 ex': 'Mega Sceptile ex',
   '꼬몽울': 'Budew', '두르보': 'Sewaddle', '두르쿤': 'Swadloon', '모아머': 'Leavanny', '애프룡': 'Flapple',
   '사나운버섯': 'Brute Bonnet', '땅을기는날개': 'Slither Wing',
@@ -60,6 +65,7 @@ const ADDON_POKEMON = {
   '메가헤라크로스': 'Mega Heracross', '메가헤라크로스 ex': 'Mega Heracross ex',
   ...(B3B_SUPPLEMENT.pokemon || {}),
   ...(B4_SUPPLEMENT.pokemon || {}),
+  ...(C1_SUPPLEMENT.pokemon || {}),
 };
 
 const TCG_ABILITIES = {
@@ -103,6 +109,8 @@ const EFFECT_EXACT = {
   ...(B3B_SUPPLEMENT.abilityEffects || {}),
   ...(B4_SUPPLEMENT.moveEffects || {}),
   ...(B4_SUPPLEMENT.abilityEffects || {}),
+  ...(C1_SUPPLEMENT.moveEffects || {}),
+  ...(C1_SUPPLEMENT.abilityEffects || {}),
   '상대의 배틀 포켓몬을 독으로 만든다.': "Your opponent's Active Pokémon is now Poisoned.",
   '상대의 배틀 포켓몬을 잠듦으로 만든다.': "Your opponent's Active Pokémon is now Asleep.",
   '상대의 배틀 포켓몬을 혼란으로 만든다.': "Your opponent's Active Pokémon is now Confused.",
@@ -246,6 +254,7 @@ const TCG_ABILITIES_EXTRA = {
   ...loadJson('./tcg_ability_map.json'),
   ...(B3B_SUPPLEMENT.abilities || {}),
   ...(B4_SUPPLEMENT.abilities || {}),
+  ...(C1_SUPPLEMENT.abilities || {}),
 };
 const MOVE_EFFECT_MAP = { ...loadJson('./tcg_move_effect_map.json'), ...(B3B_SUPPLEMENT.moveEffects || {}) };
 const ABILITY_EFFECT_MAP = { ...loadJson('./tcg_ability_effect_map.json'), ...(B3B_SUPPLEMENT.abilityEffects || {}) };
@@ -285,10 +294,16 @@ function lookupPokemonName(name, pokemonNames, nameOverrides) {
   return n;
 }
 
+function isPokemonTypeField(cardType) {
+  const parts = String(cardType || '').split('/').map((part) => part.trim()).filter(Boolean);
+  const types = new Set(['풀', '불', '물', '번개', '초', '격투', '악', '강철', '드래곤', '무색']);
+  return parts.length > 0 && parts.every((part) => types.has(part));
+}
+
 function translateCardName(raw, cardType, pokemonNames, nameOverrides) {
   if (!raw) return raw;
   const name = String(raw).trim();
-  if (cardType && !['풀', '불', '물', '번개', '초', '격투', '악', '강철', '드래곤', '무색'].includes(cardType)) {
+  if (cardType && !isPokemonTypeField(cardType)) {
     return TRAINER_MAP[name] || name;
   }
   return lookupPokemonName(name, pokemonNames, nameOverrides);

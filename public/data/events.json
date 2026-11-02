@@ -1588,6 +1588,16 @@
       },
       "type": "wonder",
       "url": "https://ptcgpocket.gg/fennekin-and-meowstic-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "expansion-c1",
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-29",
+      "title": {
+        "en": "Dual Fusion Expansion",
+        "ko": "듀얼 퓨전 확장팩"
+      },
+      "type": "expansion"
     }
   ],
   "tentativeEvents": [

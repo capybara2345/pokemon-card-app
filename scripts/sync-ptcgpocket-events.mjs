@@ -35,6 +35,7 @@ const EXPANSION_KO_FALLBACK = {
   "Everyday Wonders": "미라클 데이즈",
   "Ruler of the Skies": "천공의 지배자",
   "Ruler of Skies": "천공의 지배자",
+  "Dual Fusion": "듀얼 퓨전",
 };
 
 // 공식 한국 출시일·명칭 보정 (code 기준, dotgg/flibustier 위에 덮어씀)
@@ -43,6 +44,11 @@ const MANUAL_EXPANSIONS = [
     code: "B3b",
     releaseDate: "2026-06-30",
     name: { en: "Everyday Wonders", ko: "미라클 데이즈" },
+  },
+  {
+    code: "C1",
+    releaseDate: "2026-10-29",
+    name: { en: "Dual Fusion", ko: "듀얼 퓨전" },
   },
 ];
 
