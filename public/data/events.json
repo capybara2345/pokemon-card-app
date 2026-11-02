@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 5 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
-  "updatedAt": "2026-08-29T17:36:57.366Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
+  "updatedAt": "2026-11-01T18:54:02.711Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1590,6 +1590,93 @@
       "url": "https://ptcgpocket.gg/fennekin-and-meowstic-wonder-pick-event-promo-cards-missions-all-rewards/"
     },
     {
+      "id": "parallel-foil-cards-mass-outbreak-event-deluxe-pack-mega-wonder-pick-event",
+      "startDate": "2026-09-30",
+      "endDate": "2026-10-09",
+      "title": {
+        "en": "Parallel Foil Cards Mass Outbreak Event – Deluxe Pack: Mega Wonder Pick Event",
+        "ko": "Parallel Foil Cards Mass Outbreak Event – Deluxe Pack: Mega Wonder Pick Event"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/parallel-foil-cards-mass-outbreak-event-deluxe-pack-mega-wonder-pick-event/"
+    },
+    {
+      "id": "expansion-b4b",
+      "startDate": "2026-09-30",
+      "endDate": "2026-09-30",
+      "title": {
+        "en": "Deluxe Pack: Mega Expansion",
+        "ko": "Deluxe Pack: Mega 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
+      "id": "deluxe-pack-mega-emblem-event",
+      "startDate": "2026-10-03",
+      "endDate": "2026-10-13",
+      "title": {
+        "en": "Deluxe Pack: Mega Emblem Event",
+        "ko": "Deluxe Pack: Mega Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/deluxe-pack-mega-emblem-event/"
+    },
+    {
+      "id": "ranked-match-season-b4b-ranking-guide-all-rewards",
+      "startDate": "2026-10-14",
+      "endDate": "2026-10-28",
+      "title": {
+        "en": "Ranked Match Season B4b – Ranking Guide & All Rewards",
+        "ko": "Ranked Match Season B4b – Ranking Guide & All Rewards"
+      },
+      "type": "ranked",
+      "url": "https://ptcgpocket.gg/ranked-match-season-b4b-ranking-guide-all-rewards/"
+    },
+    {
+      "id": "mega-garchomp-ex-drop-event",
+      "startDate": "2026-10-15",
+      "endDate": "2026-10-25",
+      "title": {
+        "en": "Mega Garchomp ex Drop Event",
+        "ko": "Mega Garchomp ex Drop Event"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/mega-garchomp-ex-drop-event/"
+    },
+    {
+      "id": "charmander-and-drampa-wonder-pick-event-promo-cards-missions-all-rewards",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-28",
+      "title": {
+        "en": "Charmander and Drampa – Wonder Pick Event – Promo Cards, Missions & All Rewards",
+        "ko": "Charmander and Drampa – Wonder Pick Event – Promo Cards, Missions & All Rewards"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/charmander-and-drampa-wonder-pick-event-promo-cards-missions-all-rewards/"
+    },
+    {
+      "id": "pika-pika-pikachu-missions",
+      "startDate": "2026-10-20",
+      "endDate": "2026-10-30",
+      "title": {
+        "en": "Pika Pika! Pikachu Missions",
+        "ko": "Pika Pika! Pikachu Missions"
+      },
+      "type": "mission",
+      "url": "https://ptcgpocket.gg/pika-pika-pikachu-missions/"
+    },
+    {
+      "id": "community-week-missions-6",
+      "startDate": "2026-10-21",
+      "endDate": "2026-10-28",
+      "title": {
+        "en": "Community Week Missions",
+        "ko": "Community Week Missions"
+      },
+      "type": "community",
+      "url": "https://ptcgpocket.gg/community-week-missions-6/"
+    },
+    {
       "id": "expansion-c1",
       "startDate": "2026-10-29",
       "endDate": "2026-10-29",
@@ -1598,48 +1685,126 @@
         "ko": "듀얼 퓨전 확장팩"
       },
       "type": "expansion"
+    },
+    {
+      "id": "expansion-sp1",
+      "startDate": "2026-10-29",
+      "endDate": "2026-10-29",
+      "title": {
+        "en": "Special Pack: First Partners Expansion",
+        "ko": "Special Pack: First Partners 확장팩"
+      },
+      "type": "expansion"
+    },
+    {
+      "id": "promo-reissue-drop-event-2026",
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-20",
+      "title": {
+        "en": "Promo Reissue Drop Event 2026",
+        "ko": "Promo Reissue Drop Event 2026"
+      },
+      "type": "drop",
+      "url": "https://ptcgpocket.gg/promo-reissue-drop-event-2026/"
+    },
+    {
+      "id": "promo-reissue-wonder-pick-event-2026",
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-20",
+      "title": {
+        "en": "PROMO Reissue Wonder Pick Event 2026",
+        "ko": "PROMO Reissue Wonder Pick Event 2026"
+      },
+      "type": "wonder",
+      "url": "https://ptcgpocket.gg/promo-reissue-wonder-pick-event-2026/"
+    },
+    {
+      "id": "dual-fusion-emblem-event",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-16",
+      "title": {
+        "en": "Dual Fusion Emblem Event",
+        "ko": "Dual Fusion Emblem Event"
+      },
+      "type": "emblem",
+      "url": "https://ptcgpocket.gg/dual-fusion-emblem-event/"
     }
   ],
   "tentativeEvents": [
     {
-      "id": "pz-pvp-emblem-battles",
-      "type": "emblem",
-      "estimatedStart": "2026-08-31",
-      "estimatedEnd": "2026-09-10",
+      "id": "pz-second-anniversary-celebration-campaign",
+      "type": "mission",
+      "estimatedStart": "2026-10-30",
+      "estimatedEnd": "2026-12-15",
       "title": {
-        "en": "PVP Emblem Battles",
-        "ko": "PVP Emblem Battles"
+        "en": "Second Anniversary Celebration Campaign",
+        "ko": "Second Anniversary Celebration Campaign"
+      },
+      "url": "https://www.pokemon-zone.com/events/second-anniversary-celebration-campaign/",
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-handy-card-collection-missions-c1",
+      "type": "mission",
+      "estimatedStart": "2026-10-30",
+      "estimatedEnd": "2027-01-27",
+      "title": {
+        "en": "Handy Card Collection Missions C1",
+        "ko": "Handy Card Collection Missions C1"
+      },
+      "url": "https://www.pokemon-zone.com/events/handy-card-collection-missions-c1/",
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-december-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-12-01",
+      "estimatedEnd": "2027-01-01",
+      "title": {
+        "en": "December 2026 Premium Missions",
+        "ko": "December 2026 Premium Missions"
       },
       "source": "pokemon-zone"
     },
     {
-      "id": "pz-september-2026-premium-missions",
+      "id": "pz-daily-missions",
       "type": "mission",
-      "estimatedStart": "2026-09-01",
-      "estimatedEnd": "2026-10-01",
+      "estimatedStart": "2026-12-02",
+      "estimatedEnd": "2026-12-16",
       "title": {
-        "en": "September 2026 Premium Missions",
-        "ko": "September 2026 Premium Missions"
+        "en": "Daily missions",
+        "ko": "Daily missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "tentative-july-community-week",
+      "type": "community",
+      "estimatedStart": "2026-12-06",
+      "estimatedEnd": "2026-12-13",
+      "title": {
+        "en": "Community Week",
+        "ko": "커뮤니티 위크"
       },
       "source": "pokemon-zone"
     }
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "ok",
-    "pzRawCount": 12,
-    "autoCount": 5,
+    "pzStatus": "failed",
+    "pzRawCount": 0,
+    "autoCount": 0,
     "manualCount": 0,
-    "cacheCount": 0,
-    "mergedCount": 3,
-    "visibleCount": 2,
-    "usedCache": false,
+    "cacheCount": 5,
+    "mergedCount": 5,
+    "visibleCount": 5,
+    "usedCache": true,
     "sources": {
-      "pokemon-zone": 3,
+      "pokemon-zone": 5,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-08-29T17:36:57.366Z"
+    "updatedAt": "2026-11-01T18:54:02.711Z"
   }
 }
