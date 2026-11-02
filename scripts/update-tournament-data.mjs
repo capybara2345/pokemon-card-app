@@ -532,16 +532,21 @@ async function main() {
   );
   console.log(`Updated tournament-meta.json: ${latestTournamentDate}`);
 
+  buildTournamentDecks(bestDecks, latestTournamentDate);
+}
+
+function buildTournamentDecks(bestDecks, latestTournamentDate) {
   // ---- tournament-decks.json 생성 ----
   console.log("\nBuilding tournament-decks.json...");
 
   const cardsData = loadJson("cards.json");
   const cardMap = new Map(cardsData.map((c) => [c.id, c]));
+  const matchupData = loadJson("matchup-data.json");
   const { serialToId, serialToKoName, serialToExpansion, serialToHp, serialToEnergy } = loadCardListData();
   const { idToEnName, idToEnHp } = loadCardListEnData();
 
   const enrichedDecks = bestDecks.map((deck) => {
-    const matchups = finalMatchups[deck.name] ?? [];
+    const matchups = matchupData[deck.name] ?? [];
     const total = matchups.find((m) => m.name === "Total");
     const bestList = deck.lists.reduce((best, list) =>
       list.score > best.score ? list : best
@@ -603,9 +608,21 @@ async function main() {
   );
 
   console.log(`Updated tournament-decks.json with ${enrichedDecks.length} decks`);
+  const unmapped = enrichedDecks.flatMap((deck) => deck.cards.filter((card) => !card.numericId));
+  if (unmapped.length) {
+    const ids = [...new Set(unmapped.map((card) => card.id))];
+    console.log(`Unmapped cards: ${unmapped.length} (${ids.length} ids)`);
+    console.log(ids.slice(0, 40).join(", "));
+  }
 }
 
-main().catch((err) => {
-  console.error("Script failed:", err);
-  process.exit(1);
-});
+if (process.argv.includes("--enrich-only")) {
+  const existing = loadJson("tournament-decks.json");
+  const bestDecks = loadJson("best-decks.json");
+  buildTournamentDecks(bestDecks, existing.updatedAt);
+} else {
+  main().catch((err) => {
+    console.error("Script failed:", err);
+    process.exit(1);
+  });
+}
