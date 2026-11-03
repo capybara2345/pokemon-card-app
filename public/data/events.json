@@ -1,8 +1,8 @@
 {
   "source": "ptcgpocket.gg + flibustier/pokemon-tcg-pocket-database + pokemon-zone.com",
   "sourceUrl": "https://ptcgpocket.gg/events/",
-  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule used manual or cached entries because Pokemon Zone upcoming could not be fetched.",
-  "updatedAt": "2026-11-02T22:44:40.109Z",
+  "disclaimer": "Schedule data is collected from unofficial sources (ptcgpocket.gg, community set database) and may change without notice. Not an official Pokémon Company schedule. Estimated schedule merged 10 Pokemon Zone item(s) with manual/cache entries (datamined, may change).",
+  "updatedAt": "2026-11-03T20:31:56.786Z",
   "events": [
     {
       "id": "advance-ticket",
@@ -1732,79 +1732,79 @@
   ],
   "tentativeEvents": [
     {
-      "id": "pz-second-anniversary-celebration-campaign",
+      "id": "pz-second-anniversary-celebration-campaign-missions",
       "type": "mission",
       "estimatedStart": "2026-10-30",
       "estimatedEnd": "2026-12-15",
       "title": {
-        "en": "Second Anniversary Celebration Campaign",
-        "ko": "Second Anniversary Celebration Campaign"
+        "en": "Second Anniversary Celebration Campaign Missions",
+        "ko": "Second Anniversary Celebration Campaign Missions"
       },
-      "url": "https://www.pokemon-zone.com/events/second-anniversary-celebration-campaign/",
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-elite-deck-gift-missions-c1",
+      "type": "mission",
+      "estimatedStart": "2026-10-30",
+      "estimatedEnd": "2027-01-27",
+      "title": {
+        "en": "Elite Deck Gift Missions C1",
+        "ko": "Elite Deck Gift Missions C1"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-november-2026-premium-missions",
+      "type": "mission",
+      "estimatedStart": "2026-11-01",
+      "estimatedEnd": "2026-12-01",
+      "title": {
+        "en": "November 2026 Premium Missions",
+        "ko": "November 2026 Premium Missions"
+      },
+      "source": "pokemon-zone"
+    },
+    {
+      "id": "pz-bonus-week-dual-fusion",
+      "type": "community",
+      "estimatedStart": "2026-11-14",
+      "estimatedEnd": "2026-11-21",
+      "title": {
+        "en": "Bonus Week Dual Fusion",
+        "ko": "Bonus Week Dual Fusion"
+      },
+      "url": "https://www.pokemon-zone.com/events/bonus-week-dual-fusion/",
       "source": "pokemon-zone"
     },
     {
       "id": "pz-handy-card-collection-missions-c1",
       "type": "mission",
-      "estimatedStart": "2026-10-30",
-      "estimatedEnd": "2027-01-27",
+      "estimatedStart": "2027-01-27",
+      "estimatedEnd": "2028-01-27",
       "title": {
         "en": "Handy Card Collection Missions C1",
         "ko": "Handy Card Collection Missions C1"
       },
       "url": "https://www.pokemon-zone.com/events/handy-card-collection-missions-c1/",
       "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-december-2026-premium-missions",
-      "type": "mission",
-      "estimatedStart": "2026-12-01",
-      "estimatedEnd": "2027-01-01",
-      "title": {
-        "en": "December 2026 Premium Missions",
-        "ko": "December 2026 Premium Missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "pz-daily-missions",
-      "type": "mission",
-      "estimatedStart": "2026-12-02",
-      "estimatedEnd": "2026-12-16",
-      "title": {
-        "en": "Daily missions",
-        "ko": "Daily missions"
-      },
-      "source": "pokemon-zone"
-    },
-    {
-      "id": "tentative-july-community-week",
-      "type": "community",
-      "estimatedStart": "2026-12-06",
-      "estimatedEnd": "2026-12-13",
-      "title": {
-        "en": "Community Week",
-        "ko": "커뮤니티 위크"
-      },
-      "source": "pokemon-zone"
     }
   ],
   "tentativeMeta": {
     "source": "pokemon-zone.com/schedule/upcoming/ + manual",
-    "pzStatus": "failed",
-    "pzRawCount": 0,
-    "autoCount": 0,
+    "pzStatus": "ok",
+    "pzRawCount": 23,
+    "autoCount": 10,
     "manualCount": 0,
-    "cacheCount": 5,
+    "cacheCount": 0,
     "mergedCount": 5,
     "visibleCount": 5,
-    "usedCache": true,
+    "usedCache": false,
     "sources": {
       "pokemon-zone": 5,
       "manual": 0,
       "cache": 0,
       "unknown": 0
     },
-    "updatedAt": "2026-11-02T22:44:40.109Z"
+    "updatedAt": "2026-11-03T20:31:56.786Z"
   }
 }
