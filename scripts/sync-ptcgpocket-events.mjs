@@ -65,6 +65,17 @@ const MANUAL_CONFIRMED_EVENTS = [
     type: "ranked",
     url: "https://ptcgpocket.gg/ranked-match-season-b4-ranking-guide-all-rewards/",
   },
+  {
+    id: "ranked-match-season-c1-ranking-guide-all-rewards",
+    startDate: "2026-12-01",
+    endDate: "2026-12-15",
+    title: {
+      en: "Ranked Match Season C1 – Ranking Guide & All Rewards",
+      ko: "랭크 매치 시즌 C1",
+    },
+    type: "ranked",
+    url: "https://ptcgpocket.gg/ranked-match-season-c1-ranking-guide-all-rewards/",
+  },
 ];
 
 const MONTHS = {
