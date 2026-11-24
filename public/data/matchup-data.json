@@ -8839,11 +8839,6 @@
       "totalGames": 3
     },
     {
-      "name": "giratina-ex-c1-dragonair-b4",
-      "winRate": 1,
-      "totalGames": 1
-    },
-    {
       "name": "mega-garchomp-ex-p-b-garchomp-b4a",
       "winRate": 0,
       "totalGames": 1
@@ -8856,6 +8851,11 @@
     {
       "name": "lycanroc-ex-c1-rampardos-a2",
       "winRate": 0,
+      "totalGames": 1
+    },
+    {
+      "name": "giratina-ex-c1-dragonair-b4",
+      "winRate": 1,
       "totalGames": 1
     },
     {
@@ -9846,6 +9846,11 @@
       "totalGames": 1
     },
     {
+      "name": "mega-mewtwo-x-ex-c1-mega-diancie-ex-b3b",
+      "winRate": 0,
+      "totalGames": 1
+    },
+    {
       "name": "lopunny-raboot-c1",
       "winRate": 1,
       "totalGames": 1
@@ -9857,11 +9862,6 @@
     },
     {
       "name": "giratina-ex-c1-dragonair-b4",
-      "winRate": 0,
-      "totalGames": 1
-    },
-    {
-      "name": "mega-mewtwo-x-ex-c1-mega-diancie-ex-b3b",
       "winRate": 0,
       "totalGames": 1
     },
@@ -18227,11 +18227,6 @@
       "totalGames": 1
     },
     {
-      "name": "mega-blaziken-ex-b1",
-      "winRate": 0,
-      "totalGames": 1
-    },
-    {
       "name": "mega-garchomp-ex-p-b-dragonair-b4",
       "winRate": 0.6666666666666666,
       "totalGames": 3
@@ -18285,6 +18280,11 @@
       "name": "butterfree-b3b-mega-sceptile-ex-b3",
       "winRate": 0.6666666666666666,
       "totalGames": 6
+    },
+    {
+      "name": "mega-blaziken-ex-b1",
+      "winRate": 0,
+      "totalGames": 1
     },
     {
       "name": "mega-gardevoir-ex-b2-gardevoir-a1",
